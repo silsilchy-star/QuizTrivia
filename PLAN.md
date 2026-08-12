@@ -1,10 +1,10 @@
 # 랭킹 기반 다주제 학습 퀴즈 게임 — 설계 계획서
 
-> **버전** v1.4 · **작성일** 2026-08-10
-> **상태** **Day 1~4 착수 가능.** 남은 미결정은 Day 5~6 항목 7개뿐이며 전부 추천안 있음 (11장)
+> **버전** v1.5 · **작성일** 2026-08-12
+> **상태** **Day 1 진행 중.** 남은 미결정은 Day 5~6 항목 7개(Q5는 Q5'로 갱신)뿐이며 전부 추천안 있음 (11장)
 > **기간** 7일 (1일 8시간 기준, 총 56시간)
 >
-> **v1.4 변경** — **주제 정의서 확정**(6.3절). 세 주제의 범위·비범위·허용 태그·난이도별 예시문 3개씩이 모두 채워졌습니다. Day 3의 프롬프트 템플릿 재료가 전부 준비됐습니다.
+> **v1.5 변경** — **백엔드를 Firebase에서 Cloudflare(Workers + D1)로 전환**. Firebase는 EP-5 뒤에 격리한 채 가능성만 열어두고 지금은 쓰지 않습니다. 자세한 내용은 부록 A와 1.2·7장 참고.
 
 ---
 
@@ -42,10 +42,13 @@
 >
 > 따라서 **주제 등록 파이프라인(6.6절)이 게임의 핵심 제작 시스템**입니다. 부수 도구가 아니라 이 게임이 존재하는 이유입니다.
 
-### 1.2 기술적 방향성 [확정]
+### 1.2 기술적 방향성 [확정 · v1.5 변경]
 
-- 백엔드는 **Firebase** 기반
-- 실시간 멀티가 필요해지면 **Cloudflare로 전환 가능**해야 함 → 7.4절 / 확장점 EP-5
+- 백엔드는 **Cloudflare** 기반 (Workers + D1)
+- **Firebase는 가능성만 열어둔다 — 지금 쓰지 않는다.** EP-5 저장소 계층 격리를 유지해 나중에 필요하면 부분/전면 전환 가능해야 함
+- 실시간 멀티가 필요해지면 Durable Objects로 확장 → 7.4절 / 확장점 EP-5
+
+> v1.4까지는 반대 방향(Firebase 메인 · Cloudflare는 실시간 전용)이었으나, 사용자가 v1.5에서 뒤집었습니다. 이 절 아래 7장의 Firebase 관련 서술은 전부 Cloudflare 기준으로 다시 읽으십시오 — 표는 7.1절에서 갱신됨.
 
 ### 1.3 성공 기준 [제안]
 
@@ -97,7 +100,7 @@
 
 | ID | 결정 | 핵심 이유 | 따라오는 책임 |
 |---|---|---|---|
-| **D-1** | 플랫폼: **React + TypeScript (웹)** | Firebase Web SDK가 가장 성숙 · 링크 공유만으로 플레이 · 백엔드 교체 자유 | 화려한 게임 연출은 포기 |
+| **D-1** | 플랫폼: **React + TypeScript (웹)** | 링크 공유만으로 플레이 · 백엔드 교체 자유 (EP-5) | 화려한 게임 연출은 포기 |
 | **D-2** | 문제: **사전 배치 생성 + 사람 검수** | 런타임 비용 0, 지연 0 · 환각을 사용자 도달 전 차단 | 검수 시간이 주제 수에 비례 (Day 4) |
 | **D-3** | 실시간 배틀: **MVP 제외** | 최소 2~3일 소요 → "기둥 우선" 제약과 충돌 | 들어올 자리를 미리 비워둘 것 (EP-4) |
 | **D-4** | 인증: **익명 플레이 + 랭킹 등록 시에만 로그인** | 진입 장벽 최소화 | **계정 승계 로직 필수** (Day 6) |
@@ -272,11 +275,11 @@ D-12에 따라 수학은 별도 주제가 아니라 이 유형으로 존재합�
 
 ### 5.3 ⚠ 랭킹 조회 비용 — 반드시 주의할 함정
 
-Firebase 무료 등급은 **"문서 읽기 횟수"로 제한**됩니다. 랭킹을 매번 DB에서 정렬해 읽으면 **1회 조회 = 30회 읽기**이고, 보드가 여러 개면 배가 됩니다. 랭킹 페이지 하나로 무료 한도를 태울 수 있습니다.
+Cloudflare D1 무료 등급도 **일일 읽기·쓰기 행 수로 제한**됩니다. 랭킹을 매번 `topic_best`에서 정렬 조회하면 보드마다 다수의 행을 읽고, 보드가 여러 개면 배가 됩니다. 랭킹 페이지 하나로 무료 한도를 태울 수 있습니다.
 
-**대응** [제안]: 각 보드의 상위 30명을 **하나의 캐시 문서에 미리 합쳐 저장**합니다. 1회 조회 = 1회 읽기가 됩니다.
+**대응** [제안]: 각 보드의 상위 30명을 **`ranking_cache` 테이블 한 행에 미리 합쳐 저장**합니다. 1회 조회 = 1행 읽기가 됩니다.
 
-> 위 UI 분리(5.2절)가 이 비용도 같이 줄입니다. 랭킹 메뉴에서 읽는 캐시 문서가 항상 2개로 고정되기 때문입니다.
+> 위 UI 분리(5.2절)가 이 비용도 같이 줄입니다. 랭킹 메뉴에서 읽는 캐시 행이 항상 2개로 고정되기 때문입니다.
 
 **30위 밖 플레이어에게 보여줄 것** [제안]
 
@@ -285,16 +288,18 @@ Firebase 무료 등급은 **"문서 읽기 횟수"로 제한**됩니다. 랭킹�
 ### 5.4 인증 및 계정 승계
 
 ```
-  최초 방문 → Firebase 익명 로그인 자동 실행 (사용자는 인지 못 함)
-    ↓  uid 발급 → 이 uid로 플레이 기록 저장
+  최초 방문 → Worker가 자체 익명 uid 발급 (사용자는 인지 못 함)
+    ↓  uid를 클라이언트에 저장(쿠키/localStorage) → 이 uid로 플레이 기록 저장
   ...플레이...
     ↓  [랭킹 등록] 클릭 → 소셜 로그인 요구
-    ↓  linkWithCredential 로 익명 계정 ↔ 소셜 계정 연결
+    ↓  소셜 계정 ↔ 익명 uid 연결 (구현 방식은 **미결정 — Q5'**)
     →  uid가 유지되므로 기존 기록이 그대로 승계됨
     ↓  닉네임 입력 → 랭킹 반영
 ```
 
-> **⚠ 실패 케이스가 하나 있습니다.**
+> **⚠ Firebase Auth의 `linkWithCredential`처럼 "익명 계정 ↔ 소셜 계정 연결"을 공짜로 해주는 기능이 Cloudflare엔 없습니다.** OAuth 자체 구현(Google 등 제공자의 OAuth 2.0을 Worker에서 직접 처리) 또는 Cloudflare 호환 인증 라이브러리(Lucia, Auth.js 등) 중 하나를 Day 6 시점에 골라야 합니다 → **Q5'로 이관**.
+>
+> **⚠ 실패 케이스가 하나 있습니다** (라이브러리를 쓰든 자체 구현이든 동일).
 > 연결하려는 소셜 계정이 **이미 다른 uid로 가입되어 있으면** 연결이 실패합니다 (다른 기기에서 로그인한 적이 있는 경우). 선택지는 "익명 기록 폐기" 또는 "두 기록 병합"인데 병합은 구현이 무겁습니다.
 > **[제안] MVP는 "기존 계정 기록 유지 · 익명 기록 폐기"로 처리하되, 폐기 전 사용자에게 명확히 경고합니다.**
 
@@ -604,83 +609,119 @@ MVP는 1~3단계(사실 확인)이므로 문제가 전부 "안다"의 영역에 
 
 ## 7. 기술 아키텍처
 
-### 7.1 구성 요소
+### 7.1 구성 요소 [v1.5 변경 — Firebase → Cloudflare]
 
 | 계층 | 선택 | 역할 |
 |---|---|---|
 | 화면 | React + TypeScript (Vite) | 게임 UI |
-| 인증 | Firebase Authentication | 익명 + 소셜, 계정 승계 |
-| 데이터 | Firebase Firestore | 주제·문제·기록·랭킹 |
-| 배포 | Firebase Hosting | 링크 공유 |
+| 인증 | **Cloudflare Workers + D1 (자체 구현)** | 익명 uid 발급. 소셜 로그인·계정 승계 방식은 **미결정 — Q5' 로 이관** |
+| 데이터 | **Cloudflare D1 (SQLite)** | 주제·문제·기록·랭킹 |
+| 배포 | **Cloudflare Workers Static Assets** | 링크 공유 |
 | 문제 생성 | **채팅 UI + 프롬프트 템플릿 파일** (수동) | D-14 |
 | 취합·검증 | 로컬 Node.js 스크립트 | 붙여넣은 JSON을 읽어 기계 검증 |
 | 검수 도구 | 로컬 웹 페이지 (간이) | 승인/반려 클릭 |
 
-### 7.2 데이터 모델 (Firestore)
+> **Firebase는 EP-5 저장소 계층 뒤에 격리된 채로 가능성만 열어둡니다.** 지금은 전혀 쓰지 않습니다. 아래 7.2~7.6절은 v1.4의 Firestore/Firebase 서술을 Cloudflare D1/Workers 기준으로 재작성한 것입니다.
+
+### 7.2 데이터 모델 (Cloudflare D1 — SQLite)
 
 **여기가 잘못되면 나중에 전부 갈아엎어야 합니다.**
 
-```
-topics/{topicId}                            ★ D-5 · D-15 · D-16
-  ├─ no: number                             # 목록 정렬 키
-  ├─ name: string                           # "과학" | "화학" | "지리" | "축구" ...
-  ├─ kind: "broad" | "narrow"               # 넓은 태그 / 좁은 태그 (6.1절) — 목록 노출 우선순위
-  ├─ tagline: string                        # 한 줄 설명 (플레이어에게 보임)
-  ├─ scope: string[]                        # 다루는 범위
-  ├─ outOfScope: string[]                   # 다루지 않는 범위
-  ├─ difficultySpec: {                      # 난이도 정의 + 예시문 (검수·생성 기준)
-  │     "1": { rule: string, examples: [...] }, ... "4": {...}
-  │  }
-  ├─ status: "draft" | "active" | "archived"
-  ├─ questionCount: { "1": n, "2": n, "3": n, "4": n }
-  └─ createdAt / updatedAt
+```sql
+-- ★ D-5 · D-15 · D-16
+CREATE TABLE topics (
+  id            TEXT PRIMARY KEY,
+  no            INTEGER,                   -- 목록 정렬 키
+  name          TEXT NOT NULL,             -- "과학" | "화학" | "지리" | "축구" ...
+  kind          TEXT CHECK(kind IN ('broad','narrow')),  -- 넓은/좁은 태그 (6.1절)
+  tagline       TEXT,
+  scope_json         TEXT,                 -- 다루는 범위 (JSON 배열 문자열)
+  out_of_scope_json  TEXT,                 -- 다루지 않는 범위
+  difficulty_spec_json TEXT,               -- 난이도 정의 + 예시문 (검수·생성 기준)
+  status        TEXT CHECK(status IN ('draft','active','archived')) DEFAULT 'draft',
+  q_count_1 INTEGER DEFAULT 0, q_count_2 INTEGER DEFAULT 0,
+  q_count_3 INTEGER DEFAULT 0, q_count_4 INTEGER DEFAULT 0,
+  created_at TEXT, updated_at TEXT
+);
 
-questions/{questionId}
-  ├─ topicIds: string[]                     ★ EP-2 · D-16 — 복수 부착 (넓은 1개 + 좁은 1~2개)
-  ├─ type: "MULTIPLE_CHOICE" | "NUMERIC_INPUT"   ★ EP-1
-  ├─ difficulty: 1 | 2 | 3 | 4
-  ├─ body: string
-  ├─ choices: string[] | null
-  ├─ answer: string
-  ├─ explanation: string                    # 학습 목적상 필수
-  ├─ status: "pending" | "approved" | "rejected"
-  ├─ source: "ai_generated" | "manual"
-  ├─ generatedBy: string | null             # 사용한 모델명
-  ├─ rejectReason: string | null
-  └─ createdAt
+CREATE TABLE questions (
+  id            TEXT PRIMARY KEY,
+  type          TEXT CHECK(type IN ('MULTIPLE_CHOICE','NUMERIC_INPUT')),  -- ★ EP-1
+  difficulty    INTEGER CHECK(difficulty BETWEEN 1 AND 4),
+  body          TEXT NOT NULL,
+  choices_json  TEXT,                      -- 선택지 배열 (NUMERIC_INPUT이면 NULL)
+  answer        TEXT NOT NULL,
+  explanation   TEXT NOT NULL,
+  status        TEXT CHECK(status IN ('pending','approved','rejected')) DEFAULT 'pending',
+  source        TEXT CHECK(source IN ('ai_generated','manual')),
+  generated_by  TEXT,
+  reject_reason TEXT,
+  created_at    TEXT
+);
 
-users/{uid}
-  ├─ nickname: string | null                # 랭킹 등록 전엔 null
-  ├─ isAnonymous: boolean
-  ├─ topicBest: {                           ★ 폭 보상형 랭킹의 원천
-  │     [topicId]: { score, stage, updatedAt }
-  │  }
-  ├─ globalScore: number                    # = Σ topicBest[*].score
-  ├─ weekly: { weekId, topicBest: {...}, score }   # weekId 바뀌면 리셋
-  ├─ playCount: number
-  └─ createdAt / updatedAt
+-- ★ EP-2 · D-16 — 문항 하나가 여러 주제에 속함 (넓은 1개 + 좁은 1~2개)
+CREATE TABLE question_topics (
+  question_id TEXT REFERENCES questions(id),
+  topic_id    TEXT REFERENCES topics(id),
+  PRIMARY KEY (question_id, topic_id)
+);
 
-runs/{runId}                                # 한 판의 기록
-  ├─ uid
-  ├─ topicId: string                        # 단수 — 플레이어가 고른 주제 1개 (D-6)
-  ├─ mode: "solo"                           ★ EP-4: "battle"이 들어올 자리
-  ├─ stageReached / score
-  ├─ answers: [{questionId, given, correct, elapsedMs}]
-  ├─ startedAt / endedAt
-  └─ status: "completed" | "abandoned"
+CREATE TABLE users (
+  uid           TEXT PRIMARY KEY,
+  nickname      TEXT,                      -- 랭킹 등록 전엔 NULL
+  is_anonymous  INTEGER NOT NULL DEFAULT 1,
+  global_score  INTEGER DEFAULT 0,         -- = Σ topic_best.score (트리거 또는 재계산으로 유지)
+  play_count    INTEGER DEFAULT 0,
+  created_at TEXT, updated_at TEXT
+);
 
-rankingCache/{boardId}                      # 5.3절 비용 대응 · 상위 30 (D-9)
-  ├─ top: [{rank, uid, nickname, score}]
-  ├─ cutoffScore: number                    # 30위 커트라인
-  └─ generatedAt
+-- ★ 폭 보상형 랭킹의 원천 (Firestore 맵 → 관계형 테이블로 분해)
+CREATE TABLE topic_best (
+  uid       TEXT REFERENCES users(uid),
+  topic_id  TEXT REFERENCES topics(id),
+  score     INTEGER NOT NULL,
+  stage     INTEGER NOT NULL,
+  updated_at TEXT,
+  PRIMARY KEY (uid, topic_id)
+);
+
+-- 주간 보드용 (weekId 바뀌면 별도 행으로 누적, 5.2절 EP-3)
+CREATE TABLE topic_best_weekly (
+  uid       TEXT REFERENCES users(uid),
+  topic_id  TEXT REFERENCES topics(id),
+  week_id   TEXT NOT NULL,
+  score     INTEGER NOT NULL,
+  updated_at TEXT,
+  PRIMARY KEY (uid, topic_id, week_id)
+);
+
+CREATE TABLE runs (                         -- 한 판의 기록
+  id             TEXT PRIMARY KEY,
+  uid            TEXT REFERENCES users(uid),
+  topic_id       TEXT REFERENCES topics(id),  -- 단수 — 주제 1개 선택 (D-6)
+  mode           TEXT DEFAULT 'solo',       -- ★ EP-4: "battle"이 들어올 자리
+  stage_reached  INTEGER,
+  score          INTEGER,
+  answers_json   TEXT,                      -- [{questionId, given, correct, elapsedMs}]
+  started_at TEXT, ended_at TEXT,
+  status TEXT CHECK(status IN ('completed','abandoned'))
+);
+
+-- 5.3절 비용 대응 · 상위 30 (D-9). D1은 읽기 자체가 저렴하므로
+-- Firestore만큼 절박한 문제는 아니지만, 정렬 쿼리 비용 절감을 위해 유지.
+CREATE TABLE ranking_cache (
+  board_id      TEXT PRIMARY KEY,
+  top_json      TEXT,                      -- [{rank, uid, nickname, score}]
+  cutoff_score  INTEGER,
+  generated_at  TEXT
+);
 ```
 
 **설계 의도 세 가지**
 
-1. **`users.topicBest`를 맵으로 둔 이유** — 통합 점수가 단순 합산이 되어 계산이 공짜입니다. 주제가 수십 개로 늘어도 Firestore 문서 1MB 한도 안에서 여유롭습니다.
-2. **`rankings/` 컬렉션이 없는 이유** — 랭킹은 `users`를 정렬한 결과일 뿐이므로 별도 저장은 중복입니다. 캐시만 둡니다.
-3. **`topics.difficultySpec`에 예시문까지 넣은 이유** — 정의서가 코드 밖 문서에만 있으면 시간이 지나며 실제 문항과 어긋납니다. **생성 기준과 검수 기준을 DB에 함께 두어** 새 주제를 추가할 때 같은 형식을 강제합니다.
-4. **`questions.topicIds`가 배열, `runs.topicId`는 단수인 이유** — 문항은 여러 주제에 속하지만(D-16) **한 판은 주제 하나로 플레이**합니다(D-6). 이 비대칭이 의도된 것입니다. 출제 쿼리는 `where('topicIds', 'array-contains', topicId)`이고, 문항을 승인할 때는 **`topicIds`에 든 모든 주제의 `questionCount`를 함께 올립니다.**
+1. **`topic_best`를 별도 테이블로 분해한 이유** — Firestore의 `topicBest` 맵을 그대로 옮기면 SQLite에 JSON 컬럼으로 두는 방법도 있었지만, **관계형으로 쪼개면 "주제별 최고점 정렬" 같은 쿼리를 SQL이 직접 처리**합니다. `SUM(score) GROUP BY uid`가 곧 통합 점수 계산입니다.
+2. **`ranking_cache` 테이블이 남아있는 이유** — D1도 요청당 과금(무료 등급은 일일 읽기 한도)이므로, 랭킹 페이지 하나가 매번 `topic_best`를 정렬 조회하는 것보다 **미리 합쳐 캐싱**하는 게 여전히 유리합니다 (7.6절).
+3. **`questions`↔`topics`가 다대다, `runs.topic_id`는 단수인 이유** — 문항은 여러 주제에 속하지만(D-16) **한 판은 주제 하나로 플레이**합니다(D-6). 출제 쿼리는 `question_topics`를 조인해 `topic_id`로 필터링하고, 문항을 승인할 때는 **연결된 모든 주제의 `q_count_*`를 함께 올립니다.**
 
 ### 7.3 확장점 (Extension Points)
 
@@ -689,23 +730,18 @@ rankingCache/{boardId}                      # 5.3절 비용 대응 · 상위 30 
 | ID | 확장점 | 지금 하는 일 | 나중에 붙일 것 |
 |---|---|---|---|
 | **EP-1** | 문제 유형 | `type` 필드 + 유형별 렌더링 분기 | 서술형, 순서배열, 매칭 |
-| **EP-2** | 주제 | `topics` 컬렉션 + 생애주기 + 하한 게이트 | 주제 무제한 추가 (**이미 열려 있음**) |
+| **EP-2** | 주제 | `topics` 테이블 + 생애주기 + 하한 게이트 | 주제 무제한 추가 (**이미 열려 있음**) |
 | **EP-3** | 랭킹 보드 | 보드를 `boardId` 문자열로 일반화 | 일간·친구·주제별 주간 보드 |
 | **EP-4** | 게임 모드 | `runs.mode` (지금은 `"solo"` 고정) | 실시간 배틀, 혼합 주제 모드 |
-| **EP-5** | 백엔드 교체 | 데이터 접근을 **저장소 계층 한 곳에 격리** | Cloudflare 전환 |
+| **EP-5** | 백엔드 교체 | 데이터 접근을 **저장소 계층 한 곳에 격리** | Firebase 등 다른 백엔드로 전환 |
 
-> **EP-5가 가장 중요합니다.** 화면 코드가 Firebase 함수를 직접 부르면 나중에 Cloudflare로 옮길 때 화면을 전부 뜯어야 합니다. `getTopics()`·`getQuestions()`·`saveRun()` 같은 함수를 모은 파일 하나를 두고 화면은 그것만 부르게 하면, **그 파일 하나만 바꾸면 백엔드가 교체**됩니다.
+> **EP-5가 가장 중요합니다.** 화면 코드가 Worker API를 직접 fetch하지 않고, `getTopics()`·`getQuestions()`·`saveRun()` 같은 함수를 모은 파일 하나를 두고 화면은 그것만 부르게 하면, **그 파일 하나만 바꾸면 백엔드가 교체**됩니다. Firebase는 지금 쓰지 않지만, 이 격리 덕분에 나중에 필요하면(예: 특정 기능만 Firebase로) 화면을 뜯지 않고 붙일 수 있습니다.
 
-### 7.4 Cloudflare 전환 경로 (지금은 실행 안 함)
+### 7.4 실시간 확장 경로 — Durable Objects (지금은 실행 안 함)
 
-실시간 배틀이 필요해지는 시점에 Firebase에서 부족한 것은 **실시간 상태 동기화**이며, Cloudflare Durable Objects가 이 용도에 적합합니다.
+실시간 배틀(EP-4)이 필요해지는 시점에 D1에서 부족한 것은 **실시간 상태 동기화**이며, **Cloudflare Durable Objects**가 이 용도에 적합합니다. 이미 백엔드가 Cloudflare이므로 v1.4 때처럼 "전면 이전이냐 부분 추가냐"를 고민할 필요가 없습니다 — **같은 플랫폼 안에서 Durable Object 하나를 추가**하면 됩니다.
 
-**전면 이전이 아니라 부분 추가가 가능합니다** [제안]
-- 인증·주제·문제·랭킹은 **Firebase에 그대로 둠**
-- 배틀 세션만 Cloudflare가 담당
-→ EP-5 저장소 계층에 배틀 함수만 추가하면 되고 기존 코드는 손대지 않습니다.
-
-전면 이전 여부는 실시간 기능 착수 시점에 별도 검토합니다. **지금 결정할 사항이 아닙니다.**
+→ EP-5 저장소 계층에 배틀 함수만 추가하면 되고 기존 코드는 손대지 않습니다. 실시간 기능 착수 시점에 별도 검토합니다. **지금 결정할 사항이 아닙니다.**
 
 ### 7.5 부정행위(치팅) 대응 — ⚠ 중요
 
@@ -716,20 +752,18 @@ rankingCache/{boardId}                      # 5.3절 비용 대응 · 상위 30 
 
 | 안 | 방법 | 비용 | 방어 |
 |---|---|---|---|
-| **A** | Cloud Functions가 채점·점수 계산 | Firebase **Blaze 요금제 필요(카드 등록)**. 무료 할당량 내면 실질 0원이나 등록은 필수 | 높음 |
-| **B** | 클라이언트 신뢰 + 보안 규칙 최소 방어 | 0원 | 낮음 |
-| **C** | Cloudflare Workers가 채점 | 0원 (무료 등급 넉넉) | 높음 |
+| **A** | **Cloudflare Workers가 채점·점수 계산** | 0원 (무료 등급 넉넉) — **카드 등록 불필요** | 높음 |
+| **B** | 클라이언트 신뢰 + Worker에서 최소 검증만 | 0원 | 낮음 |
 
-> **[제안] MVP는 B.**
-> *근거: 상금이 걸린 경쟁 게임이 아니라 학습 실습입니다. 방어에 하루를 쓰는 것보다 코어 루프 완성이 "기둥 우선" 제약에 부합합니다.*
-> **B를 택해도 데이터 모델은 동일하므로, 나중에 A나 C로 올릴 때 데이터 이전은 필요 없습니다.**
-> 다만 만점이 1,500점으로 확정되어 있으므로, **보안 규칙에 "판 점수 ≤ 1,500" 상한**은 반드시 걸어 무의미하게 큰 값이 들어오는 것은 막습니다. → 11장 Q3
+> **[제안] MVP는 A.**
+> *근거: Firebase였다면 A(Cloud Functions)는 Blaze 요금제(카드 등록)가 필요해 B로 타협했지만, **Cloudflare Workers는 애초에 API 요청이 서버(Worker)를 거치므로 채점 로직을 서버에 두는 것이 오히려 자연스럽고 추가 비용도 없습니다.** 클라이언트는 답만 보내고, Worker가 정답을 대조해 점수를 계산합니다.*
+> 다만 만점이 1,500점으로 확정되어 있으므로, **Worker 쪽에 "판 점수 ≤ 1,500" 상한 검증**은 유지합니다 → 11장 Q3
 
-### 7.6 Firebase 무료 등급
+### 7.6 Cloudflare 무료 등급
 
-플레이어 수십~수백 명 규모에서는 넉넉합니다. 단 5.3절 캐싱을 하지 않으면 랭킹 페이지 하나로 한도를 태울 수 있습니다.
+플레이어 수십~수백 명 규모에서는 Workers/D1 무료 등급으로 넉넉합니다. 단 5.3절 캐싱을 하지 않으면 랭킹 페이지 하나로 D1 일일 읽기 한도를 태울 수 있습니다.
 
-> **[할 일] Day 1에 Firebase 공식 요금 페이지에서 현재 한도 수치를 직접 확인할 것.** 한도는 시기에 따라 바뀌며, **이 문서의 추정을 신뢰하지 마십시오.**
+> **[할 일] Day 1에 Cloudflare 공식 요금 페이지에서 Workers/D1 현재 한도 수치를 직접 확인할 것.** 한도는 시기에 따라 바뀌며, **이 문서의 추정을 신뢰하지 마십시오.**
 
 ---
 
@@ -740,8 +774,8 @@ rankingCache/{boardId}                      # 5.3절 비용 대응 · 상위 30 
 
 | Day | 목표 | 하는 일 | 완료 판정 |
 |---|---|---|---|
-| **1** | 토대 | 개발환경, React 프로젝트, Firebase 프로젝트 생성·연결, 익명 로그인. **+ 7.6절 요금 한도 확인** | 화면에 내 `uid`가 뜬다 |
-| **2** | **수직 슬라이스** ★ | 손으로 만든 주제 1개 + 문제 10개를 Firestore에 넣고, 불러와 1판 플레이 → 결과 저장 | 문제를 풀고 결과가 DB에 남는다 |
+| **1** | 토대 | 개발환경, React 프로젝트, **Cloudflare 계정·Workers·D1 생성·연결**, 자체 익명 uid 발급. **+ 7.6절 요금 한도 확인** | 화면에 내 `uid`가 뜬다 |
+| **2** | **수직 슬라이스** ★ | 손으로 만든 주제 1개 + 문제 10개를 **D1**에 넣고, 불러와 1판 플레이 → 결과 저장 | 문제를 풀고 결과가 DB에 남는다 |
 | **3** | **등록 파이프라인** ★ | 주제 정의서 적재, **프롬프트 템플릿 파일**, 붙여넣은 JSON 취합·검증기, 검수 화면, 하한 게이트. **주제 1개로 [1]~[6] 전 과정 관통 검증** | 주제 1개가 `draft`→`active`로 자동 전환된다 |
 | **4** | 콘텐츠 | 나머지 2개 주제 생성 + 240문항 검수·적재 + **난이도 3 문항 직접 배치** | 활성 주제 3개 확보 |
 | **5** | 게임성 | 주제 선택 화면, 스테이지 진행, 난이도 매핑, 점수, 해설, 결과 화면 | 주제를 골라 12스테이지까지 갈 수 있다 |
@@ -797,7 +831,7 @@ rankingCache/{boardId}                      # 5.3절 비용 대응 · 상위 30 
 | 질문 | 답 |
 |---|---|
 | 누구를 위해? | **15~20세**, 넓고 얕게 |
-| 무슨 기술로? | React + TypeScript + Firebase |
+| 무슨 기술로? | React + TypeScript + Cloudflare (Workers + D1) |
 | 분류 단위는? | **주제 단일 층.** 끄투식으로 잘게 쪼갠 태그 |
 | 주제 부착은? | **문항 하나에 여러 주제** (`topicIds` 배열) — 넓은 1개 + 좁은 1~2개 |
 | 시드 넓은 태그는? | **과학 · 지리 · 스포츠** (각 80문항, 총 240) |
@@ -827,9 +861,9 @@ rankingCache/{boardId}                      # 5.3절 비용 대응 · 상위 30 
 |---|---|---|---|
 | **Q1** | 스테이지 실패 시 **처음부터 다시**입니까, 이어하기입니까? <br>*추천: 처음부터* | 이어하기면 누구나 결국 12스테이지에 도달해 점수가 다 같아지고 **랭킹이 의미를 잃습니다** | Day 5 |
 | **Q2** | 4.2·5.1절 수치를 승인하십니까? (5문항 / 4문항 클리어 / 12스테이지 / 난이도×10 / 만점 1,500) <br>*추천: 일단 승인 후 Day 5에 조정* | 실제로 플레이해보기 전엔 알 수 없고, 코드 한 줄이라 바꾸기 쉽습니다 | Day 5 |
-| **Q3** | 부정행위 대응을 7.5절 **B안**으로 가는 데 동의하십니까? <br>*추천: B안* | A안이면 Firebase 신용카드 등록과 추가 0.5~1일 필요 | Day 5 |
+| **Q3** | 부정행위 대응을 7.5절 **A안**(Worker 채점)으로 가는 데 동의하십니까? <br>*추천: A안* | Cloudflare에선 A안이 B안보다 비용·구현 부담이 크지 않습니다(카드 등록 불필요) — v1.4의 "B로 타협" 사유가 사라짐 | Day 5 |
 | **Q4** | 5.2절 **랭킹 메뉴는 통합 2개만** 두는 데 동의하십니까? <br>*추천: 동의* | 주제가 태그처럼 잘게 쪼개지므로(D-16) UI 층에서 막지 않으면 랭킹 메뉴가 30개가 됩니다 | Day 6 |
-| **Q5** | 소셜 로그인 제공자는? <br>*추천: 구글* | **카카오는 Firebase 기본 지원이 아니라 반나절~하루 추가 작업** 필요 | Day 6 |
+| **Q5'** | 소셜 로그인을 **자체 OAuth 구현**으로 갑니까, **인증 라이브러리**(Lucia 등)로 갑니까? 제공자는? <br>*추천: 라이브러리 + 구글* | Firebase Auth가 없으므로 v1.4의 Q5(제공자만 고르면 됨)보다 결정할 게 늘었습니다. 라이브러리를 쓰면 구현 부담이 크게 줄지만 의존성이 하나 늘어남 | Day 6 |
 | **Q6** | 랭킹 캐시 갱신 주기는? <br>*추천: 5분* | 짧을수록 반응성이 좋으나 무료 한도를 태웁니다. 초기에는 차이를 못 느낍니다 | Day 6 |
 | **Q7** | 주간 보드를 MVP에 넣습니까? <br>*추천: 넣되 Day 6이 밀리면 첫 번째로 자름* | 전체 기간 보드만 있으면 초기 상위권이 굳어 신규 플레이어가 이탈합니다 | Day 6 |
 
@@ -841,8 +875,8 @@ rankingCache/{boardId}                      # 5.3절 비용 대응 · 상위 30 
 
 **Day 1~4를 막는 것은 이제 없습니다.**
 
-1. **Day 1 착수** — 개발환경 → React 프로젝트 → Firebase 프로젝트 생성·연결 → 익명 로그인. 완료 판정은 "화면에 내 `uid`가 뜬다".
-   - 착수 시 **7.6절의 할 일을 먼저** 처리하십시오: Firebase 공식 요금 페이지에서 현재 무료 한도 수치를 직접 확인.
+1. **Day 1 착수** — 개발환경 → React 프로젝트 → Cloudflare 계정·Workers·D1 생성·연결 → 자체 익명 uid 발급. 완료 판정은 "화면에 내 `uid`가 뜬다".
+   - 착수 시 **7.6절의 할 일을 먼저** 처리하십시오: Cloudflare 공식 요금 페이지에서 Workers/D1 현재 무료 한도 수치를 직접 확인.
 2. **Day 3 준비물은 전부 갖춰졌습니다.** 6.3절 정의서를 그대로 프롬프트 템플릿에 붙여넣으면 됩니다 — `{주제}`·`{난이도}`·`{개수}`만 바꿔 끼우는 형태로 만들고, **범위·비범위·난이도 정의·예시문 3개·허용 태그 목록**을 함께 넣습니다.
 3. **Day 4 검수 때는 6.3절 마지막 표(그대로 두기로 한 세 가지)를 특히 보십시오.**
 4. **Q1~Q7은 Day 5 전까지** 정하면 됩니다.
@@ -868,6 +902,7 @@ rankingCache/{boardId}                      # 5.3절 비용 대응 · 상위 30 
 | v1.2 | **장르 폐기 → 주제 단일 층** (D-15) <br>**랭킹 메뉴를 통합 2개로 고정** (5.2절) <br>`topics.difficultySpec`에 예시문 포함 <br>주제 정의서 상세를 미결정으로 승격 (Q1) | 사용자 정정. 2층 구조는 무거웠음. 단 v1.1이 대분류로 막으려 했던 "보드 수 폭증"이 되살아나므로 **데이터가 아니라 UI 층에서** 막음 — 랭킹 메뉴는 통합 2개, 주제별 순위는 플레이 화면 안 |
 | v1.3 | **끄투코리아 참조 → 주제를 잘게 쪼갠 태그로** (D-16) <br>**`questions.topicIds` 배열** — 문항 하나가 여러 주제에 속함 <br>넓은 태그(과학·지리·스포츠) + 좁은 태그(화학·수도·축구…) <br>태그 겹침 90% 경고 (6.4절 ⑤) <br>허용 태그 목록 강제 <br>단답 유형은 MVP 제외, 정답 표기만 단답 호환 | 사용자가 끄투 주제 분류를 참고 자료로 제시. 끄투 주제는 **표준국어대사전 「전문 분야」에서 따온 수십 개의 태그**였음. 잘게 쪼개면 주제당 문항이 모자라는데 **복수 부착이 그걸 해소** — 240문항으로 3개가 아니라 4~7개 주제를 활성화. v1.2의 UI 억제 결정이 이제 선택이 아니라 필수가 됨 |
 | **v1.4** | **주제 정의서 확정** (6.3절) — 세 주제의 범위·비범위·허용 태그 + **난이도별 예시문 3개씩** <br>지적된 세 지점은 씨앗을 바꾸지 않고 그대로 두되 **어디서 잡히는지 기록** | 예시문이 프롬프트의 유일한 구체적 기준이므로 난이도별 3개가 필요했음. 특히 난이도 3은 AI가 못 만들어(6.5절) 사람이 준 씨앗이 없으면 구간이 통째로 빔. **지적 사항을 씨앗 수정이 아니라 기존 방어 장치로 흡수** — ②는 자동 검수 플래그, ③은 유형 배정으로 해소되므로 새로 만들 것이 없었음 |
+| **v1.5** | **백엔드를 Firebase → Cloudflare(Workers + D1)로 전면 전환** (1.2·7장) <br>Firestore 문서 모델 → D1 관계형 스키마로 재작성 (`topic_best`·`question_topics` 등 조인 테이블 도입) <br>7.5절 부정행위 대응 추천안 B→**A**로 변경 (Worker 채점이 카드 등록 없이 가능해짐) <br>Q5 → **Q5'**로 재정의 (소셜 로그인 연결 방식 자체가 새 미결정 항목이 됨) <br>Firebase는 EP-5 뒤로 격리해 **가능성만 유지** | 사용자가 Day 1 작업 도중 방향을 뒤집음 — Firebase는 열어두되 지금은 안 쓰고 Cloudflare로 진행. 이미 별도로 Cloudflare Workers/KV 배포 경험이 있어 전환 비용이 낮았음. **Firebase Auth의 `linkWithCredential`(익명↔소셜 연결)에 대응하는 기성 기능이 Cloudflare엔 없어**, 계정 승계(5.4절)의 구현 난이도가 v1.4보다 올라감 — Day 6 결정 사항으로 명시적으로 이관 |
 
 ### 이 과정에서 배운 것 네 가지
 

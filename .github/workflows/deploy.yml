@@ -21,8 +21,10 @@ jobs:
           node-version: 22
       - name: Install dependencies
         run: npm ci
-      - name: Apply D1 migrations
+      - name: Apply D1 schema
         run: npx wrangler d1 execute quiztrivia --remote --yes --file=db/schema.sql
+      - name: Apply D1 seed
+        run: npx wrangler d1 execute quiztrivia --remote --yes --file=db/seed.sql
       - name: Build frontend
         run: npm run build
       - name: Deploy Worker

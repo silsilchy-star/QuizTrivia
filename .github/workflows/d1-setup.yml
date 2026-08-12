@@ -1,0 +1,17 @@
+name: Create D1 Database (one-off)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-d1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Create quiztrivia D1 database
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: d1 create quiztrivia

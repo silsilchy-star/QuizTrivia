@@ -32,19 +32,36 @@
   button:active {
     background: #2563eb;
   }
+  button:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
 </style>
 </head>
 <body>
-  <div id="score">Score: 0</div>
-  <button id="hello-btn">Hello</button>
+  <div id="score">Score: -</div>
+  <button id="hello-btn" disabled>Hello</button>
 
   <script>
-    let score = 0;
     const scoreEl = document.getElementById('score');
-    document.getElementById('hello-btn').addEventListener('click', () => {
-      score += 1;
-      scoreEl.textContent = `Score: ${score}`;
+    const btn = document.getElementById('hello-btn');
+
+    async function loadScore() {
+      const res = await fetch('/api/score');
+      const data = await res.json();
+      scoreEl.textContent = `Score: ${data.score}`;
+      btn.disabled = false;
+    }
+
+    btn.addEventListener('click', async () => {
+      btn.disabled = true;
+      const res = await fetch('/api/score', { method: 'POST' });
+      const data = await res.json();
+      scoreEl.textContent = `Score: ${data.score}`;
+      btn.disabled = false;
     });
+
+    loadScore();
   </script>
 </body>
 </html>

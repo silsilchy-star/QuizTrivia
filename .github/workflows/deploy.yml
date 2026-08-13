@@ -3,7 +3,7 @@ name: Deploy to Cloudflare Workers
 on:
   push:
     branches:
-      - claude/repo-permissions-check-ff2du7
+      - claude/work-handover-file-check-zknp0b
       - claude/handover-matters-review-gs5597
   workflow_dispatch:
 

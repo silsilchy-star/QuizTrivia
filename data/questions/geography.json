@@ -1,0 +1,1620 @@
+{
+  "$comment": "지리 주제 문항. 난이도 3은 '더 유명한 도시를 수도로 착각'이 압도적으로 강한 유형이라 씨앗의 절반 이상을 이 패턴으로 잡았다 (PLAN 6.3절).",
+  "questions": [
+    {
+      "id": "geo-101",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "대한민국의 수도는 어디인가요?",
+      "choices": [
+        "서울",
+        "부산",
+        "인천",
+        "대전"
+      ],
+      "answer": "서울",
+      "explanation": "서울은 조선 건국 이후 600년 넘게 수도 역할을 해왔습니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-102",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "일본의 수도는 어디인가요?",
+      "choices": [
+        "오사카",
+        "도쿄",
+        "교토",
+        "나고야"
+      ],
+      "answer": "도쿄",
+      "explanation": "1868년 메이지 유신 이후 교토에서 도쿄로 수도가 옮겨졌습니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-103",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "프랑스의 수도는 어디인가요?",
+      "choices": [
+        "리옹",
+        "마르세유",
+        "파리",
+        "니스"
+      ],
+      "answer": "파리",
+      "explanation": "파리는 센강을 끼고 있는 프랑스의 수도이자 최대 도시입니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-104",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "영국의 수도는 어디인가요?",
+      "choices": [
+        "런던",
+        "맨체스터",
+        "리버풀",
+        "에든버러"
+      ],
+      "answer": "런던",
+      "explanation": "런던은 템스강을 끼고 있으며 잉글랜드이자 영국 전체의 수도입니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-105",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "중국의 수도는 어디인가요?",
+      "choices": [
+        "상하이",
+        "베이징",
+        "홍콩",
+        "광저우"
+      ],
+      "answer": "베이징",
+      "explanation": "상하이가 인구와 경제 규모로 더 크지만 수도는 베이징입니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-106",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "대한민국이 속한 대륙은 어디인가요?",
+      "choices": [
+        "아시아",
+        "유럽",
+        "아프리카",
+        "오세아니아"
+      ],
+      "answer": "아시아",
+      "explanation": "한반도는 유라시아 대륙 동쪽 끝에 있으며 아시아에 속합니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-107",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "미국이 속한 대륙은 어디인가요?",
+      "choices": [
+        "북아메리카",
+        "남아메리카",
+        "유럽",
+        "아시아"
+      ],
+      "answer": "북아메리카",
+      "explanation": "미국은 캐나다, 멕시코와 함께 북아메리카 대륙에 있습니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-108",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "이탈리아의 수도는 어디인가요?",
+      "choices": [
+        "밀라노",
+        "베네치아",
+        "로마",
+        "나폴리"
+      ],
+      "answer": "로마",
+      "explanation": "로마는 고대 로마 제국의 중심지였고 지금도 이탈리아의 수도입니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-109",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "현재 국제적으로 대양은 모두 몇 개로 구분되나요?",
+      "choices": null,
+      "answer": "5",
+      "explanation": "태평양·대서양·인도양·남극해(남빙양)·북극해로 다섯 대양을 구분합니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-110",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "대한민국의 표준시는 협정세계시(UTC)보다 몇 시간 빠른가요?",
+      "choices": null,
+      "answer": "9",
+      "explanation": "한국 표준시는 UTC+9입니다. 일본과 같은 시간대를 씁니다.",
+      "topicIds": [
+        "geography",
+        "timezone"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-111",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "서울 도심을 가로질러 흐르는 강의 이름은 무엇인가요?",
+      "choices": [
+        "낙동강",
+        "한강",
+        "금강",
+        "영산강"
+      ],
+      "answer": "한강",
+      "explanation": "한강은 서울을 동서로 가로지르며 서해로 흘러듭니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-112",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "독일의 수도는 어디인가요?",
+      "choices": [
+        "뮌헨",
+        "함부르크",
+        "베를린",
+        "프랑크푸르트"
+      ],
+      "answer": "베를린",
+      "explanation": "독일 통일 후 1990년 베를린이 다시 수도가 되었습니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-113",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "국제날짜변경선은 경도 약 몇 도 부근을 지나나요?",
+      "choices": null,
+      "answer": "180",
+      "explanation": "날짜변경선은 본초자오선의 정반대인 경도 180도 부근, 태평양 한가운데를 지납니다.",
+      "topicIds": [
+        "geography",
+        "timezone"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-114",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "한반도는 몇 면이 바다로 둘러싸여 있나요?",
+      "choices": null,
+      "answer": "3",
+      "explanation": "한반도는 동·서·남 삼면이 바다이고 북쪽으로 대륙과 이어진 반도입니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-115",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "아프리카 북부에 펼쳐진 세계적으로 유명한 사막의 이름은 무엇인가요?",
+      "choices": [
+        "고비 사막",
+        "사하라 사막",
+        "아타카마 사막",
+        "칼라하리 사막"
+      ],
+      "answer": "사하라 사막",
+      "explanation": "사하라 사막은 아프리카 북부를 동서로 가로지르는 거대한 모래사막입니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-116",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "스페인의 수도는 어디인가요?",
+      "choices": [
+        "바르셀로나",
+        "마드리드",
+        "세비야",
+        "발렌시아"
+      ],
+      "answer": "마드리드",
+      "explanation": "마드리드는 스페인 중앙부에 있는 수도이며 바르셀로나는 동북부 항구도시입니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-117",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "지구를 남반구와 북반구로 나누는 기준선은 무엇인가요?",
+      "choices": [
+        "적도",
+        "본초자오선",
+        "북회귀선",
+        "날짜변경선"
+      ],
+      "answer": "적도",
+      "explanation": "위도 0도인 적도가 남북을 나눕니다. 동서를 나누는 기준은 경도 0도인 본초자오선입니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-118",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "대한민국의 국제전화 국가번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "82",
+      "explanation": "대한민국의 국가번호는 82번입니다. 일본은 81, 중국은 86입니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-119",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "태극기 네 귀퉁이에 그려진 괘는 모두 몇 개인가요?",
+      "choices": null,
+      "answer": "4",
+      "explanation": "태극기에는 건·곤·감·리 네 개의 괘가 그려져 있습니다.",
+      "topicIds": [
+        "geography",
+        "flag"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-120",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "이집트에 있는 고대 무덤 건축물로 유명한 것은 무엇인가요?",
+      "choices": [
+        "피라미드",
+        "콜로세움",
+        "만리장성",
+        "타지마할"
+      ],
+      "answer": "피라미드",
+      "explanation": "기자의 대피라미드는 고대 이집트 파라오의 무덤으로 지어졌습니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-201",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "면적이 가장 넓은 대륙은 어디인가요?",
+      "choices": [
+        "아프리카",
+        "아시아",
+        "북아메리카",
+        "남아메리카"
+      ],
+      "answer": "아시아",
+      "explanation": "아시아는 지구 육지 면적의 약 30%를 차지하는 가장 넓은 대륙입니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-202",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "이집트를 남북으로 흐르는 큰 강의 이름은 무엇인가요?",
+      "choices": [
+        "나일강",
+        "아마존강",
+        "티그리스강",
+        "콩고강"
+      ],
+      "answer": "나일강",
+      "explanation": "나일강은 아프리카 동북부를 흘러 지중해로 들어가며 고대 이집트 문명을 낳았습니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-203",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "대한민국에서 면적이 가장 넓은 섬은 어디인가요?",
+      "choices": [
+        "울릉도",
+        "제주도",
+        "거제도",
+        "강화도"
+      ],
+      "answer": "제주도",
+      "explanation": "제주도는 화산 활동으로 생긴 섬으로 한라산이 중앙에 솟아 있습니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-204",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "이탈리아 반도 안에 있는 독립 국가는 어디인가요?",
+      "choices": [
+        "모나코",
+        "바티칸",
+        "안도라",
+        "리히텐슈타인"
+      ],
+      "answer": "바티칸",
+      "explanation": "바티칸 시국은 로마 시내에 있는 독립국이며 가톨릭 교황이 다스립니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-205",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "히말라야산맥에 있는 세계 최고봉의 이름은 무엇인가요?",
+      "choices": [
+        "К2",
+        "에베레스트산",
+        "안나푸르나",
+        "칸첸중가"
+      ],
+      "answer": "에베레스트산",
+      "explanation": "해발 약 8,848m로 네팔과 중국 국경에 걸쳐 있습니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-206",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "지구는 모두 몇 개의 표준 시간대로 나뉘나요?",
+      "choices": null,
+      "answer": "24",
+      "explanation": "지구를 경도 15도씩 나누어 24개 시간대를 만듭니다. 하루 24시간에 대응합니다.",
+      "topicIds": [
+        "geography",
+        "timezone"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-207",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "경도 0도가 지나는 기준선을 무엇이라 하나요?",
+      "choices": [
+        "적도",
+        "본초자오선",
+        "날짜변경선",
+        "회귀선"
+      ],
+      "answer": "본초자오선",
+      "explanation": "영국 그리니치를 지나는 경도 0도 선이며 세계 시간의 기준이 됩니다.",
+      "topicIds": [
+        "geography",
+        "timezone"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-208",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "남아메리카를 흐르며 유역 면적이 가장 넓은 강은 무엇인가요?",
+      "choices": [
+        "아마존강",
+        "나일강",
+        "미시시피강",
+        "라플라타강"
+      ],
+      "answer": "아마존강",
+      "explanation": "아마존강은 유역 면적과 유량이 세계에서 가장 큰 강입니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-209",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "일본 국기에 그려진 붉은 원은 무엇을 나타내나요?",
+      "choices": [
+        "해",
+        "달",
+        "꽃",
+        "불"
+      ],
+      "answer": "해",
+      "explanation": "일본 국기 히노마루의 붉은 원은 떠오르는 해를 나타냅니다.",
+      "topicIds": [
+        "geography",
+        "flag"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-210",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "표준시 기준으로 대한민국은 영국보다 몇 시간 빠른가요?",
+      "choices": null,
+      "answer": "9",
+      "explanation": "한국은 UTC+9, 영국은 UTC+0이라 9시간 차이입니다. 영국의 서머타임 기간에는 8시간이 됩니다.",
+      "topicIds": [
+        "geography",
+        "timezone"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-211",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "대한민국은 몇 개의 광역시·도로 이루어져 있나요?",
+      "choices": null,
+      "answer": "17",
+      "explanation": "대한민국은 특별시 1, 광역시 6, 특별자치시 1, 도 6, 특별자치도 3으로 모두 17개 광역자치단체입니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-212",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "캐나다 국기 한가운데 그려진 잎은 무슨 나무의 잎인가요?",
+      "choices": [
+        "단풍나무",
+        "참나무",
+        "소나무",
+        "자작나무"
+      ],
+      "answer": "단풍나무",
+      "explanation": "캐나다 국기의 붉은 단풍잎은 이 나라를 상징하는 표식입니다.",
+      "topicIds": [
+        "geography",
+        "flag"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-213",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "북아메리카와 남아메리카를 잇는 좁은 지협에 있는 나라는 어디인가요?",
+      "choices": [
+        "파나마",
+        "쿠바",
+        "칠레",
+        "베네수엘라"
+      ],
+      "answer": "파나마",
+      "explanation": "파나마 지협은 두 아메리카 대륙을 잇는 좁은 육지이며 파나마 운하가 지납니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-214",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "한반도와 일본 사이에 있는 바다를 한국에서 부르는 이름은 무엇인가요?",
+      "choices": [
+        "동해",
+        "남해",
+        "황해",
+        "북해"
+      ],
+      "answer": "동해",
+      "explanation": "한반도 동쪽 바다를 동해라 부르며, 서쪽은 서해(황해), 남쪽은 남해입니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-215",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "지구의 시간대는 경도 몇 도마다 한 시간씩 달라지나요?",
+      "choices": null,
+      "answer": "15",
+      "explanation": "360도를 24시간으로 나누면 15도입니다. 경도 15도마다 1시간 차이가 납니다.",
+      "topicIds": [
+        "geography",
+        "timezone"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-216",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "인구가 가장 많은 대륙은 어디인가요?",
+      "choices": [
+        "아시아",
+        "아프리카",
+        "유럽",
+        "북아메리카"
+      ],
+      "answer": "아시아",
+      "explanation": "아시아에는 중국과 인도가 있어 세계 인구의 절반 이상이 삽니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-217",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "그리스의 수도는 어디인가요?",
+      "choices": [
+        "아테네",
+        "테살로니키",
+        "스파르타",
+        "크레타"
+      ],
+      "answer": "아테네",
+      "explanation": "아테네는 고대 그리스 도시국가의 중심지였고 지금도 수도입니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-218",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "에베레스트산의 해발고도는 약 몇 미터인가요?",
+      "choices": null,
+      "answer": "8848",
+      "explanation": "네팔과 중국이 2020년 공동 발표한 공식 높이는 8,848.86m입니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-219",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "현재 유엔 회원국은 모두 몇 개국인가요?",
+      "choices": null,
+      "answer": "193",
+      "explanation": "2011년 남수단이 가입하며 유엔 회원국은 193개국이 되었습니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-220",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "지구에서 육지와 바다 중 면적이 더 넓은 쪽은 어디인가요?",
+      "choices": [
+        "바다",
+        "육지",
+        "거의 같다",
+        "계절에 따라 다르다"
+      ],
+      "answer": "바다",
+      "explanation": "지구 표면의 약 71%가 바다이고 육지는 약 29%입니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-301",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "캐나다의 수도는 어디인가요?",
+      "choices": [
+        "토론토",
+        "밴쿠버",
+        "오타와",
+        "몬트리올"
+      ],
+      "answer": "오타와",
+      "explanation": "오타와가 수도입니다. 토론토와 밴쿠버가 훨씬 유명해 수도로 착각하기 쉽습니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Ottawa"
+    },
+    {
+      "id": "geo-302",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "오스트레일리아의 수도는 어디인가요?",
+      "choices": [
+        "시드니",
+        "멜버른",
+        "캔버라",
+        "브리즈번"
+      ],
+      "answer": "캔버라",
+      "explanation": "시드니와 멜버른이 서로 수도가 되겠다고 다투자 두 도시 사이에 새 수도 캔버라를 세웠습니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Canberra"
+    },
+    {
+      "id": "geo-303",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "튀르키예의 수도는 어디인가요?",
+      "choices": [
+        "이스탄불",
+        "앙카라",
+        "이즈미르",
+        "안탈리아"
+      ],
+      "answer": "앙카라",
+      "explanation": "1923년 공화국 수립과 함께 수도를 이스탄불에서 앙카라로 옮겼습니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Ankara"
+    },
+    {
+      "id": "geo-304",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "브라질의 수도는 어디인가요?",
+      "choices": [
+        "리우데자네이루",
+        "상파울루",
+        "브라질리아",
+        "살바도르"
+      ],
+      "answer": "브라질리아",
+      "explanation": "1960년 내륙 개발을 위해 계획도시 브라질리아를 지어 수도를 옮겼습니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Bras%C3%ADlia"
+    },
+    {
+      "id": "geo-305",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "스위스의 수도는 어디인가요?",
+      "choices": [
+        "취리히",
+        "제네바",
+        "베른",
+        "바젤"
+      ],
+      "answer": "베른",
+      "explanation": "취리히가 최대 도시이고 제네바에 국제기구가 많지만 수도는 베른입니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Bern"
+    },
+    {
+      "id": "geo-306",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "뉴질랜드의 수도는 어디인가요?",
+      "choices": [
+        "오클랜드",
+        "웰링턴",
+        "크라이스트처치",
+        "더니든"
+      ],
+      "answer": "웰링턴",
+      "explanation": "오클랜드가 최대 도시지만 수도는 남쪽 끝의 웰링턴입니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Wellington"
+    },
+    {
+      "id": "geo-307",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "베트남의 수도는 어디인가요?",
+      "choices": [
+        "호찌민시",
+        "하노이",
+        "다낭",
+        "후에"
+      ],
+      "answer": "하노이",
+      "explanation": "경제 규모는 호찌민시가 크지만 수도는 북부의 하노이입니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Hanoi"
+    },
+    {
+      "id": "geo-308",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "미국의 수도는 어디인가요?",
+      "choices": [
+        "뉴욕",
+        "워싱턴 D.C.",
+        "로스앤젤레스",
+        "시카고"
+      ],
+      "answer": "워싱턴 D.C.",
+      "explanation": "뉴욕이 최대 도시라 수도로 착각하기 쉽지만, 수도는 어느 주에도 속하지 않는 워싱턴 D.C.입니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Washington,_D.C."
+    },
+    {
+      "id": "geo-309",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "파키스탄의 수도는 어디인가요?",
+      "choices": [
+        "카라치",
+        "라호르",
+        "이슬라마바드",
+        "페샤와르"
+      ],
+      "answer": "이슬라마바드",
+      "explanation": "최대 도시는 카라치지만 1960년대에 새로 계획해 지은 이슬라마바드가 수도입니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Islamabad"
+    },
+    {
+      "id": "geo-310",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "나이지리아의 수도는 어디인가요?",
+      "choices": [
+        "라고스",
+        "아부자",
+        "카노",
+        "이바단"
+      ],
+      "answer": "아부자",
+      "explanation": "1991년 라고스에서 내륙의 계획도시 아부자로 수도를 옮겼습니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Abuja"
+    },
+    {
+      "id": "geo-311",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "모로코의 수도는 어디인가요?",
+      "choices": [
+        "카사블랑카",
+        "마라케시",
+        "라바트",
+        "탕헤르"
+      ],
+      "answer": "라바트",
+      "explanation": "영화로 유명한 카사블랑카가 최대 도시지만 수도는 라바트입니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Rabat"
+    },
+    {
+      "id": "geo-312",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "인도의 수도는 어디인가요?",
+      "choices": [
+        "뭄바이",
+        "뉴델리",
+        "콜카타",
+        "벵갈루루"
+      ],
+      "answer": "뉴델리",
+      "explanation": "인구와 경제 규모는 뭄바이가 크지만 수도는 뉴델리입니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/New_Delhi"
+    },
+    {
+      "id": "geo-313",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "세계 지도에서 그린란드가 실제보다 훨씬 크게 보이는 이유는 무엇인가요?",
+      "choices": [
+        "메르카토르 도법의 왜곡",
+        "실제로 아프리카보다 큼",
+        "빙하가 넓어서",
+        "측량 오차"
+      ],
+      "answer": "메르카토르 도법의 왜곡",
+      "explanation": "메르카토르 도법은 고위도로 갈수록 면적이 부풀려집니다. 실제 그린란드는 아프리카의 14분의 1 정도입니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Mercator_projection"
+    },
+    {
+      "id": "geo-314",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "그린란드는 어느 나라의 자치령인가요?",
+      "choices": [
+        "덴마크",
+        "노르웨이",
+        "캐나다",
+        "아이슬란드"
+      ],
+      "answer": "덴마크",
+      "explanation": "그린란드는 덴마크 왕국에 속한 자치령입니다. 북아메리카에 붙어 있어 캐나다령으로 착각하기 쉽습니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Greenland"
+    },
+    {
+      "id": "geo-315",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "잉글랜드와 영국(UK)의 관계로 옳은 것은 무엇인가요?",
+      "choices": [
+        "같은 말이다",
+        "잉글랜드는 영국을 이루는 네 지역 중 하나다",
+        "영국이 잉글랜드의 일부다",
+        "잉글랜드는 영국의 수도다"
+      ],
+      "answer": "잉글랜드는 영국을 이루는 네 지역 중 하나다",
+      "explanation": "영국은 잉글랜드·스코틀랜드·웨일스·북아일랜드로 이루어집니다. 잉글랜드만 가리켜 영국이라 부르는 것은 정확하지 않습니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Terminology_of_the_British_Isles"
+    },
+    {
+      "id": "geo-316",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "이집트의 대부분 영토가 속한 대륙은 어디인가요?",
+      "choices": [
+        "아시아",
+        "아프리카",
+        "유럽",
+        "중동이라는 별도 대륙"
+      ],
+      "answer": "아프리카",
+      "explanation": "이집트는 아프리카 북동부에 있습니다. 중동으로 묶여 소개되다 보니 아시아로 착각하기 쉽습니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Egypt"
+    },
+    {
+      "id": "geo-317",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "파나마 운하가 잇는 두 대양은 무엇인가요?",
+      "choices": [
+        "태평양과 대서양",
+        "대서양과 인도양",
+        "태평양과 인도양",
+        "북극해와 대서양"
+      ],
+      "answer": "태평양과 대서양",
+      "explanation": "파나마 운하는 태평양과 대서양을 잇습니다. 지형이 굽어 있어 운하는 동서가 아니라 북서-남동 방향으로 지납니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Panama_Canal"
+    },
+    {
+      "id": "geo-318",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "'홀란드'라는 이름은 원래 무엇을 가리키나요?",
+      "choices": [
+        "네덜란드 전체의 옛 이름",
+        "네덜란드의 두 개 주",
+        "네덜란드의 수도",
+        "벨기에의 옛 이름"
+      ],
+      "answer": "네덜란드의 두 개 주",
+      "explanation": "홀란드는 노르트홀란트와 자위트홀란트 두 주를 가리키는 이름입니다. 나라 전체를 부르는 정식 이름은 네덜란드입니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Holland"
+    },
+    {
+      "id": "geo-319",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "터키가 2022년 국제사회에 공식 등록한 새 국명은 무엇인가요?",
+      "choices": [
+        "튀르키예",
+        "아나톨리아",
+        "오스만",
+        "터키예"
+      ],
+      "answer": "튀르키예",
+      "explanation": "2022년 유엔에 튀르키예(Türkiye)로 국명 변경을 등록했습니다. 옛 이름인 터키로 알고 있는 경우가 많습니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Name_of_Turkey"
+    },
+    {
+      "id": "geo-320",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "러시아는 모두 몇 개의 표준 시간대를 쓰나요?",
+      "choices": null,
+      "answer": "11",
+      "explanation": "러시아는 동서로 길어 11개 시간대를 씁니다. 한 나라는 시간대가 하나라고 생각하기 쉽습니다.",
+      "topicIds": [
+        "geography",
+        "timezone"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Time_in_Russia"
+    },
+    {
+      "id": "geo-401",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "면적이 가장 작은 독립 국가는 어디인가요?",
+      "choices": [
+        "모나코",
+        "바티칸",
+        "나우루",
+        "산마리노"
+      ],
+      "answer": "바티칸",
+      "explanation": "바티칸 시국의 면적은 약 0.44제곱킬로미터로 세계에서 가장 작은 독립국입니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-402",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "국토가 아시아와 유럽 두 대륙에 걸쳐 있는 나라는 어디인가요?",
+      "choices": [
+        "튀르키예",
+        "그리스",
+        "이란",
+        "이집트"
+      ],
+      "answer": "튀르키예",
+      "explanation": "보스포루스 해협을 경계로 서쪽은 유럽, 동쪽은 아시아입니다. 이스탄불은 두 대륙에 걸친 도시입니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-403",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "국기 한가운데에 삼나무가 그려진 나라는 어디인가요?",
+      "choices": [
+        "레바논",
+        "요르단",
+        "시리아",
+        "키프로스"
+      ],
+      "answer": "레바논",
+      "explanation": "레바논 국기 가운데의 초록 삼나무는 이 나라를 상징하는 레바논시더입니다.",
+      "topicIds": [
+        "geography",
+        "flag"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-404",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "국기가 유일하게 정사각형이 아닌 오각형 모양인 나라는 어디인가요?",
+      "choices": [
+        "네팔",
+        "부탄",
+        "스리랑카",
+        "몰디브"
+      ],
+      "answer": "네팔",
+      "explanation": "네팔 국기는 삼각기 두 개를 겹친 모양으로, 사각형이 아닌 유일한 국기입니다.",
+      "topicIds": [
+        "geography",
+        "flag"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-405",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "국경이 없이 한 나라에 완전히 둘러싸인 나라가 아닌 곳은 어디인가요?",
+      "choices": [
+        "산마리노",
+        "레소토",
+        "바티칸",
+        "안도라"
+      ],
+      "answer": "안도라",
+      "explanation": "안도라는 프랑스와 스페인 두 나라에 접합니다. 산마리노와 바티칸은 이탈리아에, 레소토는 남아프리카공화국에 완전히 둘러싸여 있습니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-406",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "네팔의 표준시는 협정세계시보다 몇 시간 몇 분 빠른가요? 분 단위 숫자만 답하세요.",
+      "choices": null,
+      "answer": "345",
+      "explanation": "네팔은 UTC+5:45로 분 단위가 45분인 드문 시간대를 씁니다. 5시간 45분은 345분입니다.",
+      "topicIds": [
+        "geography",
+        "timezone"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-407",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "지중해와 홍해를 잇는 운하의 이름은 무엇인가요?",
+      "choices": [
+        "수에즈 운하",
+        "파나마 운하",
+        "킬 운하",
+        "코린토스 운하"
+      ],
+      "answer": "수에즈 운하",
+      "explanation": "이집트의 수에즈 운하는 지중해와 홍해를 이어 아시아와 유럽의 항로를 크게 단축했습니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-408",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "육지에서 해수면보다 고도가 가장 낮은 곳은 어디인가요?",
+      "choices": [
+        "사해 연안",
+        "카스피해 연안",
+        "데스밸리",
+        "투르판 분지"
+      ],
+      "answer": "사해 연안",
+      "explanation": "사해 수면은 해수면보다 약 430m 낮아 육지에서 가장 낮은 곳입니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-409",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "아프리카 대륙에 있는 나라는 모두 몇 개인가요? (유엔 회원국 기준)",
+      "choices": null,
+      "answer": "54",
+      "explanation": "유엔 회원국 기준으로 아프리카에는 54개 나라가 있습니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-410",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "바다와 전혀 접하지 않은 내륙국은 어디인가요?",
+      "choices": [
+        "몽골",
+        "베트남",
+        "미얀마",
+        "태국"
+      ],
+      "answer": "몽골",
+      "explanation": "몽골은 중국과 러시아에만 둘러싸인 내륙국으로 바다에 접하지 않습니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-411",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "카자흐스탄의 수도는 어디인가요?",
+      "choices": [
+        "알마티",
+        "아스타나",
+        "시젬켄트",
+        "카라간다"
+      ],
+      "answer": "아스타나",
+      "explanation": "1997년 알마티에서 아스타나로 수도를 옮겼습니다. 이름이 여러 차례 바뀌었다가 2022년 아스타나로 돌아왔습니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-412",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "미얀마가 2005년 양곤에서 옮겨간 새 수도는 어디인가요?",
+      "choices": [
+        "네피도",
+        "만달레이",
+        "바고",
+        "타웅지"
+      ],
+      "answer": "네피도",
+      "explanation": "2005년 내륙에 새로 지은 계획도시 네피도로 수도를 옮겼습니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-413",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "대한민국의 영토 중 가장 동쪽에 있는 독도는 몇 개의 큰 섬으로 이루어져 있나요?",
+      "choices": null,
+      "answer": "2",
+      "explanation": "독도는 동도와 서도 두 개의 큰 섬과 여러 부속 암초로 이루어져 있습니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-414",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "적도가 지나는 나라가 아닌 곳은 어디인가요?",
+      "choices": [
+        "에콰도르",
+        "케냐",
+        "인도네시아",
+        "이집트"
+      ],
+      "answer": "이집트",
+      "explanation": "이집트는 북회귀선 부근에 있어 적도가 지나지 않습니다. 에콰도르는 국명 자체가 스페인어로 적도를 뜻합니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-415",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "국기에 한자 없이 글자가 들어간 나라로 알려진 곳은 어디인가요?",
+      "choices": [
+        "사우디아라비아",
+        "일본",
+        "베트남",
+        "태국"
+      ],
+      "answer": "사우디아라비아",
+      "explanation": "사우디아라비아 국기에는 아랍어로 이슬람 신앙고백문이 쓰여 있습니다.",
+      "topicIds": [
+        "geography",
+        "flag"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-416",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "대한민국과 미국 뉴욕의 표준시 시차는 몇 시간인가요?",
+      "choices": null,
+      "answer": "14",
+      "explanation": "한국은 UTC+9, 뉴욕은 UTC-5로 14시간 차이입니다. 뉴욕의 서머타임 기간에는 13시간이 됩니다.",
+      "topicIds": [
+        "geography",
+        "timezone"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-417",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "안데스산맥이 지나지 않는 나라는 어디인가요?",
+      "choices": [
+        "칠레",
+        "페루",
+        "브라질",
+        "볼리비아"
+      ],
+      "answer": "브라질",
+      "explanation": "안데스산맥은 남아메리카 서쪽 해안을 따라 뻗어 있어 동쪽의 브라질은 지나지 않습니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-418",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "국토 대부분이 사막인 나라 나미비아가 속한 대륙은 어디인가요?",
+      "choices": [
+        "아프리카",
+        "아시아",
+        "남아메리카",
+        "오세아니아"
+      ],
+      "answer": "아프리카",
+      "explanation": "나미비아는 아프리카 남서부에 있으며 나미브 사막에서 이름을 따왔습니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-419",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "세계에서 국경선을 가장 많은 나라와 맞대고 있는 나라는 어디인가요?",
+      "choices": [
+        "중국",
+        "러시아",
+        "브라질",
+        "독일"
+      ],
+      "answer": "중국",
+      "explanation": "중국과 러시아가 각각 14개국과 국경을 맞대 공동 1위입니다. 육지 국경선 길이는 중국이 더 깁니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-420",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "북극과 남극 중 대륙 위에 있는 쪽은 어디인가요?",
+      "choices": [
+        "남극",
+        "북극",
+        "둘 다 대륙",
+        "둘 다 바다"
+      ],
+      "answer": "남극",
+      "explanation": "남극은 대륙 위 두꺼운 빙상이지만 북극은 바다 위에 떠 있는 해빙입니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    }
+  ]
+}

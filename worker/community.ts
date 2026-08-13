@@ -53,7 +53,7 @@ export interface CommunityTopicPayload {
   name: string;
   tagline: string | null;
   status: 'draft' | 'active';
-  questionCount: Record<'1' | '2' | '3' | '4', number>;
+  questionCount: Record<'1' | '2' | '3' | '4' | '5', number>;
   authorNickname: string | null;
   isMine: boolean;
   createdAt: string;
@@ -64,7 +64,7 @@ export async function handleListCommunityTopics(
   viewerUid: string | null,
 ): Promise<Response> {
   const { results } = await env.DB.prepare(
-    `SELECT t.id, t.name, t.tagline, t.status, t.q_count_1, t.q_count_2, t.q_count_3, t.q_count_4,
+    `SELECT t.id, t.name, t.tagline, t.status, t.q_count_1, t.q_count_2, t.q_count_3, t.q_count_4, t.q_count_5,
             t.author_uid, u.nickname AS author_nickname, t.created_at
        FROM topics t LEFT JOIN users u ON u.uid = t.author_uid
       WHERE t.source = 'community'
@@ -78,6 +78,7 @@ export async function handleListCommunityTopics(
     q_count_2: number;
     q_count_3: number;
     q_count_4: number;
+    q_count_5: number;
     author_uid: string | null;
     author_nickname: string | null;
     created_at: string;
@@ -88,7 +89,7 @@ export async function handleListCommunityTopics(
     name: r.name,
     tagline: r.tagline,
     status: r.status,
-    questionCount: { '1': r.q_count_1, '2': r.q_count_2, '3': r.q_count_3, '4': r.q_count_4 },
+    questionCount: { '1': r.q_count_1, '2': r.q_count_2, '3': r.q_count_3, '4': r.q_count_4, '5': r.q_count_5 },
     authorNickname: r.author_nickname,
     isMine: viewerUid !== null && viewerUid === r.author_uid,
     createdAt: r.created_at,
@@ -114,9 +115,9 @@ export async function handleCreateCommunityTopic(request: Request, env: Communit
   const now = new Date().toISOString();
   await env.DB.prepare(
     `INSERT INTO topics
-       (id, name, kind, tagline, status, q_count_1, q_count_2, q_count_3, q_count_4,
+       (id, name, kind, tagline, status, q_count_1, q_count_2, q_count_3, q_count_4, q_count_5,
         source, author_uid, created_at, updated_at)
-     VALUES (?, ?, 'broad', ?, 'draft', 0, 0, 0, 0, 'community', ?, ?, ?)`,
+     VALUES (?, ?, 'broad', ?, 'draft', 0, 0, 0, 0, 0, 'community', ?, ?, ?)`,
   )
     .bind(id, name, tagline, uid, now, now)
     .run();
@@ -126,7 +127,7 @@ export async function handleCreateCommunityTopic(request: Request, env: Communit
     name,
     tagline,
     status: 'draft',
-    questionCount: { '1': 0, '2': 0, '3': 0, '4': 0 },
+    questionCount: { '1': 0, '2': 0, '3': 0, '4': 0, '5': 0 },
     authorNickname: author.nickname,
     isMine: true,
     createdAt: now,
@@ -150,7 +151,7 @@ const QUESTION_TYPES: QuestionType[] = ['MULTIPLE_CHOICE', 'NUMERIC_INPUT', 'TEX
  *  (scripts/validate.mjs의 ERROR 규칙과 같은 것들 — PLAN 6.6절 [3]). */
 function validateQuestion(q: NewQuestionBody): string | null {
   if (!q.type || !QUESTION_TYPES.includes(q.type)) return 'type이 잘못됨';
-  if (![1, 2, 3, 4].includes(q.difficulty as number)) return 'difficulty가 잘못됨';
+  if (![1, 2, 3, 4, 5].includes(q.difficulty as number)) return 'difficulty가 잘못됨';
   const body = q.body?.trim();
   if (!body) return 'body가 비었다';
   if (body.length > BODY_MAX) return `문항은 ${BODY_MAX}자 이내여야 한다`;
@@ -234,16 +235,16 @@ export async function handleAddCommunityQuestion(
   )
     .bind(topicId)
     .all<{ d: Difficulty; n: number }>();
-  const byDiff: Record<1 | 2 | 3 | 4, number> = { 1: 0, 2: 0, 3: 0, 4: 0 };
+  const byDiff: Record<1 | 2 | 3 | 4 | 5, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
   for (const r of counts.results ?? []) byDiff[r.d] = r.n;
-  const active = ([1, 2, 3, 4] as const).every((d) => byDiff[d] >= COMMUNITY_GATE_PER_DIFFICULTY);
+  const active = ([1, 2, 3, 4, 5] as const).every((d) => byDiff[d] >= COMMUNITY_GATE_PER_DIFFICULTY);
 
   const status = active ? 'active' : 'draft';
   await env.DB.prepare(
-    `UPDATE topics SET q_count_1 = ?, q_count_2 = ?, q_count_3 = ?, q_count_4 = ?, status = ?, updated_at = ?
+    `UPDATE topics SET q_count_1 = ?, q_count_2 = ?, q_count_3 = ?, q_count_4 = ?, q_count_5 = ?, status = ?, updated_at = ?
       WHERE id = ?`,
   )
-    .bind(byDiff[1], byDiff[2], byDiff[3], byDiff[4], status, now, topicId)
+    .bind(byDiff[1], byDiff[2], byDiff[3], byDiff[4], byDiff[5], status, now, topicId)
     .run();
 
   const topicRow = await env.DB.prepare('SELECT name, tagline, created_at FROM topics WHERE id = ?')
@@ -255,7 +256,7 @@ export async function handleAddCommunityQuestion(
     name: topicRow?.name ?? '',
     tagline: topicRow?.tagline ?? null,
     status,
-    questionCount: { '1': byDiff[1], '2': byDiff[2], '3': byDiff[3], '4': byDiff[4] },
+    questionCount: { '1': byDiff[1], '2': byDiff[2], '3': byDiff[3], '4': byDiff[4], '5': byDiff[5] },
     authorNickname: author.nickname,
     isMine: true,
     createdAt: topicRow?.created_at ?? now,

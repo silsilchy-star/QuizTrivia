@@ -95,7 +95,7 @@ async function handleSession(request: Request, env: Env): Promise<Response> {
 /** 하한 게이트를 통과해 active가 된 주제만 노출한다 (PLAN 6.6절). */
 async function handleTopics(env: Env): Promise<Response> {
   const { results } = await env.DB.prepare(
-    `SELECT id, name, kind, tagline, q_count_1, q_count_2, q_count_3, q_count_4
+    `SELECT id, name, kind, tagline, q_count_1, q_count_2, q_count_3, q_count_4, q_count_5
        FROM topics WHERE status = 'active' AND source = 'official' ORDER BY kind = 'broad' DESC, no`,
   ).all<{
     id: string;
@@ -106,6 +106,7 @@ async function handleTopics(env: Env): Promise<Response> {
     q_count_2: number;
     q_count_3: number;
     q_count_4: number;
+    q_count_5: number;
   }>();
 
   const topics: Topic[] = (results ?? []).map((r) => ({
@@ -118,6 +119,7 @@ async function handleTopics(env: Env): Promise<Response> {
       '2': r.q_count_2,
       '3': r.q_count_3,
       '4': r.q_count_4,
+      '5': r.q_count_5,
     },
   }));
 

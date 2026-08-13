@@ -18,7 +18,7 @@ const topics = loadTopics();
 const approved = loadAllQuestions().filter((q) => q.status === 'approved');
 
 // 주제별 난이도 집계
-const counts = new Map(topics.map((t) => [t.id, { 1: 0, 2: 0, 3: 0, 4: 0 }]));
+const counts = new Map(topics.map((t) => [t.id, { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 }]));
 for (const q of approved) {
   for (const t of q.topicIds) {
     const c = counts.get(t);
@@ -39,18 +39,18 @@ const lines = [
 lines.push('INSERT OR REPLACE INTO topics');
 lines.push(
   '  (id, no, name, kind, tagline, scope_json, out_of_scope_json, difficulty_spec_json,',
-  '   status, q_count_1, q_count_2, q_count_3, q_count_4, created_at, updated_at)',
+  '   status, q_count_1, q_count_2, q_count_3, q_count_4, q_count_5, created_at, updated_at)',
   'VALUES',
 );
 
 const topicRows = topics.map((t) => {
   const c = counts.get(t.id);
-  const active = [1, 2, 3, 4].every((d) => c[d] >= GATE_PER_DIFFICULTY);
+  const active = [1, 2, 3, 4, 5].every((d) => c[d] >= GATE_PER_DIFFICULTY);
   return (
     `  (${sql(t.id)}, ${t.no}, ${sql(t.name)}, ${sql(t.kind)}, ${sql(t.tagline)},\n` +
     `   ${sql(JSON.stringify(t.scope ?? []))}, ${sql(JSON.stringify(t.outOfScope ?? []))},\n` +
     `   ${sql(JSON.stringify(t.difficultySpec ?? {}))},\n` +
-    `   ${sql(active ? 'active' : 'draft')}, ${c[1]}, ${c[2]}, ${c[3]}, ${c[4]}, ${sql(NOW)}, ${sql(NOW)})`
+    `   ${sql(active ? 'active' : 'draft')}, ${c[1]}, ${c[2]}, ${c[3]}, ${c[4]}, ${c[5]}, ${sql(NOW)}, ${sql(NOW)})`
   );
 });
 lines.push(topicRows.join(',\n') + ';', '');
@@ -98,12 +98,12 @@ writeFileSync(OUT, lines.join('\n'), 'utf8');
 const gated = topics
   .map((t) => {
     const c = counts.get(t.id);
-    return { name: t.name, c, active: [1, 2, 3, 4].every((d) => c[d] >= GATE_PER_DIFFICULTY) };
+    return { name: t.name, c, active: [1, 2, 3, 4, 5].every((d) => c[d] >= GATE_PER_DIFFICULTY) };
   })
   .filter((g) => Object.values(g.c).some((n) => n > 0));
 
 console.log(`db/seed.generated.sql 작성 — 승인 문항 ${approved.length}개\n`);
 for (const g of gated) {
-  const bar = [1, 2, 3, 4].map((d) => `${d}:${String(g.c[d]).padStart(2)}`).join(' ');
+  const bar = [1, 2, 3, 4, 5].map((d) => `${d}:${String(g.c[d]).padStart(2)}`).join(' ');
   console.log(`  ${g.active ? '✅ active' : '⬜ draft '} ${g.name.padEnd(5)} ${bar}`);
 }

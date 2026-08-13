@@ -2,14 +2,14 @@
 // 함께 include 할 수 있게 한다 (EP-5 저장소 계층의 계약서 역할).
 
 export type QuestionType = 'MULTIPLE_CHOICE' | 'NUMERIC_INPUT' | 'TEXT_INPUT';
-export type Difficulty = 1 | 2 | 3 | 4;
+export type Difficulty = 1 | 2 | 3 | 4 | 5;
 
 export interface Topic {
   id: string;
   name: string;
   kind: 'broad' | 'narrow';
   tagline: string;
-  questionCount: Record<'1' | '2' | '3' | '4', number>;
+  questionCount: Record<'1' | '2' | '3' | '4' | '5', number>;
 }
 
 /** 출제 시 클라이언트로 내려가는 문항. answer/explanation은 포함하지 않는다. */
@@ -80,7 +80,7 @@ export interface CommunityTopic {
   name: string;
   tagline: string | null;
   status: 'draft' | 'active';
-  questionCount: Record<'1' | '2' | '3' | '4', number>;
+  questionCount: Record<'1' | '2' | '3' | '4' | '5', number>;
   authorNickname: string | null;
   isMine: boolean;
   createdAt: string;

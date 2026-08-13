@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - claude/repo-permissions-check-ff2du7
+      - claude/handover-matters-review-gs5597
   workflow_dispatch:
 
 jobs:

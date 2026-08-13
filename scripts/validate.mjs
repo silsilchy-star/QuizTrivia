@@ -44,7 +44,7 @@ for (const q of questions) {
   else seenId.set(q.id, q._file);
 
   if (!TYPES.includes(q.type)) err(id, `type이 잘못됨: ${q.type}`);
-  if (![1, 2, 3, 4].includes(q.difficulty)) err(id, `difficulty가 잘못됨: ${q.difficulty}`);
+  if (![1, 2, 3, 4, 5].includes(q.difficulty)) err(id, `difficulty가 잘못됨: ${q.difficulty}`);
   if (!STATUSES.includes(q.status)) err(id, `status가 잘못됨: ${q.status}`);
   if (!q.body?.trim()) err(id, 'body가 비었다');
   if (!q.explanation?.trim()) err(id, 'explanation이 비었다 (학습 목적상 필수)');
@@ -125,9 +125,9 @@ for (const q of approved) {
 const gate = [];
 for (const t of topics) {
   const list = byTopic.get(t.id) ?? [];
-  const counts = { 1: 0, 2: 0, 3: 0, 4: 0 };
+  const counts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
   for (const q of list) counts[q.difficulty] = (counts[q.difficulty] ?? 0) + 1;
-  const passes = [1, 2, 3, 4].every((d) => counts[d] >= GATE_PER_DIFFICULTY);
+  const passes = [1, 2, 3, 4, 5].every((d) => counts[d] >= GATE_PER_DIFFICULTY);
   gate.push({ id: t.id, name: t.name, kind: t.kind, total: list.length, counts, passes });
 
   // NUMERIC_INPUT 비율은 넓은 태그에서만 본다 (좁은 태그는 목표를 두지 않음 — 6.1절)
@@ -178,7 +178,7 @@ if (process.argv.includes('--json')) {
 
   console.log('주제별 승인 문항 (하한: 난이도당 ' + GATE_PER_DIFFICULTY + ')');
   for (const g of gate.filter((g) => g.total > 0)) {
-    const bar = [1, 2, 3, 4].map((d) => `${d}:${String(g.counts[d]).padStart(2)}`).join(' ');
+    const bar = [1, 2, 3, 4, 5].map((d) => `${d}:${String(g.counts[d]).padStart(2)}`).join(' ');
     console.log(`  ${g.passes ? '✅ active' : '⬜ draft '} ${g.name.padEnd(5)} ${bar}  계 ${g.total}`);
   }
 

@@ -206,7 +206,7 @@ function TopicDetail({
       <p className="meta">{topic.authorNickname ?? '익명'}님 작성</p>
 
       <ul className="gate-bars">
-        {(['1', '2', '3', '4'] as const).map((d) => (
+        {(['1', '2', '3', '4', '5'] as const).map((d) => (
           <li key={d}>
             <span>난이도 {d}</span>
             <div className="gate-bar">
@@ -333,10 +333,11 @@ function NewQuestionForm({
       <label>
         난이도
         <select value={difficulty} onChange={(e) => setDifficulty(Number(e.target.value) as Difficulty)}>
-          <option value={1}>난이도 1. 매우 쉬움</option>
-          <option value={2}>난이도 2. 쉬움</option>
-          <option value={3}>난이도 3. 보통</option>
-          <option value={4}>난이도 4. 어려움</option>
+          <option value={1}>난이도 1. 쉬움</option>
+          <option value={2}>난이도 2. 보통</option>
+          <option value={3}>난이도 3. 어려움</option>
+          <option value={4}>난이도 4. 전문가</option>
+          <option value={5}>난이도 5. 매니아</option>
         </select>
       </label>
 

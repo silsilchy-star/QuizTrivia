@@ -115,13 +115,13 @@
 | 위치 | 변경 |
 |---|---|
 | `migrations/0003_*.sql` | `questions.difficulty` CHECK를 1~5로 확장 → **테이블 재생성 필요**. 0002와 동일 절차(자식 테이블 FK 먼저 제거 → questions 재생성) |
-| `db/schema.sql` | 베이스라인 CHECK도 1~5로 (신규 DB용). **DROP 절대 금지** |
+| `db/schema.sql` | ⚠ 구현 시 정정: **건드리지 않는다.** 로컬 이중 검증(신선한 DB에 schema+전체 마이그레이션 순서 적용)에서 확인됨 — `q_count_5`를 여기 추가하면 migration 0003의 `ALTER TABLE ADD COLUMN`과 중복 충돌한다. 기존 관례(0001·0002도 마찬가지로 `schema.sql`을 안 건드림)를 따라 마이그레이션만으로 최종 상태를 완성한다. **DROP 절대 금지** |
 | `topics` | `q_count_5` 컬럼 추가 (ALTER로 가능) |
 | `src/types.ts` | `Difficulty = 1..5` |
 | `worker/index.ts` | ⚠ C2 폐지로 `difficultyForStage()`·`MAX_RUN_SCORE`·`TOTAL_STAGES`는 스테이지 모드 전용 죽은 코드가 된다 — 수정이 아니라 **삭제 대상**(P2에서 보드 모드 API로 교체할 때 같이 제거). 타워는 자체 층↔난이도 곡선 함수를 새로 둔다(§2 C1) |
 | `worker/community.ts` | `validateQuestion` 난이도 범위, 게이트 판정 루프 `[1,2,3,4]` → `[1..5]` |
 | `scripts/*.mjs` | `validate.mjs` 검증 범위, `build-seed.mjs` 게이트 판정, `lib.mjs` 상수 |
-| `data/topics.json` | 주제별 `difficultySpec`에 5단계 규칙·예시 추가 (**20개 주제 전부**) |
+| `data/topics.json` | 주제별 `difficultySpec`에 5단계 규칙·예시 추가. ⚠ 구현 시 확인해보니 `difficultySpec`은 **broad 4개(science/geography/sports/birds)에만 있고 narrow 16개는 없음**(부모 상속 구조) — "20개 전부"는 부정확했던 서술, 실제로는 4개만 고치면 됨 |
 | `src/App.tsx`, `Workshop.tsx` | 난이도 표기(쉬움~매니아 5단계). ~~시작 난이도 선택 UI~~는 C2 폐지로 불필요(PLAN3.md §1) |
 | **콘텐츠** | 공식 3주제 × 난이도5 20문항 = **최소 60문항 신규 작성** |
 

@@ -45,18 +45,28 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: backup
 
+      # grep으로 세지 않는다 — D1 export의 INSERT 형식을 넘겨짚으면 틀린다
+      # (실제로 처음엔 runs/users가 0으로 잘못 나왔다). 백업을 진짜 SQLite에
+      # 적재해서 쿼리한다.
       - name: 커뮤니티 데이터 세기 — ${{ matrix.label }}
         run: |
           set -euo pipefail
-          F=backup/d1-backup.sql
+          sqlite3 snapshot.db < backup/d1-backup.sql
           echo "=============================================="
           echo "  ${{ matrix.label }}"
           echo "=============================================="
-          echo "파일 크기: $(wc -c < "$F") bytes"
+          echo "백업 크기: $(wc -c < backup/d1-backup.sql) bytes"
           echo
-          echo "--- 커뮤니티 주제 (topics에 'community'가 들어간 INSERT) ---"
-          grep -o "INSERT INTO topics VALUES([^;]*'community'[^;]*)" "$F" | cut -c1-200 || echo "(없음)"
+          sqlite3 -header -column snapshot.db "
+            SELECT
+              (SELECT COUNT(*) FROM topics WHERE source='community')        AS 커뮤니티주제,
+              (SELECT COUNT(*) FROM questions WHERE author_uid IS NOT NULL) AS 커뮤니티문항,
+              (SELECT COUNT(*) FROM users)                                  AS 유저,
+              (SELECT COUNT(*) FROM runs)                                   AS 플레이기록,
+              (SELECT COUNT(*) FROM topic_best)                             AS 주제최고점;"
           echo
-          echo "커뮤니티 주제 수: $(grep -c "'community'" "$F" || true)"
-          echo "runs 행 수:       $(grep -c 'INSERT INTO runs' "$F" || true)"
-          echo "users 행 수:      $(grep -c 'INSERT INTO users' "$F" || true)"
+          echo "--- 커뮤니티 주제 목록 ---"
+          sqlite3 -header -column snapshot.db "
+            SELECT name, status, created_at,
+                   (SELECT COUNT(*) FROM question_topics qt WHERE qt.topic_id = t.id) AS 문항수
+              FROM topics t WHERE source='community' ORDER BY created_at;"

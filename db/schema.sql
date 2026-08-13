@@ -71,20 +71,25 @@ CREATE TABLE IF NOT EXISTS topic_best_weekly (
   PRIMARY KEY (uid, topic_id, week_id)
 );
 
-CREATE TABLE IF NOT EXISTS runs (
-  id            TEXT PRIMARY KEY,
-  uid           TEXT NOT NULL REFERENCES users(uid),
-  topic_id      TEXT NOT NULL REFERENCES topics(id),
-  mode          TEXT NOT NULL DEFAULT 'solo',
-  stage_reached INTEGER NOT NULL DEFAULT 1,
-  score         INTEGER NOT NULL DEFAULT 0,
+-- Day 5: 스테이지 진행형으로 컬럼이 늘어 재생성한다. 이 시점엔 내 테스트 판밖에
+-- 없어 실사용자 데이터 손실이 아니다 — 나중에 진짜 사용자가 생기면 이런 식의
+-- DROP은 금지이고 ALTER TABLE 마이그레이션으로 바꿔야 한다.
+DROP TABLE IF EXISTS runs;
+CREATE TABLE runs (
+  id             TEXT PRIMARY KEY,
+  uid            TEXT NOT NULL REFERENCES users(uid),
+  topic_id       TEXT NOT NULL REFERENCES topics(id),
+  mode           TEXT NOT NULL DEFAULT 'solo',
+  stage_reached  INTEGER NOT NULL DEFAULT 1,   -- 현재 도전 중인 스테이지 (1~12)
+  score          INTEGER NOT NULL DEFAULT 0,   -- 지금까지 클리어한 스테이지의 누적 점수
   -- 서버 채점(7.5절 A안)을 위해 출제 시점에 문항 id를 박아둔다. 클라이언트가
   -- 풀지도 않은 문항의 답을 제출하는 것을 막는다. PLAN 7.2절에 없던 추가 컬럼.
-  served_json   TEXT,
-  answers_json  TEXT,
-  started_at    TEXT NOT NULL,
-  ended_at      TEXT,
-  status        TEXT CHECK(status IN ('in_progress','completed','abandoned')) NOT NULL DEFAULT 'in_progress'
+  served_json     TEXT,  -- 지금 스테이지에 낸 5문항 id (채점 대상)
+  all_served_json TEXT,  -- 이 판에서 지금까지 낸 모든 문항 id (판 전체 중복 방지, PLAN 4.3절)
+  answers_json    TEXT,  -- 스테이지별 채점 결과 누적 (검토용)
+  started_at     TEXT NOT NULL,
+  ended_at       TEXT,
+  status         TEXT CHECK(status IN ('in_progress','completed','abandoned')) NOT NULL DEFAULT 'in_progress'
 );
 
 CREATE INDEX IF NOT EXISTS idx_runs_uid ON runs(uid);

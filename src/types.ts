@@ -21,9 +21,14 @@ export interface ServedQuestion {
   choices: string[] | null;
 }
 
+/** PLAN 4.2절 — 12스테이지 전체 */
+export const TOTAL_STAGES = 12;
+
 export interface StartRunResponse {
   runId: string;
   topicId: string;
+  stage: number;
+  totalStages: number;
   questions: ServedQuestion[];
 }
 
@@ -43,16 +48,30 @@ export interface GradedAnswer {
   explanation: string;
 }
 
-export interface SubmitRunResponse {
-  runId: string;
-  score: number;
-  correctCount: number;
-  total: number;
-  cleared: boolean;
-  results: GradedAnswer[];
+/** 판이 끝났을 때만 내려가는 최종 요약. */
+export interface RunFinalSummary {
+  totalScore: number;
+  stagesCleared: number;
   topicBestScore: number;
   isNewBest: boolean;
   globalScore: number;
+}
+
+export interface SubmitStageResponse {
+  runId: string;
+  stage: number;
+  totalStages: number;
+  correctCount: number;
+  total: number;
+  cleared: boolean;
+  stageScore: number;
+  results: GradedAnswer[];
+  /** true면 판이 끝난 것 — 스테이지 실패, 또는 마지막 스테이지까지 클리어. */
+  runOver: boolean;
+  /** runOver가 false일 때만 채워진다. */
+  nextStage?: { stage: number; questions: ServedQuestion[] };
+  /** runOver가 true일 때만 채워진다. */
+  final?: RunFinalSummary;
 }
 
 export interface SessionResponse {

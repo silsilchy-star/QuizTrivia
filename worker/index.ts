@@ -2,12 +2,14 @@ import type {
   Difficulty,
   GradedAnswer,
   QuestionType,
+  RunFinalSummary,
   ServedQuestion,
   StartRunResponse,
-  SubmitRunResponse,
+  SubmitStageResponse,
   SubmittedAnswer,
   Topic,
 } from '../src/types';
+import { TOTAL_STAGES } from '../src/types';
 
 export interface Env {
   DB: D1Database;
@@ -22,6 +24,11 @@ const MAX_RUN_SCORE = 1500;
 
 const SESSION_COOKIE = 'session';
 const SESSION_MAX_AGE = 60 * 60 * 24 * 365;
+
+/** 스테이지 1~3은 난이도1, 4~6은 난이도2, ... (PLAN 4.2절) */
+function difficultyForStage(stage: number): Difficulty {
+  return (Math.min(4, Math.ceil(stage / 3)) as Difficulty) || 1;
+}
 
 function json(body: unknown, init?: ResponseInit): Response {
   return new Response(JSON.stringify(body), {
@@ -99,6 +106,39 @@ async function handleTopics(env: Env): Promise<Response> {
   return json(topics);
 }
 
+/** 이 판에서 아직 안 낸 문항 중, 해당 난이도에서 5개를 무작위로 뽑는다 (PLAN 4.3절 판 내 무중복). */
+async function drawStageQuestions(
+  env: Env,
+  topicId: string,
+  difficulty: Difficulty,
+  excludeIds: string[],
+): Promise<ServedQuestion[]> {
+  const exclude = excludeIds.length ? `AND q.id NOT IN (${excludeIds.map(() => '?').join(',')})` : '';
+  const { results } = await env.DB.prepare(
+    `SELECT q.id, q.type, q.difficulty, q.body, q.choices_json
+       FROM questions q
+       JOIN question_topics qt ON qt.question_id = q.id
+      WHERE qt.topic_id = ? AND q.status = 'approved' AND q.difficulty = ? ${exclude}
+      ORDER BY RANDOM() LIMIT ?`,
+  )
+    .bind(topicId, difficulty, ...excludeIds, QUESTIONS_PER_STAGE)
+    .all<{
+      id: string;
+      type: QuestionType;
+      difficulty: Difficulty;
+      body: string;
+      choices_json: string | null;
+    }>();
+
+  return (results ?? []).map((r) => ({
+    id: r.id,
+    type: r.type,
+    difficulty: r.difficulty,
+    body: r.body,
+    choices: r.choices_json ? (JSON.parse(r.choices_json) as string[]) : null,
+  }));
+}
+
 async function handleStartRun(request: Request, env: Env, uid: string): Promise<Response> {
   const body = (await request.json().catch(() => null)) as { topicId?: string } | null;
   const topicId = body?.topicId;
@@ -109,45 +149,21 @@ async function handleStartRun(request: Request, env: Env, uid: string): Promise<
     .first();
   if (!topic) return json({ error: 'topic not found or not active' }, { status: 404 });
 
-  // 한 판 안에서 같은 문제가 두 번 나오지 않는다 (PLAN 4.3절).
-  const { results } = await env.DB.prepare(
-    `SELECT q.id, q.type, q.difficulty, q.body, q.choices_json
-       FROM questions q
-       JOIN question_topics qt ON qt.question_id = q.id
-      WHERE qt.topic_id = ? AND q.status = 'approved'
-      ORDER BY RANDOM() LIMIT ?`,
-  )
-    .bind(topicId, QUESTIONS_PER_STAGE)
-    .all<{
-      id: string;
-      type: QuestionType;
-      difficulty: Difficulty;
-      body: string;
-      choices_json: string | null;
-    }>();
-
-  const rows = results ?? [];
-  if (rows.length < QUESTIONS_PER_STAGE) {
+  const questions = await drawStageQuestions(env, topicId, 1, []);
+  if (questions.length < QUESTIONS_PER_STAGE) {
     return json({ error: 'not enough approved questions for this topic' }, { status: 409 });
   }
 
-  const questions: ServedQuestion[] = rows.map((r) => ({
-    id: r.id,
-    type: r.type,
-    difficulty: r.difficulty,
-    body: r.body,
-    choices: r.choices_json ? (JSON.parse(r.choices_json) as string[]) : null,
-  }));
-
   const runId = crypto.randomUUID();
+  const ids = questions.map((q) => q.id);
   await env.DB.prepare(
-    `INSERT INTO runs (id, uid, topic_id, mode, served_json, started_at, status)
-     VALUES (?, ?, ?, 'solo', ?, ?, 'in_progress')`,
+    `INSERT INTO runs (id, uid, topic_id, mode, stage_reached, score, served_json, all_served_json, answers_json, started_at, status)
+     VALUES (?, ?, ?, 'solo', 1, 0, ?, ?, '[]', ?, 'in_progress')`,
   )
-    .bind(runId, uid, topicId, JSON.stringify(questions.map((q) => q.id)), new Date().toISOString())
+    .bind(runId, uid, topicId, JSON.stringify(ids), JSON.stringify(ids), new Date().toISOString())
     .run();
 
-  const payload: StartRunResponse = { runId, topicId, questions };
+  const payload: StartRunResponse = { runId, topicId, stage: 1, totalStages: TOTAL_STAGES, questions };
   return json(payload);
 }
 
@@ -163,7 +179,60 @@ function isCorrect(type: QuestionType, answer: string, given: string): boolean {
   return a === g;
 }
 
-async function handleSubmitRun(
+/** 판을 완전히 종료하고 주제별 최고점·통합 점수를 반영한다 (성공/실패 공통 경로). */
+async function finalizeRun(
+  env: Env,
+  uid: string,
+  topicId: string,
+  runId: string,
+  finalScore: number,
+  stagesCleared: number,
+  answersJson: string,
+): Promise<RunFinalSummary> {
+  const now = new Date().toISOString();
+
+  const prevBest = await env.DB.prepare('SELECT score FROM topic_best WHERE uid = ? AND topic_id = ?')
+    .bind(uid, topicId)
+    .first<{ score: number }>();
+  const isNewBest = !prevBest || finalScore > prevBest.score;
+
+  await env.DB.batch([
+    env.DB.prepare(
+      `UPDATE runs SET stage_reached = ?, score = ?, answers_json = ?, ended_at = ?, status = 'completed' WHERE id = ?`,
+    ).bind(stagesCleared, finalScore, answersJson, now, runId),
+    env.DB.prepare(
+      `INSERT INTO topic_best (uid, topic_id, score, stage, updated_at)
+       VALUES (?, ?, ?, ?, ?)
+       ON CONFLICT(uid, topic_id) DO UPDATE SET
+         score = excluded.score, stage = excluded.stage, updated_at = excluded.updated_at
+         WHERE excluded.score > topic_best.score`,
+    ).bind(uid, topicId, finalScore, stagesCleared, now),
+    env.DB.prepare(
+      `UPDATE users
+          SET global_score = (SELECT COALESCE(SUM(score), 0) FROM topic_best WHERE uid = ?),
+              play_count = play_count + 1,
+              updated_at = ?
+        WHERE uid = ?`,
+    ).bind(uid, now, uid),
+  ]);
+
+  const after = await env.DB.prepare(
+    `SELECT (SELECT COALESCE(score, 0) FROM topic_best WHERE uid = ? AND topic_id = ?) AS topic_best_score,
+            (SELECT global_score FROM users WHERE uid = ?) AS global_score`,
+  )
+    .bind(uid, topicId, uid)
+    .first<{ topic_best_score: number; global_score: number }>();
+
+  return {
+    totalScore: finalScore,
+    stagesCleared,
+    topicBestScore: after?.topic_best_score ?? finalScore,
+    isNewBest,
+    globalScore: after?.global_score ?? finalScore,
+  };
+}
+
+async function handleSubmitStage(
   request: Request,
   env: Env,
   uid: string,
@@ -174,14 +243,19 @@ async function handleSubmitRun(
   if (!Array.isArray(submitted)) return json({ error: 'answers is required' }, { status: 400 });
 
   const run = await env.DB.prepare(
-    'SELECT id, uid, topic_id, served_json, status FROM runs WHERE id = ? AND uid = ?',
+    `SELECT id, uid, topic_id, stage_reached, score, served_json, all_served_json, answers_json, status
+       FROM runs WHERE id = ? AND uid = ?`,
   )
     .bind(runId, uid)
     .first<{
       id: string;
       uid: string;
       topic_id: string;
+      stage_reached: number;
+      score: number;
       served_json: string | null;
+      all_served_json: string | null;
+      answers_json: string | null;
       status: string;
     }>();
 
@@ -212,7 +286,7 @@ async function handleSubmitRun(
   const givenById = new Map(submitted.map((a) => [a.questionId, a.given ?? '']));
 
   const graded: GradedAnswer[] = [];
-  let score = 0;
+  let stageScore = 0;
   let correctCount = 0;
 
   for (const qid of servedIds) {
@@ -222,7 +296,7 @@ async function handleSubmitRun(
     const correct = given !== '' && isCorrect(q.type, q.answer, given);
     if (correct) {
       correctCount += 1;
-      score += q.difficulty * 10; // PLAN 5.1절
+      stageScore += q.difficulty * 10; // PLAN 5.1절
     }
     graded.push({
       questionId: q.id,
@@ -235,65 +309,91 @@ async function handleSubmitRun(
     });
   }
 
-  score = Math.min(score, MAX_RUN_SCORE);
   const cleared = correctCount >= CLEAR_THRESHOLD;
   const now = new Date().toISOString();
 
-  const prevBest = await env.DB.prepare('SELECT score FROM topic_best WHERE uid = ? AND topic_id = ?')
-    .bind(uid, run.topic_id)
-    .first<{ score: number }>();
-  const isNewBest = !prevBest || score > prevBest.score;
-
-  await env.DB.batch([
-    env.DB.prepare(
-      `UPDATE runs SET stage_reached = 1, score = ?, answers_json = ?, ended_at = ?, status = 'completed'
-        WHERE id = ?`,
-    ).bind(score, JSON.stringify(graded.map((g) => ({ questionId: g.questionId, given: g.given, correct: g.correct }))), now, runId),
-    // 주제별 최고점만 남긴다 — 폭 보상형 랭킹의 원천 (D-7)
-    env.DB.prepare(
-      `INSERT INTO topic_best (uid, topic_id, score, stage, updated_at)
-       VALUES (?, ?, ?, 1, ?)
-       ON CONFLICT(uid, topic_id) DO UPDATE SET
-         score = excluded.score, stage = excluded.stage, updated_at = excluded.updated_at
-         WHERE excluded.score > topic_best.score`,
-    ).bind(uid, run.topic_id, score, now),
-    env.DB.prepare(
-      `UPDATE users
-          SET global_score = (SELECT COALESCE(SUM(score), 0) FROM topic_best WHERE uid = ?),
-              play_count = play_count + 1,
-              updated_at = ?
-        WHERE uid = ?`,
-    ).bind(uid, now, uid),
-    // 문항별 정답률의 원천. 저자가 붙인 난이도가 맞는지 나중에 검증할 근거가 된다.
-    ...graded.map((g) =>
-      env.DB.prepare(
-        `INSERT INTO question_stats (question_id, served_count, correct_count, updated_at)
-         VALUES (?, 1, ?, ?)
-         ON CONFLICT(question_id) DO UPDATE SET
-           served_count = question_stats.served_count + 1,
-           correct_count = question_stats.correct_count + excluded.correct_count,
-           updated_at = excluded.updated_at`,
-      ).bind(g.questionId, g.correct ? 1 : 0, now),
-    ),
+  const newTotalScore = Math.min(run.score + stageScore, MAX_RUN_SCORE);
+  const priorAnswers = run.answers_json ? JSON.parse(run.answers_json) : [];
+  const answersJson = JSON.stringify([
+    ...priorAnswers,
+    { stage: run.stage_reached, correctCount, stageScore, graded: graded.map((g) => ({ questionId: g.questionId, given: g.given, correct: g.correct })) },
   ]);
 
-  const after = await env.DB.prepare(
-    `SELECT (SELECT COALESCE(score, 0) FROM topic_best WHERE uid = ? AND topic_id = ?) AS topic_best_score,
-            (SELECT global_score FROM users WHERE uid = ?) AS global_score`,
-  )
-    .bind(uid, run.topic_id, uid)
-    .first<{ topic_best_score: number; global_score: number }>();
+  // 문항별 정답률의 원천. 저자가 붙인 난이도가 맞는지 나중에 검증할 근거가 된다.
+  const statsUpdates = graded.map((g) =>
+    env.DB.prepare(
+      `INSERT INTO question_stats (question_id, served_count, correct_count, updated_at)
+       VALUES (?, 1, ?, ?)
+       ON CONFLICT(question_id) DO UPDATE SET
+         served_count = question_stats.served_count + 1,
+         correct_count = question_stats.correct_count + excluded.correct_count,
+         updated_at = excluded.updated_at`,
+    ).bind(g.questionId, g.correct ? 1 : 0, now),
+  );
 
-  const payload: SubmitRunResponse = {
+  const stagesCleared = cleared ? run.stage_reached : run.stage_reached - 1;
+  const runEnds = !cleared || run.stage_reached >= TOTAL_STAGES;
+
+  if (runEnds) {
+    await env.DB.batch(statsUpdates);
+    const final = await finalizeRun(env, uid, run.topic_id, runId, newTotalScore, Math.max(0, stagesCleared), answersJson);
+    const payload: SubmitStageResponse = {
+      runId,
+      stage: run.stage_reached,
+      totalStages: TOTAL_STAGES,
+      correctCount,
+      total: graded.length,
+      cleared,
+      stageScore,
+      results: graded,
+      runOver: true,
+      final,
+    };
+    return json(payload);
+  }
+
+  // 클리어했고 스테이지가 남음 — 다음 스테이지를 바로 출제한다.
+  const nextStageNum = run.stage_reached + 1;
+  const allServed: string[] = run.all_served_json ? JSON.parse(run.all_served_json) : [];
+  const nextQuestions = await drawStageQuestions(env, run.topic_id, difficultyForStage(nextStageNum), allServed);
+  if (nextQuestions.length < QUESTIONS_PER_STAGE) {
+    // 문항 풀이 예상보다 적게 남은 예외 상황 — 여기서 판을 끝낸다.
+    await env.DB.batch(statsUpdates);
+    const final = await finalizeRun(env, uid, run.topic_id, runId, newTotalScore, stagesCleared, answersJson);
+    const payload: SubmitStageResponse = {
+      runId,
+      stage: run.stage_reached,
+      totalStages: TOTAL_STAGES,
+      correctCount,
+      total: graded.length,
+      cleared,
+      stageScore,
+      results: graded,
+      runOver: true,
+      final,
+    };
+    return json(payload);
+  }
+
+  const nextIds = nextQuestions.map((q) => q.id);
+  await env.DB.batch([
+    env.DB.prepare(
+      `UPDATE runs SET stage_reached = ?, score = ?, served_json = ?, all_served_json = ?, answers_json = ? WHERE id = ?`,
+    ).bind(nextStageNum, newTotalScore, JSON.stringify(nextIds), JSON.stringify([...allServed, ...nextIds]), answersJson, runId),
+    ...statsUpdates,
+  ]);
+
+  const payload: SubmitStageResponse = {
     runId,
-    score,
+    stage: run.stage_reached,
+    totalStages: TOTAL_STAGES,
     correctCount,
     total: graded.length,
     cleared,
+    stageScore,
     results: graded,
-    topicBestScore: after?.topic_best_score ?? score,
-    isNewBest,
-    globalScore: after?.global_score ?? score,
+    runOver: false,
+    nextStage: { stage: nextStageNum, questions: nextQuestions },
   };
   return json(payload);
 }
@@ -321,7 +421,7 @@ export default {
     if (submitMatch && request.method === 'POST') {
       const uid = await resolveUid(request, env);
       if (!uid) return json({ error: 'no session' }, { status: 401 });
-      return handleSubmitRun(request, env, uid, submitMatch[1]);
+      return handleSubmitStage(request, env, uid, submitMatch[1]);
     }
 
     if (path.startsWith('/api/')) {

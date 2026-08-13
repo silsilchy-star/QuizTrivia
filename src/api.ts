@@ -1,13 +1,7 @@
 // EP-5 저장소 계층. 화면 코드는 fetch를 직접 부르지 않고 이 파일만 부른다.
 // 백엔드를 바꿀 때 이 파일 하나만 고치면 화면은 손대지 않는다 (PLAN 7.3절).
 
-import type {
-  SessionResponse,
-  StartRunResponse,
-  SubmitRunResponse,
-  SubmittedAnswer,
-  Topic,
-} from './types';
+import type { SessionResponse, StartRunResponse, SubmitStageResponse, SubmittedAnswer, Topic } from './types';
 
 async function call<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(path, {
@@ -37,8 +31,8 @@ export function startRun(topicId: string): Promise<StartRunResponse> {
   });
 }
 
-export function submitRun(runId: string, answers: SubmittedAnswer[]): Promise<SubmitRunResponse> {
-  return call<SubmitRunResponse>(`/api/runs/${runId}/submit`, {
+export function submitStage(runId: string, answers: SubmittedAnswer[]): Promise<SubmitStageResponse> {
+  return call<SubmitStageResponse>(`/api/runs/${runId}/submit`, {
     method: 'POST',
     body: JSON.stringify({ answers }),
   });

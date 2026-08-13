@@ -48,10 +48,33 @@ h2 {
   font-variant-numeric: tabular-nums;
 }
 
+.stage-banner {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.stage-banner .band {
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
 .progress {
   margin: 0 0 0.5rem;
   font-size: 0.8125rem;
   color: var(--muted);
+}
+
+.final-score {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .body {

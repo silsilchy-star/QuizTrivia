@@ -67,8 +67,10 @@ jobs:
 
       # DB를 바꾸기 직전의 개수. 아래 배포 후 수치와 짝을 이뤄, 어떤 단계가
       # 데이터를 건드렸는지 배포 로그만으로 판별할 수 있게 한다.
+      # (UNION ALL로 쌓으면 D1의 compound SELECT 항 수 제한에 걸린다 —
+      #  스칼라 서브쿼리로 한 행에 담는다.)
       - name: Count rows (before)
-        run: npx wrangler d1 execute quiztrivia --remote --yes --command "SELECT 'official_active' AS metric, COUNT(*) AS n FROM topics WHERE source='official' AND status='active' UNION ALL SELECT 'community_topics', COUNT(*) FROM topics WHERE source='community' UNION ALL SELECT 'community_questions', COUNT(*) FROM questions WHERE author_uid IS NOT NULL UNION ALL SELECT 'official_questions', COUNT(*) FROM questions WHERE author_uid IS NULL UNION ALL SELECT 'users', COUNT(*) FROM users UNION ALL SELECT 'users_linked', COUNT(*) FROM users WHERE google_sub IS NOT NULL UNION ALL SELECT 'runs', COUNT(*) FROM runs UNION ALL SELECT 'topic_best', COUNT(*) FROM topic_best"
+        run: npx wrangler d1 execute quiztrivia --remote --yes --command "SELECT (SELECT COUNT(*) FROM topics WHERE source='official' AND status='active') AS official_active, (SELECT COUNT(*) FROM topics WHERE source='community') AS community_topics, (SELECT COUNT(*) FROM questions WHERE author_uid IS NOT NULL) AS community_questions, (SELECT COUNT(*) FROM questions WHERE author_uid IS NULL) AS official_questions, (SELECT COUNT(*) FROM users) AS users, (SELECT COUNT(*) FROM users WHERE google_sub IS NOT NULL) AS users_linked, (SELECT COUNT(*) FROM runs) AS runs, (SELECT COUNT(*) FROM topic_best) AS topic_best"
 
       # ── 3) 여기서부터 프로덕션 DB가 실제로 바뀐다 ──
       - name: Apply D1 schema (멱등 베이스라인)
@@ -96,6 +98,6 @@ jobs:
       # 배포 후 개수 + 커뮤니티 주제 목록. 위 "Count rows (before)"와 비교하면
       # 이번 배포가 사용자 데이터를 건드렸는지 바로 보인다.
       - name: Count rows (after)
-        run: npx wrangler d1 execute quiztrivia --remote --yes --command "SELECT 'official_active' AS metric, COUNT(*) AS n FROM topics WHERE source='official' AND status='active' UNION ALL SELECT 'community_topics', COUNT(*) FROM topics WHERE source='community' UNION ALL SELECT 'community_questions', COUNT(*) FROM questions WHERE author_uid IS NOT NULL UNION ALL SELECT 'official_questions', COUNT(*) FROM questions WHERE author_uid IS NULL UNION ALL SELECT 'users', COUNT(*) FROM users UNION ALL SELECT 'users_linked', COUNT(*) FROM users WHERE google_sub IS NOT NULL UNION ALL SELECT 'runs', COUNT(*) FROM runs UNION ALL SELECT 'topic_best', COUNT(*) FROM topic_best"
+        run: npx wrangler d1 execute quiztrivia --remote --yes --command "SELECT (SELECT COUNT(*) FROM topics WHERE source='official' AND status='active') AS official_active, (SELECT COUNT(*) FROM topics WHERE source='community') AS community_topics, (SELECT COUNT(*) FROM questions WHERE author_uid IS NOT NULL) AS community_questions, (SELECT COUNT(*) FROM questions WHERE author_uid IS NULL) AS official_questions, (SELECT COUNT(*) FROM users) AS users, (SELECT COUNT(*) FROM users WHERE google_sub IS NOT NULL) AS users_linked, (SELECT COUNT(*) FROM runs) AS runs, (SELECT COUNT(*) FROM topic_best) AS topic_best"
       - name: List community topics
         run: npx wrangler d1 execute quiztrivia --remote --yes --command "SELECT name, status, created_at, q_count_1, q_count_2, q_count_3, q_count_4 FROM topics WHERE source='community' ORDER BY created_at"

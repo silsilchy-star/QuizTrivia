@@ -282,10 +282,10 @@ function NewQuestionForm({
       <label>
         난이도
         <select value={difficulty} onChange={(e) => setDifficulty(Number(e.target.value) as Difficulty)}>
-          <option value={1}>1 — 거의 모두 안다</option>
-          <option value={2}>2 — 배우면 안다</option>
-          <option value={3}>3 — 많이들 착각한다</option>
-          <option value={4}>4 — 관심 있으면 안다</option>
+          <option value={1}>난이도 1. 매우 쉬움</option>
+          <option value={2}>난이도 2. 쉬움</option>
+          <option value={3}>난이도 3. 보통</option>
+          <option value={4}>난이도 4. 어려움</option>
         </select>
       </label>
 

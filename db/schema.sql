@@ -42,16 +42,10 @@ CREATE TABLE IF NOT EXISTS question_topics (
 
 CREATE INDEX IF NOT EXISTS idx_question_topics_topic ON question_topics(topic_id);
 
--- Day 5~6: users에 소셜 로그인 컬럼이 늘고 runs에 스테이지 진행 컬럼이 늘어
--- 재생성한다. 이 시점엔 내 테스트 계정·판밖에 없어 안전 — 진짜 사용자가 생긴
--- 뒤엔 이런 DROP 금지, ALTER TABLE 마이그레이션으로 바꿔야 한다.
--- FK 제약 때문에 users를 참조하는 테이블부터 먼저 지운다.
-DROP TABLE IF EXISTS runs;
-DROP TABLE IF EXISTS topic_best;
-DROP TABLE IF EXISTS topic_best_weekly;
-DROP TABLE IF EXISTS users;
-
-CREATE TABLE users (
+-- ⚠ 2026-08-13부로 진짜 사용자(구글 계정 연결·플레이 기록)가 생겼으므로
+-- 이 밑으로는 DROP TABLE을 절대 쓰지 않는다. 스키마를 바꿔야 하면
+-- ALTER TABLE ... ADD COLUMN 마이그레이션으로 한다 (기존 데이터 보존).
+CREATE TABLE IF NOT EXISTS users (
   uid           TEXT PRIMARY KEY,
   nickname      TEXT,
   is_anonymous  INTEGER NOT NULL DEFAULT 1,
@@ -64,7 +58,7 @@ CREATE TABLE users (
 );
 
 -- 폭 보상형 랭킹(D-7)의 원천. 통합 점수 = SUM(score) GROUP BY uid
-CREATE TABLE topic_best (
+CREATE TABLE IF NOT EXISTS topic_best (
   uid        TEXT NOT NULL REFERENCES users(uid),
   topic_id   TEXT NOT NULL REFERENCES topics(id),
   score      INTEGER NOT NULL,
@@ -73,7 +67,7 @@ CREATE TABLE topic_best (
   PRIMARY KEY (uid, topic_id)
 );
 
-CREATE TABLE topic_best_weekly (
+CREATE TABLE IF NOT EXISTS topic_best_weekly (
   uid        TEXT NOT NULL REFERENCES users(uid),
   topic_id   TEXT NOT NULL REFERENCES topics(id),
   week_id    TEXT NOT NULL,
@@ -82,7 +76,7 @@ CREATE TABLE topic_best_weekly (
   PRIMARY KEY (uid, topic_id, week_id)
 );
 
-CREATE TABLE runs (
+CREATE TABLE IF NOT EXISTS runs (
   id             TEXT PRIMARY KEY,
   uid            TEXT NOT NULL REFERENCES users(uid),
   topic_id       TEXT NOT NULL REFERENCES topics(id),

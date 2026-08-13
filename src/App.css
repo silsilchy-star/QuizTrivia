@@ -472,3 +472,24 @@ button.primary:hover:not(:disabled) {
 .question-form-actions .primary {
   flex: 1;
 }
+
+.danger-zone {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.danger-text {
+  color: var(--ng);
+}
+
+button.danger {
+  border-color: var(--ng);
+  background: var(--ng);
+  color: #fff;
+  font-weight: 600;
+}
+
+button.danger:hover:not(:disabled) {
+  background: #991b1b;
+}

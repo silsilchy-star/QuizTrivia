@@ -2,7 +2,7 @@
 // 검수 없이 자동 검증만 통과하면 바로 공개되고, 랭킹에는 반영되지 않는다
 // (worker/community.ts와 짝을 이룬다).
 import { useEffect, useState, type FormEvent } from 'react';
-import { addCommunityQuestion, createCommunityTopic, getCommunityTopics } from './api';
+import { addCommunityQuestion, createCommunityTopic, deleteCommunityTopic, getCommunityTopics } from './api';
 import type { CommunityTopic, Difficulty, NewCommunityQuestionInput, QuestionType, SessionResponse } from './types';
 
 /** worker/community.ts의 COMMUNITY_GATE_PER_DIFFICULTY와 같은 값 — 표시용. */
@@ -63,6 +63,10 @@ export function Workshop({
         onQuestionAdded={(updated) =>
           setTopics((prev) => prev.map((t) => (t.id === updated.id ? { ...t, ...updated } : t)))
         }
+        onDeleted={() => {
+          setTopics((prev) => prev.filter((t) => t.id !== topic.id));
+          setScreen({ kind: 'list' });
+        }}
       />
     );
   }
@@ -167,13 +171,30 @@ function TopicDetail({
   onBack,
   onPlay,
   onQuestionAdded,
+  onDeleted,
 }: {
   topic: CommunityTopic;
   onBack: () => void;
   onPlay: () => void;
   onQuestionAdded: (topic: CommunityTopic) => void;
+  onDeleted: () => void;
 }) {
   const [adding, setAdding] = useState(false);
+  const [confirmingDelete, setConfirmingDelete] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
+
+  async function confirmDelete() {
+    setDeleting(true);
+    setDeleteError(null);
+    try {
+      await deleteCommunityTopic(topic.id);
+      onDeleted();
+    } catch (err) {
+      setDeleteError((err as Error).message);
+      setDeleting(false);
+    }
+  }
 
   return (
     <section>
@@ -217,6 +238,32 @@ function TopicDetail({
             + 문제 추가
           </button>
         ))}
+
+      {topic.isMine && (
+        <div className="danger-zone">
+          {confirmingDelete ? (
+            <>
+              <p className="error">
+                정말 삭제할까요? 문항 {Object.values(topic.questionCount).reduce((a, b) => a + b, 0)}개도 함께
+                삭제되고 되돌릴 수 없습니다.
+              </p>
+              {deleteError && <p className="error">{deleteError}</p>}
+              <div className="question-form-actions">
+                <button className="danger" onClick={confirmDelete} disabled={deleting}>
+                  삭제
+                </button>
+                <button className="link" onClick={() => setConfirmingDelete(false)} disabled={deleting}>
+                  취소
+                </button>
+              </div>
+            </>
+          ) : (
+            <button className="link danger-text" onClick={() => setConfirmingDelete(true)}>
+              이 주제 삭제
+            </button>
+          )}
+        </div>
+      )}
     </section>
   );
 }

@@ -15,6 +15,7 @@ import { handleGlobalRanking, handleTopicRanking, refreshGlobalCaches, upsertWee
 import {
   handleAddCommunityQuestion,
   handleCreateCommunityTopic,
+  handleDeleteCommunityTopic,
   handleListCommunityTopics,
   isRankedTopic,
 } from './community';
@@ -503,6 +504,13 @@ export default {
       const uid = await resolveUid(request, env);
       if (!uid) return json({ error: 'no session' }, { status: 401 });
       return handleAddCommunityQuestion(request, env, uid, decodeURIComponent(communityQuestionMatch[1]));
+    }
+
+    const communityTopicMatch = path.match(/^\/api\/community\/topics\/([^/]+)$/);
+    if (communityTopicMatch && request.method === 'DELETE') {
+      const uid = await resolveUid(request, env);
+      if (!uid) return json({ error: 'no session' }, { status: 401 });
+      return handleDeleteCommunityTopic(env, uid, decodeURIComponent(communityTopicMatch[1]));
     }
 
     if (path.startsWith('/api/')) {

@@ -80,6 +80,12 @@ export function createCommunityTopic(name: string, tagline: string): Promise<Com
   });
 }
 
+export function deleteCommunityTopic(topicId: string): Promise<{ deleted: true }> {
+  return call<{ deleted: true }>(`/api/community/topics/${encodeURIComponent(topicId)}`, {
+    method: 'DELETE',
+  });
+}
+
 export function addCommunityQuestion(
   topicId: string,
   question: NewCommunityQuestionInput,

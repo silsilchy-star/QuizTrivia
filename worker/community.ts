@@ -247,6 +247,41 @@ export async function handleAddCommunityQuestion(
   return json(payload);
 }
 
+/** 작성자 본인만, 언제든(초안이든 활성이든) 자기 주제를 지울 수 있다.
+ *  FK 제약 때문에 이 주제를 참조하는 행을 전부 먼저 지운 뒤 topics를 지운다. */
+export async function handleDeleteCommunityTopic(env: CommunityEnv, uid: string, topicId: string): Promise<Response> {
+  const topic = await env.DB.prepare(
+    "SELECT author_uid FROM topics WHERE id = ? AND source = 'community'",
+  )
+    .bind(topicId)
+    .first<{ author_uid: string }>();
+  if (!topic) return json({ error: 'community topic not found' }, { status: 404 });
+  if (topic.author_uid !== uid) return json({ error: 'only the topic author can delete it' }, { status: 403 });
+
+  const linked = await env.DB.prepare('SELECT question_id FROM question_topics WHERE topic_id = ?')
+    .bind(topicId)
+    .all<{ question_id: string }>();
+  const questionIds = (linked.results ?? []).map((r) => r.question_id);
+
+  const stmts = [
+    env.DB.prepare('DELETE FROM question_topics WHERE topic_id = ?').bind(topicId),
+    env.DB.prepare('DELETE FROM runs WHERE topic_id = ?').bind(topicId),
+    env.DB.prepare('DELETE FROM topic_best WHERE topic_id = ?').bind(topicId),
+    env.DB.prepare('DELETE FROM topic_best_weekly WHERE topic_id = ?').bind(topicId),
+  ];
+  if (questionIds.length) {
+    const placeholders = questionIds.map(() => '?').join(',');
+    // question_stats도 questions(id)를 참조한다 — 이 문항들이 한 번이라도 출제됐다면
+    // (worker/index.ts의 statsUpdates) 행이 생겨 있으므로 먼저 지워야 FK를 안 어긴다.
+    stmts.push(env.DB.prepare(`DELETE FROM question_stats WHERE question_id IN (${placeholders})`).bind(...questionIds));
+    stmts.push(env.DB.prepare(`DELETE FROM questions WHERE id IN (${placeholders})`).bind(...questionIds));
+  }
+  stmts.push(env.DB.prepare('DELETE FROM topics WHERE id = ?').bind(topicId));
+  await env.DB.batch(stmts);
+
+  return json({ deleted: true });
+}
+
 /** finalizeRun이 랭킹 반영 여부를 결정하려고 부른다 (worker/index.ts). */
 export async function isRankedTopic(env: CommunityEnv, topicId: string): Promise<boolean> {
   const row = await env.DB.prepare('SELECT source FROM topics WHERE id = ?').bind(topicId).first<{ source: string }>();

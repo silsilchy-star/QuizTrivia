@@ -37,3 +37,15 @@ export function submitStage(runId: string, answers: SubmittedAnswer[]): Promise<
     body: JSON.stringify({ answers }),
   });
 }
+
+/** OAuth는 최상위 리다이렉트가 필요해 fetch가 아니라 실제 페이지 이동으로 시작한다. */
+export function goToGoogleLogin(): void {
+  window.location.href = '/api/auth/google';
+}
+
+export function setNickname(nickname: string): Promise<{ nickname: string }> {
+  return call<{ nickname: string }>('/api/nickname', {
+    method: 'POST',
+    body: JSON.stringify({ nickname }),
+  });
+}

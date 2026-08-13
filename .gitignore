@@ -5,3 +5,4 @@ dist/
 *.tsbuildinfo
 .wrangler/
 db/seed.generated.sql
+.dev.vars

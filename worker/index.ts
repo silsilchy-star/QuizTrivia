@@ -10,10 +10,13 @@ import type {
   Topic,
 } from '../src/types';
 import { TOTAL_STAGES } from '../src/types';
+import { handleAuthGoogleCallback, handleAuthGoogleStart, handleSetNickname } from './auth';
 
 export interface Env {
   DB: D1Database;
   ASSETS: Fetcher;
+  GOOGLE_CLIENT_ID: string;
+  GOOGLE_CLIENT_SECRET: string;
 }
 
 /** PLAN 4.2절 */
@@ -53,8 +56,15 @@ async function resolveUid(request: Request, env: Env): Promise<string | null> {
 }
 
 async function handleSession(request: Request, env: Env): Promise<Response> {
-  const existing = await resolveUid(request, env);
-  if (existing) return json({ uid: existing });
+  const existingUid = getCookie(request, SESSION_COOKIE);
+  if (existingUid) {
+    const row = await env.DB.prepare('SELECT uid, is_anonymous, nickname FROM users WHERE uid = ?')
+      .bind(existingUid)
+      .first<{ uid: string; is_anonymous: number; nickname: string | null }>();
+    if (row) {
+      return json({ uid: row.uid, isAnonymous: !!row.is_anonymous, nickname: row.nickname });
+    }
+  }
 
   const uid = crypto.randomUUID();
   const now = new Date().toISOString();
@@ -65,7 +75,7 @@ async function handleSession(request: Request, env: Env): Promise<Response> {
     .run();
 
   return json(
-    { uid },
+    { uid, isAnonymous: true, nickname: null },
     {
       headers: {
         'Set-Cookie': `${SESSION_COOKIE}=${uid}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=${SESSION_MAX_AGE}`,
@@ -422,6 +432,22 @@ export default {
       const uid = await resolveUid(request, env);
       if (!uid) return json({ error: 'no session' }, { status: 401 });
       return handleSubmitStage(request, env, uid, submitMatch[1]);
+    }
+
+    if (path === '/api/auth/google' && request.method === 'GET') {
+      const uid = await resolveUid(request, env);
+      if (!uid) return json({ error: 'no session' }, { status: 401 });
+      return handleAuthGoogleStart(request, env, uid);
+    }
+
+    if (path === '/api/auth/google/callback' && request.method === 'GET') {
+      return handleAuthGoogleCallback(request, env);
+    }
+
+    if (path === '/api/nickname' && request.method === 'POST') {
+      const uid = await resolveUid(request, env);
+      if (!uid) return json({ error: 'no session' }, { status: 401 });
+      return handleSetNickname(request, env, uid);
     }
 
     if (path.startsWith('/api/')) {

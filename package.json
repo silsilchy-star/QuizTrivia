@@ -15,6 +15,7 @@
     "db:local": "npm run build:seed && wrangler d1 execute quiztrivia --local --file=db/schema.sql && wrangler d1 execute quiztrivia --local --file=db/seed.generated.sql"
   },
   "dependencies": {
+    "arctic": "^3.7.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

@@ -31,5 +31,9 @@ jobs:
         run: npx wrangler d1 execute quiztrivia --remote --yes --file=db/seed.generated.sql
       - name: Build frontend
         run: npm run build
+      - name: Set Google OAuth secrets
+        run: |
+          echo "${{ secrets.GOOGLE_CLIENT_ID }}" | npx wrangler secret put GOOGLE_CLIENT_ID
+          echo "${{ secrets.GOOGLE_CLIENT_SECRET }}" | npx wrangler secret put GOOGLE_CLIENT_SECRET
       - name: Deploy Worker
         run: npx wrangler deploy

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { ensureSession, getTopics, startRun, submitStage } from './api';
-import type { RunFinalSummary, ServedQuestion, SubmitStageResponse, Topic } from './types';
+import { ensureSession, getTopics, goToGoogleLogin, setNickname, startRun, submitStage } from './api';
+import type { RunFinalSummary, SessionResponse, ServedQuestion, SubmitStageResponse, Topic } from './types';
 import './App.css';
 
 interface RunState {
@@ -20,16 +20,28 @@ type Screen =
   | { kind: 'stageResult'; run: RunState; result: SubmitStageResponse }
   | { kind: 'final'; topicName: string; result: RunFinalSummary };
 
+/** URL의 ?auth= 결과를 한 번만 읽고 지운다 (OAuth 콜백 리다이렉트가 남긴 신호). */
+function readAuthNotice(): string | null {
+  const params = new URLSearchParams(location.search);
+  const auth = params.get('auth');
+  if (!auth) return null;
+  history.replaceState(null, '', location.pathname);
+  if (auth === 'linked') return '로그인 완료 — 기존 플레이 기록이 그대로 이어집니다.';
+  if (auth === 'switched') return '이 구글 계정은 이미 다른 기록과 연결되어 있어 그 계정으로 전환했습니다.';
+  return '로그인 중 문제가 발생했습니다. 다시 시도해 주세요.';
+}
+
 function App() {
-  const [uid, setUid] = useState<string | null>(null);
+  const [session, setSession] = useState<SessionResponse | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
   const [topics, setTopics] = useState<Topic[]>([]);
   const [screen, setScreen] = useState<Screen>({ kind: 'loading' });
 
   useEffect(() => {
+    setNotice(readAuthNotice());
     (async () => {
       try {
-        const session = await ensureSession();
-        setUid(session.uid);
+        setSession(await ensureSession());
         setTopics(await getTopics());
         setScreen({ kind: 'topics' });
       } catch (err) {
@@ -37,6 +49,11 @@ function App() {
       }
     })();
   }, []);
+
+  async function onSaveNickname(name: string) {
+    const res = await setNickname(name);
+    setSession((prev) => (prev ? { ...prev, nickname: res.nickname } : prev));
+  }
 
   async function onPick(topic: Topic) {
     setScreen({ kind: 'loading' });
@@ -84,8 +101,17 @@ function App() {
     <main>
       <header>
         <h1>QuizTrivia</h1>
-        {uid && <p className="uid">uid {uid.slice(0, 8)}…</p>}
+        <AuthStatus session={session} onSaveNickname={onSaveNickname} />
       </header>
+
+      {notice && (
+        <p className="notice">
+          {notice}
+          <button className="dismiss" onClick={() => setNotice(null)} aria-label="닫기">
+            ×
+          </button>
+        </p>
+      )}
 
       {screen.kind === 'loading' && <p>불러오는 중…</p>}
 
@@ -114,10 +140,66 @@ function App() {
         <Final
           topicName={screen.topicName}
           result={screen.result}
+          session={session}
           onAgain={() => setScreen({ kind: 'topics' })}
         />
       )}
     </main>
+  );
+}
+
+function AuthStatus({
+  session,
+  onSaveNickname,
+}: {
+  session: SessionResponse | null;
+  onSaveNickname: (name: string) => Promise<void>;
+}) {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState('');
+  const [saving, setSaving] = useState(false);
+
+  if (!session) return null;
+
+  if (session.isAnonymous) {
+    return (
+      <button className="ghost" onClick={() => goToGoogleLogin()}>
+        구글로 랭킹 등록
+      </button>
+    );
+  }
+
+  if (!session.nickname || editing) {
+    return (
+      <form
+        className="nickname-form"
+        onSubmit={async (e) => {
+          e.preventDefault();
+          if (!draft.trim()) return;
+          setSaving(true);
+          await onSaveNickname(draft.trim());
+          setSaving(false);
+          setEditing(false);
+        }}
+      >
+        <input
+          value={draft}
+          onChange={(e) => setDraft(e.target.value)}
+          placeholder="닉네임"
+          maxLength={20}
+          autoFocus={editing}
+        />
+        <button type="submit" disabled={saving || !draft.trim()}>
+          저장
+        </button>
+      </form>
+    );
+  }
+
+  return (
+    <button className="ghost" onClick={() => { setDraft(session.nickname ?? ''); setEditing(true); }}>
+      {session.nickname}님
+    </button>
   );
 }
 
@@ -262,10 +344,12 @@ function StageResult({
 function Final({
   topicName,
   result,
+  session,
   onAgain,
 }: {
   topicName: string;
   result: RunFinalSummary;
+  session: SessionResponse | null;
   onAgain: () => void;
 }) {
   const complete = result.stagesCleared >= 12;
@@ -280,6 +364,15 @@ function Final({
       <p className="meta">
         이 주제 최고 {result.topicBestScore}점 · 통합 {result.globalScore}점
       </p>
+      {session?.isAnonymous && (
+        <p className="hint">
+          지금은 익명 기록입니다.{' '}
+          <button className="link" onClick={() => goToGoogleLogin()}>
+            구글로 로그인
+          </button>
+          하면 이 기록 그대로 랭킹에 올릴 수 있어요.
+        </p>
+      )}
       <button className="primary" onClick={onAgain}>
         다시 하기
       </button>

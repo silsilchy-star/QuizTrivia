@@ -76,4 +76,6 @@ export interface SubmitStageResponse {
 
 export interface SessionResponse {
   uid: string;
+  isAnonymous: boolean;
+  nickname: string | null;
 }

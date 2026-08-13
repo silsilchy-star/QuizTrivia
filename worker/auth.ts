@@ -2,6 +2,7 @@
 // 토큰 교환)만 Arctic에 맡기고, 계정 승계 로직은 우리 스키마에 맞게 직접 짠다 —
 // 이건 어떤 라이브러리도 대신해주지 않는 우리 프로젝트 고유의 부분이다.
 import { Google, generateCodeVerifier, generateState } from 'arctic';
+import { refreshGlobalCaches } from './ranking';
 
 export interface AuthEnv {
   DB: D1Database;
@@ -113,6 +114,10 @@ export async function handleAuthGoogleCallback(request: Request, env: AuthEnv): 
       .bind(profile.sub, profile.email ?? null, now, saved.uid)
       .run();
   }
+
+  // 로그인 순간 이 uid가 처음으로 랭킹 집계 대상(is_anonymous=0)이 되므로,
+  // 익명일 때 쌓아둔 기존 최고점이 다음 판을 기다리지 않고 바로 반영되게 한다.
+  await refreshGlobalCaches(env, now);
 
   const headers = new Headers({ Location: `/?auth=${outcome}` });
   headers.append('Set-Cookie', clearOauth);

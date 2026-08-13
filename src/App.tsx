@@ -247,7 +247,6 @@ function TopicList({ topics, onPick }: { topics: Topic[]; onPick: (topic: Topic)
           <li key={t.id}>
             <button onClick={() => onPick(t)}>
               <strong>{t.name}</strong>
-              <span>{t.tagline}</span>
             </button>
           </li>
         ))}

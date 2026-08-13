@@ -1,70 +1,40 @@
 // 게임 루프 통합 테스트 — 워커를 실제로 fetch해서 세션부터 판 종료까지 돌린다.
 // 특히 서버 채점(PLAN 7.5절 A안)의 보안 속성을 검증한다: 정답이 채점 전에
 // 클라이언트로 새지 않는가, 서버가 내지 않은 문항을 제출할 수 있는가.
-import { SELF, env } from 'cloudflare:test';
+import { env } from 'cloudflare:test';
 import { beforeEach, describe, expect, it } from 'vitest';
 import type { ServedQuestion, StartRunResponse, SubmitStageResponse } from '../src/types';
-import { createPlayableTopic, createQuestion, createTopic } from './helpers';
-
-/** SELF.fetch에는 쿠키 저장소가 없으므로 직접 들고 다닌다. */
-class Client {
-  cookie = '';
-
-  async fetch(path: string, init?: RequestInit): Promise<Response> {
-    const headers = new Headers(init?.headers);
-    headers.set('Content-Type', 'application/json');
-    if (this.cookie) headers.set('Cookie', this.cookie);
-    const res = await SELF.fetch(`https://example.com${path}`, { ...init, headers, redirect: 'manual' });
-    const setCookie = res.headers.get('Set-Cookie');
-    if (setCookie) {
-      const session = setCookie.match(/session=([^;]*)/);
-      if (session) this.cookie = `session=${session[1]}`;
-    }
-    return res;
-  }
-
-  async json<T>(path: string, init?: RequestInit): Promise<T> {
-    const res = await this.fetch(path, init);
-    return (await res.json()) as T;
-  }
-
-  get uid(): string {
-    return this.cookie.replace('session=', '');
-  }
-}
-
-async function newSession(): Promise<Client> {
-  const client = new Client();
-  await client.fetch('/api/session', { method: 'POST' });
-  return client;
-}
-
-/** 낸 문항들의 정답을 DB에서 직접 읽어온다 — "정답을 아는 플레이어" 역할. */
-async function answerKeyFor(questionIds: string[]): Promise<Map<string, string>> {
-  const placeholders = questionIds.map(() => '?').join(',');
-  const { results } = await env.DB.prepare(`SELECT id, answer FROM questions WHERE id IN (${placeholders})`)
-    .bind(...questionIds)
-    .all<{ id: string; answer: string }>();
-  return new Map((results ?? []).map((r) => [r.id, r.answer]));
-}
+import {
+  Client,
+  answerKeyFor,
+  createPlayableTopic,
+  createQuestion,
+  createTopic,
+  newSession,
+} from './helpers';
 
 describe('세션', () => {
-  it('처음 부르면 익명 uid와 쿠키를 발급한다', async () => {
+  it('처음 부르면 익명 세션과 쿠키를 발급한다', async () => {
     const client = new Client();
     const res = await client.fetch('/api/session', { method: 'POST' });
-    const body = (await res.json()) as { uid: string; isAnonymous: boolean };
     expect(res.status).toBe(200);
-    expect(body.isAnonymous).toBe(true);
-    expect(body.uid).toMatch(/^[0-9a-f-]{36}$/);
-    expect(res.headers.get('Set-Cookie')).toContain('HttpOnly');
-    expect(res.headers.get('Set-Cookie')).toContain('SameSite=Lax');
+    expect(await res.json()).toEqual({ isAnonymous: true, nickname: null });
+    const cookie = res.headers.get('Set-Cookie');
+    expect(cookie).toContain('HttpOnly');
+    expect(cookie).toContain('Secure');
+    expect(cookie).toContain('SameSite=Lax');
   });
 
-  it('쿠키를 들고 다시 부르면 같은 uid를 돌려준다 — 매번 새 계정을 만들지 않는다', async () => {
+  it('쿠키를 들고 다시 부르면 같은 계정을 유지한다 — 매번 새 계정을 만들지 않는다', async () => {
     const client = await newSession();
     const first = client.uid;
-    const body = await client.json<{ uid: string }>('/api/session', { method: 'POST' });
-    expect(body.uid).toBe(first);
+    await client.json('/api/session', { method: 'POST' });
+    expect(client.uid).toBe(first);
+
+    const count = await env.DB.prepare('SELECT COUNT(*) AS n FROM users WHERE uid = ?')
+      .bind(first)
+      .first<{ n: number }>();
+    expect(count?.n).toBe(1);
   });
 
   it('세션 없이 판을 시작할 수 없다', async () => {

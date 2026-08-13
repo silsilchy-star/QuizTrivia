@@ -10,6 +10,7 @@ declare namespace Cloudflare {
     ASSETS: Fetcher;
     GOOGLE_CLIENT_ID: string;
     GOOGLE_CLIENT_SECRET: string;
+    SESSION_SECRET: string;
     /** vitest.config.ts에서 readD1Migrations()로 읽어 넘긴 마이그레이션 목록. */
     TEST_MIGRATIONS: import('cloudflare:test').D1Migration[];
   }

@@ -96,8 +96,9 @@ export interface NewCommunityQuestionInput {
   imageUrl: string | null;
 }
 
+/** uid는 일부러 내려주지 않는다 — 화면이 쓰지 않을뿐더러, 클라이언트가 uid를
+ *  알 이유가 없다. 세션은 서명된 쿠키로만 식별한다 (worker/session.ts). */
 export interface SessionResponse {
-  uid: string;
   isAnonymous: boolean;
   nickname: string | null;
 }

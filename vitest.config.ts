@@ -14,6 +14,8 @@ export default defineConfig({
           TEST_MIGRATIONS: migrations,
           GOOGLE_CLIENT_ID: 'test-client-id',
           GOOGLE_CLIENT_SECRET: 'test-client-secret',
+          // 프로덕션과 같은 조건으로 — 서명이 켜진 상태에서 테스트한다.
+          SESSION_SECRET: 'test-session-secret-do-not-use-in-production',
         },
       },
     }),

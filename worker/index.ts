@@ -19,12 +19,15 @@ import {
   handleListCommunityTopics,
   isRankedTopic,
 } from './community';
+import { issueToken, readSessionCookie, sessionCookie, verifyToken } from './session';
 
 export interface Env {
   DB: D1Database;
   ASSETS: Fetcher;
   GOOGLE_CLIENT_ID: string;
   GOOGLE_CLIENT_SECRET: string;
+  /** 세션 쿠키 서명용. 없으면 서명 없이(옛 방식으로) 동작한다 — worker/session.ts */
+  SESSION_SECRET?: string;
 }
 
 /** PLAN 4.2절 */
@@ -32,9 +35,6 @@ const QUESTIONS_PER_STAGE = 5;
 const CLEAR_THRESHOLD = 4;
 /** PLAN 5.1절 만점. 7.5절에 따라 서버에서 상한을 검증한다. */
 const MAX_RUN_SCORE = 1500;
-
-const SESSION_COOKIE = 'session';
-const SESSION_MAX_AGE = 60 * 60 * 24 * 365;
 
 /** 스테이지 1~3은 난이도1, 4~6은 난이도2, ... (PLAN 4.2절) */
 export function difficultyForStage(stage: number): Difficulty {
@@ -48,29 +48,33 @@ function json(body: unknown, init?: ResponseInit): Response {
   });
 }
 
-function getCookie(request: Request, name: string): string | null {
-  const cookie = request.headers.get('Cookie');
-  if (!cookie) return null;
-  const match = cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
-  return match ? decodeURIComponent(match[1]) : null;
-}
-
-/** 쿠키의 uid만 신뢰한다. 클라이언트가 본문으로 보내는 uid는 절대 쓰지 않는다. */
+/** 쿠키의 서명된 토큰만 신뢰한다. 클라이언트가 본문으로 보내는 uid는 절대 쓰지 않는다. */
 async function resolveUid(request: Request, env: Env): Promise<string | null> {
-  const uid = getCookie(request, SESSION_COOKIE);
-  if (!uid) return null;
-  const row = await env.DB.prepare('SELECT uid FROM users WHERE uid = ?').bind(uid).first();
-  return row ? uid : null;
+  const token = readSessionCookie(request);
+  if (!token) return null;
+  const session = await verifyToken(env, token);
+  if (!session) return null;
+  // 서명이 맞아도 그 사이 계정이 사라졌을 수 있다.
+  const row = await env.DB.prepare('SELECT uid FROM users WHERE uid = ?').bind(session.uid).first();
+  return row ? session.uid : null;
 }
 
 async function handleSession(request: Request, env: Env): Promise<Response> {
-  const existingUid = getCookie(request, SESSION_COOKIE);
-  if (existingUid) {
+  const token = readSessionCookie(request);
+  const existing = token ? await verifyToken(env, token) : null;
+
+  if (existing) {
     const row = await env.DB.prepare('SELECT uid, is_anonymous, nickname FROM users WHERE uid = ?')
-      .bind(existingUid)
+      .bind(existing.uid)
       .first<{ uid: string; is_anonymous: number; nickname: string | null }>();
     if (row) {
-      return json({ uid: row.uid, isAnonymous: !!row.is_anonymous, nickname: row.nickname });
+      const body = { isAnonymous: !!row.is_anonymous, nickname: row.nickname };
+      // 서명 없는 옛 쿠키이거나 수명이 절반 아래로 내려갔으면 갈아끼워준다.
+      // 이게 기존 사용자를 로그아웃시키지 않고 서명 방식으로 옮기는 통로다.
+      if (existing.legacy || existing.stale) {
+        return json(body, { headers: { 'Set-Cookie': sessionCookie(await issueToken(env, row.uid)) } });
+      }
+      return json(body);
     }
   }
 
@@ -83,12 +87,8 @@ async function handleSession(request: Request, env: Env): Promise<Response> {
     .run();
 
   return json(
-    { uid, isAnonymous: true, nickname: null },
-    {
-      headers: {
-        'Set-Cookie': `${SESSION_COOKIE}=${uid}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=${SESSION_MAX_AGE}`,
-      },
-    },
+    { isAnonymous: true, nickname: null },
+    { headers: { 'Set-Cookie': sessionCookie(await issueToken(env, uid)) } },
   );
 }
 

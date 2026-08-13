@@ -1,7 +1,7 @@
 // 테스트 공용 유틸. 여기 있는 것들은 "테스트가 자기 데이터를 직접 만든다"는
 // 원칙을 위한 도구다 — 공식 콘텐츠(data/*.json)에 의존하면 문항이 늘거나 바뀔
 // 때마다 무관한 테스트가 깨진다.
-import { env } from 'cloudflare:test';
+import { SELF, env } from 'cloudflare:test';
 import type { Difficulty, QuestionType } from '../src/types';
 
 /** `--` 주석을 걷어내고 세미콜론 단위로 자른다. D1의 exec()는 statement가 한
@@ -104,7 +104,8 @@ export async function createUser(opts: {
   nickname?: string | null;
   isAnonymous?: boolean;
 } = {}): Promise<string> {
-  const uid = opts.uid ?? uniqueId('uid');
+  // 워커가 발급하는 것과 같은 uuid 형식이어야 한다 — 세션 토큰 검증이 형식을 본다.
+  const uid = opts.uid ?? crypto.randomUUID();
   await env.DB.prepare(
     `INSERT INTO users (uid, nickname, is_anonymous, global_score, play_count, created_at, updated_at)
      VALUES (?, ?, ?, 0, 0, ?, ?)`,
@@ -112,4 +113,57 @@ export async function createUser(opts: {
     .bind(uid, opts.nickname ?? null, opts.isAnonymous === false ? 0 : 1, NOW, NOW)
     .run();
   return uid;
+}
+
+/** 워커를 실제로 fetch하는 클라이언트. SELF.fetch에는 쿠키 저장소가 없으므로
+ *  직접 들고 다닌다. 세션 쿠키는 이제 서명된 토큰이라 uid와 같지 않다. */
+export class Client {
+  cookie = '';
+
+  async fetch(path: string, init?: RequestInit): Promise<Response> {
+    const headers = new Headers(init?.headers);
+    headers.set('Content-Type', 'application/json');
+    if (this.cookie) headers.set('Cookie', this.cookie);
+    const res = await SELF.fetch(`https://example.com${path}`, { ...init, headers, redirect: 'manual' });
+    const setCookie = res.headers.get('Set-Cookie');
+    if (setCookie) {
+      const session = setCookie.match(/session=([^;]*)/);
+      if (session) this.cookie = `session=${session[1]}`;
+    }
+    return res;
+  }
+
+  async json<T>(path: string, init?: RequestInit): Promise<T> {
+    return (await (await this.fetch(path, init))).json() as Promise<T>;
+  }
+
+  /** 토큰에서 uid를 꺼낸다 — 테스트가 DB를 직접 확인할 때 쓴다. */
+  get uid(): string {
+    const token = this.cookie.replace('session=', '');
+    const parts = token.split('.');
+    return parts.length === 4 ? parts[1] : token;
+  }
+}
+
+export async function newSession(): Promise<Client> {
+  const client = new Client();
+  await client.fetch('/api/session', { method: 'POST' });
+  return client;
+}
+
+/** 구글 로그인을 흉내 낸다 — OAuth 왕복 없이 계정 승계 이후 상태만 만든다. */
+export async function logIn(client: Client, nickname: string): Promise<void> {
+  await env.DB.prepare('UPDATE users SET is_anonymous = 0, google_sub = ?, updated_at = ? WHERE uid = ?')
+    .bind(uniqueId('sub'), new Date().toISOString(), client.uid)
+    .run();
+  await client.fetch('/api/nickname', { method: 'POST', body: JSON.stringify({ nickname }) });
+}
+
+/** 낸 문항들의 정답을 DB에서 직접 읽어온다 — "정답을 아는 플레이어" 역할. */
+export async function answerKeyFor(questionIds: string[]): Promise<Map<string, string>> {
+  const placeholders = questionIds.map(() => '?').join(',');
+  const { results } = await env.DB.prepare(`SELECT id, answer FROM questions WHERE id IN (${placeholders})`)
+    .bind(...questionIds)
+    .all<{ id: string; answer: string }>();
+  return new Map((results ?? []).map((r) => [r.id, r.answer]));
 }

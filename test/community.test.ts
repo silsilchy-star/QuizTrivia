@@ -5,7 +5,7 @@
 // 랭킹 전체의 신뢰가 무너지기 때문이다. 그 경계가 코드 여기저기에
 // 흩어져 있어서(finalizeRun / isRankedTopic / handleTopics), 테스트로
 // 못을 박아 둔다.
-import { SELF, env } from 'cloudflare:test';
+import { env } from 'cloudflare:test';
 import { describe, expect, it } from 'vitest';
 import type {
   RankingBoardResponse,
@@ -13,7 +13,7 @@ import type {
   StartRunResponse,
   SubmitStageResponse,
 } from '../src/types';
-import { createPlayableTopic, createTopic, uniqueId } from './helpers';
+import { Client, createPlayableTopic, createTopic, logIn, newSession } from './helpers';
 
 /** RunFinalSummary는 ranked로 갈라지는 판별 유니온이다 — 랭킹 필드를 보려면
  *  먼저 ranked=true임을 확인해야 한다. 타입 자체가 경계선을 강제한다. */
@@ -21,45 +21,6 @@ function expectRanked(final: RunFinalSummary | undefined) {
   expect(final).toBeDefined();
   if (!final?.ranked) throw new Error('랭킹 반영된 판이 아니다');
   return final;
-}
-
-class Client {
-  cookie = '';
-
-  async fetch(path: string, init?: RequestInit): Promise<Response> {
-    const headers = new Headers(init?.headers);
-    headers.set('Content-Type', 'application/json');
-    if (this.cookie) headers.set('Cookie', this.cookie);
-    const res = await SELF.fetch(`https://example.com${path}`, { ...init, headers, redirect: 'manual' });
-    const setCookie = res.headers.get('Set-Cookie');
-    if (setCookie) {
-      const session = setCookie.match(/session=([^;]*)/);
-      if (session) this.cookie = `session=${session[1]}`;
-    }
-    return res;
-  }
-
-  async json<T>(path: string, init?: RequestInit): Promise<T> {
-    return (await (await this.fetch(path, init)).json()) as T;
-  }
-
-  get uid(): string {
-    return this.cookie.replace('session=', '');
-  }
-}
-
-async function newSession(): Promise<Client> {
-  const client = new Client();
-  await client.fetch('/api/session', { method: 'POST' });
-  return client;
-}
-
-/** 구글 로그인을 흉내 낸다 — OAuth 왕복 없이 계정 승계 이후 상태만 만든다. */
-async function logIn(client: Client, nickname: string): Promise<void> {
-  await env.DB.prepare('UPDATE users SET is_anonymous = 0, google_sub = ?, updated_at = ? WHERE uid = ?')
-    .bind(uniqueId('sub'), new Date().toISOString(), client.uid)
-    .run();
-  await client.fetch('/api/nickname', { method: 'POST', body: JSON.stringify({ nickname }) });
 }
 
 /** 주제를 끝까지(또는 실패할 때까지) 플레이하고 최종 요약을 돌려준다. */

@@ -54,16 +54,20 @@ typecheck → test → validate → seed 생성 → 프론트 빌드 → 워커 
 
 ## 스키마를 바꿔야 할 때
 
-**`db/schema.sql`에는 절대 `DROP TABLE`을 쓰지 않는다.** 이 파일은 배포마다 재실행되는 멱등 베이스라인이라, 여기 있던 DROP이 실사용자 데이터를 여러 번 지운 사고가 있었다 (`docs/2026-08-13-critical-schema-drop-fix.md`).
+`db/schema.sql`은 **빈 DB를 지금 상태로 만드는 베이스라인**이고, 배포마다 그대로 재실행된다. 전부 `CREATE TABLE IF NOT EXISTS`라서 **이미 테이블이 있는 DB에서는 한 줄도 실행되지 않는다** — 즉 여기를 고쳐도 돌아가는 DB는 안 바뀐다.
 
-스키마 변경은 `migrations/`에 새 파일로 추가한다:
+**`db/schema.sql`에는 절대 `DROP TABLE`을 쓰지 않는다.** 여기 있던 DROP이 실사용자 데이터를 여러 배포에 걸쳐 지운 사고가 있었다 (`docs/2026-08-13-critical-schema-drop-fix.md`).
+
+실제 스키마 변경은 `migrations/`에 새 파일로 추가한다:
 
 ```bash
 npx wrangler d1 migrations create quiztrivia <설명>
 npx wrangler d1 migrations apply quiztrivia --local   # 로컬에서 먼저 검증
 ```
 
-`CHECK` 제약을 넓혀야 하면(예: enum 값 추가) `ALTER TABLE`로는 안 되고 테이블 재생성이 필요하다. D1은 참조당하는 테이블의 DROP을 막으므로, **자식 테이블의 FK 선언을 먼저 없앤 뒤에야** 대상 테이블을 재생성할 수 있다 — `migrations/0002_add_text_input_and_images.sql`에 실제 절차가 있다.
+`CHECK` 제약을 넓혀야 하면(예: enum 값 추가) `ALTER TABLE`로는 안 되고 테이블 재생성이 필요하다. D1은 참조당하는 테이블의 DROP을 막으므로, **자식 테이블의 FK 선언을 먼저 없앤 뒤에야** 대상 테이블을 재생성할 수 있다 — `db/migrations-archive/0002_add_text_input_and_images.sql`에 실제 절차가 남아있다.
+
+`npm test`가 매번 빈 D1에 `schema.sql` → `migrations/`를 순서대로 적용하고 결과 스키마를 검증하므로(`test/schema.test.ts`), 베이스라인과 실제가 갈라지면 테스트에서 걸린다.
 
 ## 문서
 

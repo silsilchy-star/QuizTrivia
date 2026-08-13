@@ -3,29 +3,22 @@
 // 이건 어떤 라이브러리도 대신해주지 않는 우리 프로젝트 고유의 부분이다.
 import { Google, generateCodeVerifier, generateState } from 'arctic';
 import { refreshGlobalCaches } from './ranking';
+import { getCookie, issueToken, readSessionCookie, sessionCookie, verifyToken } from './session';
 
 export interface AuthEnv {
   DB: D1Database;
   GOOGLE_CLIENT_ID: string;
   GOOGLE_CLIENT_SECRET: string;
+  SESSION_SECRET?: string;
 }
 
 const OAUTH_COOKIE = 'oauth';
-const SESSION_COOKIE = 'session';
-const SESSION_MAX_AGE = 60 * 60 * 24 * 365;
 
 function json(body: unknown, init?: ResponseInit): Response {
   return new Response(JSON.stringify(body), {
     ...init,
     headers: { 'Content-Type': 'application/json', ...(init?.headers ?? {}) },
   });
-}
-
-function getCookie(request: Request, name: string): string | null {
-  const cookie = request.headers.get('Cookie');
-  if (!cookie) return null;
-  const match = cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
-  return match ? decodeURIComponent(match[1]) : null;
 }
 
 function googleClient(env: AuthEnv, request: Request): Google {
@@ -40,14 +33,20 @@ function redirectHome(reason: string, extraCookie: string): Response {
   });
 }
 
-/** 익명으로 플레이하던 uid를 그대로 유지한 채, 로그인 시작 시점을 쿠키에 남긴다. */
-export async function handleAuthGoogleStart(request: Request, env: AuthEnv, uid: string): Promise<Response> {
+/** 익명으로 플레이하던 uid는 세션 쿠키가 이미 들고 있다. 여기서는 CSRF 방어용
+ *  state와 PKCE verifier만 남긴다.
+ *
+ *  ⚠ 예전에는 이 쿠키에 uid도 같이 넣고 콜백이 그 값을 그대로 믿었다. 이 쿠키는
+ *  서명되지 않으므로, 남의 uid를 적어 넣고 자기 구글 계정으로 로그인하면 그
+ *  계정에 자기 google_sub가 연결되고 세션까지 넘어왔다 — 계정 탈취다. 이제
+ *  uid는 서명된 세션 쿠키에서만 읽는다. */
+export async function handleAuthGoogleStart(request: Request, env: AuthEnv, _uid: string): Promise<Response> {
   const google = googleClient(env, request);
   const state = generateState();
   const codeVerifier = generateCodeVerifier();
   const url = google.createAuthorizationURL(state, codeVerifier, ['openid', 'email']);
 
-  const payload = encodeURIComponent(JSON.stringify({ state, codeVerifier, uid }));
+  const payload = encodeURIComponent(JSON.stringify({ state, codeVerifier }));
   return new Response(null, {
     status: 302,
     headers: {
@@ -66,13 +65,19 @@ export async function handleAuthGoogleCallback(request: Request, env: AuthEnv): 
 
   if (!code || !state || !raw) return redirectHome('missing_params', clearOauth);
 
-  let saved: { state: string; codeVerifier: string; uid: string };
+  let saved: { state: string; codeVerifier: string };
   try {
     saved = JSON.parse(decodeURIComponent(raw));
   } catch {
     return redirectHome('bad_cookie', clearOauth);
   }
-  if (saved.state !== state) return redirectHome('state_mismatch', clearOauth);
+  if (!saved.state || saved.state !== state) return redirectHome('state_mismatch', clearOauth);
+
+  // 승계 대상 uid는 서명된 세션 쿠키에서만 읽는다 — 클라이언트가 고를 수 없다.
+  const token = readSessionCookie(request);
+  const current = token ? await verifyToken(env, token) : null;
+  if (!current) return redirectHome('no_session', clearOauth);
+  const currentUid = current.uid;
 
   const google = googleClient(env, request);
   let accessToken: string;
@@ -95,10 +100,10 @@ export async function handleAuthGoogleCallback(request: Request, env: AuthEnv): 
   // "기존 계정 기록 유지 · 익명 기록 폐기" (PLAN 5.4절 MVP 결정) — 지금 세션의
   // 익명 uid는 그냥 버려진다(별도 삭제 없이 더 이상 어떤 쿠키도 가리키지 않게 됨).
   const existing = await env.DB.prepare('SELECT uid FROM users WHERE google_sub = ? AND uid != ?')
-    .bind(profile.sub, saved.uid)
+    .bind(profile.sub, currentUid)
     .first<{ uid: string }>();
 
-  let finalUid = saved.uid;
+  let finalUid = currentUid;
   let outcome: 'linked' | 'switched' = 'linked';
 
   if (existing) {
@@ -111,7 +116,7 @@ export async function handleAuthGoogleCallback(request: Request, env: AuthEnv): 
     await env.DB.prepare(
       'UPDATE users SET google_sub = ?, email = ?, is_anonymous = 0, updated_at = ? WHERE uid = ?',
     )
-      .bind(profile.sub, profile.email ?? null, now, saved.uid)
+      .bind(profile.sub, profile.email ?? null, now, currentUid)
       .run();
   }
 
@@ -121,10 +126,7 @@ export async function handleAuthGoogleCallback(request: Request, env: AuthEnv): 
 
   const headers = new Headers({ Location: `/?auth=${outcome}` });
   headers.append('Set-Cookie', clearOauth);
-  headers.append(
-    'Set-Cookie',
-    `${SESSION_COOKIE}=${finalUid}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=${SESSION_MAX_AGE}`,
-  );
+  headers.append('Set-Cookie', sessionCookie(await issueToken(env, finalUid)));
   return new Response(null, { status: 302, headers });
 }
 

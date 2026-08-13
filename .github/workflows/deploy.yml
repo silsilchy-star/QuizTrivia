@@ -75,5 +75,12 @@ jobs:
         run: |
           echo "${{ secrets.GOOGLE_CLIENT_ID }}" | npx wrangler secret put GOOGLE_CLIENT_ID
           echo "${{ secrets.GOOGLE_CLIENT_SECRET }}" | npx wrangler secret put GOOGLE_CLIENT_SECRET
+
+      # 세션 쿠키 서명용 비밀키. 아직 설정 전이면 건너뛴다 — 워커는 비밀키가
+      # 없으면 서명 없이(옛 방식으로) 동작하므로 배포가 깨지지 않는다.
+      # ⚠ 이 비밀키를 바꾸면 모든 세션이 무효가 되어 전원 로그아웃된다.
+      - name: Set session signing secret
+        if: ${{ secrets.SESSION_SECRET != '' }}
+        run: echo "${{ secrets.SESSION_SECRET }}" | npx wrangler secret put SESSION_SECRET
       - name: Deploy Worker
         run: npx wrangler deploy

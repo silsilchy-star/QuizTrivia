@@ -15,7 +15,7 @@ import {
   normalize,
 } from './lib.mjs';
 
-const TYPES = ['MULTIPLE_CHOICE', 'NUMERIC_INPUT'];
+const TYPES = ['MULTIPLE_CHOICE', 'NUMERIC_INPUT', 'TEXT_INPUT'];
 const STATUSES = ['pending', 'approved', 'rejected'];
 /** PLAN 6.4절 ③ — 최상급 표현은 측정 기준에 따라 답이 갈린다. */
 const SUPERLATIVE = ['가장', '최고', '제일', '최대', '최소'];
@@ -50,9 +50,10 @@ for (const q of questions) {
   if (!q.explanation?.trim()) err(id, 'explanation이 비었다 (학습 목적상 필수)');
   if (typeof q.answer !== 'string' || !q.answer.trim()) err(id, 'answer가 비었다');
 
-  // 중복 문항 (PLAN 6.6절 [3])
+  // 중복 문항 (PLAN 6.6절 [3]) — 이미지 문제는 문구가 똑같아도 사진이 다르면
+  // 다른 문항이다(사진이 실제 출제 내용). imageUrl까지 같아야 진짜 중복으로 본다.
   if (q.body) {
-    const key = normalize(q.body);
+    const key = `${normalize(q.body)}|${q.imageUrl ?? ''}`;
     if (seenBody.has(key)) err(id, `문항 중복 — ${seenBody.get(key)} 와 사실상 같음`);
     else seenBody.set(key, q.id);
   }
@@ -70,6 +71,13 @@ for (const q of questions) {
     if (q.choices != null) err(id, 'NUMERIC_INPUT은 choices가 null이어야 한다');
     // 기계가 정답을 직접 대조할 수 있어야 검수가 15초로 줄어든다 (PLAN 4.4절)
     if (Number.isNaN(Number(q.answer))) err(id, `정답 "${q.answer}"이 숫자로 파싱되지 않는다`);
+  } else if (q.type === 'TEXT_INPUT') {
+    if (q.choices != null) err(id, 'TEXT_INPUT은 choices가 null이어야 한다');
+  }
+
+  // 이미지 첨부 (EP-1 확장 — 이미지+단답형)
+  if (q.imageUrl != null && !/^https:\/\/.+/.test(q.imageUrl)) {
+    err(id, `imageUrl은 https://로 시작해야 한다: ${q.imageUrl}`);
   }
 
   // 태그 (PLAN 6.6절 [2] — 허용 목록 밖 태그는 주제를 파편화시킨다)

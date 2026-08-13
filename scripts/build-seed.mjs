@@ -59,7 +59,7 @@ lines.push(topicRows.join(',\n') + ';', '');
 if (approved.length) {
   lines.push('INSERT OR REPLACE INTO questions');
   lines.push(
-    '  (id, type, difficulty, body, choices_json, answer, explanation, status, source, generated_by, created_at)',
+    '  (id, type, difficulty, body, choices_json, answer, explanation, status, source, generated_by, created_at, image_url)',
     'VALUES',
   );
   lines.push(
@@ -68,14 +68,17 @@ if (approved.length) {
         (q) =>
           `  (${sql(q.id)}, ${sql(q.type)}, ${q.difficulty}, ${sql(q.body)},\n` +
           `   ${q.choices ? sql(JSON.stringify(q.choices)) : 'NULL'}, ${sql(q.answer)},\n` +
-          `   ${sql(q.explanation)}, 'approved', ${sql(q.source ?? 'manual')}, ${sql(q.generatedBy ?? null)}, ${sql(NOW)})`,
+          `   ${sql(q.explanation)}, 'approved', ${sql(q.source ?? 'manual')}, ${sql(q.generatedBy ?? null)}, ${sql(NOW)}, ${sql(q.imageUrl ?? null)})`,
       )
       .join(',\n') + ';',
     '',
   );
 
-  // 승인 목록에서 빠진 문항의 연결은 지우고 다시 넣는다 (반려로 바뀐 문항 정리)
-  lines.push('DELETE FROM question_topics;');
+  // 승인 목록에서 빠진 문항의 연결은 지우고 다시 넣는다 (반려로 바뀐 문항 정리).
+  // ⚠ author_uid IS NULL(=이 JSON 파이프라인이 만든 공식 문항)로 반드시 범위를
+  // 좁힌다 — 안 그러면 유저 창작마당(커뮤니티) 문항까지 매 배포마다 전부
+  // 지워진다. 실제로 배포 전 프로덕션에 이미 진짜 커뮤니티 문항이 있었다.
+  lines.push("DELETE FROM question_topics WHERE question_id IN (SELECT id FROM questions WHERE author_uid IS NULL);");
   lines.push('INSERT OR IGNORE INTO question_topics (question_id, topic_id) VALUES');
   lines.push(
     approved
@@ -84,9 +87,9 @@ if (approved.length) {
     '',
   );
 
-  // 승인되지 않은 문항이 D1에 남아있지 않도록 정리
+  // 승인되지 않은 "공식" 문항만 정리한다 — 커뮤니티 문항(author_uid가 있음)은 건드리지 않는다.
   const ids = approved.map((q) => sql(q.id)).join(', ');
-  lines.push(`DELETE FROM questions WHERE id NOT IN (${ids});`, '');
+  lines.push(`DELETE FROM questions WHERE author_uid IS NULL AND id NOT IN (${ids});`, '');
 }
 
 writeFileSync(OUT, lines.join('\n'), 'utf8');

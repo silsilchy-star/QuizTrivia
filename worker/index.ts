@@ -133,7 +133,7 @@ async function drawStageQuestions(
 ): Promise<ServedQuestion[]> {
   const exclude = excludeIds.length ? `AND q.id NOT IN (${excludeIds.map(() => '?').join(',')})` : '';
   const { results } = await env.DB.prepare(
-    `SELECT q.id, q.type, q.difficulty, q.body, q.choices_json
+    `SELECT q.id, q.type, q.difficulty, q.body, q.choices_json, q.image_url
        FROM questions q
        JOIN question_topics qt ON qt.question_id = q.id
       WHERE qt.topic_id = ? AND q.status = 'approved' AND q.difficulty = ? ${exclude}
@@ -146,6 +146,7 @@ async function drawStageQuestions(
       difficulty: Difficulty;
       body: string;
       choices_json: string | null;
+      image_url: string | null;
     }>();
 
   return (results ?? []).map((r) => ({
@@ -154,6 +155,7 @@ async function drawStageQuestions(
     difficulty: r.difficulty,
     body: r.body,
     choices: r.choices_json ? (JSON.parse(r.choices_json) as string[]) : null,
+    imageUrl: r.image_url,
   }));
 }
 
@@ -185,6 +187,11 @@ async function handleStartRun(request: Request, env: Env, uid: string): Promise<
   return json(payload);
 }
 
+/** 공백만 정리하는 정규화 — 대소문자·앞뒤/중복 공백 차이로 학명 단답이 틀리지 않게 한다. */
+function normalizeText(s: string): string {
+  return s.trim().replace(/\s+/g, ' ').toLowerCase();
+}
+
 function isCorrect(type: QuestionType, answer: string, given: string): boolean {
   const a = answer.trim();
   const g = given.trim();
@@ -193,6 +200,9 @@ function isCorrect(type: QuestionType, answer: string, given: string): boolean {
     const gn = Number(g);
     if (Number.isNaN(an) || Number.isNaN(gn)) return false;
     return an === gn;
+  }
+  if (type === 'TEXT_INPUT') {
+    return normalizeText(a) === normalizeText(g);
   }
   return a === g;
 }
@@ -306,7 +316,7 @@ async function handleSubmitStage(
 
   const placeholders = servedIds.map(() => '?').join(',');
   const { results } = await env.DB.prepare(
-    `SELECT id, type, difficulty, body, answer, explanation
+    `SELECT id, type, difficulty, body, answer, explanation, image_url
        FROM questions WHERE id IN (${placeholders})`,
   )
     .bind(...servedIds)
@@ -317,6 +327,7 @@ async function handleSubmitStage(
       body: string;
       answer: string;
       explanation: string;
+      image_url: string | null;
     }>();
 
   const byId = new Map((results ?? []).map((r) => [r.id, r]));
@@ -343,6 +354,7 @@ async function handleSubmitStage(
       correct,
       difficulty: q.difficulty,
       explanation: q.explanation,
+      imageUrl: q.image_url,
     });
   }
 

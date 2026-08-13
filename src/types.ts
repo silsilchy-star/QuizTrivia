@@ -1,7 +1,7 @@
 // Worker와 프론트가 공유하는 타입. 순수 타입 선언만 두어 양쪽 tsconfig에서
 // 함께 include 할 수 있게 한다 (EP-5 저장소 계층의 계약서 역할).
 
-export type QuestionType = 'MULTIPLE_CHOICE' | 'NUMERIC_INPUT';
+export type QuestionType = 'MULTIPLE_CHOICE' | 'NUMERIC_INPUT' | 'TEXT_INPUT';
 export type Difficulty = 1 | 2 | 3 | 4;
 
 export interface Topic {
@@ -19,6 +19,7 @@ export interface ServedQuestion {
   difficulty: Difficulty;
   body: string;
   choices: string[] | null;
+  imageUrl: string | null;
 }
 
 /** PLAN 4.2절 — 12스테이지 전체 */
@@ -46,6 +47,7 @@ export interface GradedAnswer {
   correct: boolean;
   difficulty: Difficulty;
   explanation: string;
+  imageUrl: string | null;
 }
 
 /** 판이 끝났을 때만 내려가는 최종 요약.
@@ -91,6 +93,7 @@ export interface NewCommunityQuestionInput {
   choices: string[] | null;
   answer: string;
   explanation: string;
+  imageUrl: string | null;
 }
 
 export interface SessionResponse {

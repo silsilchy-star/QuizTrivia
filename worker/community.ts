@@ -141,12 +141,15 @@ interface NewQuestionBody {
   choices?: string[] | null;
   answer?: string;
   explanation?: string;
+  imageUrl?: string | null;
 }
+
+const QUESTION_TYPES: QuestionType[] = ['MULTIPLE_CHOICE', 'NUMERIC_INPUT', 'TEXT_INPUT'];
 
 /** 사람 검수가 없으므로, 기계가 잡을 수 있는 형식 오류만은 반드시 막는다
  *  (scripts/validate.mjs의 ERROR 규칙과 같은 것들 — PLAN 6.6절 [3]). */
 function validateQuestion(q: NewQuestionBody): string | null {
-  if (q.type !== 'MULTIPLE_CHOICE' && q.type !== 'NUMERIC_INPUT') return 'type이 잘못됨';
+  if (!q.type || !QUESTION_TYPES.includes(q.type)) return 'type이 잘못됨';
   if (![1, 2, 3, 4].includes(q.difficulty as number)) return 'difficulty가 잘못됨';
   const body = q.body?.trim();
   if (!body) return 'body가 비었다';
@@ -159,9 +162,17 @@ function validateQuestion(q: NewQuestionBody): string | null {
     if (q.choices.some((c) => !String(c).trim())) return '빈 선택지가 있다';
     if (new Set(q.choices).size !== 4) return '선택지에 중복이 있다';
     if (!q.choices.includes(q.answer)) return '정답이 선택지 안에 없다';
-  } else {
+  } else if (q.type === 'NUMERIC_INPUT') {
     if (q.choices != null) return 'NUMERIC_INPUT은 선택지가 없어야 한다';
     if (Number.isNaN(Number(q.answer))) return '정답이 숫자로 파싱되지 않는다';
+  } else {
+    if (q.choices != null) return 'TEXT_INPUT은 선택지가 없어야 한다';
+  }
+
+  if (q.imageUrl != null) {
+    const url = q.imageUrl.trim();
+    if (url.length > 500) return '이미지 URL이 너무 길다';
+    if (!/^https:\/\/.+/.test(url)) return '이미지 URL은 https://로 시작해야 한다';
   }
   return null;
 }
@@ -189,23 +200,28 @@ export async function handleAddCommunityQuestion(
   if (reason) return json({ error: reason }, { status: 400 });
 
   const existing = await env.DB.prepare(
-    `SELECT q.body FROM questions q JOIN question_topics qt ON qt.question_id = q.id WHERE qt.topic_id = ?`,
+    `SELECT q.body, q.image_url FROM questions q JOIN question_topics qt ON qt.question_id = q.id WHERE qt.topic_id = ?`,
   )
     .bind(topicId)
-    .all<{ body: string }>();
-  const dupe = (existing.results ?? []).some((r) => normalize(r.body) === normalize(q.body!.trim()));
+    .all<{ body: string; image_url: string | null }>();
+  // 이미지 문제는 문구가 같아도 사진이 다르면 다른 문항이다 — 사진까지 같아야 진짜 중복.
+  const newImageUrl = q.imageUrl?.trim() || null;
+  const dupe = (existing.results ?? []).some(
+    (r) => normalize(r.body) === normalize(q.body!.trim()) && (r.image_url ?? null) === newImageUrl,
+  );
   if (dupe) return json({ error: '이미 같은 문항이 있다' }, { status: 409 });
 
   const id = crypto.randomUUID();
   const now = new Date().toISOString();
   const choicesJson = q.type === 'MULTIPLE_CHOICE' ? JSON.stringify(q.choices) : null;
+  const imageUrl = q.imageUrl?.trim() || null;
 
   await env.DB.batch([
     env.DB.prepare(
       `INSERT INTO questions
-         (id, type, difficulty, body, choices_json, answer, explanation, status, source, generated_by, author_uid, created_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, 'approved', 'manual', NULL, ?, ?)`,
-    ).bind(id, q.type, q.difficulty, q.body!.trim(), choicesJson, q.answer, q.explanation!.trim(), uid, now),
+         (id, type, difficulty, body, choices_json, answer, explanation, status, source, generated_by, author_uid, created_at, image_url)
+       VALUES (?, ?, ?, ?, ?, ?, ?, 'approved', 'manual', NULL, ?, ?, ?)`,
+    ).bind(id, q.type, q.difficulty, q.body!.trim(), choicesJson, q.answer, q.explanation!.trim(), uid, now, imageUrl),
     env.DB.prepare('INSERT INTO question_topics (question_id, topic_id) VALUES (?, ?)').bind(id, topicId),
   ]);
 

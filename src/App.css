@@ -222,6 +222,21 @@ button.link {
   font-weight: 600;
 }
 
+.question-image {
+  display: block;
+  width: 100%;
+  max-height: 16rem;
+  object-fit: cover;
+  border-radius: 0.625rem;
+  margin: 0 0 1rem;
+  background: var(--line);
+}
+
+.review-image {
+  max-height: 10rem;
+  margin: 0 0 0.5rem;
+}
+
 ul,
 ol {
   list-style: none;

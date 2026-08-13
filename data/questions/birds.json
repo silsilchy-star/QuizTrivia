@@ -1,0 +1,413 @@
+{
+  "$comment": "새 맞추기 주제 문항. 사진을 보고 학명(라틴 이명법)을 입력하는 TEXT_INPUT 유형. 이미지는 Wikimedia Commons Special:FilePath 링크(항상 최신 파일로 리다이렉트).",
+  "questions": [
+    {
+      "id": "bird-101",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Passer montanus",
+      "explanation": "이 새는 참새(Passer montanus)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tree%20Sparrow%20%28Passer%20montanus%29%2C%20Nepal%2002.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-102",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Pica serica",
+      "explanation": "이 새는 까치(Pica serica)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pica%20serica%20-%20Hong%20Kong.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-103",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Columba livia",
+      "explanation": "이 새는 집비둘기(Columba livia)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Columba%20livia%20Luc%20Viatour.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-104",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Corvus macrorhynchos",
+      "explanation": "이 새는 큰부리까마귀(Corvus macrorhynchos)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Large-billed%20Crow%20in%20Bhigwan%20August%202025%20by%20Tisha%20Mukherjee%2001.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-105",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Hirundo rustica",
+      "explanation": "이 새는 제비(Hirundo rustica)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hirundo%20rustica%20Ormoz.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-106",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Hypsipetes amaurotis",
+      "explanation": "이 새는 직박구리(Hypsipetes amaurotis)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Brown-eared%20bulbul%20at%20Tenn%C5%8Dji%20Park%20in%20Osaka%2C%20March%202017.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-107",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Anas platyrhynchos",
+      "explanation": "이 새는 청둥오리(Anas platyrhynchos)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Male%20mallard%20duck%202.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-108",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Ardea cinerea",
+      "explanation": "이 새는 왜가리(Ardea cinerea)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ardea%20cinerea%20-%20Grey%20heron%20-%20in%20a%20pond%20of%20Busan%20Citizens%20Park%20with%20blue%20sky%20in%20Busan%20city%20South%20Korea.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-109",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Dendrocopos major",
+      "explanation": "이 새는 오색딱따구리(Dendrocopos major)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dendrocopos%20major%20hondoensis-male%20Gumma-ken%20Japan%2020251204%205403162-A8.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-110",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Parus minor",
+      "explanation": "이 새는 박새(Parus minor)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Japanese%20tit%20in%20Suita%2C%20Osaka%2C%20November%202016%20-%20609.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-111",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Alcedo atthis",
+      "explanation": "이 새는 물총새(Alcedo atthis)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Common%20Kingfisher%20Alcedo%20atthis.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-112",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Anas zonorhyncha",
+      "explanation": "이 새는 흰뺨검둥오리(Anas zonorhyncha)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Eastern%20spot%20billed%20duck.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-113",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Aix galericulata",
+      "explanation": "이 새는 원앙(Aix galericulata)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mandarin%20duck%20%28Aix%20galericulata%29.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-114",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Upupa epops",
+      "explanation": "이 새는 후투티(Upupa epops)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/008%20Eurasian%20hoopoe%20eating%20in%20Keoladeo%20National%20Park%20Photo%20by%20Giles%20Laurent.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-115",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Falco tinnunculus",
+      "explanation": "이 새는 황조롱이(Falco tinnunculus)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Common%20kestrel%20falco%20tinnunculus.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-116",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Sinosuthora webbiana",
+      "explanation": "이 새는 붉은머리오목눈이(Sinosuthora webbiana)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sinosuthora%20webbiana%20in%20South%20Korea.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-117",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Oriolus chinensis",
+      "explanation": "이 새는 꾀꼬리(Oriolus chinensis)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Black-naped%20Oriole%20%28Oriolus%20chinensis%29.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-118",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Cuculus canorus",
+      "explanation": "이 새는 뻐꾸기(Cuculus canorus)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Common%20cuckoo%20%28Cuculus%20canorus%29.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-119",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Mergus squamatus",
+      "explanation": "이 새는 호사비오리(Mergus squamatus)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Scaly-sided%20Merganser%20RWD.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-120",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Grus japonensis",
+      "explanation": "이 새는 두루미(Grus japonensis)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Grus%20japonensis%20-Hokkaido%2C%20Japan%20-several-8%20%281%29.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-121",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Platalea minor",
+      "explanation": "이 새는 저어새(Platalea minor)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Black-faced%20Spoonbill%20Platalea%20minor%201.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-122",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Pitta nympha",
+      "explanation": "이 새는 팔색조(Pitta nympha)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fairy%20Pitta%203952.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-123",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Aquila chrysaetos",
+      "explanation": "이 새는 검독수리(Aquila chrysaetos)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Steinadler%20Aquila%20chrysaetos%20closeup2%20Richard%20Bartz.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    },
+    {
+      "id": "bird-124",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "이 새의 학명은 무엇인가요? (라틴 이명법으로 입력)",
+      "choices": null,
+      "answer": "Grus monacha",
+      "explanation": "이 새는 흑두루미(Grus monacha)입니다.",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Grus%20monacha%20-Kyushu%2C%20Japan%20-three-8.jpg",
+      "topicIds": [
+        "birds"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude",
+      "rejectReason": null
+    }
+  ]
+}

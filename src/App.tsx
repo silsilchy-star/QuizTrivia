@@ -301,6 +301,10 @@ function Quiz({
       </p>
       <h2 className="body">{q.body}</h2>
 
+      {q.imageUrl && (
+        <img className="question-image" src={q.imageUrl} alt="" />
+      )}
+
       {q.type === 'MULTIPLE_CHOICE' && q.choices && (
         <ul className="choices">
           {q.choices.map((c) => (
@@ -323,6 +327,15 @@ function Quiz({
           value={given[q.id] ?? ''}
           onChange={(e) => record(e.target.value)}
           placeholder="숫자를 입력하세요"
+        />
+      )}
+
+      {q.type === 'TEXT_INPUT' && (
+        <input
+          type="text"
+          value={given[q.id] ?? ''}
+          onChange={(e) => record(e.target.value)}
+          placeholder="정답을 입력하세요"
         />
       )}
 
@@ -361,6 +374,7 @@ function StageResult({
       <ol className="review">
         {result.results.map((r) => (
           <li key={r.questionId} className={r.correct ? 'ok' : 'ng'}>
+            {r.imageUrl && <img className="question-image review-image" src={r.imageUrl} alt="" />}
             <p className="body">{r.body}</p>
             <p>
               내 답 <strong>{r.given || '무응답'}</strong>

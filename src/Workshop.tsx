@@ -283,6 +283,7 @@ function NewQuestionForm({
   const [choices, setChoices] = useState(['', '', '', '']);
   const [answer, setAnswer] = useState('');
   const [explanation, setExplanation] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [addedCount, setAddedCount] = useState(0);
@@ -299,6 +300,7 @@ function NewQuestionForm({
         choices: type === 'MULTIPLE_CHOICE' ? choices.map((c) => c.trim()) : null,
         answer: answer.trim(),
         explanation: explanation.trim(),
+        imageUrl: imageUrl.trim() || null,
       };
       const topic = await addCommunityQuestion(topicId, input);
       onDone(topic);
@@ -306,6 +308,7 @@ function NewQuestionForm({
       setChoices(['', '', '', '']);
       setAnswer('');
       setExplanation('');
+      setImageUrl('');
       setAddedCount((n) => n + 1);
     } catch (err) {
       setError((err as Error).message);
@@ -323,6 +326,7 @@ function NewQuestionForm({
         <select value={type} onChange={(e) => setType(e.target.value as QuestionType)}>
           <option value="MULTIPLE_CHOICE">객관식</option>
           <option value="NUMERIC_INPUT">숫자 입력</option>
+          <option value="TEXT_INPUT">단답형 (텍스트)</option>
         </select>
       </label>
 
@@ -357,9 +361,21 @@ function NewQuestionForm({
       )}
 
       <input
+        value={imageUrl}
+        onChange={(e) => setImageUrl(e.target.value)}
+        placeholder="이미지 URL (선택 — https://로 시작하는 링크를 붙여넣으세요)"
+      />
+
+      <input
         value={answer}
         onChange={(e) => setAnswer(e.target.value)}
-        placeholder={type === 'MULTIPLE_CHOICE' ? '정답 (선택지 중 하나와 정확히 일치)' : '정답 (숫자만)'}
+        placeholder={
+          type === 'MULTIPLE_CHOICE'
+            ? '정답 (선택지 중 하나와 정확히 일치)'
+            : type === 'NUMERIC_INPUT'
+              ? '정답 (숫자만)'
+              : '정답 (텍스트, 대소문자·공백 차이는 무시됨)'
+        }
       />
       <textarea value={explanation} onChange={(e) => setExplanation(e.target.value)} placeholder="해설" />
 

@@ -22,6 +22,7 @@
   .card.pending  { border-left-color:var(--accent); }
   .meta { font-size:.75rem; color:var(--muted); display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:.25rem; }
   .body { font-weight:600; margin:.25rem 0 .5rem; }
+  .qimg { display:block; max-width:100%; max-height:12rem; border-radius:.5rem; margin:.25rem 0; }
   ul.choices { list-style:none; padding:0; margin:0 0 .5rem; display:flex; flex-wrap:wrap; gap:.375rem; }
   ul.choices li { border:1px solid var(--line); border-radius:.375rem; padding:.125rem .5rem; font-size:.875rem; }
   ul.choices li.ans { border-color:var(--ok); color:var(--ok); font-weight:600; }
@@ -96,13 +97,16 @@ function card(q) {
     ? `<ul class="choices">${q.choices.map(c =>
         `<li class="${c === q.answer ? 'ans' : ''}">${esc(c)}</li>`).join('')}</ul>`
     : `<p class="num">정답 <b>${esc(q.answer)}</b></p>`;
+  const typeLabel = { NUMERIC_INPUT: '숫자입력', TEXT_INPUT: '단답형', MULTIPLE_CHOICE: '4지선다' }[q.type] ?? q.type;
+  const image = q.imageUrl ? `<img class="qimg" src="${esc(q.imageUrl)}" alt="" />` : '';
 
   return `<article class="card ${q.status}">
     <div class="meta">
       <span>${q.id}</span><span>난이도 ${q.difficulty}</span>
-      <span>${q.type === 'NUMERIC_INPUT' ? '숫자입력' : '4지선다'}</span>
+      <span>${typeLabel}</span>
       <span>${q.topicNames.join(' · ')}</span>
     </div>
+    ${image}
     <p class="body">${esc(q.body)}</p>
     ${choices}
     <p class="exp">${esc(q.explanation ?? '')}</p>

@@ -25,6 +25,8 @@ jobs:
         run: npm run validate
       - name: Apply D1 schema
         run: npx wrangler d1 execute quiztrivia --remote --yes --file=db/schema.sql
+      - name: Apply D1 migrations
+        run: npx wrangler d1 migrations apply quiztrivia --remote
       - name: Build seed from JSON
         run: npm run build:seed
       - name: Apply D1 seed

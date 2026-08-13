@@ -12,6 +12,12 @@ import type {
 import { TOTAL_STAGES } from '../src/types';
 import { handleAuthGoogleCallback, handleAuthGoogleStart, handleSetNickname } from './auth';
 import { handleGlobalRanking, handleTopicRanking, refreshGlobalCaches, upsertWeeklyBest } from './ranking';
+import {
+  handleAddCommunityQuestion,
+  handleCreateCommunityTopic,
+  handleListCommunityTopics,
+  isRankedTopic,
+} from './community';
 
 export interface Env {
   DB: D1Database;
@@ -89,7 +95,7 @@ async function handleSession(request: Request, env: Env): Promise<Response> {
 async function handleTopics(env: Env): Promise<Response> {
   const { results } = await env.DB.prepare(
     `SELECT id, name, kind, tagline, q_count_1, q_count_2, q_count_3, q_count_4
-       FROM topics WHERE status = 'active' ORDER BY kind = 'broad' DESC, no`,
+       FROM topics WHERE status = 'active' AND source = 'official' ORDER BY kind = 'broad' DESC, no`,
   ).all<{
     id: string;
     name: string;
@@ -190,7 +196,9 @@ function isCorrect(type: QuestionType, answer: string, given: string): boolean {
   return a === g;
 }
 
-/** 판을 완전히 종료하고 주제별 최고점·통합 점수를 반영한다 (성공/실패 공통 경로). */
+/** 판을 완전히 종료하고 주제별 최고점·통합 점수를 반영한다 (성공/실패 공통 경로).
+ *  유저 창작마당(커뮤니티) 주제는 랭킹에 전혀 반영하지 않는다 — 품질 편차·어뷰징
+ *  위험이 있는 콘텐츠를 공식 랭킹과 분리하기 위한 경계선이다. */
 async function finalizeRun(
   env: Env,
   uid: string,
@@ -202,15 +210,26 @@ async function finalizeRun(
 ): Promise<RunFinalSummary> {
   const now = new Date().toISOString();
 
+  await env.DB.prepare(
+    `UPDATE runs SET stage_reached = ?, score = ?, answers_json = ?, ended_at = ?, status = 'completed' WHERE id = ?`,
+  )
+    .bind(stagesCleared, finalScore, answersJson, now, runId)
+    .run();
+  await env.DB.prepare('UPDATE users SET play_count = play_count + 1, updated_at = ? WHERE uid = ?')
+    .bind(now, uid)
+    .run();
+
+  const ranked = await isRankedTopic(env, topicId);
+  if (!ranked) {
+    return { totalScore: finalScore, stagesCleared, ranked: false };
+  }
+
   const prevBest = await env.DB.prepare('SELECT score FROM topic_best WHERE uid = ? AND topic_id = ?')
     .bind(uid, topicId)
     .first<{ score: number }>();
   const isNewBest = !prevBest || finalScore > prevBest.score;
 
   await env.DB.batch([
-    env.DB.prepare(
-      `UPDATE runs SET stage_reached = ?, score = ?, answers_json = ?, ended_at = ?, status = 'completed' WHERE id = ?`,
-    ).bind(stagesCleared, finalScore, answersJson, now, runId),
     env.DB.prepare(
       `INSERT INTO topic_best (uid, topic_id, score, stage, updated_at)
        VALUES (?, ?, ?, ?, ?)
@@ -221,7 +240,6 @@ async function finalizeRun(
     env.DB.prepare(
       `UPDATE users
           SET global_score = (SELECT COALESCE(SUM(score), 0) FROM topic_best WHERE uid = ?),
-              play_count = play_count + 1,
               updated_at = ?
         WHERE uid = ?`,
     ).bind(uid, now, uid),
@@ -243,6 +261,7 @@ async function finalizeRun(
   return {
     totalScore: finalScore,
     stagesCleared,
+    ranked: true,
     topicBestScore: after?.topic_best_score ?? finalScore,
     isNewBest,
     globalScore: after?.global_score ?? finalScore,
@@ -467,6 +486,23 @@ export default {
     if (topicRankingMatch && request.method === 'GET') {
       const uid = await resolveUid(request, env);
       return handleTopicRanking(env, decodeURIComponent(topicRankingMatch[1]), uid);
+    }
+
+    if (path === '/api/community/topics' && request.method === 'GET') {
+      const uid = await resolveUid(request, env);
+      return handleListCommunityTopics(env, uid);
+    }
+    if (path === '/api/community/topics' && request.method === 'POST') {
+      const uid = await resolveUid(request, env);
+      if (!uid) return json({ error: 'no session' }, { status: 401 });
+      return handleCreateCommunityTopic(request, env, uid);
+    }
+
+    const communityQuestionMatch = path.match(/^\/api\/community\/topics\/([^/]+)\/questions$/);
+    if (communityQuestionMatch && request.method === 'POST') {
+      const uid = await resolveUid(request, env);
+      if (!uid) return json({ error: 'no session' }, { status: 401 });
+      return handleAddCommunityQuestion(request, env, uid, decodeURIComponent(communityQuestionMatch[1]));
     }
 
     if (path.startsWith('/api/')) {

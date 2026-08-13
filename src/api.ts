@@ -2,7 +2,9 @@
 // 백엔드를 바꿀 때 이 파일 하나만 고치면 화면은 손대지 않는다 (PLAN 7.3절).
 
 import type {
+  CommunityTopic,
   GlobalBoardId,
+  NewCommunityQuestionInput,
   RankingBoardResponse,
   SessionResponse,
   StartRunResponse,
@@ -65,4 +67,25 @@ export function getGlobalRanking(boardId: GlobalBoardId): Promise<RankingBoardRe
 
 export function getTopicRanking(topicId: string): Promise<TopicRankingResponse> {
   return call<TopicRankingResponse>(`/api/rankings/topic/${encodeURIComponent(topicId)}`);
+}
+
+export function getCommunityTopics(): Promise<CommunityTopic[]> {
+  return call<CommunityTopic[]>('/api/community/topics');
+}
+
+export function createCommunityTopic(name: string, tagline: string): Promise<CommunityTopic> {
+  return call<CommunityTopic>('/api/community/topics', {
+    method: 'POST',
+    body: JSON.stringify({ name, tagline }),
+  });
+}
+
+export function addCommunityQuestion(
+  topicId: string,
+  question: NewCommunityQuestionInput,
+): Promise<CommunityTopic> {
+  return call<CommunityTopic>(`/api/community/topics/${encodeURIComponent(topicId)}/questions`, {
+    method: 'POST',
+    body: JSON.stringify(question),
+  });
 }

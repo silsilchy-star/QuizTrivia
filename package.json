@@ -12,7 +12,7 @@
     "validate": "node scripts/validate.mjs",
     "build:seed": "node scripts/build-seed.mjs",
     "review": "node scripts/review.mjs",
-    "db:local": "npm run build:seed && wrangler d1 execute quiztrivia --local --file=db/schema.sql && wrangler d1 execute quiztrivia --local --file=db/seed.generated.sql"
+    "db:local": "npm run build:seed && wrangler d1 execute quiztrivia --local --file=db/schema.sql && wrangler d1 migrations apply quiztrivia --local && wrangler d1 execute quiztrivia --local --file=db/seed.generated.sql"
   },
   "dependencies": {
     "arctic": "^3.7.0",

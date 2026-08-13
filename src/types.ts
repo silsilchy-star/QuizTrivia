@@ -48,14 +48,12 @@ export interface GradedAnswer {
   explanation: string;
 }
 
-/** 판이 끝났을 때만 내려가는 최종 요약. */
-export interface RunFinalSummary {
-  totalScore: number;
-  stagesCleared: number;
-  topicBestScore: number;
-  isNewBest: boolean;
-  globalScore: number;
-}
+/** 판이 끝났을 때만 내려가는 최종 요약.
+ *  ranked=false면 유저 창작마당(커뮤니티) 주제 — 랭킹에 반영되지 않으므로
+ *  나머지 필드가 없다. */
+export type RunFinalSummary =
+  | { totalScore: number; stagesCleared: number; ranked: true; topicBestScore: number; isNewBest: boolean; globalScore: number }
+  | { totalScore: number; stagesCleared: number; ranked: false };
 
 export interface SubmitStageResponse {
   runId: string;
@@ -72,6 +70,27 @@ export interface SubmitStageResponse {
   nextStage?: { stage: number; questions: ServedQuestion[] };
   /** runOver가 true일 때만 채워진다. */
   final?: RunFinalSummary;
+}
+
+/** 유저 창작마당 — 자동 검증만 통과하면 즉시 공개되고, 랭킹에는 반영되지 않는다. */
+export interface CommunityTopic {
+  id: string;
+  name: string;
+  tagline: string | null;
+  status: 'draft' | 'active';
+  questionCount: Record<'1' | '2' | '3' | '4', number>;
+  authorNickname: string | null;
+  isMine: boolean;
+  createdAt: string;
+}
+
+export interface NewCommunityQuestionInput {
+  type: QuestionType;
+  difficulty: Difficulty;
+  body: string;
+  choices: string[] | null;
+  answer: string;
+  explanation: string;
 }
 
 export interface SessionResponse {

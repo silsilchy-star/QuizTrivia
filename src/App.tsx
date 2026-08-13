@@ -19,6 +19,7 @@ import type {
   Topic,
   TopicRankingResponse,
 } from './types';
+import { Workshop } from './Workshop';
 import './App.css';
 
 interface RunState {
@@ -37,7 +38,8 @@ type Screen =
   | { kind: 'playing'; run: RunState }
   | { kind: 'stageResult'; run: RunState; result: SubmitStageResponse }
   | { kind: 'final'; topicId: string; topicName: string; result: RunFinalSummary }
-  | { kind: 'ranking'; board: GlobalBoardId };
+  | { kind: 'ranking'; board: GlobalBoardId }
+  | { kind: 'workshop' };
 
 /** URL의 ?auth= 결과를 한 번만 읽고 지운다 (OAuth 콜백 리다이렉트가 남긴 신호). */
 function readAuthNotice(): string | null {
@@ -74,16 +76,16 @@ function App() {
     setSession((prev) => (prev ? { ...prev, nickname: res.nickname } : prev));
   }
 
-  async function onPick(topic: Topic) {
+  async function startPlaying(topicId: string, topicName: string) {
     setScreen({ kind: 'loading' });
     try {
-      const started = await startRun(topic.id);
+      const started = await startRun(topicId);
       setScreen({
         kind: 'playing',
         run: {
           runId: started.runId,
           topicId: started.topicId,
-          topicName: topic.name,
+          topicName,
           stage: started.stage,
           totalStages: started.totalStages,
           questions: started.questions,
@@ -92,6 +94,10 @@ function App() {
     } catch (err) {
       setScreen({ kind: 'error', message: (err as Error).message });
     }
+  }
+
+  function onPick(topic: Topic) {
+    return startPlaying(topic.id, topic.name);
   }
 
   async function onSubmit(run: RunState, given: Record<string, string>) {
@@ -126,6 +132,9 @@ function App() {
           </button>
           <button className="ghost" onClick={() => setScreen({ kind: 'ranking', board: 'global_all_time' })}>
             랭킹
+          </button>
+          <button className="ghost" onClick={() => setScreen({ kind: 'workshop' })}>
+            창작마당
           </button>
         </nav>
         <AuthStatus session={session} onSaveNickname={onSaveNickname} />
@@ -176,6 +185,8 @@ function App() {
       {screen.kind === 'ranking' && (
         <Ranking board={screen.board} onSwitchBoard={(board) => setScreen({ kind: 'ranking', board })} />
       )}
+
+      {screen.kind === 'workshop' && <Workshop session={session} onPlay={startPlaying} />}
     </main>
   );
 }
@@ -389,6 +400,7 @@ function Final({
   const [topicRank, setTopicRank] = useState<TopicRankingResponse['me']>(null);
 
   useEffect(() => {
+    if (!result.ranked) return;
     let cancelled = false;
     getTopicRanking(topicId)
       .then((res) => {
@@ -398,7 +410,7 @@ function Final({
     return () => {
       cancelled = true;
     };
-  }, [topicId]);
+  }, [topicId, result.ranked]);
 
   return (
     <section>
@@ -406,12 +418,16 @@ function Final({
       <p className="final-score">{result.totalScore}점</p>
       <p className={complete ? 'ok' : 'ng'}>
         {complete ? '12스테이지 전부 클리어!' : `스테이지 ${result.stagesCleared}까지 클리어`}
-        {result.isNewBest && ' · 최고 기록 갱신'}
+        {result.ranked && result.isNewBest && ' · 최고 기록 갱신'}
       </p>
-      <p className="meta">
-        이 주제 최고 {result.topicBestScore}점 · 통합 {result.globalScore}점
-        {topicRank && ` · 이 주제 순위 ${topicRank.rank}위`}
-      </p>
+      {result.ranked ? (
+        <p className="meta">
+          이 주제 최고 {result.topicBestScore}점 · 통합 {result.globalScore}점
+          {topicRank && ` · 이 주제 순위 ${topicRank.rank}위`}
+        </p>
+      ) : (
+        <p className="meta">창작마당 주제는 랭킹에 반영되지 않습니다.</p>
+      )}
       {session?.isAnonymous && (
         <p className="hint">
           지금은 익명 기록입니다.{' '}

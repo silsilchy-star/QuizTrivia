@@ -347,3 +347,128 @@ button.primary:hover:not(:disabled) {
 .error {
   color: var(--ng);
 }
+
+.muted {
+  color: var(--muted);
+}
+
+.workshop-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.workshop-list button {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  width: 100%;
+}
+
+.workshop-meta {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.gate-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0 0 1.25rem;
+}
+
+.gate-bars li {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.8125rem;
+}
+
+.gate-bars li > span:first-child {
+  width: 4rem;
+  color: var(--muted);
+}
+
+.gate-bars li > span:last-child {
+  width: 3rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
+.gate-bar {
+  flex: 1;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.gate-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: inherit;
+}
+
+.question-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.625rem;
+  background: var(--card);
+}
+
+.question-form h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.question-form label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.question-form select,
+.question-form textarea {
+  font: inherit;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+}
+
+.question-form select {
+  flex: 1;
+}
+
+.question-form textarea {
+  width: 100%;
+  min-height: 3.5rem;
+  resize: vertical;
+}
+
+.question-form input {
+  margin-bottom: 0;
+}
+
+.choice-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.question-form-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.question-form-actions .primary {
+  flex: 1;
+}

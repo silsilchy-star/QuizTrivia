@@ -3,8 +3,15 @@ name: Deploy to Cloudflare Workers
 on:
   push:
     branches:
-      - claude/repo-permissions-check-ff2du7
+      - main
   workflow_dispatch:
+
+# 배포가 겹치면 두 실행이 같은 D1에 동시에 마이그레이션을 걸 수 있다.
+# 한 번에 하나만 돌리고, 진행 중인 배포는 취소하지 않는다(DB 작업 중간에
+# 끊기는 것이 더 위험하다).
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -19,20 +26,51 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Validate questions
+
+      # ── 1) 프로덕션 DB를 건드리기 전에 코드가 성립하는지 전부 확인한다 ──
+      #
+      # 예전 순서는 D1 스키마/마이그레이션을 먼저 적용하고 빌드를 나중에 했다.
+      # 그래서 워커에 타입 에러가 있으면 "DB는 이미 새 스키마, 워커는 옛 버전"인
+      # 어긋난 상태로 서비스가 남았다. 검증을 전부 앞으로 당긴다.
+      - name: Typecheck (프론트 + 워커)
+        run: npm run typecheck
+      - name: Test
+        run: npm test
+      - name: Validate question data
         run: npm run validate
-      - name: Apply D1 schema
+      - name: Build seed from JSON
+        run: npm run build:seed
+      - name: Build frontend
+        run: npm run build
+      - name: Bundle worker (dry-run)
+        run: npx wrangler deploy --dry-run --outdir=/tmp/worker-dry-run
+
+      # ── 2) DB를 바꾸기 직전에 통째로 받아둔다 ──
+      #
+      # D1의 Time Travel(30일)이 있지만, 손에 잡히는 복구 수단이 하나는 있어야
+      # 한다. 2026-08-13 schema.sql DROP 사고 때 이게 없었다.
+      # (docs/2026-08-13-critical-schema-drop-fix.md)
+      - name: Backup production D1
+        run: npx wrangler d1 export quiztrivia --remote --output=d1-backup.sql --skip-confirmation
+      - name: Upload backup artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: d1-backup-${{ github.sha }}
+          path: d1-backup.sql
+          retention-days: 30
+
+      # ── 3) 여기서부터 프로덕션 DB가 실제로 바뀐다 ──
+      - name: Apply D1 schema (멱등 베이스라인)
         run: npx wrangler d1 execute quiztrivia --remote --yes --file=db/schema.sql
       - name: Apply D1 migrations
         run: npx wrangler d1 migrations apply quiztrivia --remote
-      - name: Build seed from JSON
-        run: npm run build:seed
       - name: Apply D1 seed
         run: npx wrangler d1 execute quiztrivia --remote --yes --file=db/seed.generated.sql
-      - name: Build frontend
-        run: npm run build
+
+      # ── 4) 배포 ──
       - name: Set Google OAuth secrets
         run: |
           echo "${{ secrets.GOOGLE_CLIENT_ID }}" | npx wrangler secret put GOOGLE_CLIENT_ID

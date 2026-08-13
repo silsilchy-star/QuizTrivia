@@ -37,7 +37,7 @@ const SESSION_COOKIE = 'session';
 const SESSION_MAX_AGE = 60 * 60 * 24 * 365;
 
 /** 스테이지 1~3은 난이도1, 4~6은 난이도2, ... (PLAN 4.2절) */
-function difficultyForStage(stage: number): Difficulty {
+export function difficultyForStage(stage: number): Difficulty {
   return (Math.min(4, Math.ceil(stage / 3)) as Difficulty) || 1;
 }
 
@@ -188,13 +188,16 @@ async function handleStartRun(request: Request, env: Env, uid: string): Promise<
 }
 
 /** 공백만 정리하는 정규화 — 대소문자·앞뒤/중복 공백 차이로 학명 단답이 틀리지 않게 한다. */
-function normalizeText(s: string): string {
+export function normalizeText(s: string): string {
   return s.trim().replace(/\s+/g, ' ').toLowerCase();
 }
 
-function isCorrect(type: QuestionType, answer: string, given: string): boolean {
+export function isCorrect(type: QuestionType, answer: string, given: string): boolean {
   const a = answer.trim();
   const g = given.trim();
+  // 빈 답은 어떤 유형에서도 정답이 아니다. 특히 NUMERIC_INPUT에서 이 가드가
+  // 없으면 Number('')이 0이라서, 정답이 0인 문항에 공백만 내도 정답이 된다.
+  if (g === '') return false;
   if (type === 'NUMERIC_INPUT') {
     const an = Number(a);
     const gn = Number(g);

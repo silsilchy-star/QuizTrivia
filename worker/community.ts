@@ -134,7 +134,7 @@ export async function handleCreateCommunityTopic(request: Request, env: Communit
   return json(payload);
 }
 
-interface NewQuestionBody {
+export interface NewQuestionBody {
   type?: QuestionType;
   difficulty?: Difficulty;
   body?: string;
@@ -148,7 +148,7 @@ const QUESTION_TYPES: QuestionType[] = ['MULTIPLE_CHOICE', 'NUMERIC_INPUT', 'TEX
 
 /** 사람 검수가 없으므로, 기계가 잡을 수 있는 형식 오류만은 반드시 막는다
  *  (scripts/validate.mjs의 ERROR 규칙과 같은 것들 — PLAN 6.6절 [3]). */
-function validateQuestion(q: NewQuestionBody): string | null {
+export function validateQuestion(q: NewQuestionBody): string | null {
   if (!q.type || !QUESTION_TYPES.includes(q.type)) return 'type이 잘못됨';
   if (![1, 2, 3, 4].includes(q.difficulty as number)) return 'difficulty가 잘못됨';
   const body = q.body?.trim();

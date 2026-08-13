@@ -11,6 +11,7 @@ import type {
 } from '../src/types';
 import { TOTAL_STAGES } from '../src/types';
 import { handleAuthGoogleCallback, handleAuthGoogleStart, handleSetNickname } from './auth';
+import { handleGlobalRanking, handleTopicRanking, refreshGlobalCaches, upsertWeeklyBest } from './ranking';
 
 export interface Env {
   DB: D1Database;
@@ -225,6 +226,12 @@ async function finalizeRun(
         WHERE uid = ?`,
     ).bind(uid, now, uid),
   ]);
+
+  const isNewWeeklyBest = await upsertWeeklyBest(env, uid, topicId, finalScore, now);
+  // 랭킹에 실제로 영향을 준 판만 캐시를 다시 계산한다 — 매 판마다 부르면 낭비다 (5.3절).
+  if (isNewBest || isNewWeeklyBest) {
+    await refreshGlobalCaches(env, now);
+  }
 
   const after = await env.DB.prepare(
     `SELECT (SELECT COALESCE(score, 0) FROM topic_best WHERE uid = ? AND topic_id = ?) AS topic_best_score,
@@ -448,6 +455,18 @@ export default {
       const uid = await resolveUid(request, env);
       if (!uid) return json({ error: 'no session' }, { status: 401 });
       return handleSetNickname(request, env, uid);
+    }
+
+    const rankingMatch = path.match(/^\/api\/rankings\/(global_all_time|global_weekly)$/);
+    if (rankingMatch && request.method === 'GET') {
+      const uid = await resolveUid(request, env);
+      return handleGlobalRanking(env, rankingMatch[1], uid);
+    }
+
+    const topicRankingMatch = path.match(/^\/api\/rankings\/topic\/([^/]+)$/);
+    if (topicRankingMatch && request.method === 'GET') {
+      const uid = await resolveUid(request, env);
+      return handleTopicRanking(env, decodeURIComponent(topicRankingMatch[1]), uid);
     }
 
     if (path.startsWith('/api/')) {

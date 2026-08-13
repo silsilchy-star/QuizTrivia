@@ -79,3 +79,31 @@ export interface SessionResponse {
   isAnonymous: boolean;
   nickname: string | null;
 }
+
+/** PLAN 5.2절 — 랭킹 메뉴에는 통합 2개 보드만 노출한다. */
+export type GlobalBoardId = 'global_all_time' | 'global_weekly';
+
+export interface RankingEntry {
+  rank: number;
+  nickname: string | null;
+  score: number;
+  isMe: boolean;
+}
+
+export interface RankingBoardResponse {
+  boardId: GlobalBoardId;
+  top: RankingEntry[];
+  /** 30위 밖일 때 "얼마나 더 하면 드는지" 기준선 (5.3절). 30명 미만이면 null. */
+  cutoffScore: number | null;
+  generatedAt: string | null;
+  /** 로그인(계정 승계) 전이면 null — 익명 상태는 랭킹 집계 대상이 아니다. */
+  me: { score: number; inTop: boolean } | null;
+}
+
+/** 주제별 순위는 랭킹 메뉴가 아니라 그 주제 결과 화면 안에서만 보여준다 (5.2절). */
+export interface TopicRankingResponse {
+  topicId: string;
+  top: RankingEntry[];
+  /** 이 주제 기록이 없거나 익명 상태면 null. */
+  me: { score: number; rank: number } | null;
+}

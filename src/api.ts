@@ -1,7 +1,16 @@
 // EP-5 저장소 계층. 화면 코드는 fetch를 직접 부르지 않고 이 파일만 부른다.
 // 백엔드를 바꿀 때 이 파일 하나만 고치면 화면은 손대지 않는다 (PLAN 7.3절).
 
-import type { SessionResponse, StartRunResponse, SubmitStageResponse, SubmittedAnswer, Topic } from './types';
+import type {
+  GlobalBoardId,
+  RankingBoardResponse,
+  SessionResponse,
+  StartRunResponse,
+  SubmitStageResponse,
+  SubmittedAnswer,
+  Topic,
+  TopicRankingResponse,
+} from './types';
 
 async function call<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(path, {
@@ -48,4 +57,12 @@ export function setNickname(nickname: string): Promise<{ nickname: string }> {
     method: 'POST',
     body: JSON.stringify({ nickname }),
   });
+}
+
+export function getGlobalRanking(boardId: GlobalBoardId): Promise<RankingBoardResponse> {
+  return call<RankingBoardResponse>(`/api/rankings/${boardId}`);
+}
+
+export function getTopicRanking(topicId: string): Promise<TopicRankingResponse> {
+  return call<TopicRankingResponse>(`/api/rankings/topic/${encodeURIComponent(topicId)}`);
 }

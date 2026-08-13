@@ -59,6 +59,62 @@ button.ghost {
   cursor: pointer;
 }
 
+button.ghost.active {
+  border-color: var(--accent);
+  background: #eff6ff;
+  color: var(--accent);
+}
+
+.topnav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.board-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.ranking {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.ranking li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 0.625rem;
+  padding: 0.625rem 1rem;
+}
+
+.ranking li.me {
+  border-color: var(--accent);
+  background: #eff6ff;
+}
+
+.ranking .rank {
+  width: 2rem;
+  font-weight: 700;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.ranking .nickname {
+  flex: 1;
+  font-weight: 600;
+}
+
+.ranking .score {
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
 button.link {
   border: none;
   background: none;

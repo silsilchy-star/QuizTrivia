@@ -133,15 +133,23 @@ for (const t of topics) {
   }
 }
 
-// 주제 쌍 겹침 (PLAN 6.4절 ⑤) — 겹침 자체는 정상이고, 사실상 같은 주제인 경우만 잡는다
+// 주제 쌍 겹침 (PLAN 6.4절 ⑤) — 겹침 자체는 정상이고, 사실상 같은 주제인 경우만 잡는다.
+//
+// 같은 층위(kind)끼리만 비교한다. 좁은 태그는 정의상 넓은 태그에 전부 포함되므로
+// 층위를 섞어 비교하면 "화학은 과학과 100% 겹친다"가 항상 뜬다 — 그건 구조가 의도한 것이지
+// 합쳐야 할 신호가 아니다. 잡으려는 건 `음식`과 `요리`처럼 같은 층위의 이름만 다른 두 주제다.
+//
+// 비율은 합집합 기준(자카드)으로 센다. 작은 쪽 기준으로 세면 포함 관계가 곧 100%가 되어
+// 크기가 크게 다른 두 주제가 항상 걸린다.
 const ids = [...byTopic.keys()];
 for (let i = 0; i < ids.length; i++) {
   for (let j = i + 1; j < ids.length; j++) {
+    if (topicById.get(ids[i])?.kind !== topicById.get(ids[j])?.kind) continue;
     const a = new Set(byTopic.get(ids[i]).map((q) => q.id));
     const b = new Set(byTopic.get(ids[j]).map((q) => q.id));
     if (a.size < 10 || b.size < 10) continue;
     const shared = [...a].filter((x) => b.has(x)).length;
-    const overlap = shared / Math.min(a.size, b.size);
+    const overlap = shared / (a.size + b.size - shared);
     if (overlap > OVERLAP_WARN) {
       warn(
         `${ids[i]}×${ids[j]}`,

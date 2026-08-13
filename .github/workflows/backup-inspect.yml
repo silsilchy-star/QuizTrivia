@@ -1,0 +1,62 @@
+# « 임시 진단용 워크플로 — 확인이 끝나면 삭제한다 »
+#
+# "커뮤니티 주제가 언제, 왜 사라졌는가"를 추측이 아니라 사실로 확정하기 위한
+# 일회용이다. 프로덕션에는 붙지 않는다 — 이미 GitHub에 보관된 D1 백업
+# 아티팩트를 내려받아 읽기만 한다.
+#
+# 배포 워크플로를 건드리지 않으려고 별도 파일로 뒀다. 이 브랜치에 push할 때만
+# 돌고, main에는 영향이 없다.
+name: (임시) 백업 대조
+
+on:
+  push:
+    branches:
+      - claude/handover-understanding-bz9z8q
+
+permissions:
+  contents: read
+  actions: read # 다른 실행의 아티팩트를 내려받으려면 필요하다
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # 이 세션이 DB를 처음 건드리기 직전(14:10). 그 전 상태를 담고 있다.
+          - label: "① 14:10  282f18a (이 세션 첫 배포 직전)"
+            run_id: "31708733279"
+            artifact: d1-backup-282f18a91e01b7325bfa9f99a807f05a08436066
+          # 스키마 통합 + 세션 서명 배포 직전(14:47)
+          - label: "② 14:47  3bb00ae (스키마 통합 배포 직전)"
+            run_id: "31711799646"
+            artifact: d1-backup-3bb00aee6acfdbd7f6d2b1c97a0ba8db51da3bb0
+          # 가장 최근(15:17)
+          - label: "③ 15:17  e41c6a1 (최근)"
+            run_id: "31714528208"
+            artifact: d1-backup-e41c6a1c3d871cd6de7281883ac3a5d4c762e328
+    steps:
+      - name: 백업 내려받기 — ${{ matrix.label }}
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          run-id: ${{ matrix.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: backup
+
+      - name: 커뮤니티 데이터 세기 — ${{ matrix.label }}
+        run: |
+          set -euo pipefail
+          F=backup/d1-backup.sql
+          echo "=============================================="
+          echo "  ${{ matrix.label }}"
+          echo "=============================================="
+          echo "파일 크기: $(wc -c < "$F") bytes"
+          echo
+          echo "--- 커뮤니티 주제 (topics에 'community'가 들어간 INSERT) ---"
+          grep -o "INSERT INTO topics VALUES([^;]*'community'[^;]*)" "$F" | cut -c1-200 || echo "(없음)"
+          echo
+          echo "커뮤니티 주제 수: $(grep -c "'community'" "$F" || true)"
+          echo "runs 행 수:       $(grep -c 'INSERT INTO runs' "$F" || true)"
+          echo "users 행 수:      $(grep -c 'INSERT INTO users' "$F" || true)"

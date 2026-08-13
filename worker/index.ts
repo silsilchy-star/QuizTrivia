@@ -264,6 +264,17 @@ async function handleSubmitRun(
               updated_at = ?
         WHERE uid = ?`,
     ).bind(uid, now, uid),
+    // 문항별 정답률의 원천. 저자가 붙인 난이도가 맞는지 나중에 검증할 근거가 된다.
+    ...graded.map((g) =>
+      env.DB.prepare(
+        `INSERT INTO question_stats (question_id, served_count, correct_count, updated_at)
+         VALUES (?, 1, ?, ?)
+         ON CONFLICT(question_id) DO UPDATE SET
+           served_count = question_stats.served_count + 1,
+           correct_count = question_stats.correct_count + excluded.correct_count,
+           updated_at = excluded.updated_at`,
+      ).bind(g.questionId, g.correct ? 1 : 0, now),
+    ),
   ]);
 
   const after = await env.DB.prepare(

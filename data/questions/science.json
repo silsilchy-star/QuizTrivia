@@ -1,0 +1,1695 @@
+{
+  "$comment": "과학 주제 문항. 원본은 이 파일이고 db/seed.generated.sql은 생성물이다. 난이도 3은 seedRef로 씨앗 출처를 남긴다.",
+  "questions": [
+    {
+      "id": "sci-101",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "원소기호 O는 무엇을 뜻하나요?",
+      "choices": [
+        "수소",
+        "산소",
+        "탄소",
+        "질소"
+      ],
+      "answer": "산소",
+      "explanation": "O는 산소(Oxygen)의 원소기호입니다. 수소는 H, 탄소는 C, 질소는 N입니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-102",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "물의 화학식은 무엇인가요?",
+      "choices": [
+        "CO₂",
+        "H₂O",
+        "O₂",
+        "H₂O₂"
+      ],
+      "answer": "H₂O",
+      "explanation": "물은 수소 원자 2개와 산소 원자 1개로 이루어져 H₂O로 씁니다. H₂O₂는 과산화수소입니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-103",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "태양에서부터 셌을 때 지구는 몇 번째 행성인가요?",
+      "choices": [
+        "첫 번째",
+        "두 번째",
+        "세 번째",
+        "네 번째"
+      ],
+      "answer": "세 번째",
+      "explanation": "수성, 금성 다음이 지구입니다. 네 번째는 화성입니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-104",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "표준 대기압에서 물의 끓는점은 섭씨 몇 도인가요?",
+      "choices": null,
+      "answer": "100",
+      "explanation": "1기압에서 물은 섭씨 100도에서 끓습니다. 기압이 낮은 높은 산에서는 100도보다 낮은 온도에서 끓습니다.",
+      "topicIds": [
+        "science",
+        "units"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-105",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "표준 대기압에서 물이 어는 온도는 섭씨 몇 도인가요?",
+      "choices": null,
+      "answer": "0",
+      "explanation": "섭씨 온도는 물의 어는점을 0도, 끓는점을 100도로 정해 만든 눈금입니다.",
+      "topicIds": [
+        "science",
+        "units"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-106",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "태양계의 중심에 있는 천체는 무엇인가요?",
+      "choices": [
+        "지구",
+        "달",
+        "태양",
+        "목성"
+      ],
+      "answer": "태양",
+      "explanation": "태양계의 모든 행성은 태양 주위를 공전합니다. 달은 지구를 도는 위성입니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-107",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "사람이 숨을 쉴 때 몸에 받아들이는 기체는 무엇인가요?",
+      "choices": [
+        "산소",
+        "질소",
+        "이산화탄소",
+        "수소"
+      ],
+      "answer": "산소",
+      "explanation": "숨을 들이쉬며 산소를 받아들이고, 내쉬며 이산화탄소를 내보냅니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-108",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "지구를 도는 유일한 자연 위성의 이름은 무엇인가요?",
+      "choices": [
+        "달",
+        "화성",
+        "금성",
+        "혜성"
+      ],
+      "answer": "달",
+      "explanation": "달은 지구의 유일한 자연 위성입니다. 화성과 금성은 태양을 도는 행성입니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-109",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "하루는 몇 시간인가요?",
+      "choices": null,
+      "answer": "24",
+      "explanation": "지구가 한 바퀴 자전하는 데 걸리는 시간을 24시간으로 나눈 것이 하루입니다.",
+      "topicIds": [
+        "science",
+        "units"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-110",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "얼음은 물의 어떤 상태인가요?",
+      "choices": [
+        "고체",
+        "액체",
+        "기체",
+        "플라스마"
+      ],
+      "answer": "고체",
+      "explanation": "물은 고체(얼음), 액체(물), 기체(수증기) 세 가지 상태로 존재합니다.",
+      "topicIds": [
+        "science",
+        "physics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-111",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "피를 온몸으로 내보내는 기관은 무엇인가요?",
+      "choices": [
+        "폐",
+        "심장",
+        "간",
+        "위"
+      ],
+      "answer": "심장",
+      "explanation": "심장은 근육으로 이루어진 펌프로, 수축과 이완을 반복하며 혈액을 순환시킵니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-112",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "원소기호 H는 무엇을 뜻하나요?",
+      "choices": [
+        "헬륨",
+        "수소",
+        "철",
+        "질소"
+      ],
+      "answer": "수소",
+      "explanation": "H는 수소(Hydrogen)입니다. 헬륨은 He, 철은 Fe, 질소는 N입니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-113",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "낮과 밤이 번갈아 나타나는 이유는 무엇인가요?",
+      "choices": [
+        "지구의 자전",
+        "지구의 공전",
+        "달의 공전",
+        "태양의 자전"
+      ],
+      "answer": "지구의 자전",
+      "explanation": "지구가 스스로 한 바퀴 도는 자전 때문에 햇빛을 받는 면과 받지 않는 면이 번갈아 나타납니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-114",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "사람의 한쪽 손에 있는 손가락은 보통 몇 개인가요?",
+      "choices": null,
+      "answer": "5",
+      "explanation": "사람의 손은 엄지를 포함해 다섯 손가락으로 이루어져 있습니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-115",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "식물이 광합성을 할 때 흡수하는 기체는 무엇인가요?",
+      "choices": [
+        "산소",
+        "질소",
+        "이산화탄소",
+        "수소"
+      ],
+      "answer": "이산화탄소",
+      "explanation": "식물은 이산화탄소와 물을 재료로 빛 에너지를 써서 양분을 만들고 산소를 내보냅니다.",
+      "topicIds": [
+        "science",
+        "biology"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-116",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "식물의 뿌리가 주로 하는 일은 무엇인가요?",
+      "choices": [
+        "물과 양분 흡수",
+        "광합성",
+        "씨앗 만들기",
+        "호흡만 담당"
+      ],
+      "answer": "물과 양분 흡수",
+      "explanation": "뿌리는 흙에서 물과 무기양분을 빨아들이고 식물이 쓰러지지 않게 지탱합니다. 광합성은 주로 잎에서 일어납니다.",
+      "topicIds": [
+        "science",
+        "biology"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-117",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "소금의 주성분을 이루는 두 원소는 무엇인가요?",
+      "choices": [
+        "나트륨과 염소",
+        "칼슘과 산소",
+        "칼륨과 황",
+        "마그네슘과 염소"
+      ],
+      "answer": "나트륨과 염소",
+      "explanation": "소금은 염화나트륨(NaCl)으로, 나트륨(Na)과 염소(Cl)가 결합한 물질입니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-118",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "우리 몸을 지탱하고 내부 장기를 보호하는 조직은 무엇인가요?",
+      "choices": [
+        "뼈",
+        "지방",
+        "혈액",
+        "신경"
+      ],
+      "answer": "뼈",
+      "explanation": "뼈는 몸의 형태를 유지하고 뇌·심장·폐 같은 장기를 감싸 보호합니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-119",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "물이 수증기로 변하는 현상을 무엇이라 하나요?",
+      "choices": [
+        "증발",
+        "응결",
+        "융해",
+        "승화"
+      ],
+      "answer": "증발",
+      "explanation": "액체가 기체로 변하는 것이 증발입니다. 반대로 기체가 액체가 되는 것은 응결입니다.",
+      "topicIds": [
+        "science",
+        "physics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-120",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "지구에서 가장 가까운 거리에 있는 항성은 무엇인가요?",
+      "choices": [
+        "태양",
+        "북극성",
+        "시리우스",
+        "달"
+      ],
+      "answer": "태양",
+      "explanation": "태양도 스스로 빛을 내는 별(항성)입니다. 달은 별이 아니라 지구의 위성입니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-201",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "원소기호 Fe는 무엇을 뜻하나요?",
+      "choices": [
+        "철",
+        "구리",
+        "납",
+        "아연"
+      ],
+      "answer": "철",
+      "explanation": "Fe는 철의 원소기호로 라틴어 ferrum에서 왔습니다. 구리는 Cu, 납은 Pb, 아연은 Zn입니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-202",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "태양계 행성 중 지름이 가장 큰 행성은 무엇인가요?",
+      "choices": [
+        "토성",
+        "목성",
+        "해왕성",
+        "지구"
+      ],
+      "answer": "목성",
+      "explanation": "목성의 지름은 약 14만 km로 태양계 행성 중 가장 큽니다. 두 번째는 토성입니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-203",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "식물이 빛을 이용해 양분을 만드는 과정을 무엇이라 하나요?",
+      "choices": [
+        "호흡",
+        "발효",
+        "광합성",
+        "증산"
+      ],
+      "answer": "광합성",
+      "explanation": "광합성은 빛 에너지로 이산화탄소와 물을 포도당과 산소로 바꾸는 과정입니다.",
+      "topicIds": [
+        "science",
+        "biology"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-204",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "화학식 CO₂는 어떤 물질인가요?",
+      "choices": [
+        "일산화탄소",
+        "이산화탄소",
+        "메탄",
+        "산소"
+      ],
+      "answer": "이산화탄소",
+      "explanation": "탄소 1개와 산소 2개가 결합한 이산화탄소입니다. 일산화탄소는 CO, 메탄은 CH₄입니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-205",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "태양에 가장 가까운 궤도를 도는 행성은 무엇인가요?",
+      "choices": [
+        "수성",
+        "금성",
+        "지구",
+        "화성"
+      ],
+      "answer": "수성",
+      "explanation": "태양에서 가까운 순서는 수성, 금성, 지구, 화성입니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-206",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "산소의 원자번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "8",
+      "explanation": "원자번호는 원자핵 속 양성자 수입니다. 산소는 양성자가 8개여서 원자번호 8번입니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-207",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "지구가 태양을 한 바퀴 도는 데 걸리는 시간은 약 며칠인가요?",
+      "choices": null,
+      "answer": "365",
+      "explanation": "지구의 공전 주기는 약 365.25일입니다. 남는 0.25일을 모아 4년마다 윤일을 둡니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-208",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "혈액에서 산소를 운반하는 세포는 무엇인가요?",
+      "choices": [
+        "적혈구",
+        "백혈구",
+        "혈소판",
+        "림프구"
+      ],
+      "answer": "적혈구",
+      "explanation": "적혈구 속 헤모글로빈이 산소와 결합해 온몸으로 나릅니다. 백혈구는 면역, 혈소판은 지혈을 맡습니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-209",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "빛의 삼원색은 무엇인가요?",
+      "choices": [
+        "빨강·초록·파랑",
+        "빨강·노랑·파랑",
+        "청록·자홍·노랑",
+        "빨강·초록·노랑"
+      ],
+      "answer": "빨강·초록·파랑",
+      "explanation": "빛은 빨강·초록·파랑을 섞어 다양한 색을 만듭니다. 물감의 삼원색은 청록·자홍·노랑입니다.",
+      "topicIds": [
+        "science",
+        "physics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-210",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "자석의 두 극을 가까이 할 때 서로 밀어내는 경우는 언제인가요?",
+      "choices": [
+        "같은 극끼리",
+        "다른 극끼리",
+        "항상 밀어냄",
+        "항상 끌어당김"
+      ],
+      "answer": "같은 극끼리",
+      "explanation": "N극과 N극, S극과 S극처럼 같은 극끼리는 밀어내고 다른 극끼리는 끌어당깁니다.",
+      "topicIds": [
+        "science",
+        "physics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-211",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "식물의 잎에서 물이 수증기로 빠져나가는 현상은 무엇인가요?",
+      "choices": [
+        "증산작용",
+        "광합성",
+        "삼투압",
+        "호흡"
+      ],
+      "answer": "증산작용",
+      "explanation": "잎의 기공을 통해 물이 빠져나가는 것이 증산작용이며, 이 힘으로 뿌리의 물이 위로 끌려 올라갑니다.",
+      "topicIds": [
+        "science",
+        "biology"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-212",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "원자의 중심에 있으며 양성자와 중성자로 이루어진 것은 무엇인가요?",
+      "choices": [
+        "원자핵",
+        "전자",
+        "분자",
+        "이온"
+      ],
+      "answer": "원자핵",
+      "explanation": "원자는 원자핵과 그 주위를 도는 전자로 이루어집니다. 원자핵은 양성자와 중성자를 담고 있습니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-213",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "사람의 정상 체온은 보통 섭씨 몇 도인가요? (소수점 한 자리)",
+      "choices": null,
+      "answer": "36.5",
+      "explanation": "사람의 체온은 보통 섭씨 36.5도 안팎이며 시간대와 측정 부위에 따라 조금씩 달라집니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-214",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "사람의 영구치는 사랑니를 포함해 모두 몇 개인가요?",
+      "choices": null,
+      "answer": "32",
+      "explanation": "영구치는 사랑니 4개를 포함해 32개입니다. 어린이의 유치는 20개입니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-215",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "어린이의 유치는 모두 몇 개인가요?",
+      "choices": null,
+      "answer": "20",
+      "explanation": "유치는 20개이며 6세 무렵부터 영구치로 갈리기 시작합니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-216",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "원소기호 Na는 무엇을 뜻하나요?",
+      "choices": [
+        "질소",
+        "나트륨",
+        "니켈",
+        "네온"
+      ],
+      "answer": "나트륨",
+      "explanation": "Na는 나트륨으로 라틴어 natrium에서 왔습니다. 질소는 N, 니켈은 Ni, 네온은 Ne입니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-217",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "소리가 전달되기 위해 반드시 필요한 것은 무엇인가요?",
+      "choices": [
+        "매질",
+        "빛",
+        "자기장",
+        "중력"
+      ],
+      "answer": "매질",
+      "explanation": "소리는 공기·물·고체 같은 매질의 진동으로 전달됩니다. 매질이 없는 진공에서는 전달되지 않습니다.",
+      "topicIds": [
+        "science",
+        "physics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-218",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "먹은 음식을 위산으로 분해하는 소화 기관은 무엇인가요?",
+      "choices": [
+        "위",
+        "간",
+        "폐",
+        "신장"
+      ],
+      "answer": "위",
+      "explanation": "위는 위산과 소화 효소로 음식을 잘게 분해해 작은창자로 보냅니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-219",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "생물이 자손에게 형질을 물려줄 때 정보를 담고 있는 물질은 무엇인가요?",
+      "choices": [
+        "DNA",
+        "단백질",
+        "지방",
+        "탄수화물"
+      ],
+      "answer": "DNA",
+      "explanation": "DNA는 유전 정보를 담은 물질로, 세포 분열 때 복제되어 자손에게 전달됩니다.",
+      "topicIds": [
+        "science",
+        "biology"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-220",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "물질이 열을 받아 고체에서 액체로 변하는 현상은 무엇인가요?",
+      "choices": [
+        "융해",
+        "응고",
+        "기화",
+        "승화"
+      ],
+      "answer": "융해",
+      "explanation": "고체가 액체가 되는 것이 융해, 반대가 응고입니다. 얼음이 녹는 것이 융해입니다.",
+      "topicIds": [
+        "science",
+        "physics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-301",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "고래는 어떤 동물 분류에 속하나요?",
+      "choices": [
+        "어류",
+        "포유류",
+        "양서류",
+        "파충류"
+      ],
+      "answer": "포유류",
+      "explanation": "고래는 폐로 숨을 쉬고 새끼를 낳아 젖을 먹이는 포유류입니다. 물에 살고 생김새가 물고기를 닮아 어류로 착각하기 쉽습니다.",
+      "topicIds": [
+        "science",
+        "biology"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/List_of_common_misconceptions_about_science,_technology,_and_mathematics",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-302",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "사람 몸에서 면적과 무게로 가장 큰 장기는 무엇인가요?",
+      "choices": [
+        "간",
+        "피부",
+        "폐",
+        "위"
+      ],
+      "answer": "피부",
+      "explanation": "피부는 성인 기준 약 2제곱미터, 무게 4kg 안팎으로 몸에서 가장 큰 장기입니다. 장기를 내장으로만 떠올리면 간을 고르기 쉽습니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/List_of_common_misconceptions_about_science,_technology,_and_mathematics",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-303",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "다이아몬드를 이루는 원소는 무엇인가요?",
+      "choices": [
+        "규소",
+        "탄소",
+        "알루미늄",
+        "티타늄"
+      ],
+      "answer": "탄소",
+      "explanation": "다이아몬드는 탄소 원자가 규칙적으로 결합한 결정입니다. 연필심의 흑연도 같은 탄소인데 결합 구조만 다릅니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Diamond",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-304",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "박쥐는 어떤 동물 분류에 속하나요?",
+      "choices": [
+        "조류",
+        "포유류",
+        "파충류",
+        "곤충"
+      ],
+      "answer": "포유류",
+      "explanation": "박쥐는 새끼를 낳아 젖을 먹이는 포유류이며, 스스로 날 수 있는 유일한 포유류입니다. 날개가 있어 새로 착각하기 쉽습니다.",
+      "topicIds": [
+        "science",
+        "biology"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/List_of_common_misconceptions_about_science,_technology,_and_mathematics",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-305",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "지구에 계절이 생기는 가장 큰 이유는 무엇인가요?",
+      "choices": [
+        "지구 자전축의 기울기",
+        "태양과의 거리 변화",
+        "달의 인력",
+        "태양의 밝기 변화"
+      ],
+      "answer": "지구 자전축의 기울기",
+      "explanation": "자전축이 약 23.5도 기울어 있어 계절마다 햇빛이 닿는 각도가 달라집니다. 거리 때문이라면 남반구와 북반구의 계절이 반대일 수 없습니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/List_of_common_misconceptions_about_science,_technology,_and_mathematics",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-306",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "현재 국제천문연맹 기준으로 태양계의 행성은 모두 몇 개인가요?",
+      "choices": null,
+      "answer": "8",
+      "explanation": "2006년 국제천문연맹이 명왕성을 왜소행성으로 재분류하면서 행성은 8개가 되었습니다. 9개로 배운 세대가 많습니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/IAU_definition_of_planet",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-307",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "사람의 체세포 하나에 들어있는 염색체는 모두 몇 개인가요?",
+      "choices": null,
+      "answer": "46",
+      "explanation": "사람의 염색체는 23쌍, 즉 46개입니다. '23쌍'만 기억해 23개로 답하기 쉽습니다.",
+      "topicIds": [
+        "science",
+        "biology"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Human_genome",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-308",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "물의 밀도가 가장 커지는 온도는 섭씨 몇 도인가요?",
+      "choices": null,
+      "answer": "4",
+      "explanation": "물은 섭씨 4도에서 밀도가 가장 큽니다. 그래서 겨울에 호수는 표면부터 업니다. 어는점인 0도라고 답하기 쉽습니다.",
+      "topicIds": [
+        "science",
+        "physics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Properties_of_water",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-309",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "태양에서 출발한 빛이 지구에 닿기까지 걸리는 시간은 약 몇 분인가요?",
+      "choices": null,
+      "answer": "8",
+      "explanation": "약 8분 20초가 걸립니다. 지금 보는 햇빛은 8분 전 태양에서 출발한 빛입니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Sunlight",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-310",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "별의 색 중 표면 온도가 가장 높은 것은 무엇인가요?",
+      "choices": [
+        "빨간색",
+        "노란색",
+        "흰색",
+        "파란색"
+      ],
+      "answer": "파란색",
+      "explanation": "별은 뜨거울수록 파랗고 차가울수록 붉습니다. 빨강을 '뜨거운 색'으로 여기는 감각 때문에 반대로 짐작하기 쉽습니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Stellar_classification",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-311",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "거미가 곤충으로 분류되지 않는 결정적인 이유는 무엇인가요?",
+      "choices": [
+        "다리가 8개여서",
+        "날개가 없어서",
+        "알을 낳아서",
+        "육식이어서"
+      ],
+      "answer": "다리가 8개여서",
+      "explanation": "곤충은 다리가 6개이고 몸이 머리·가슴·배로 나뉩니다. 거미는 다리가 8개인 거미강으로 곤충이 아닙니다.",
+      "topicIds": [
+        "science",
+        "biology"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/List_of_common_misconceptions_about_science,_technology,_and_mathematics",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-312",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "땅콩은 식물학적으로 어떤 무리에 속하나요?",
+      "choices": [
+        "견과류",
+        "콩과",
+        "장미과",
+        "벼과"
+      ],
+      "answer": "콩과",
+      "explanation": "땅콩은 땅속에서 꼬투리로 열리는 콩과 식물입니다. 아몬드·호두 같은 진짜 견과류와는 다릅니다.",
+      "topicIds": [
+        "science",
+        "biology"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Peanut",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-313",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "낙타의 혹에 저장되어 있는 것은 무엇인가요?",
+      "choices": [
+        "물",
+        "지방",
+        "근육",
+        "공기"
+      ],
+      "answer": "지방",
+      "explanation": "혹에는 지방이 저장되어 있어 먹이가 없을 때 에너지원이 됩니다. 물은 혈액과 조직에 저장합니다.",
+      "topicIds": [
+        "science",
+        "biology"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/List_of_common_misconceptions_about_science,_technology,_and_mathematics",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-314",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "대나무는 식물 분류상 무엇에 해당하나요?",
+      "choices": [
+        "나무",
+        "풀",
+        "이끼",
+        "덩굴"
+      ],
+      "answer": "풀",
+      "explanation": "대나무는 벼·밀과 같은 벼과에 속하는 풀입니다. 줄기가 굵고 단단해 나무로 착각하지만 나이테를 만드는 부피 생장을 하지 않습니다.",
+      "topicIds": [
+        "science",
+        "biology"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Bamboo",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-315",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "산소를 잃은 정맥 속 혈액은 실제로 무슨 색인가요?",
+      "choices": [
+        "파란색",
+        "초록색",
+        "어두운 붉은색",
+        "투명한 색"
+      ],
+      "answer": "어두운 붉은색",
+      "explanation": "혈액은 항상 붉으며 산소가 적으면 더 어두운 붉은색이 됩니다. 피부를 통해 파랗게 보이는 것은 빛의 산란 때문입니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/List_of_common_misconceptions_about_science,_technology,_and_mathematics",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-316",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "태양계에서 고리를 가진 행성은 몇 개인가요?",
+      "choices": [
+        "토성 하나뿐",
+        "토성과 목성 둘",
+        "네 개의 목성형 행성 모두",
+        "모든 행성"
+      ],
+      "answer": "네 개의 목성형 행성 모두",
+      "explanation": "목성·토성·천왕성·해왕성 모두 고리가 있습니다. 토성의 고리가 워낙 밝고 뚜렷해 토성만 있다고 착각하기 쉽습니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Ring_system",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-317",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "상온에서 유리는 물질의 어떤 상태인가요?",
+      "choices": [
+        "고체",
+        "액체",
+        "기체",
+        "액체와 고체의 중간"
+      ],
+      "answer": "고체",
+      "explanation": "유리는 결정 구조가 없는 비정질 고체입니다. 오래된 창유리 아래쪽이 두꺼운 것은 흘러내려서가 아니라 옛 제조 방식 때문입니다.",
+      "topicIds": [
+        "science",
+        "physics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/List_of_common_misconceptions_about_science,_technology,_and_mathematics",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-318",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "진공 상태의 우주 공간에서 전달될 수 없는 것은 무엇인가요?",
+      "choices": [
+        "빛",
+        "소리",
+        "전파",
+        "열복사"
+      ],
+      "answer": "소리",
+      "explanation": "소리는 매질의 진동이라 진공에서는 전달되지 않습니다. 빛과 전파는 매질 없이도 전달됩니다.",
+      "topicIds": [
+        "science",
+        "physics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Sound",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-319",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "사람의 혀에서 단맛과 쓴맛은 어떻게 느껴지나요?",
+      "choices": [
+        "혀끝은 단맛, 안쪽은 쓴맛",
+        "혀 전체에서 모두 느낀다",
+        "혀 옆면에서만 느낀다",
+        "온도에 따라 자리가 바뀐다"
+      ],
+      "answer": "혀 전체에서 모두 느낀다",
+      "explanation": "혀의 부위마다 맛이 나뉜다는 '미각 지도'는 오래전 폐기된 통설입니다. 모든 부위의 미뢰가 모든 기본 맛을 느낍니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Tongue_map",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-320",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "지구 대기에서 부피 비율이 가장 높은 기체는 무엇인가요?",
+      "choices": [
+        "산소",
+        "질소",
+        "이산화탄소",
+        "아르곤"
+      ],
+      "answer": "질소",
+      "explanation": "대기의 약 78%가 질소이고 산소는 약 21%입니다. 숨 쉴 때 쓰는 기체라 산소가 가장 많다고 착각하기 쉽습니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Atmosphere_of_Earth",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-401",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "원소기호 Sn은 무엇을 뜻하나요?",
+      "choices": [
+        "주석",
+        "스칸듐",
+        "은",
+        "황"
+      ],
+      "answer": "주석",
+      "explanation": "Sn은 주석으로 라틴어 stannum에서 왔습니다. 스칸듐은 Sc, 은은 Ag, 황은 S입니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-402",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "원소기호 K는 무엇을 뜻하나요?",
+      "choices": [
+        "칼슘",
+        "크립톤",
+        "칼륨",
+        "코발트"
+      ],
+      "answer": "칼륨",
+      "explanation": "K는 칼륨으로 라틴어 kalium에서 왔습니다. 칼슘은 Ca, 크립톤은 Kr, 코발트는 Co입니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-403",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "원소기호 Au는 무엇을 뜻하나요?",
+      "choices": [
+        "은",
+        "금",
+        "알루미늄",
+        "구리"
+      ],
+      "answer": "금",
+      "explanation": "Au는 금으로 라틴어 aurum에서 왔습니다. 은은 Ag(argentum), 알루미늄은 Al, 구리는 Cu입니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-404",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "원소기호 Ag는 무엇을 뜻하나요?",
+      "choices": [
+        "금",
+        "은",
+        "아르곤",
+        "비소"
+      ],
+      "answer": "은",
+      "explanation": "Ag는 은으로 라틴어 argentum에서 왔습니다. 아르곤은 Ar, 비소는 As입니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-405",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "백열전구의 필라멘트에 주로 쓰이던 금속은 무엇인가요?",
+      "choices": [
+        "텅스텐",
+        "니켈",
+        "백금",
+        "크롬"
+      ],
+      "answer": "텅스텐",
+      "explanation": "텅스텐은 녹는점이 약 3400도로 금속 중에서 매우 높아 고온에서도 형태를 유지합니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-406",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "성인의 뼈는 모두 몇 개인가요?",
+      "choices": null,
+      "answer": "206",
+      "explanation": "성인의 뼈는 206개입니다. 갓난아기는 약 300개인데 자라면서 여러 뼈가 붙어 줄어듭니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-407",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "헬륨의 원자번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "2",
+      "explanation": "헬륨은 양성자가 2개여서 원자번호 2번이며, 주기율표에서 수소 바로 다음입니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-408",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "섭씨 15도 공기 중에서 소리의 속도는 초속 약 몇 미터인가요?",
+      "choices": null,
+      "answer": "340",
+      "explanation": "공기 중 소리의 속도는 초속 약 340m입니다. 온도가 높을수록 조금씩 빨라집니다.",
+      "topicIds": [
+        "science",
+        "physics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-409",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "모스 경도계에서 다이아몬드의 경도는 몇인가요?",
+      "choices": null,
+      "answer": "10",
+      "explanation": "모스 경도계는 1(활석)부터 10(다이아몬드)까지의 눈금으로 광물의 긁힘 저항을 나타냅니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-410",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "지구에서 달까지의 평균 거리는 약 몇만 km인가요?",
+      "choices": null,
+      "answer": "38",
+      "explanation": "지구와 달의 평균 거리는 약 38만 km입니다. 빛으로는 약 1.3초 거리입니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-411",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "사람 몸에서 길이가 가장 긴 뼈는 무엇인가요?",
+      "choices": [
+        "대퇴골",
+        "정강뼈",
+        "위팔뼈",
+        "척추뼈"
+      ],
+      "answer": "대퇴골",
+      "explanation": "대퇴골은 넓적다리뼈로 성인 키의 약 4분의 1에 해당합니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-412",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "사람 몸에서 크기가 가장 작은 뼈는 어디에 있나요?",
+      "choices": [
+        "귀",
+        "코",
+        "손가락",
+        "발가락"
+      ],
+      "answer": "귀",
+      "explanation": "가운데귀의 등자뼈는 길이 약 3mm로 몸에서 가장 작은 뼈이며 소리 진동을 속귀로 전달합니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-413",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "상온에서 액체 상태로 존재하는 금속은 무엇인가요?",
+      "choices": [
+        "수은",
+        "납",
+        "주석",
+        "아연"
+      ],
+      "answer": "수은",
+      "explanation": "수은은 녹는점이 영하 39도여서 상온에서 액체입니다. 예전 체온계에 쓰였습니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-414",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "원소를 성질에 따라 배열한 주기율표를 처음 만든 사람은 누구인가요?",
+      "choices": [
+        "멘델레예프",
+        "라부아지에",
+        "돌턴",
+        "보어"
+      ],
+      "answer": "멘델레예프",
+      "explanation": "러시아의 멘델레예프가 1869년 주기율표를 발표하고 빈칸에 들어갈 미발견 원소의 성질까지 예측했습니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-415",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "DNA가 이중나선 구조라는 것을 밝힌 두 과학자는 누구인가요?",
+      "choices": [
+        "왓슨과 크릭",
+        "멘델과 다윈",
+        "파스퇴르와 코흐",
+        "허블과 아인슈타인"
+      ],
+      "answer": "왓슨과 크릭",
+      "explanation": "1953년 왓슨과 크릭이 이중나선 모형을 발표했습니다. 로절린드 프랭클린의 X선 회절 사진이 결정적 단서였습니다.",
+      "topicIds": [
+        "science",
+        "biology"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-416",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "화성이 붉게 보이는 이유는 무엇인가요?",
+      "choices": [
+        "표면의 산화철",
+        "높은 표면 온도",
+        "붉은 대기",
+        "태양빛의 반사각"
+      ],
+      "answer": "표면의 산화철",
+      "explanation": "화성 표면을 덮은 산화철, 즉 녹슨 철 성분 때문에 붉게 보여 '붉은 행성'이라 불립니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-417",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "극지방에서 오로라가 나타나는 이유는 무엇인가요?",
+      "choices": [
+        "태양풍 입자와 대기의 충돌",
+        "빙하의 빛 반사",
+        "달빛의 굴절",
+        "지열의 발광"
+      ],
+      "answer": "태양풍 입자와 대기의 충돌",
+      "explanation": "태양에서 온 하전 입자가 지구 자기장에 이끌려 극지방 대기와 부딪히며 빛을 냅니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-418",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "혈당을 낮추는 인슐린을 분비하는 기관은 무엇인가요?",
+      "choices": [
+        "이자",
+        "간",
+        "신장",
+        "비장"
+      ],
+      "answer": "이자",
+      "explanation": "이자(췌장)의 랑게르한스섬에서 인슐린이 분비되어 혈액 속 포도당 농도를 낮춥니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-419",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "주기율표에서 원자 질량이 가장 작은 원소는 무엇인가요?",
+      "choices": [
+        "수소",
+        "헬륨",
+        "리튬",
+        "탄소"
+      ],
+      "answer": "수소",
+      "explanation": "수소는 양성자 1개로 이루어진 가장 가벼운 원소이며 우주에서 가장 흔한 원소이기도 합니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-420",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "식물 세포에는 있지만 동물 세포에는 없는 구조는 무엇인가요?",
+      "choices": [
+        "세포벽",
+        "세포막",
+        "핵",
+        "미토콘드리아"
+      ],
+      "answer": "세포벽",
+      "explanation": "식물 세포는 셀룰로스로 된 세포벽과 엽록체를 가집니다. 세포막·핵·미토콘드리아는 둘 다 가지고 있습니다.",
+      "topicIds": [
+        "science",
+        "biology"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "rejectReason": null
+    }
+  ]
+}

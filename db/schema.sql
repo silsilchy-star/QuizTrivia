@@ -89,6 +89,16 @@ CREATE TABLE IF NOT EXISTS runs (
 
 CREATE INDEX IF NOT EXISTS idx_runs_uid ON runs(uid);
 
+-- 문항별 출제·정답 집계. 난이도를 저자 판정에만 맡기지 않기 위한 근거를 쌓는다.
+-- 문항반응이론(IRT)에서 가장 단순한 지표인 정답률(p-value)이 여기서 나온다.
+-- 지금은 집계만 하고 보정은 데이터가 쌓인 뒤에 한다 (docs/2026-08-12-question-sourcing-research.md ⑤).
+CREATE TABLE IF NOT EXISTS question_stats (
+  question_id   TEXT PRIMARY KEY REFERENCES questions(id),
+  served_count  INTEGER NOT NULL DEFAULT 0,
+  correct_count INTEGER NOT NULL DEFAULT 0,
+  updated_at    TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS ranking_cache (
   board_id     TEXT PRIMARY KEY,
   top_json     TEXT,

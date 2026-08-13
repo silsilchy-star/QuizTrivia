@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>QuizTrivia 검수</title>
+<style>
+  :root { --line:#dcdce0; --muted:#6b6b70; --ok:#15803d; --ng:#b91c1c; --warn:#b45309; --accent:#3b82f6; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:system-ui,-apple-system,sans-serif; background:#f5f5f7; color:#1c1c1e; line-height:1.5; }
+  header { position:sticky; top:0; background:#fff; border-bottom:1px solid var(--line); padding:.75rem 1rem; z-index:10; }
+  h1 { font-size:1rem; margin:0 0 .5rem; }
+  .gate { display:flex; flex-wrap:wrap; gap:.375rem; font-size:.75rem; }
+  .gate span { border:1px solid var(--line); border-radius:.375rem; padding:.125rem .5rem; font-variant-numeric:tabular-nums; }
+  .gate .on { border-color:var(--ok); color:var(--ok); font-weight:600; }
+  .filters { display:flex; gap:.5rem; margin-top:.5rem; font-size:.8125rem; }
+  .filters button { border:1px solid var(--line); background:#fff; border-radius:.375rem; padding:.25rem .625rem; cursor:pointer; }
+  .filters button.sel { border-color:var(--accent); color:var(--accent); font-weight:600; }
+  main { max-width:52rem; margin:0 auto; padding:1rem; }
+  .card { background:#fff; border:1px solid var(--line); border-left-width:3px; border-radius:.625rem; padding:.875rem 1rem; margin-bottom:.75rem; }
+  .card.approved { border-left-color:var(--ok); }
+  .card.rejected { border-left-color:var(--ng); opacity:.6; }
+  .card.pending  { border-left-color:var(--accent); }
+  .meta { font-size:.75rem; color:var(--muted); display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:.25rem; }
+  .body { font-weight:600; margin:.25rem 0 .5rem; }
+  ul.choices { list-style:none; padding:0; margin:0 0 .5rem; display:flex; flex-wrap:wrap; gap:.375rem; }
+  ul.choices li { border:1px solid var(--line); border-radius:.375rem; padding:.125rem .5rem; font-size:.875rem; }
+  ul.choices li.ans { border-color:var(--ok); color:var(--ok); font-weight:600; }
+  .num { font-size:.875rem; }
+  .num b { color:var(--ok); }
+  .exp { font-size:.8125rem; color:var(--muted); margin:.25rem 0 .5rem; }
+  .seed { font-size:.75rem; }
+  .note { font-size:.8125rem; border-radius:.375rem; padding:.25rem .5rem; margin-bottom:.25rem; }
+  .note.warn { background:#fffbeb; color:var(--warn); }
+  .note.error { background:#fef2f2; color:var(--ng); }
+  .actions { display:flex; gap:.5rem; margin-top:.5rem; }
+  .actions button { border:1px solid var(--line); background:#fff; border-radius:.375rem; padding:.375rem .875rem; cursor:pointer; font:inherit; font-size:.875rem; }
+  .actions button.ok:hover { border-color:var(--ok); color:var(--ok); }
+  .actions button.ng:hover { border-color:var(--ng); color:var(--ng); }
+  .reason { font-size:.75rem; color:var(--ng); margin-top:.25rem; }
+  .empty { color:var(--muted); text-align:center; padding:3rem 0; }
+</style>
+</head>
+<body>
+<header>
+  <h1>QuizTrivia 검수</h1>
+  <div class="gate" id="gate"></div>
+  <div class="filters" id="filters"></div>
+</header>
+<main id="list"></main>
+
+<script>
+let state = null;
+let filter = 'pending';
+
+async function load() {
+  state = await (await fetch('/api/questions')).json();
+  render();
+}
+
+async function setStatus(id, status) {
+  let reason = null;
+  if (status === 'rejected') {
+    reason = prompt('반려 사유 (다음 적재 때 프롬프트 개선에 씁니다)');
+    if (reason === null) return;
+  }
+  state = await (await fetch('/api/status', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id, status, rejectReason: reason }),
+  })).json();
+  render();
+}
+
+function render() {
+  const { questions, gate } = state;
+
+  document.getElementById('gate').innerHTML = gate
+    .filter(g => g.total > 0)
+    .map(g => `<span class="${g.passes ? 'on' : ''}">${g.name}
+        ${[1,2,3,4].map(d => g.counts[d]).join('/')} ${g.passes ? '✅' : ''}</span>`)
+    .join('');
+
+  const counts = { all: questions.length };
+  for (const s of ['pending','approved','rejected']) counts[s] = questions.filter(q => q.status === s).length;
+  document.getElementById('filters').innerHTML = ['pending','approved','rejected','all']
+    .map(f => `<button class="${f===filter?'sel':''}" onclick="filter='${f}';render()">${
+      {pending:'대기',approved:'승인',rejected:'반려',all:'전체'}[f]} ${counts[f]}</button>`).join('');
+
+  const shown = filter === 'all' ? questions : questions.filter(q => q.status === filter);
+  document.getElementById('list').innerHTML = shown.length ? shown.map(card).join('')
+    : '<p class="empty">이 상태의 문항이 없습니다.</p>';
+}
+
+function card(q) {
+  const choices = q.type === 'MULTIPLE_CHOICE' && q.choices
+    ? `<ul class="choices">${q.choices.map(c =>
+        `<li class="${c === q.answer ? 'ans' : ''}">${esc(c)}</li>`).join('')}</ul>`
+    : `<p class="num">정답 <b>${esc(q.answer)}</b></p>`;
+
+  return `<article class="card ${q.status}">
+    <div class="meta">
+      <span>${q.id}</span><span>난이도 ${q.difficulty}</span>
+      <span>${q.type === 'NUMERIC_INPUT' ? '숫자입력' : '4지선다'}</span>
+      <span>${q.topicNames.join(' · ')}</span>
+    </div>
+    <p class="body">${esc(q.body)}</p>
+    ${choices}
+    <p class="exp">${esc(q.explanation ?? '')}</p>
+    ${q.seedRef ? `<p class="seed">씨앗: <a href="${esc(q.seedRef)}" target="_blank" rel="noreferrer">출처</a></p>` : ''}
+    ${q.notes.map(n => `<p class="note ${n.level}">${n.level === 'error' ? '❌' : '⚠'} ${esc(n.msg)}</p>`).join('')}
+    ${q.rejectReason ? `<p class="reason">반려 사유: ${esc(q.rejectReason)}</p>` : ''}
+    <div class="actions">
+      ${q.status !== 'approved' ? `<button class="ok" onclick="setStatus('${q.id}','approved')">승인</button>` : ''}
+      ${q.status !== 'rejected' ? `<button class="ng" onclick="setStatus('${q.id}','rejected')">반려</button>` : ''}
+      ${q.status !== 'pending' ? `<button onclick="setStatus('${q.id}','pending')">대기로</button>` : ''}
+    </div>
+  </article>`;
+}
+
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c =>
+  ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' })[c]);
+
+load();
+</script>
+</body>
+</html>

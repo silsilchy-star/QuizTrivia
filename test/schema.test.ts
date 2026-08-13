@@ -145,8 +145,12 @@ describe('제약 — 깨지면 데이터가 조용히 오염되는 것들', () =
 });
 
 describe('테스트 환경 자체', () => {
-  it('공식 콘텐츠(data/*.json)에 의존하지 않는다 — 빈 DB로 시작한다', async () => {
-    const row = await env.DB.prepare('SELECT COUNT(*) AS n FROM topics').first<{ n: number }>();
-    expect(row?.n).toBe(0);
+  // 테스트가 공식 콘텐츠에 기대면, 문항이 늘거나 주제 이름이 바뀔 때마다
+  // 무관한 테스트가 깨진다. setup.ts가 seed를 적재하지 않는지 확인한다.
+  it('공식 콘텐츠(data/*.json)를 적재하지 않는다', async () => {
+    const seeded = await env.DB.prepare(
+      "SELECT COUNT(*) AS n FROM topics WHERE id IN ('science','geography','sports','birds')",
+    ).first<{ n: number }>();
+    expect(seeded?.n).toBe(0);
   });
 });

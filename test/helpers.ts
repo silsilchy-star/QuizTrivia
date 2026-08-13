@@ -115,14 +115,36 @@ export async function createUser(opts: {
   return uid;
 }
 
+/** 클라이언트마다 다른 IP를 준다.
+ *
+ *  ⚠ 이 테스트 환경은 D1을 테스트·파일·실행 사이에 되돌려주지 않는다(직접
+ *  확인함 — vitest-pool-workers v0.21에는 isolatedStorage 옵션이 없다).
+ *  그래서 레이트리밋 카운터가 계속 누적된다.
+ *
+ *  IP를 안 주면 전부 "unknown" 버킷을 공유하고, 순번으로 주면 카운터가
+ *  파일마다 리셋되어 파일 간에 겹친다. 둘 다 실제로 겪었다 — 테스트를
+ *  반복 실행하니 세 번째 실행에서 무관한 테스트가 429로 깨졌다.
+ *
+ *  그래서 넓은 공간에서 무작위로 뽑는다. 실행마다 새 IP라 누적되지 않는다. */
+function nextIp(): string {
+  const octet = () => Math.floor(Math.random() * 256);
+  return `10.${octet()}.${octet()}.${octet()}`;
+}
+
 /** 워커를 실제로 fetch하는 클라이언트. SELF.fetch에는 쿠키 저장소가 없으므로
  *  직접 들고 다닌다. 세션 쿠키는 이제 서명된 토큰이라 uid와 같지 않다. */
 export class Client {
   cookie = '';
+  readonly ip: string;
+
+  constructor(ip?: string) {
+    this.ip = ip ?? nextIp();
+  }
 
   async fetch(path: string, init?: RequestInit): Promise<Response> {
     const headers = new Headers(init?.headers);
     headers.set('Content-Type', 'application/json');
+    if (!headers.has('CF-Connecting-IP')) headers.set('CF-Connecting-IP', this.ip);
     if (this.cookie) headers.set('Cookie', this.cookie);
     const res = await SELF.fetch(`https://example.com${path}`, { ...init, headers, redirect: 'manual' });
     const setCookie = res.headers.get('Set-Cookie');

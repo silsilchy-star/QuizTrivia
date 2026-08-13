@@ -140,3 +140,14 @@ CREATE TABLE IF NOT EXISTS ranking_cache (
   cutoff_score INTEGER,
   generated_at TEXT
 );
+
+-- 레이트리밋 카운터 (worker/ratelimit.ts).
+-- bucket = "<행동>:<주체>:<시간창>" 형태의 고정 창(fixed window) 키다.
+-- 만료된 행은 가끔 기회주의적으로 지운다 — 별도 정리 작업을 두지 않기 위해서.
+CREATE TABLE IF NOT EXISTS rate_limits (
+  bucket     TEXT PRIMARY KEY,
+  count      INTEGER NOT NULL,
+  expires_at INTEGER NOT NULL   -- unix seconds
+);
+
+CREATE INDEX IF NOT EXISTS idx_rate_limits_expires ON rate_limits(expires_at);

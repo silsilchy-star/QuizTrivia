@@ -20,6 +20,15 @@ import {
   isRankedTopic,
 } from './community';
 import { issueToken, readSessionCookie, sessionCookie, verifyToken } from './session';
+import {
+  ADD_QUESTION,
+  CREATE_TOPIC,
+  NEW_SESSION,
+  START_RUN,
+  checkRateLimit,
+  clientIp,
+  tooManyRequests,
+} from './ratelimit';
 
 export interface Env {
   DB: D1Database;
@@ -77,6 +86,12 @@ async function handleSession(request: Request, env: Env): Promise<Response> {
       return json(body);
     }
   }
+
+  // 여기부터가 새 계정을 만드는 경로다. 쿠키 없이 계속 두드리면 users 행이
+  // 무제한으로 쌓이므로 IP당 제한을 건다. 기존 세션을 확인만 하는 위쪽
+  // 경로는 제한하지 않는다 — 정상 사용자가 새로고침으로 막히면 안 된다.
+  const limited = await checkRateLimit(env, NEW_SESSION, clientIp(request));
+  if (!limited.ok) return tooManyRequests(limited);
 
   const uid = crypto.randomUUID();
   const now = new Date().toISOString();
@@ -160,6 +175,9 @@ async function drawStageQuestions(
 }
 
 async function handleStartRun(request: Request, env: Env, uid: string): Promise<Response> {
+  const limited = await checkRateLimit(env, START_RUN, uid);
+  if (!limited.ok) return tooManyRequests(limited);
+
   const body = (await request.json().catch(() => null)) as { topicId?: string } | null;
   const topicId = body?.topicId;
   if (!topicId) return json({ error: 'topicId is required' }, { status: 400 });

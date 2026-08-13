@@ -8,6 +8,7 @@
 //   - 활성화 하한도 공식 주제(난이도당 20문항)보다 훨씬 낮다 — 혼자 만드는
 //     사람이 실제로 채울 수 있는 양이어야 하기 때문.
 import type { Difficulty, QuestionType } from '../src/types';
+import { ADD_QUESTION, CREATE_TOPIC, checkRateLimit, tooManyRequests } from './ratelimit';
 
 export interface CommunityEnv {
   DB: D1Database;
@@ -100,6 +101,9 @@ export async function handleCreateCommunityTopic(request: Request, env: Communit
   const author = await requireAuthor(env, uid);
   if (!author.ok) return author.res;
 
+  const limited = await checkRateLimit(env, CREATE_TOPIC, uid);
+  if (!limited.ok) return tooManyRequests(limited);
+
   const body = (await request.json().catch(() => null)) as { name?: string; tagline?: string } | null;
   const name = body?.name?.trim();
   const tagline = body?.tagline?.trim() || null;
@@ -185,6 +189,9 @@ export async function handleAddCommunityQuestion(
 ): Promise<Response> {
   const author = await requireAuthor(env, uid);
   if (!author.ok) return author.res;
+
+  const limited = await checkRateLimit(env, ADD_QUESTION, uid);
+  if (!limited.ok) return tooManyRequests(limited);
 
   const topic = await env.DB.prepare(
     "SELECT id, author_uid FROM topics WHERE id = ? AND source = 'community'",

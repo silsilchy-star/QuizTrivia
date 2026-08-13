@@ -1615,6 +1615,431 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "geo-501",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "미얀마의 수도는?",
+      "choices": [
+        "네피도",
+        "양곤",
+        "만달레이",
+        "바고"
+      ],
+      "answer": "네피도",
+      "explanation": "2005년 양곤에서 네피도로 수도를 옮겼지만 양곤이 여전히 더 유명합니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-502",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "코트디부아르의 공식 수도는?",
+      "choices": [
+        "야무수크로",
+        "아비장",
+        "부아케",
+        "코르호고"
+      ],
+      "answer": "야무수크로",
+      "explanation": "공식 수도는 야무수크로지만 아비장이 실질적인 경제·행정 중심지입니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-503",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "스리랑카의 입법 수도는?",
+      "choices": [
+        "스리자야와르데네푸라코테",
+        "콜롬보",
+        "캔디",
+        "자프나"
+      ],
+      "answer": "스리자야와르데네푸라코테",
+      "explanation": "행정·상업 중심지인 콜롬보와 달리 의회는 스리자야와르데네푸라코테에 있습니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-504",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 5,
+      "body": "남아프리카공화국은 공식 수도가 총 몇 개인가요?",
+      "choices": null,
+      "answer": "3",
+      "explanation": "행정수도 프리토리아, 입법수도 케이프타운, 사법수도 블룸폰테인으로 나뉘어 있습니다.",
+      "topicIds": [
+        "geography",
+        "capital"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-505",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "세계에서 인구밀도가 가장 낮은 주권국(영토 국가 기준)은?",
+      "choices": [
+        "몽골",
+        "캐나다",
+        "호주",
+        "카자흐스탄"
+      ],
+      "answer": "몽골",
+      "explanation": "몽골은 넓은 국토에 비해 인구가 적어 인구밀도가 가장 낮은 나라로 꼽힙니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-506",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "1948년 헌법으로 군대를 폐지한 것으로 잘 알려진 중미 국가는?",
+      "choices": [
+        "코스타리카",
+        "파나마",
+        "니카라과",
+        "온두라스"
+      ],
+      "answer": "코스타리카",
+      "explanation": "코스타리카는 1948년 내전 이후 헌법으로 상비군을 폐지했습니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-507",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "국명이 왕가(사우드 가문)의 이름에서 유래한 나라는?",
+      "choices": [
+        "사우디아라비아",
+        "요르단",
+        "아랍에미리트",
+        "오만"
+      ],
+      "answer": "사우디아라비아",
+      "explanation": "사우디아라비아는 건국자 이븐 사우드의 가문명에서 국명을 땄습니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-508",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "다음 중 적도가 지나가지 않는 나라는?",
+      "choices": [
+        "에콰도르",
+        "콜롬비아",
+        "브라질",
+        "페루"
+      ],
+      "answer": "페루",
+      "explanation": "적도는 에콰도르·콜롬비아·브라질 등을 지나지만 페루는 적도보다 남쪽에 있습니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-509",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "국명 자체가 스페인어로 \"적도\"라는 뜻인 나라는?",
+      "choices": [
+        "에콰도르",
+        "콜롬비아",
+        "파나마",
+        "코스타리카"
+      ],
+      "answer": "에콰도르",
+      "explanation": "에콰도르(Ecuador)는 스페인어로 적도라는 뜻입니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-510",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "연방 차원의 공식 공용어가 법적으로 지정되어 있지 않은 나라로 잘 알려진 곳은?",
+      "choices": [
+        "미국",
+        "영국",
+        "캐나다",
+        "호주"
+      ],
+      "answer": "미국",
+      "explanation": "미국은 연방법상 공식 언어를 따로 지정하지 않은 나라로 잘 알려져 있습니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-511",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "국명이 라틴어로 \"은(銀)\"이라는 뜻에서 유래한 나라는?",
+      "choices": [
+        "아르헨티나",
+        "칠레",
+        "페루",
+        "볼리비아"
+      ],
+      "answer": "아르헨티나",
+      "explanation": "아르헨티나는 라틴어 argentum(은)에서 유래했습니다.",
+      "topicIds": [
+        "geography",
+        "country"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-512",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "육지 위에서 가장 긴 산맥은?",
+      "choices": [
+        "안데스산맥",
+        "로키산맥",
+        "히말라야산맥",
+        "알프스산맥"
+      ],
+      "answer": "안데스산맥",
+      "explanation": "남미를 남북으로 가로지르는 안데스산맥은 총길이가 가장 긴 산맥입니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-513",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "세계에서 가장 넓은 열대우림이 있는 강 유역은?",
+      "choices": [
+        "아마존강",
+        "콩고강",
+        "나일강",
+        "메콩강"
+      ],
+      "answer": "아마존강",
+      "explanation": "아마존 유역은 세계 최대의 열대우림 지역입니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-514",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "세계에서 가장 깊은 호수는?",
+      "choices": [
+        "바이칼호",
+        "카스피해",
+        "슈피리어호",
+        "탕가니카호"
+      ],
+      "answer": "바이칼호",
+      "explanation": "러시아의 바이칼호는 최대 수심이 약 1,642m로 세계에서 가장 깊습니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-515",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "대륙을 제외하고 세계에서 가장 큰 섬은?",
+      "choices": [
+        "그린란드",
+        "뉴기니",
+        "보르네오",
+        "마다가스카르"
+      ],
+      "answer": "그린란드",
+      "explanation": "호주는 섬이 아닌 대륙으로 분류되어, 그린란드가 세계 최대의 섬입니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-516",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "아프리카와 아시아를 잇는 지협은?",
+      "choices": [
+        "수에즈지협",
+        "파나마지협",
+        "말레이반도",
+        "시나이반도"
+      ],
+      "answer": "수에즈지협",
+      "explanation": "수에즈지협은 아프리카와 아시아를 잇는 좁은 육지로, 지금은 수에즈 운하가 가로지릅니다.",
+      "topicIds": [
+        "geography",
+        "landform"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-517",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "유럽에 있으면서 국기가 정사각형인 나라는?",
+      "choices": [
+        "스위스",
+        "독일",
+        "네팔",
+        "덴마크"
+      ],
+      "answer": "스위스",
+      "explanation": "스위스와 바티칸은 국기가 정사각형인 몇 안 되는 나라입니다.",
+      "topicIds": [
+        "geography",
+        "flag"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-518",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 5,
+      "body": "네팔 국기는 삼각형(펜넌트) 몇 개가 겹쳐진 모양인가요?",
+      "choices": null,
+      "answer": "2",
+      "explanation": "네팔 국기는 세계에서 유일하게 사각형이 아닌 국기로, 삼각형 2개가 겹친 모양입니다.",
+      "topicIds": [
+        "geography",
+        "flag"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-519",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "영토가 매우 넓지만 표준시를 단 하나만 쓰는 나라는?",
+      "choices": [
+        "중국",
+        "러시아",
+        "미국",
+        "캐나다"
+      ],
+      "answer": "중국",
+      "explanation": "중국은 지리적으로 여러 시간대에 걸쳐 있지만 전국이 베이징 표준시(UTC+8) 하나만 씁니다.",
+      "topicIds": [
+        "geography",
+        "timezone"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "geo-520",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 5,
+      "body": "프랑스는 해외 영토를 포함해 총 몇 개의 시간대를 쓰나요?",
+      "choices": null,
+      "answer": "12",
+      "explanation": "프랑스는 여러 해외 영토 덕분에 세계에서 가장 많은 시간대(12개)를 쓰는 나라입니다.",
+      "topicIds": [
+        "geography",
+        "timezone"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
     }
   ]
 }

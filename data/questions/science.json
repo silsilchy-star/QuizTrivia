@@ -1690,6 +1690,426 @@
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
       "rejectReason": null
+    },
+    {
+      "id": "sci-501",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "원소기호 Sb는 무엇을 뜻하나요?",
+      "choices": [
+        "안티모니",
+        "스트론튬",
+        "실리콘",
+        "셀레늄"
+      ],
+      "answer": "안티모니",
+      "explanation": "Sb는 안티모니로 라틴어 stibium에서 왔습니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-502",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "원소기호 Pb는 무엇을 뜻하나요?",
+      "choices": [
+        "납",
+        "백금",
+        "팔라듐",
+        "인"
+      ],
+      "answer": "납",
+      "explanation": "Pb는 납으로 라틴어 plumbum에서 왔습니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-503",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "상온에서 유일하게 액체 상태인 금속 원소는?",
+      "choices": [
+        "수은",
+        "갈륨",
+        "세슘",
+        "나트륨"
+      ],
+      "answer": "수은",
+      "explanation": "수은의 녹는점은 약 -39°C라 상온에서 액체입니다. 갈륨·세슘은 녹는점이 상온보다 살짝 높습니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-504",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 5,
+      "body": "최초로 인공적으로 합성된 원소 테크네튬의 원자번호는?",
+      "choices": null,
+      "answer": "43",
+      "explanation": "테크네튬(Tc)은 1937년 처음 인공 합성된 원소로 원자번호 43번입니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-505",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "다이아몬드와 흑연처럼 같은 원소로 이루어졌지만 성질이 다른 물질 관계를 이르는 말은?",
+      "choices": [
+        "동소체",
+        "동위원소",
+        "이성질체",
+        "동중원소"
+      ],
+      "answer": "동소체",
+      "explanation": "같은 원소가 다른 구조로 존재하는 것을 동소체(allotrope)라 합니다.",
+      "topicIds": [
+        "science",
+        "chemistry"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-506",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "소리가 전달되려면 반드시 필요한 것은?",
+      "choices": [
+        "매질",
+        "진공",
+        "전기장",
+        "자기장"
+      ],
+      "answer": "매질",
+      "explanation": "소리는 공기 등 매질의 진동으로 전달되어 진공에서는 전달되지 않습니다.",
+      "topicIds": [
+        "science",
+        "physics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-507",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "빛은 파동이면서 동시에 무엇의 성질도 가지고 있나요?",
+      "choices": [
+        "입자",
+        "유체",
+        "기체",
+        "고체"
+      ],
+      "answer": "입자",
+      "explanation": "빛은 파동-입자 이중성을 가져 광자(입자)로도 설명됩니다.",
+      "topicIds": [
+        "science",
+        "physics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-508",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 5,
+      "body": "절대영도는 섭씨 약 몇 도인가요?",
+      "choices": null,
+      "answer": "-273",
+      "explanation": "절대영도는 -273.15°C로, 흔히 -273°C로 반올림해 씁니다.",
+      "topicIds": [
+        "science",
+        "physics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-509",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "뉴턴의 운동 제3법칙은 무엇을 설명하나요?",
+      "choices": [
+        "작용과 반작용",
+        "관성",
+        "가속도",
+        "만유인력"
+      ],
+      "answer": "작용과 반작용",
+      "explanation": "뉴턴의 제3법칙은 모든 작용에는 크기가 같고 방향이 반대인 반작용이 있다는 법칙입니다.",
+      "topicIds": [
+        "science",
+        "physics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-510",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 5,
+      "body": "공기 중 소리의 속도는 대략 초당 몇 m인가요?",
+      "choices": null,
+      "answer": "340",
+      "explanation": "상온 공기 중 음속은 약 340m/s입니다.",
+      "topicIds": [
+        "science",
+        "physics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-511",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "태양계에서 자전 방향이 다른 행성(거꾸로 도는 행성)은?",
+      "choices": [
+        "금성",
+        "화성",
+        "목성",
+        "토성"
+      ],
+      "answer": "금성",
+      "explanation": "금성은 다른 대부분의 행성과 반대 방향으로 자전합니다(역행 자전).",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-512",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "다음 중 고리가 없는 행성은?",
+      "choices": [
+        "화성",
+        "목성",
+        "천왕성",
+        "해왕성"
+      ],
+      "answer": "화성",
+      "explanation": "목성·천왕성·해왕성은 토성처럼 고리가 있지만 화성은 없습니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-513",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "태양계 행성 중 밀도가 가장 낮은 행성은?",
+      "choices": [
+        "토성",
+        "목성",
+        "천왕성",
+        "해왕성"
+      ],
+      "answer": "토성",
+      "explanation": "토성의 평균 밀도는 물보다 낮아(약 0.69g/cm³) 물에 뜰 수 있을 정도입니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-514",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "별의 밝기를 나타내는 등급에서 숫자가 작을수록 밝기는 어떻게 되나요?",
+      "choices": [
+        "더 밝다",
+        "더 어둡다",
+        "변화 없다",
+        "알 수 없다"
+      ],
+      "answer": "더 밝다",
+      "explanation": "별의 등급은 숫자가 작을수록 더 밝은 별을 뜻하는 역순 척도입니다.",
+      "topicIds": [
+        "science",
+        "astronomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-515",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "사람 몸에서 가장 작은 뼈가 있는 곳은?",
+      "choices": [
+        "귀",
+        "손가락",
+        "발가락",
+        "코"
+      ],
+      "answer": "귀",
+      "explanation": "중이(가운데귀)에 있는 등자뼈(등골)가 사람 몸에서 가장 작은 뼈입니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-516",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "사람의 소장 길이는 대장보다 어떻게 다른가요?",
+      "choices": [
+        "더 길다",
+        "더 짧다",
+        "같다",
+        "절반이다"
+      ],
+      "answer": "더 길다",
+      "explanation": "소장은 약 6~7m로, 약 1.5m인 대장보다 훨씬 깁니다. \"대장\"이라는 이름 때문에 반대로 착각하기 쉽습니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-517",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "사람 몸에서 스스로 재생이 가능한 대표적인 장기는?",
+      "choices": [
+        "간",
+        "심장",
+        "신장",
+        "폐"
+      ],
+      "answer": "간",
+      "explanation": "간은 일부를 절제해도 원래 크기로 재생되는 능력이 뛰어난 장기입니다.",
+      "topicIds": [
+        "science",
+        "anatomy"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-518",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "DNA에서 아데닌과 항상 짝을 이루는 염기는?",
+      "choices": [
+        "티민",
+        "구아닌",
+        "시토신",
+        "우라실"
+      ],
+      "answer": "티민",
+      "explanation": "DNA에서 아데닌(A)은 티민(T)과, 구아닌(G)은 시토신(C)과 짝을 이룹니다.",
+      "topicIds": [
+        "science",
+        "biology"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-519",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 5,
+      "body": "문어의 심장은 총 몇 개인가요?",
+      "choices": null,
+      "answer": "3",
+      "explanation": "문어는 아가미로 피를 보내는 심장 2개와 온몸에 피를 보내는 심장 1개, 총 3개의 심장을 가집니다.",
+      "topicIds": [
+        "science",
+        "biology"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
+    },
+    {
+      "id": "sci-520",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 5,
+      "body": "압력을 나타내는 SI 단위는?",
+      "choices": [
+        "파스칼",
+        "뉴턴",
+        "줄",
+        "와트"
+      ],
+      "answer": "파스칼",
+      "explanation": "압력의 SI 단위는 파스칼(Pa)입니다. 뉴턴은 힘, 줄은 에너지, 와트는 일률의 단위입니다.",
+      "topicIds": [
+        "science",
+        "units"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-sonnet-5",
+      "rejectReason": null
     }
   ]
 }

@@ -14,6 +14,16 @@ const NOW = '2026-08-12T00:00:00Z'; // 고정값 — 재생성해도 diff가 나
 
 const sql = (v) => (v == null ? 'NULL' : `'${String(v).replace(/'/g, "''")}'`);
 
+// D1은 SQL 문장 하나의 크기에 제한이 있다(SQLITE_TOOBIG). 문항이 늘어날수록 전체를
+// 한 INSERT문에 몰아넣으면 언젠가 이 한계에 부딪힌다 — 실제로 324문항(약 118KB)에서
+// 걸렸다. 그래서 여러 행을 하나의 INSERT문으로 합치되, N행마다 문장을 끊는다.
+const CHUNK_SIZE = 100;
+function chunk(arr, size) {
+  const out = [];
+  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+  return out;
+}
+
 const topics = loadTopics();
 const approved = loadAllQuestions().filter((q) => q.status === 'approved');
 
@@ -57,39 +67,40 @@ lines.push(topicRows.join(',\n') + ';', '');
 
 // ── questions ──
 if (approved.length) {
-  lines.push('INSERT OR REPLACE INTO questions');
-  lines.push(
-    '  (id, type, difficulty, body, choices_json, answer, explanation, status, source, generated_by, created_at, image_url)',
-    'VALUES',
+  const questionRows = approved.map(
+    (q) =>
+      `  (${sql(q.id)}, ${sql(q.type)}, ${q.difficulty}, ${sql(q.body)},\n` +
+      `   ${q.choices ? sql(JSON.stringify(q.choices)) : 'NULL'}, ${sql(q.answer)},\n` +
+      `   ${sql(q.explanation)}, 'approved', ${sql(q.source ?? 'manual')}, ${sql(q.generatedBy ?? null)}, ${sql(NOW)}, ${sql(q.imageUrl ?? null)})`,
   );
-  lines.push(
-    approved
-      .map(
-        (q) =>
-          `  (${sql(q.id)}, ${sql(q.type)}, ${q.difficulty}, ${sql(q.body)},\n` +
-          `   ${q.choices ? sql(JSON.stringify(q.choices)) : 'NULL'}, ${sql(q.answer)},\n` +
-          `   ${sql(q.explanation)}, 'approved', ${sql(q.source ?? 'manual')}, ${sql(q.generatedBy ?? null)}, ${sql(NOW)}, ${sql(q.imageUrl ?? null)})`,
-      )
-      .join(',\n') + ';',
-    '',
-  );
+  for (const rows of chunk(questionRows, CHUNK_SIZE)) {
+    lines.push('INSERT OR REPLACE INTO questions');
+    lines.push(
+      '  (id, type, difficulty, body, choices_json, answer, explanation, status, source, generated_by, created_at, image_url)',
+      'VALUES',
+    );
+    lines.push(rows.join(',\n') + ';', '');
+  }
 
   // 승인 목록에서 빠진 문항의 연결은 지우고 다시 넣는다 (반려로 바뀐 문항 정리).
   // ⚠ author_uid IS NULL(=이 JSON 파이프라인이 만든 공식 문항)로 반드시 범위를
   // 좁힌다 — 안 그러면 유저 창작마당(커뮤니티) 문항까지 매 배포마다 전부
   // 지워진다. 실제로 배포 전 프로덕션에 이미 진짜 커뮤니티 문항이 있었다.
   lines.push("DELETE FROM question_topics WHERE question_id IN (SELECT id FROM questions WHERE author_uid IS NULL);");
-  lines.push('INSERT OR IGNORE INTO question_topics (question_id, topic_id) VALUES');
-  lines.push(
-    approved
-      .flatMap((q) => q.topicIds.map((t) => `  (${sql(q.id)}, ${sql(t)})`))
-      .join(',\n') + ';',
-    '',
-  );
+  const topicLinkRows = approved.flatMap((q) => q.topicIds.map((t) => `  (${sql(q.id)}, ${sql(t)})`));
+  for (const rows of chunk(topicLinkRows, CHUNK_SIZE)) {
+    lines.push('INSERT OR IGNORE INTO question_topics (question_id, topic_id) VALUES');
+    lines.push(rows.join(',\n') + ';', '');
+  }
 
   // 승인되지 않은 "공식" 문항만 정리한다 — 커뮤니티 문항(author_uid가 있음)은 건드리지 않는다.
-  const ids = approved.map((q) => sql(q.id)).join(', ');
-  lines.push(`DELETE FROM questions WHERE author_uid IS NULL AND id NOT IN (${ids});`, '');
+  // NOT IN 목록도 같은 이유로 청크를 나눈다.
+  const idChunks = chunk(approved.map((q) => sql(q.id)), CHUNK_SIZE * 5);
+  lines.push('DELETE FROM questions WHERE author_uid IS NULL', '  AND id NOT IN (' + idChunks[0].join(', ') + ')');
+  for (const ids of idChunks.slice(1)) {
+    lines.push('  AND id NOT IN (' + ids.join(', ') + ')');
+  }
+  lines.push(';', '');
 }
 
 writeFileSync(OUT, lines.join('\n'), 'utf8');

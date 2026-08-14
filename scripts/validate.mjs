@@ -141,7 +141,14 @@ for (const t of topics) {
   gate.push({ id: t.id, name: t.name, kind: t.kind, total: list.length, counts, passes });
 
   // NUMERIC_INPUT 비율은 넓은 태그에서만 본다 (좁은 태그는 목표를 두지 않음 — 6.1절)
-  if (t.kind === 'broad' && list.length >= 20) {
+  //
+  // 단, 주제 자체가 한 가지 답변 형식으로만 성립하는 경우가 있다 — "새 맞추기"는
+  // 사진을 보고 학명을 쓰는 주제라 문항이 전부 TEXT_INPUT이고, 숫자로 답하는
+  // 문항은 그 주제의 outOfScope("사진 없이 생태만으로 구별")에 해당한다. 이런
+  // 주제는 비율을 맞추려 들면 주제가 망가지므로, topics.json에 사유를 적어
+  // 면제한다. 사유를 데이터에 두는 이유는 여기 주제 id를 하드코딩하면 왜
+  // 예외인지가 코드에서 사라지기 때문이다.
+  if (t.kind === 'broad' && list.length >= 20 && !t.numericRatioExempt) {
     const ratio = list.filter((q) => q.type === 'NUMERIC_INPUT').length / list.length;
     if (ratio < NUMERIC_RATIO.min) {
       warn(t.id, `NUMERIC_INPUT 비율 ${(ratio * 100).toFixed(0)}% — 목표 20~25% 미달 (4.4절)`);

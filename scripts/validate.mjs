@@ -14,6 +14,7 @@ import {
   loadTopics,
   normalize,
 } from './lib.mjs';
+import { choiceAnswerLeaked, numericAnswerLeaked } from './fairness.mjs';
 
 const TYPES = ['MULTIPLE_CHOICE', 'NUMERIC_INPUT', 'TEXT_INPUT'];
 const STATUSES = ['pending', 'approved', 'rejected'];
@@ -78,6 +79,15 @@ for (const q of questions) {
   // 이미지 첨부 (EP-1 확장 — 이미지+단답형)
   if (q.imageUrl != null && !/^https:\/\/.+/.test(q.imageUrl)) {
     err(id, `imageUrl은 https://로 시작해야 한다: ${q.imageUrl}`);
+  }
+
+  // ── 정답 노출 (scripts/fairness.mjs) ──
+  // 형식이 멀쩡해도 문제에 답이 적혀 있으면 그 문항은 아무것도 묻지 않는다.
+  if (numericAnswerLeaked(q)) {
+    err(id, `정답 ${q.answer}이 문제 본문에 그대로 있다 — 몰라도 맞힐 수 있다`);
+  }
+  if (choiceAnswerLeaked(q)) {
+    warn(id, `정답 "${q.answer}"만 문제 본문에 나온다 — 내용을 몰라도 고를 수 있는지 확인`);
   }
 
   // 태그 (PLAN 6.6절 [2] — 허용 목록 밖 태그는 주제를 파편화시킨다)

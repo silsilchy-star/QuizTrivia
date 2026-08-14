@@ -1,8 +1,14 @@
 // 유저 창작마당 — 플레이어가 직접 주제를 만들고 문제를 채워 넣는 화면.
 // 검수 없이 자동 검증만 통과하면 바로 공개되고, 랭킹에는 반영되지 않는다
 // (worker/community.ts와 짝을 이룬다).
-import { useEffect, useState, type FormEvent } from 'react';
-import { addCommunityQuestion, createCommunityTopic, deleteCommunityTopic, getCommunityTopics } from './api';
+import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
+import {
+  addCommunityQuestion,
+  createCommunityTopic,
+  deleteCommunityTopic,
+  getCommunityTopics,
+  uploadQuestionImage,
+} from './api';
 import type { CommunityTopic, Difficulty, NewCommunityQuestionInput, QuestionType, SessionResponse } from './types';
 
 /** worker/community.ts의 COMMUNITY_GATE_PER_DIFFICULTY와 같은 값 — 표시용. */
@@ -284,9 +290,29 @@ function NewQuestionForm({
   const [answer, setAnswer] = useState('');
   const [explanation, setExplanation] = useState('');
   const [imageUrl, setImageUrl] = useState('');
+  const [uploading, setUploading] = useState(false);
+  const [imageError, setImageError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [addedCount, setAddedCount] = useState(0);
+
+  async function pickImage(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    // 같은 파일을 다시 골랐을 때도 onChange가 뜨도록 값을 비운다.
+    e.target.value = '';
+    if (!file) return;
+
+    setUploading(true);
+    setImageError(null);
+    try {
+      const { url } = await uploadQuestionImage(file);
+      setImageUrl(url);
+    } catch (err) {
+      setImageError((err as Error).message);
+    } finally {
+      setUploading(false);
+    }
+  }
 
   async function submit(e: FormEvent) {
     e.preventDefault();
@@ -309,6 +335,7 @@ function NewQuestionForm({
       setAnswer('');
       setExplanation('');
       setImageUrl('');
+      setImageError(null);
       setAddedCount((n) => n + 1);
     } catch (err) {
       setError((err as Error).message);
@@ -360,11 +387,36 @@ function NewQuestionForm({
         </div>
       )}
 
-      <input
-        value={imageUrl}
-        onChange={(e) => setImageUrl(e.target.value)}
-        placeholder="이미지 URL (선택 — https://로 시작하는 링크를 붙여넣으세요)"
-      />
+      <div className="image-field">
+        <div className="image-field-row">
+          <label className="file-button">
+            {uploading ? '올리는 중…' : '사진 선택'}
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/gif,image/webp"
+              disabled={uploading}
+              onChange={pickImage}
+            />
+          </label>
+          <span className="hint">JPG · PNG · GIF · WebP, 5MB 이하 (선택)</span>
+        </div>
+
+        {imageUrl && (
+          <div className="image-preview">
+            <img src={imageUrl} alt="첨부한 이미지 미리보기" />
+            <button type="button" className="link" onClick={() => setImageUrl('')}>
+              사진 빼기
+            </button>
+          </div>
+        )}
+
+        <input
+          value={imageUrl}
+          onChange={(e) => setImageUrl(e.target.value)}
+          placeholder="또는 이미지 주소 붙여넣기 (https://…)"
+        />
+        {imageError && <p className="error">{imageError}</p>}
+      </div>
 
       <input
         value={answer}

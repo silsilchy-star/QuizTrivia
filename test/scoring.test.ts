@@ -178,12 +178,21 @@ describe('validateQuestion — 창작마당 자동 검증 (사람 검수가 없�
     expect(validateQuestion({ ...mc, type: 'TEXT_INPUT' })).toBe('TEXT_INPUT은 선택지가 없어야 한다');
   });
 
-  it('이미지 URL은 https만 허용한다 — http/javascript 스킴을 막는다', () => {
+  // 허용하는 것은 두 가지뿐이다 — 우리가 직접 올려 서빙하는 이미지, 또는
+  // 외부 https 링크. 그 밖의 스킴은 XSS·혼합콘텐츠 통로가 된다.
+  it('업로드한 이미지 경로와 https 링크만 허용한다', () => {
     const withImg = (imageUrl: string) => validateQuestion({ ...mc, type: 'TEXT_INPUT', choices: null, imageUrl });
+    const rejected = '이미지는 직접 올리거나 https:// 링크여야 한다';
+
     expect(withImg('https://example.com/a.jpg')).toBeNull();
-    expect(withImg('http://example.com/a.jpg')).toBe('이미지 URL은 https://로 시작해야 한다');
-    expect(withImg('javascript:alert(1)')).toBe('이미지 URL은 https://로 시작해야 한다');
-    expect(withImg('data:image/png;base64,AAAA')).toBe('이미지 URL은 https://로 시작해야 한다');
+    expect(withImg(`/images/${'a'.repeat(64)}.png`)).toBeNull();
+
+    expect(withImg('http://example.com/a.jpg')).toBe(rejected);
+    expect(withImg('javascript:alert(1)')).toBe(rejected);
+    expect(withImg('data:image/png;base64,AAAA')).toBe(rejected);
+    // 업로드 경로를 흉내 낸 것도 형식이 정확히 맞아야 한다.
+    expect(withImg('/images/../../etc/passwd')).toBe(rejected);
+    expect(withImg(`/images/${'a'.repeat(64)}.svg`)).toBe(rejected);
   });
 
   it('알 수 없는 문제 유형은 막는다', () => {

@@ -150,6 +150,12 @@ export interface NewQuestionBody {
 
 const QUESTION_TYPES: QuestionType[] = ['MULTIPLE_CHOICE', 'NUMERIC_INPUT', 'TEXT_INPUT'];
 
+/** 우리 워커가 서빙하는 업로드 이미지인가 (`/images/<sha256>.<확장자>`).
+ *  형태를 정확히 맞춰야 한다 — `/images/../..` 같은 걸 통과시키면 안 된다. */
+export function isUploadedImagePath(url: string): boolean {
+  return /^\/images\/[0-9a-f]{64}\.(jpg|png|gif|webp)$/.test(url);
+}
+
 /** 사람 검수가 없으므로, 기계가 잡을 수 있는 형식 오류만은 반드시 막는다
  *  (scripts/validate.mjs의 ERROR 규칙과 같은 것들 — PLAN 6.6절 [3]). */
 export function validateQuestion(q: NewQuestionBody): string | null {
@@ -176,7 +182,11 @@ export function validateQuestion(q: NewQuestionBody): string | null {
   if (q.imageUrl != null) {
     const url = q.imageUrl.trim();
     if (url.length > 500) return '이미지 URL이 너무 길다';
-    if (!/^https:\/\/.+/.test(url)) return '이미지 URL은 https://로 시작해야 한다';
+    // 두 가지만 허용한다: 우리가 직접 올려 서빙하는 이미지(worker/images.ts),
+    // 또는 외부 https 링크. 그 밖의 스킴(javascript:, data: 등)은 막는다.
+    if (!isUploadedImagePath(url) && !/^https:\/\/.+/.test(url)) {
+      return '이미지는 직접 올리거나 https:// 링크여야 한다';
+    }
   }
   return null;
 }

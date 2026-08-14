@@ -13,5 +13,13 @@
       "database_name": "quiztrivia",
       "database_id": "8cf78168-de6b-40d2-9204-62b32e1144d9"
     }
+  ],
+  // 창작마당에서 올린 문항 이미지. 버킷을 공개로 열지 않고 워커가 /images/로
+  // 서빙한다 (worker/images.ts).
+  "r2_buckets": [
+    {
+      "binding": "IMAGES",
+      "bucket_name": "quiztrivia-images"
+    }
   ]
 }

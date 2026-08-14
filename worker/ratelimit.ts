@@ -33,6 +33,9 @@ export const START_RUN: RateLimitRule = { action: 'run', limit: 120, windowSec: 
 export const CREATE_TOPIC: RateLimitRule = { action: 'topic', limit: 10, windowSec: 86400 };
 /** 창작마당 문항 추가. 주제 하나를 채우는 데 20문항이면 충분하다. */
 export const ADD_QUESTION: RateLimitRule = { action: 'question', limit: 300, windowSec: 86400 };
+/** 이미지 업로드. 문항 수보다 넉넉히 두되(다시 찍어 올리는 일이 흔하다),
+ *  저장 용량을 무한정 먹지는 못하게 한다 — 한도 × 5MB가 하루 상한이다. */
+export const ADD_IMAGE: RateLimitRule = { action: 'image', limit: 200, windowSec: 86400 };
 
 export interface RateLimitResult {
   ok: boolean;

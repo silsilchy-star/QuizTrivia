@@ -86,6 +86,22 @@ jobs:
         run: npx wrangler d1 execute quiztrivia --remote --yes --file=db/seed.generated.sql
 
       # ── 4) 배포 ──
+      #
+      # 문항 이미지 저장용 R2 버킷. wrangler.jsonc에 바인딩이 있으므로 버킷이
+      # 없으면 배포가 실패한다. 이미 있으면 그냥 넘어가고, 권한 부족 같은
+      # 진짜 실패는 그대로 드러내야 하므로 `|| true`로 덮지 않는다.
+      - name: Ensure R2 bucket
+        run: |
+          if npx wrangler r2 bucket create quiztrivia-images 2>&1 | tee /tmp/r2.log; then
+            echo "버킷 생성됨"
+          elif grep -qi "already\|exists\|10004" /tmp/r2.log; then
+            echo "버킷이 이미 있음 — 넘어감"
+          else
+            echo "::error::R2 버킷을 만들 수 없다. CLOUDFLARE_API_TOKEN에 R2 편집 권한이 있는지 확인할 것."
+            cat /tmp/r2.log
+            exit 1
+          fi
+
       - name: Set Google OAuth secrets
         run: |
           echo "${{ secrets.GOOGLE_CLIENT_ID }}" | npx wrangler secret put GOOGLE_CLIENT_ID

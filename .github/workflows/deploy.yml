@@ -69,8 +69,13 @@ jobs:
       # 데이터를 건드렸는지 배포 로그만으로 판별할 수 있게 한다.
       # (UNION ALL로 쌓으면 D1의 compound SELECT 항 수 제한에 걸린다 —
       #  스칼라 서브쿼리로 한 행에 담는다.)
+      #
+      # ⚠ 이 쿼리는 schema 적용 **전**에 돈다. 그러니 여기서는 프로덕션에
+      #   이미 존재하는 테이블만 조회해야 한다. 새로 추가한 테이블은 아직
+      #   만들어지지 않았으므로 아래 (after) 쪽에만 넣는다.
+      #   (error_log를 여기 넣었다가 'no such table'로 배포가 멈춘 적 있음)
       - name: Count rows (before)
-        run: npx wrangler d1 execute quiztrivia --remote --yes --command "SELECT (SELECT COUNT(*) FROM topics WHERE source='official' AND status='active') AS official_active, (SELECT COUNT(*) FROM topics WHERE source='community') AS community_topics, (SELECT COUNT(*) FROM questions WHERE author_uid IS NOT NULL) AS community_questions, (SELECT COUNT(*) FROM questions WHERE author_uid IS NULL) AS official_questions, (SELECT COUNT(*) FROM users) AS users, (SELECT COUNT(*) FROM users WHERE google_sub IS NOT NULL) AS users_linked, (SELECT COUNT(*) FROM runs) AS runs, (SELECT COUNT(*) FROM topic_best) AS topic_best, (SELECT COUNT(*) FROM error_log) AS errors"
+        run: npx wrangler d1 execute quiztrivia --remote --yes --command "SELECT (SELECT COUNT(*) FROM topics WHERE source='official' AND status='active') AS official_active, (SELECT COUNT(*) FROM topics WHERE source='community') AS community_topics, (SELECT COUNT(*) FROM questions WHERE author_uid IS NOT NULL) AS community_questions, (SELECT COUNT(*) FROM questions WHERE author_uid IS NULL) AS official_questions, (SELECT COUNT(*) FROM users) AS users, (SELECT COUNT(*) FROM users WHERE google_sub IS NOT NULL) AS users_linked, (SELECT COUNT(*) FROM runs) AS runs, (SELECT COUNT(*) FROM topic_best) AS topic_best"
 
       # ── 3) 여기서부터 프로덕션 DB가 실제로 바뀐다 ──
       - name: Apply D1 schema (멱등 베이스라인)

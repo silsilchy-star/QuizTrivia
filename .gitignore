@@ -6,3 +6,4 @@ dist/
 .wrangler/
 db/seed.generated.sql
 .dev.vars
+public/image-check.html

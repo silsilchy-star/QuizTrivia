@@ -151,3 +151,19 @@ CREATE TABLE IF NOT EXISTS rate_limits (
 );
 
 CREATE INDEX IF NOT EXISTS idx_rate_limits_expires ON rate_limits(expires_at);
+
+-- 워커에서 잡히지 않은 예외 (worker/errorlog.ts).
+-- 대시보드 로그는 실시간 tail이라 지나가면 사라진다. 나중에 조회할 수 있게
+-- 여기에 남긴다. 오래된 행은 기회주의적으로 정리해 무한정 쌓이지 않게 한다.
+-- path는 쿼리스트링을 뺀 경로만 넣는다 — OAuth code 같은 비밀이 새면 안 된다.
+CREATE TABLE IF NOT EXISTS error_log (
+  id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  path       TEXT NOT NULL,
+  method     TEXT NOT NULL,
+  message    TEXT NOT NULL,
+  stack      TEXT,
+  uid        TEXT,
+  created_at TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_error_log_created ON error_log(created_at);

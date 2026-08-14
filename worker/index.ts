@@ -29,6 +29,7 @@ import {
   clientIp,
   tooManyRequests,
 } from './ratelimit';
+import { logError } from './errorlog';
 
 export interface Env {
   DB: D1Database;
@@ -469,7 +470,21 @@ async function handleSubmitStage(
 }
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    try {
+      return await route(request, env);
+    } catch (error) {
+      // 기록은 응답을 붙잡지 않는다. 사용자에게는 내부 정보를 흘리지 않고
+      // 500만 돌려준다 — 상세는 error_log에만 남는다.
+      ctx.waitUntil(logError(env, request, error));
+      return json({ error: 'internal error' }, { status: 500 });
+    }
+  },
+};
+
+/** 실제 라우팅. 여기서 던진 예외는 위 fetch()가 잡아 error_log에 남긴다. */
+async function route(request: Request, env: Env): Promise<Response> {
+  {
     const url = new URL(request.url);
     const path = url.pathname;
 
@@ -551,5 +566,5 @@ export default {
     }
 
     return env.ASSETS.fetch(request);
-  },
-};
+  }
+}

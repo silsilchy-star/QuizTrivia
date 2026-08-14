@@ -92,12 +92,17 @@ jobs:
       # 진짜 실패는 그대로 드러내야 하므로 `|| true`로 덮지 않는다.
       - name: Ensure R2 bucket
         run: |
+          # set -o pipefail 없이는 `if cmd | tee log; then`가 tee의 종료 코드(항상 0)를
+          # 보는 바람에 wrangler가 실패해도 이 if가 항상 성공으로 보인다 — 실제로
+          # R2가 계정에서 비활성화된 상태(10042)에서 이 버그 때문에 "버킷 생성됨"으로
+          # 잘못 찍히고 다음 단계(Deploy Worker)에서야 진짜 실패가 드러난 적이 있다.
+          set -o pipefail
           if npx wrangler r2 bucket create quiztrivia-images 2>&1 | tee /tmp/r2.log; then
             echo "버킷 생성됨"
           elif grep -qi "already\|exists\|10004" /tmp/r2.log; then
             echo "버킷이 이미 있음 — 넘어감"
           else
-            echo "::error::R2 버킷을 만들 수 없다. CLOUDFLARE_API_TOKEN에 R2 편집 권한이 있는지 확인할 것."
+            echo "::error::R2 버킷을 만들 수 없다. CLOUDFLARE_API_TOKEN에 R2 편집 권한 문제이거나, 계정에서 R2 자체가 비활성화(코드 10042 — Cloudflare 대시보드에서 R2를 켜야 함)된 상태일 수 있다."
             cat /tmp/r2.log
             exit 1
           fi

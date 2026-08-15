@@ -397,6 +397,285 @@
       "generatedBy": "claude-opus-5"
     },
     {
+      "id": "spo-121",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "농구에서 공을 바닥에 튀기며 이동하는 동작을 무엇이라 하나요?",
+      "choices": [
+        "드리블",
+        "패스",
+        "리바운드",
+        "블로킹"
+      ],
+      "answer": "드리블",
+      "explanation": "공을 손으로 바닥에 튀기며 이동하는 것을 드리블이라 합니다. 튀기지 않고 들고 걸으면 트래블링 반칙입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-122",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "배구에서 경기를 시작할 때 상대 코트로 공을 처음 보내는 동작은 무엇인가요?",
+      "choices": [
+        "서브",
+        "스파이크",
+        "블로킹",
+        "리시브"
+      ],
+      "answer": "서브",
+      "explanation": "엔드라인 뒤에서 공을 쳐 상대 코트로 보내는 것이 서브이며, 모든 랠리는 서브로 시작합니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-123",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "배드민턴에서 라켓으로 치는, 깃털이 달린 공을 무엇이라 부르나요?",
+      "choices": [
+        "셔틀콕",
+        "탁구공",
+        "테니스공",
+        "핸드볼공"
+      ],
+      "answer": "셔틀콕",
+      "explanation": "배드민턴은 공이 아니라 깃털이 달린 셔틀콕을 씁니다. 공기 저항이 커서 멀리 날아가지 않습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-124",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "볼링에서 첫 번째 투구로 핀을 모두 쓰러뜨리는 것을 무엇이라 하나요?",
+      "choices": [
+        "스트라이크",
+        "스페어",
+        "거터",
+        "스플릿"
+      ],
+      "answer": "스트라이크",
+      "explanation": "첫 투구로 다 쓰러뜨리면 스트라이크, 두 번째 투구까지 합쳐 다 쓰러뜨리면 스페어입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-125",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "볼링 한 레인에 세워 두는 핀은 모두 몇 개인가요?",
+      "choices": null,
+      "answer": "10",
+      "explanation": "핀은 삼각형 모양으로 세워지며 모두 10개입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-126",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "당구에서 공을 치는 데 쓰는 긴 막대를 무엇이라 부르나요?",
+      "choices": [
+        "큐",
+        "배트",
+        "스틱",
+        "패들"
+      ],
+      "answer": "큐",
+      "explanation": "당구에서 쓰는 막대는 큐(cue)이며, 끝에 가죽 팁이 붙어 있습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-127",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "농구 골대에서 그물이 달려 있는 둥근 쇠테를 무엇이라 하나요?",
+      "choices": [
+        "림",
+        "백보드",
+        "포스트",
+        "베이스"
+      ],
+      "answer": "림",
+      "explanation": "공이 통과하는 둥근 테가 림이고, 그 뒤의 판은 백보드입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-128",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "테니스에서 서브를 두 번 연달아 실패해 상대에게 점수를 주는 것을 무엇이라 하나요?",
+      "choices": [
+        "더블폴트",
+        "에이스",
+        "듀스",
+        "발리"
+      ],
+      "answer": "더블폴트",
+      "explanation": "서브는 두 번의 기회가 있고, 둘 다 실패하면 더블폴트로 상대가 점수를 얻습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-129",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "농구에서 공을 튀기지 않고 든 채로 걸어가면 선언되는 반칙은 무엇인가요?",
+      "choices": [
+        "트래블링",
+        "골텐딩",
+        "더블드리블",
+        "파울"
+      ],
+      "answer": "트래블링",
+      "explanation": "공을 든 채 정해진 걸음 수를 넘겨 움직이면 트래블링입니다. 드리블을 멈췄다가 다시 하면 더블드리블입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-130",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "배구에서 한 팀이 공을 상대 코트로 넘기기 전까지 몇 번까지 공을 건드릴 수 있나요?",
+      "choices": null,
+      "answer": "3",
+      "explanation": "리시브·토스·스파이크로 이어지는 세 번까지 허용됩니다. 블로킹에 맞은 것은 횟수에 세지 않습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-131",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "골프에서 각 홀의 첫 타를 치는 구역을 무엇이라 부르나요?",
+      "choices": [
+        "티잉 구역",
+        "그린",
+        "벙커",
+        "러프"
+      ],
+      "answer": "티잉 구역",
+      "explanation": "첫 타를 치는 곳이 티잉 구역(티박스)이고, 홀이 있는 짧게 깎인 구역이 그린입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-132",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "배구에서 상대의 공격을 네트 앞에서 손을 들어 막아 내는 동작은 무엇인가요?",
+      "choices": [
+        "블로킹",
+        "토스",
+        "서브",
+        "디그"
+      ],
+      "answer": "블로킹",
+      "explanation": "네트 위로 손을 뻗어 상대 공격을 막는 것이 블로킹입니다. 바닥 가까이 받아 올리는 수비는 디그입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-133",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "농구에서 자유투를 한 개 성공하면 몇 점인가요?",
+      "choices": null,
+      "answer": "1",
+      "explanation": "자유투는 한 개당 1점입니다. 일반 야투는 2점, 3점 라인 밖에서는 3점입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-134",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "골프에서 잔디를 아주 짧게 깎아 두고 홀을 파 놓은 구역을 무엇이라 하나요?",
+      "choices": [
+        "그린",
+        "페어웨이",
+        "러프",
+        "벙커"
+      ],
+      "answer": "그린",
+      "explanation": "홀이 있는 짧게 깎인 구역이 그린입니다. 모래가 채워진 함정은 벙커입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
       "id": "spo-201",
       "type": "NUMERIC_INPUT",
       "difficulty": 2,
@@ -791,6 +1070,306 @@
       "topicIds": [
         "sports",
         "football"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-221",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "농구 경기를 시작할 때 두 선수가 공중에 띄운 공을 다투는 것을 무엇이라 하나요?",
+      "choices": [
+        "점프볼",
+        "스로인",
+        "프리스로",
+        "티오프"
+      ],
+      "answer": "점프볼",
+      "explanation": "심판이 공을 위로 던지고 양 팀 한 명씩 뛰어올라 공을 쳐 내는 것이 점프볼입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-222",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "테니스에서 점수 0을 부르는 말은 무엇인가요?",
+      "choices": [
+        "러브",
+        "듀스",
+        "제로",
+        "널"
+      ],
+      "answer": "러브",
+      "explanation": "테니스 점수는 러브(0)·15·30·40 순으로 부릅니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-223",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "테니스에서 양쪽이 40대 40으로 같아졌을 때 부르는 말은 무엇인가요?",
+      "choices": [
+        "듀스",
+        "러브",
+        "에이스",
+        "매치포인트"
+      ],
+      "answer": "듀스",
+      "explanation": "듀스가 되면 두 점을 연속으로 따야 그 게임을 이깁니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-224",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "골프에서 그 홀의 기준 타수보다 한 타 적게 넣은 것을 무엇이라 하나요?",
+      "choices": [
+        "버디",
+        "보기",
+        "이글",
+        "파"
+      ],
+      "answer": "버디",
+      "explanation": "기준 타수(파)보다 하나 적으면 버디, 둘 적으면 이글입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-225",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "골프에서 그 홀의 기준 타수보다 한 타 많게 넣은 것을 무엇이라 하나요?",
+      "choices": [
+        "보기",
+        "버디",
+        "파",
+        "이글"
+      ],
+      "answer": "보기",
+      "explanation": "기준 타수보다 하나 많으면 보기, 둘 많으면 더블보기입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-226",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "배구에서 수비만 전담하며 다른 색 유니폼을 입는 선수를 무엇이라 부르나요?",
+      "choices": [
+        "리베로",
+        "세터",
+        "센터",
+        "윙스파이커"
+      ],
+      "answer": "리베로",
+      "explanation": "리베로는 후위에서 리시브와 디그를 맡는 수비 전문 선수라 구분을 위해 다른 색 유니폼을 입습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-227",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "아이스하키 정규 경기는 몇 피리어드로 나뉘나요?",
+      "choices": null,
+      "answer": "3",
+      "explanation": "20분씩 세 피리어드로 진행합니다. 축구의 전후반, 농구의 쿼터에 해당하는 구분입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-228",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "골프 정규 코스 18홀의 기준 타수를 모두 더하면 보통 얼마인가요?",
+      "choices": null,
+      "answer": "72",
+      "explanation": "파3·파4·파5 홀이 섞여 합계가 보통 72타가 되도록 코스를 설계합니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-229",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "럭비에서 공을 앞쪽으로 던지면 선언되는 반칙은 무엇인가요?",
+      "choices": [
+        "스로 포워드",
+        "녹온",
+        "오프사이드",
+        "하이 태클"
+      ],
+      "answer": "스로 포워드",
+      "explanation": "럭비는 공을 뒤나 옆으로만 패스할 수 있습니다. 손에서 앞으로 떨어뜨리는 것은 녹온입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-230",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "배구에서 서브권을 가져올 때마다 선수들이 자리를 한 칸씩 옮기는 규칙을 무엇이라 하나요?",
+      "choices": [
+        "로테이션",
+        "포지셔닝",
+        "스위치",
+        "체인지코트"
+      ],
+      "answer": "로테이션",
+      "explanation": "상대 서브를 깨고 서브권을 가져오면 시계 방향으로 한 자리씩 이동합니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-231",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "탁구 한 게임에서 서브권은 몇 점마다 상대에게 넘어가나요?",
+      "choices": null,
+      "answer": "2",
+      "explanation": "두 점마다 서브권이 바뀝니다. 듀스가 되면 한 점마다 바뀝니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-232",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "핸드볼 정규 경기의 전반전은 몇 분인가요?",
+      "choices": [
+        "30분",
+        "20분",
+        "25분",
+        "45분"
+      ],
+      "answer": "30분",
+      "explanation": "전후반 각 30분씩 총 60분을 치릅니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-233",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "배드민턴에서 단식과 복식의 코트 크기는 어떻게 다른가요?",
+      "choices": [
+        "복식 코트가 더 넓다",
+        "단식 코트가 더 넓다",
+        "둘이 똑같다",
+        "길이만 다르고 폭은 같다"
+      ],
+      "answer": "복식 코트가 더 넓다",
+      "explanation": "양옆의 좁은 구역(사이드 앨리)까지 쓰는 복식이 더 넓습니다. 다만 복식 서브는 앞뒤로는 더 좁은 구역에 넣어야 합니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-234",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "농구에서 공격 팀이 정해진 시간 안에 슛을 하지 않으면 공격권을 잃는 규칙을 무엇이라 하나요?",
+      "choices": [
+        "샷 클락",
+        "3초 룰",
+        "5초 룰",
+        "백코트 바이얼레이션"
+      ],
+      "answer": "샷 클락",
+      "explanation": "공격 제한 시간을 재는 장치와 규칙을 샷 클락이라 합니다. 시간을 넘기면 공격권이 상대에게 넘어갑니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-235",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "테니스에서 서브가 네트를 스치고 서비스 박스에 들어가 다시 넣게 되는 것을 무엇이라 하나요?",
+      "choices": [
+        "렛",
+        "폴트",
+        "에이스",
+        "아웃"
+      ],
+      "answer": "렛",
+      "explanation": "렛이 선언되면 그 서브는 무효가 되고 같은 서브를 다시 넣습니다. 횟수는 차감되지 않습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
       ],
       "status": "approved",
       "source": "ai_generated",
@@ -1217,6 +1796,245 @@
       "seedRef": "https://en.wikipedia.org/wiki/Badminton"
     },
     {
+      "id": "spo-321",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "탁구 공식 경기에 쓰는 공의 지름은 몇 mm인가요?",
+      "choices": null,
+      "answer": "40",
+      "explanation": "2000년에 38mm에서 40mm로 커졌습니다. 공을 크게 해 속도와 회전을 줄이고 랠리를 길게 하려는 개정이었습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Table_tennis#Equipment"
+    },
+    {
+      "id": "spo-322",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "배구 경기에서 승부를 가르는 마지막 세트는 몇 점을 먼저 내야 이기나요?",
+      "choices": null,
+      "answer": "15",
+      "explanation": "앞선 세트는 25점이지만 마지막 세트만 15점입니다. 25점으로 알고 있기 쉬운 부분입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Volleyball#Scoring"
+    },
+    {
+      "id": "spo-323",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "국제농구연맹(FIBA) 규칙에서 공격 리바운드를 잡으면 공격 제한 시간은 몇 초로 다시 시작되나요?",
+      "choices": null,
+      "answer": "14",
+      "explanation": "2014년 개정으로 공격 리바운드 뒤에는 24초가 아니라 14초만 주어집니다. 24초로 알고 있기 쉽습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Shot_clock#Basketball"
+    },
+    {
+      "id": "spo-324",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "국제농구연맹(FIBA) 규칙에서 농구 한 경기의 정규 시간은 모두 몇 분인가요?",
+      "choices": [
+        "40분",
+        "48분",
+        "32분",
+        "60분"
+      ],
+      "answer": "40분",
+      "explanation": "FIBA는 10분씩 4쿼터로 40분입니다. NBA는 12분씩 4쿼터로 48분이라 혼동하기 쉽습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Basketball#Duration"
+    },
+    {
+      "id": "spo-325",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "골프에서 그린 위 퍼팅을 할 때 홀에 깃대를 꽂아 둔 채로 쳐도 되나요?",
+      "choices": [
+        "쳐도 된다",
+        "벌타를 받는다",
+        "동반자 동의가 있어야 한다",
+        "프로 경기에서만 된다"
+      ],
+      "answer": "쳐도 된다",
+      "explanation": "2019년 규칙 개정으로 깃대를 꽂아 둔 채 퍼팅해도 벌타가 없습니다. 그 전에는 공이 깃대에 맞으면 벌타였습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Rules_of_golf"
+    },
+    {
+      "id": "spo-326",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "배드민턴 서브에서 셔틀콕을 칠 때 코트 표면으로부터 몇 m를 넘으면 안 되나요?",
+      "choices": null,
+      "answer": "1.15",
+      "explanation": "예전에는 '치는 사람의 허리 아래'라는 기준이었지만, 키에 따라 유불리가 생겨 1.15m라는 고정 높이로 바뀌었습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Badminton#Serving"
+    },
+    {
+      "id": "spo-327",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "배구에서 서브권이 없는 팀도 랠리를 이기면 점수를 얻나요?",
+      "choices": [
+        "득점할 수 있다",
+        "서브권이 있어야만 득점한다",
+        "마지막 세트에만 가능하다",
+        "듀스일 때만 가능하다"
+      ],
+      "answer": "득점할 수 있다",
+      "explanation": "랠리포인트제라 서브권과 관계없이 랠리를 이긴 팀이 점수를 얻습니다. 예전의 서브권제(사이드아웃제)로 배운 사람이 많습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Volleyball#Scoring"
+    },
+    {
+      "id": "spo-328",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "테니스 4대 메이저 대회에서 마지막 세트가 접전으로 흐르면 지금은 어떻게 승부를 가리나요?",
+      "choices": [
+        "타이브레이크로 가린다",
+        "두 게임 차가 날 때까지 계속한다",
+        "추첨으로 정한다",
+        "무승부로 처리한다"
+      ],
+      "answer": "타이브레이크로 가린다",
+      "explanation": "2022년부터 4대 대회 모두 마지막 세트를 타이브레이크로 마무리하도록 통일됐습니다. 예전에는 두 게임 차가 날 때까지 이어져 몇 시간씩 가는 경기가 있었습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Tiebreaker#Tennis"
+    },
+    {
+      "id": "spo-329",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "탁구에서 서브를 넣을 때 공을 손바닥에서 몇 cm 이상 띄워 올려야 하나요?",
+      "choices": [
+        "16cm",
+        "6cm",
+        "10cm",
+        "30cm"
+      ],
+      "answer": "16cm",
+      "explanation": "손바닥을 펴고 공을 16cm 이상 수직으로 띄운 뒤 쳐야 합니다. 몰래 회전을 거는 서브를 막기 위한 규정입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Table_tennis#Service"
+    },
+    {
+      "id": "spo-330",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "국제배구연맹(FIVB) 규칙에서 리베로는 서브를 넣을 수 있나요?",
+      "choices": [
+        "넣을 수 없다",
+        "언제든 넣을 수 있다",
+        "마지막 세트에만 넣을 수 있다",
+        "한 경기에 한 번만 넣을 수 있다"
+      ],
+      "answer": "넣을 수 없다",
+      "explanation": "리베로는 서브와 블로킹, 전위에서의 공격이 금지된 수비 전문 선수입니다. 일부 대학 리그에서 서브를 허용하는 경우가 있어 헷갈리기 쉽습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Libero#Volleyball"
+    },
+    {
+      "id": "spo-331",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "국제농구연맹(FIBA) 코트에서 3점 라인은 바스켓 중심으로부터 몇 m 떨어져 있나요? (코너 제외)",
+      "choices": null,
+      "answer": "6.75",
+      "explanation": "2010년에 6.25m에서 6.75m로 멀어졌습니다. 6.25m로 배운 세대가 많습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Three-point_line"
+    },
+    {
+      "id": "spo-332",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "럭비 유니언에서 트라이에 성공한 뒤 이어지는 추가 킥(컨버전)을 넣으면 몇 점이 더해지나요?",
+      "choices": [
+        "2점",
+        "1점",
+        "3점",
+        "5점"
+      ],
+      "answer": "2점",
+      "explanation": "트라이 5점에 컨버전 2점이 더해져 7점이 됩니다. 축구식으로 1점이라 생각하기 쉽습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Rugby_union#Scoring"
+    },
+    {
       "id": "spo-401",
       "type": "MULTIPLE_CHOICE",
       "difficulty": 4,
@@ -1598,6 +2416,264 @@
       ],
       "answer": "손",
       "explanation": "세팍타크로는 배구와 비슷하지만 손을 쓰지 않고 발·머리·가슴 등으로만 공을 다룹니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-421",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "국제 경기 기준으로 남자 배구 네트의 높이는 몇 m인가요?",
+      "choices": null,
+      "answer": "2.43",
+      "explanation": "남자는 2.43m, 여자는 2.24m입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-422",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "국제 규격 농구 코트의 길이는 몇 m인가요?",
+      "choices": [
+        "28m",
+        "24m",
+        "26m",
+        "30m"
+      ],
+      "answer": "28m",
+      "explanation": "국제 규격은 길이 28m, 너비 15m입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-423",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "테니스에서 상대의 서브 게임을 따내는 것을 무엇이라 하나요?",
+      "choices": [
+        "브레이크",
+        "홀드",
+        "에이스",
+        "렛"
+      ],
+      "answer": "브레이크",
+      "explanation": "서브를 넣는 쪽이 유리하므로 그 게임을 지키면 홀드, 받는 쪽이 따내면 브레이크라 합니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-424",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "골프에서 그 홀의 기준 타수보다 세 타 적게 넣은 것을 무엇이라 하나요?",
+      "choices": [
+        "알바트로스",
+        "이글",
+        "버디",
+        "콘도르"
+      ],
+      "answer": "알바트로스",
+      "explanation": "하나 적으면 버디, 둘 적으면 이글, 셋 적으면 알바트로스입니다. 넷 적은 콘도르는 거의 나오지 않습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-425",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "탁구대의 높이는 바닥에서 몇 cm인가요?",
+      "choices": null,
+      "answer": "76",
+      "explanation": "탁구대는 높이 76cm, 길이 274cm, 너비 152.5cm입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-426",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "배드민턴 셔틀콕에 꽂혀 있는 깃털은 보통 몇 개인가요?",
+      "choices": [
+        "16개",
+        "12개",
+        "14개",
+        "20개"
+      ],
+      "answer": "16개",
+      "explanation": "거위나 오리 깃털 16개를 코르크 밑동에 둥글게 꽂아 만듭니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-427",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "스쿼시에서 상대의 몸에 막혀 정상적인 플레이가 어려웠을 때 랠리를 다시 하는 판정을 무엇이라 하나요?",
+      "choices": [
+        "렛",
+        "스트로크",
+        "폴트",
+        "다운"
+      ],
+      "answer": "렛",
+      "explanation": "좁은 코트를 함께 쓰는 종목이라 방해 상황이 잦습니다. 다시 하면 렛, 방해한 쪽이 점수를 잃으면 스트로크입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-428",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "핸드볼에서 7미터 스로가 주어지는 상황은 언제인가요?",
+      "choices": [
+        "명백한 득점 기회를 반칙으로 막았을 때",
+        "경기를 시작할 때",
+        "공이 사이드라인 밖으로 나갔을 때",
+        "골키퍼가 공을 잡았을 때"
+      ],
+      "answer": "명백한 득점 기회를 반칙으로 막았을 때",
+      "explanation": "축구의 페널티킥에 해당합니다. 골대에서 7m 떨어진 지점에서 골키퍼와 일대일로 던집니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-429",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "아이스하키에서 한 선수가 한 경기에 골 세 개를 넣는 것을 무엇이라 부르나요?",
+      "choices": [
+        "해트트릭",
+        "파워플레이",
+        "샷아웃",
+        "페널티샷"
+      ],
+      "answer": "해트트릭",
+      "explanation": "축구와 마찬가지로 해트트릭이라 부르며, 관중이 빙판에 모자를 던지는 관습이 있습니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-430",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "볼링 한 게임은 몇 프레임으로 이루어지나요?",
+      "choices": [
+        "10프레임",
+        "9프레임",
+        "12프레임",
+        "15프레임"
+      ],
+      "answer": "10프레임",
+      "explanation": "10프레임을 치며, 마지막 프레임에서 스트라이크나 스페어가 나오면 보너스 투구를 더 합니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-431",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "세팍타크로에서 한 팀은 코트에 몇 명이 서나요?",
+      "choices": [
+        "3명",
+        "2명",
+        "4명",
+        "5명"
+      ],
+      "answer": "3명",
+      "explanation": "한 팀 3명이 서서 발과 머리로 공을 넘깁니다. 배구와 족구를 섞은 듯한 동남아시아 종목입니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-432",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "크리켓에서 공을 던지는, 야구의 투수에 해당하는 선수를 무엇이라 부르나요?",
+      "choices": [
+        "볼러",
+        "배터",
+        "위켓키퍼",
+        "필더"
+      ],
+      "answer": "볼러",
+      "explanation": "공을 던지는 선수는 볼러, 치는 선수는 배터입니다. 야구의 투수·타자에 해당합니다.",
+      "topicIds": [
+        "sports",
+        "ballgame"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-433",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "농구에서 공격 선수가 상대 팀 제한 구역 안에 계속 머무를 수 있는 시간은 몇 초인가요?",
+      "choices": null,
+      "answer": "3",
+      "explanation": "골대 앞 제한 구역(페인트 존)에 3초를 넘겨 머무르면 3초 바이얼레이션으로 공격권을 잃습니다.",
       "topicIds": [
         "sports",
         "ballgame"

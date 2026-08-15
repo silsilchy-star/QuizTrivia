@@ -33,13 +33,10 @@ import {
   tooManyRequests,
 } from './ratelimit';
 import { logError } from './errorlog';
-import { IMAGE_PATH_PREFIX, handleServeImage, handleUploadImage } from './images';
 
 export interface Env {
   DB: D1Database;
   ASSETS: Fetcher;
-  /** 창작마당 문항 이미지 (worker/images.ts) */
-  IMAGES: R2Bucket;
   GOOGLE_CLIENT_ID: string;
   GOOGLE_CLIENT_SECRET: string;
   /** 세션 쿠키 서명용. 없으면 서명 없이(옛 방식으로) 동작한다 — worker/session.ts */
@@ -582,26 +579,6 @@ async function route(request: Request, env: Env): Promise<Response> {
         decodeURIComponent(communityQuestionItemMatch[1]),
         decodeURIComponent(communityQuestionItemMatch[2]),
       );
-    }
-
-    // 이미지 업로드는 문항 생성과 같은 문턱을 둔다 — 로그인 + 닉네임.
-    // (실제 검사는 handleUploadImage 앞의 resolveUid와 아래 requireAuthor가 한다)
-    if (path === '/api/community/images' && request.method === 'POST') {
-      const uid = await resolveUid(request, env);
-      if (!uid) return json({ error: 'no session' }, { status: 401 });
-      const author = await env.DB.prepare('SELECT is_anonymous, nickname FROM users WHERE uid = ?')
-        .bind(uid)
-        .first<{ is_anonymous: number; nickname: string | null }>();
-      if (!author || author.is_anonymous || !author.nickname) {
-        return json({ error: 'must be logged in with a nickname to upload' }, { status: 403 });
-      }
-      return handleUploadImage(request, env, uid);
-    }
-
-    // 업로드된 이미지 서빙. 인증 없이 열려 있다 — 문항 이미지는 플레이 중
-    // 누구에게나 보여야 한다. 키가 내용 해시라 추측으로 남의 것을 열 수 없다.
-    if (path.startsWith(IMAGE_PATH_PREFIX) && (request.method === 'GET' || request.method === 'HEAD')) {
-      return handleServeImage(env, decodeURIComponent(path.slice(IMAGE_PATH_PREFIX.length)));
     }
 
     const communityTopicMatch = path.match(/^\/api\/community\/topics\/([^/]+)$/);

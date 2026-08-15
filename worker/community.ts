@@ -11,10 +11,6 @@ import type { CommunityQuestion, Difficulty, QuestionType } from '../src/types';
 import { MEDIA_URL_MAX, checkImageUrl, parseVideoUrl, videoFromStored } from '../src/media';
 import { ADD_QUESTION, CREATE_TOPIC, checkRateLimit, tooManyRequests } from './ratelimit';
 
-// 이미지 경로 판정은 src/media.ts로 옮겼다(프론트도 같은 규칙을 써야 하므로).
-// 여기서 다시 내보내는 건 예전 import 경로를 살려두기 위한 것.
-export { isUploadedImagePath } from '../src/media';
-
 export interface CommunityEnv {
   DB: D1Database;
 }
@@ -195,7 +191,7 @@ export function validateQuestion(q: NewQuestionBody): string | null {
       case 'is-video':
         return '유튜브 링크는 이미지가 아니라 영상 칸에 넣는다';
       case 'not-https':
-        return '이미지는 직접 올리거나 https:// 링크여야 한다';
+        return '이미지는 https:// 링크여야 한다';
     }
   }
 

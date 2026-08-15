@@ -1,7 +1,7 @@
 // 유저 창작마당 — 플레이어가 직접 주제를 만들고 문제를 채워 넣는 화면.
 // 검수 없이 자동 검증만 통과하면 바로 공개되고, 랭킹에는 반영되지 않는다
 // (worker/community.ts와 짝을 이룬다).
-import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import {
   addCommunityQuestion,
   createCommunityTopic,
@@ -9,7 +9,6 @@ import {
   deleteCommunityTopic,
   getCommunityQuestions,
   getCommunityTopics,
-  uploadQuestionImage,
 } from './api';
 import { parseVideoUrl } from './media';
 import type {
@@ -385,8 +384,6 @@ function NewQuestionForm({
   // 불필요한 질문이다. 판정은 서버와 같은 파서(src/media.ts)로 하고,
   // 최종 판단은 어차피 서버가 다시 한다.
   const [mediaUrl, setMediaUrl] = useState('');
-  const [uploading, setUploading] = useState(false);
-  const [mediaError, setMediaError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [addedCount, setAddedCount] = useState(0);
@@ -394,24 +391,6 @@ function NewQuestionForm({
   // 붙여넣은 링크가 유튜브면 영상, 아니면 이미지. 미리보기와 전송 양쪽이
   // 이 하나의 판정을 쓴다.
   const previewVideo = parseVideoUrl(mediaUrl);
-
-  async function pickImage(e: ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    // 같은 파일을 다시 골랐을 때도 onChange가 뜨도록 값을 비운다.
-    e.target.value = '';
-    if (!file) return;
-
-    setUploading(true);
-    setMediaError(null);
-    try {
-      const { url } = await uploadQuestionImage(file);
-      setMediaUrl(url);
-    } catch (err) {
-      setMediaError((err as Error).message);
-    } finally {
-      setUploading(false);
-    }
-  }
 
   async function submit(e: FormEvent) {
     e.preventDefault();
@@ -438,7 +417,6 @@ function NewQuestionForm({
       setAnswer('');
       setExplanation('');
       setMediaUrl('');
-      setMediaError(null);
       setAddedCount((n) => n + 1);
     } catch (err) {
       setError((err as Error).message);
@@ -491,19 +469,6 @@ function NewQuestionForm({
       )}
 
       <div className="image-field">
-        <div className="image-field-row">
-          <label className="file-button">
-            {uploading ? '올리는 중…' : '사진 선택'}
-            <input
-              type="file"
-              accept="image/jpeg,image/png,image/gif,image/webp"
-              disabled={uploading}
-              onChange={pickImage}
-            />
-          </label>
-          <span className="hint">JPG · PNG · GIF · WebP, 5MB 이하 (선택)</span>
-        </div>
-
         {mediaUrl && (
           <div className="image-preview">
             {previewVideo ? (
@@ -520,12 +485,11 @@ function NewQuestionForm({
         <input
           value={mediaUrl}
           onChange={(e) => setMediaUrl(e.target.value)}
-          placeholder="또는 이미지 주소 · 유튜브 링크 붙여넣기"
+          placeholder="이미지 주소 · 유튜브 링크 붙여넣기 (선택)"
         />
         <span className="hint">
           유튜브 주소를 넣으면 영상 문제가 된다 (youtube.com/watch · youtu.be · /shorts)
         </span>
-        {mediaError && <p className="error">{mediaError}</p>}
       </div>
 
       <input

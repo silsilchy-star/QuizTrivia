@@ -976,6 +976,327 @@
       "generatedBy": "claude-opus-5"
     },
     {
+      "id": "spo-150",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "올림픽을 상징하는, 고리 다섯 개가 이어진 깃발을 무엇이라 부르나요?",
+      "choices": [
+        "오륜기",
+        "유엔기",
+        "월드컵기",
+        "만국기"
+      ],
+      "answer": "오륜기",
+      "explanation": "다섯 고리가 서로 얽힌 모양이라 오륜기라 부르며, 다섯 대륙의 만남을 뜻합니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-151",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "올림픽 깃발에 그려진 고리는 모두 몇 개인가요?",
+      "choices": null,
+      "answer": "5",
+      "explanation": "파랑·노랑·검정·초록·빨강 다섯 고리가 얽혀 있습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-152",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "올림픽에서 2위를 한 선수에게 주는 메달은 무슨 색인가요?",
+      "choices": [
+        "은색",
+        "금색",
+        "동색",
+        "흰색"
+      ],
+      "answer": "은색",
+      "explanation": "1위 금, 2위 은, 3위 동메달이 주어집니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-153",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "올림픽에서 3위를 한 선수에게 주는 메달은 무슨 색인가요?",
+      "choices": [
+        "동색",
+        "금색",
+        "은색",
+        "검은색"
+      ],
+      "answer": "동색",
+      "explanation": "3위에게는 구리 빛깔의 동메달이 주어집니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-154",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "올림픽 기간 내내 경기장에서 타오르며 대회를 상징하는 불을 무엇이라 하나요?",
+      "choices": [
+        "성화",
+        "봉화",
+        "화톳불",
+        "등불"
+      ],
+      "answer": "성화",
+      "explanation": "성화는 대회가 열리는 동안 계속 타오르다가 폐회식에서 꺼집니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-155",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "여름 종목으로 치르는 올림픽을 무엇이라 부르나요?",
+      "choices": [
+        "하계 올림픽",
+        "동계 올림픽",
+        "청소년 올림픽",
+        "패럴림픽"
+      ],
+      "answer": "하계 올림픽",
+      "explanation": "여름 종목 대회는 하계, 겨울 종목 대회는 동계 올림픽입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-156",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "장애인 선수들이 참가하는 국제 종합 스포츠 대회를 무엇이라 하나요?",
+      "choices": [
+        "패럴림픽",
+        "유니버시아드",
+        "아시안게임",
+        "유스올림픽"
+      ],
+      "answer": "패럴림픽",
+      "explanation": "올림픽이 끝난 뒤 같은 도시에서 이어서 열립니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-157",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "다음 중 물에서 하는 올림픽 종목이 아닌 것은 무엇인가요?",
+      "choices": [
+        "역도",
+        "수영",
+        "다이빙",
+        "조정"
+      ],
+      "answer": "역도",
+      "explanation": "역도는 바벨을 들어 올리는 실내 종목입니다. 나머지는 모두 물에서 치릅니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-158",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "다음 중 동계 올림픽 종목이 아닌 것은 무엇인가요?",
+      "choices": [
+        "수영",
+        "스키",
+        "아이스하키",
+        "컬링"
+      ],
+      "answer": "수영",
+      "explanation": "수영은 하계 종목입니다. 나머지는 눈과 얼음 위에서 하는 동계 종목입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-159",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "국제 규격 육상 트랙을 한 바퀴 돌면 몇 m인가요?",
+      "choices": null,
+      "answer": "400",
+      "explanation": "가장 안쪽 레인 기준으로 한 바퀴가 400m입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-160",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "올림픽 마라톤은 어느 종목 분야에 속하나요?",
+      "choices": [
+        "육상",
+        "수영",
+        "체조",
+        "사이클"
+      ],
+      "answer": "육상",
+      "explanation": "마라톤은 육상 도로 경기이며, 보통 대회 마지막 날에 치릅니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-161",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "스키를 신고 눈 덮인 비탈을 빠르게 내려오며 기록을 겨루는 동계 종목은 무엇인가요?",
+      "choices": [
+        "알파인 스키",
+        "컬링",
+        "봅슬레이",
+        "피겨스케이팅"
+      ],
+      "answer": "알파인 스키",
+      "explanation": "비탈을 내려오는 활강 계열이 알파인, 평지를 오래 달리는 것이 크로스컨트리입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-162",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "올림픽에서 활을 쏘아 과녁을 맞히는 종목은 무엇인가요?",
+      "choices": [
+        "양궁",
+        "사격",
+        "펜싱",
+        "역도"
+      ],
+      "answer": "양궁",
+      "explanation": "활을 쏘는 것이 양궁, 총을 쏘는 것이 사격입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-163",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "올림픽에서 총으로 표적을 맞혀 점수를 겨루는 종목은 무엇인가요?",
+      "choices": [
+        "사격",
+        "양궁",
+        "펜싱",
+        "유도"
+      ],
+      "answer": "사격",
+      "explanation": "권총·소총·산탄총 등 여러 세부 종목으로 나뉩니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-164",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "육상 계주에서 한 팀은 보통 몇 명이 이어 달리나요?",
+      "choices": null,
+      "answer": "4",
+      "explanation": "네 명이 배턴을 주고받으며 달립니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-165",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 1,
+      "body": "얼음판 위에서 음악에 맞춰 연기하며 점수를 겨루는 동계 종목은 무엇인가요?",
+      "choices": [
+        "피겨스케이팅",
+        "쇼트트랙",
+        "컬링",
+        "스피드스케이팅"
+      ],
+      "answer": "피겨스케이팅",
+      "explanation": "기술 점수와 예술 점수를 합쳐 순위를 정합니다. 속도를 겨루는 것은 스피드스케이팅입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
       "id": "spo-201",
       "type": "NUMERIC_INPUT",
       "difficulty": 2,
@@ -1976,6 +2297,301 @@
       "generatedBy": "claude-opus-5"
     },
     {
+      "id": "spo-251",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "근대 올림픽이 처음 열린 해는 몇 년인가요?",
+      "choices": null,
+      "answer": "1896",
+      "explanation": "고대 올림픽이 열리던 그리스에서 근대 올림픽이 다시 시작됐습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-252",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "근대 올림픽이 처음 열린 도시는 어디인가요?",
+      "choices": [
+        "아테네",
+        "파리",
+        "런던",
+        "로마"
+      ],
+      "answer": "아테네",
+      "explanation": "고대 올림픽의 발상지인 그리스에서 첫 대회를 열었습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-253",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "올림픽을 주관하는 국제 기구를 무엇이라 부르나요?",
+      "choices": [
+        "국제올림픽위원회",
+        "국제축구연맹",
+        "세계육상연맹",
+        "세계반도핑기구"
+      ],
+      "answer": "국제올림픽위원회",
+      "explanation": "약칭 IOC이며, 대회 개최지 선정과 종목 채택을 결정합니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-254",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "올림픽 성화의 불씨는 어디에서 채화하나요?",
+      "choices": [
+        "그리스 올림피아",
+        "개최 도시 광장",
+        "스위스 로잔",
+        "직전 대회 개최지"
+      ],
+      "answer": "그리스 올림피아",
+      "explanation": "고대 올림픽이 열리던 올림피아에서 햇빛을 모아 불을 붙인 뒤 개최지까지 옮깁니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-255",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "올림픽 개회식 선수단 입장에서 맨 앞에 서는 나라는 어디인가요?",
+      "choices": [
+        "그리스",
+        "개최국",
+        "직전 대회 우승국",
+        "이름 순서상 첫 나라"
+      ],
+      "answer": "그리스",
+      "explanation": "올림픽의 발상지라는 뜻에서 그리스가 언제나 먼저 입장합니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-256",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "올림픽 개회식 선수단 입장에서 맨 마지막에 들어오는 나라는 어디인가요?",
+      "choices": [
+        "개최국",
+        "그리스",
+        "직전 대회 개최국",
+        "참가국 수가 많은 나라"
+      ],
+      "answer": "개최국",
+      "explanation": "그리스가 먼저 들어오고 개최국이 마지막에 입장하는 것이 관례입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-257",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "동계 올림픽이 처음 열린 해는 몇 년인가요?",
+      "choices": null,
+      "answer": "1924",
+      "explanation": "프랑스 샤모니에서 첫 동계 대회가 열렸습니다. 하계 대회보다 한참 뒤에 시작됐습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-258",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "올림픽 표어에 담긴 세 낱말의 뜻으로 옳은 것은 무엇인가요?",
+      "choices": [
+        "더 빠르게, 더 높게, 더 강하게",
+        "더 멀리, 더 오래, 더 크게",
+        "평화·우정·존중",
+        "도전·열정·화합"
+      ],
+      "answer": "더 빠르게, 더 높게, 더 강하게",
+      "explanation": "라틴어 'Citius, Altius, Fortius'를 옮긴 말입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-259",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "육상에서 열 가지 종목을 이틀에 걸쳐 겨루는 경기를 무엇이라 하나요?",
+      "choices": [
+        "데카슬론",
+        "헵타슬론",
+        "트라이애슬론",
+        "바이애슬론"
+      ],
+      "answer": "데카슬론",
+      "explanation": "남자 10종 경기가 데카슬론, 여자 7종 경기가 헵타슬론입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-260",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "크로스컨트리 스키와 사격을 함께 겨루는 동계 종목은 무엇인가요?",
+      "choices": [
+        "바이애슬론",
+        "노르딕 복합",
+        "스켈레톤",
+        "루지"
+      ],
+      "answer": "바이애슬론",
+      "explanation": "달리다 멈춰 사격하고 다시 달립니다. 스키 점프와 크로스컨트리를 묶은 것은 노르딕 복합입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-261",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "올림픽 수영 경기가 열리는 국제 규격 수영장의 길이는 몇 m인가요?",
+      "choices": null,
+      "answer": "50",
+      "explanation": "올림픽은 길이 50m인 롱코스 수영장에서 치릅니다. 25m 쇼트코스는 따로 있습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-262",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "마루·안마·링·도마·평행봉·철봉을 겨루는 체조 부문은 무엇인가요?",
+      "choices": [
+        "남자 기계체조",
+        "여자 기계체조",
+        "리듬체조",
+        "트램펄린"
+      ],
+      "answer": "남자 기계체조",
+      "explanation": "여자 기계체조는 도마·이단평행봉·평균대·마루 네 종목입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-263",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "유도에서 상대의 등이 바닥에 닿도록 크게 메쳐 그 자리에서 이기는 것을 무엇이라 하나요?",
+      "choices": [
+        "한판",
+        "절반",
+        "유효",
+        "지도"
+      ],
+      "answer": "한판",
+      "explanation": "한판이 나오면 경기가 즉시 끝납니다. 지도는 반칙에 주어지는 벌점입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-264",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "올림픽 남자 축구에서 나이 제한을 넘겨 뽑을 수 있는 와일드카드 선수는 몇 명인가요?",
+      "choices": null,
+      "answer": "3",
+      "explanation": "올림픽 남자 축구는 연령 제한이 있는 대회라 그 위 선수는 정해진 인원만 넣을 수 있습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-265",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 2,
+      "body": "태권도 경기에서 머리를 정확히 찬 공격은 몸통 공격과 견주어 점수가 어떤가요?",
+      "choices": [
+        "더 높다",
+        "같다",
+        "더 낮다",
+        "점수로 인정되지 않는다"
+      ],
+      "answer": "더 높다",
+      "explanation": "어려운 기술일수록 배점이 높습니다. 머리 공격과 회전 공격에 더 큰 점수가 주어집니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
       "id": "spo-301",
       "type": "NUMERIC_INPUT",
       "difficulty": 3,
@@ -2785,12 +3401,17 @@
     },
     {
       "id": "spo-340",
-      "type": "NUMERIC_INPUT",
+      "type": "MULTIPLE_CHOICE",
       "difficulty": 3,
-      "body": "2026년 대회부터 월드컵 본선에 참가하는 나라는 몇 개국인가요?",
-      "choices": null,
-      "answer": "48",
-      "explanation": "오랫동안 32개국이었기 때문에 32로 알고 있기 쉽습니다. 참가국이 늘면서 대회 방식도 함께 바뀌었습니다.",
+      "body": "축구 오프사이드는 어느 순간의 위치를 기준으로 판정하나요?",
+      "choices": [
+        "같은 편이 공을 차는 순간",
+        "공을 받는 순간",
+        "골이 들어가는 순간",
+        "심판이 휘슬을 부는 순간"
+      ],
+      "answer": "같은 편이 공을 차는 순간",
+      "explanation": "패스가 나가는 순간의 위치로 봅니다. 공을 받는 순간을 기준으로 안다면 뒷공간으로 달려드는 장면이 전부 반칙처럼 보이게 됩니다.",
       "topicIds": [
         "sports",
         "football"
@@ -2798,7 +3419,7 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
-      "seedRef": "https://en.wikipedia.org/wiki/FIFA_World_Cup"
+      "seedRef": "https://en.wikipedia.org/wiki/Offside_(association_football)"
     },
     {
       "id": "spo-341",
@@ -2926,6 +3547,387 @@
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
       "seedRef": "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_squads"
+    },
+    {
+      "id": "spo-347",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "하계 올림픽과 동계 올림픽은 같은 해에 열리나요?",
+      "choices": [
+        "2년씩 엇갈려 열린다",
+        "같은 해에 함께 열린다",
+        "동계는 8년마다 열린다",
+        "해마다 번갈아 열린다"
+      ],
+      "answer": "2년씩 엇갈려 열린다",
+      "explanation": "원래는 같은 해에 열렸지만 1994년부터 2년씩 엇갈리도록 바뀌었습니다. 같은 해에 열린다고 기억하는 사람이 많습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Winter_Olympic_Games"
+    },
+    {
+      "id": "spo-348",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "올림픽 금메달은 무엇으로 만드나요?",
+      "choices": [
+        "은에 금 도금",
+        "순금",
+        "구리에 금 도금",
+        "금과 은 합금"
+      ],
+      "answer": "은에 금 도금",
+      "explanation": "규정상 은으로 만든 뒤 일정량 이상의 금을 입힙니다. 전체가 순금인 메달은 1912년 대회가 마지막이었습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Olympic_medal"
+    },
+    {
+      "id": "spo-349",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "오륜기의 다섯 색은 각각 특정 대륙 하나씩을 가리키나요?",
+      "choices": [
+        "대륙에 하나씩 대응하지 않는다",
+        "파랑은 유럽만 뜻한다",
+        "노랑은 아시아만 뜻한다",
+        "검정은 아프리카만 뜻한다"
+      ],
+      "answer": "대륙에 하나씩 대응하지 않는다",
+      "explanation": "다섯 고리가 다섯 대륙을 뜻하는 것은 맞지만, 색과 대륙이 하나씩 짝지어진 것은 아닙니다. 당시 모든 나라 국기를 이 여섯 색(바탕 흰색 포함)으로 그릴 수 있다는 데서 나왔습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Olympic_symbols"
+    },
+    {
+      "id": "spo-350",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "성화를 개최지까지 사람이 이어 달려 옮기는 봉송은 언제부터 시작됐나요?",
+      "choices": [
+        "1936년 베를린 대회부터",
+        "고대 그리스부터",
+        "1896년 첫 근대 올림픽부터",
+        "1988년 서울 대회부터"
+      ],
+      "answer": "1936년 베를린 대회부터",
+      "explanation": "고대부터 이어진 전통으로 알기 쉽지만, 성화 봉송은 근대에 만들어진 행사입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Olympic_flame"
+    },
+    {
+      "id": "spo-351",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "마라톤의 정식 거리가 42.195km로 굳어진 것은 몇 년 대회부터인가요?",
+      "choices": null,
+      "answer": "1908",
+      "explanation": "런던 대회에서 왕실의 관람 편의에 맞춰 출발점을 옮기며 생긴 거리가 그대로 표준이 됐습니다. 고대부터 정해진 거리라고 오해하기 쉽습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Marathon"
+    },
+    {
+      "id": "spo-352",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "국제올림픽위원회는 나라별 메달 순위를 공식으로 매기나요?",
+      "choices": [
+        "공식 순위를 매기지 않는다",
+        "금메달 수로 공식 발표한다",
+        "메달 총수로 공식 발표한다",
+        "점수를 매겨 발표한다"
+      ],
+      "answer": "공식 순위를 매기지 않는다",
+      "explanation": "올림픽은 나라가 아니라 선수들의 대회라는 원칙 때문에 국가 순위를 공식 집계하지 않습니다. 언론이 만든 표가 공식 순위처럼 보일 뿐입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Olympic_medal_table"
+    },
+    {
+      "id": "spo-353",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "2021년에 올림픽 표어에 새로 덧붙은 말은 무엇인가요?",
+      "choices": [
+        "다 함께",
+        "더 멀리",
+        "더 아름답게",
+        "더 오래"
+      ],
+      "answer": "다 함께",
+      "explanation": "'더 빠르게, 더 높게, 더 강하게' 뒤에 '다 함께(Communiter)'가 더해졌습니다. 세 낱말로만 알고 있기 쉽습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Olympic_symbols"
+    },
+    {
+      "id": "spo-354",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "야구는 올림픽에서 계속 정식 종목으로 열려 왔나요?",
+      "choices": [
+        "빠졌다가 다시 들어오기를 되풀이했다",
+        "한 번도 빠진 적이 없다",
+        "정식 종목이었던 적이 없다",
+        "동계 종목으로만 열렸다"
+      ],
+      "answer": "빠졌다가 다시 들어오기를 되풀이했다",
+      "explanation": "정식 종목이 됐다가 제외됐고, 개최국이 추가 종목으로 넣으면 다시 열리는 식이었습니다. 늘 있었다고 생각하기 쉽습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Baseball_at_the_Summer_Olympics"
+    },
+    {
+      "id": "spo-355",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "골프가 오랜 공백 끝에 올림픽 정식 종목으로 돌아온 것은 어느 대회인가요?",
+      "choices": [
+        "2016년 리우 대회",
+        "2000년 시드니 대회",
+        "2008년 베이징 대회",
+        "2020년 도쿄 대회"
+      ],
+      "answer": "2016년 리우 대회",
+      "explanation": "1904년 대회를 끝으로 사라졌다가 100년이 넘어 돌아왔습니다. 계속 있던 종목으로 알기 쉽습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Golf_at_the_Summer_Olympics"
+    },
+    {
+      "id": "spo-356",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "'2020 도쿄 올림픽'이라는 이름으로 열린 대회는 실제로 몇 년에 치러졌나요?",
+      "choices": null,
+      "answer": "2021",
+      "explanation": "감염병으로 한 해 미뤄졌지만 대회 이름은 그대로 두었습니다. 이름만 보고 실제 개최 연도를 착각하기 쉽습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/2020_Summer_Olympics"
+    },
+    {
+      "id": "spo-357",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "근대 올림픽이 예정된 해에 열리지 못하고 취소된 적이 있나요?",
+      "choices": [
+        "세계대전으로 취소된 적이 있다",
+        "한 번도 취소된 적이 없다",
+        "감염병으로만 취소됐다",
+        "재정 문제로 한 번 취소됐다"
+      ],
+      "answer": "세계대전으로 취소된 적이 있다",
+      "explanation": "두 차례 세계대전 기간에 여러 대회가 열리지 못했습니다. 4년마다 빠짐없이 열려 왔다고 생각하기 쉽습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Olympic_Games"
+    },
+    {
+      "id": "spo-358",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "패럴림픽은 올림픽과 다른 도시에서 열리나요?",
+      "choices": [
+        "같은 도시에서 이어서 열린다",
+        "언제나 다른 도시에서 열린다",
+        "다른 해에 따로 열린다",
+        "개최지를 그때그때 따로 정한다"
+      ],
+      "answer": "같은 도시에서 이어서 열린다",
+      "explanation": "같은 개최지에서 같은 경기장을 써서 올림픽이 끝난 뒤 이어 엽니다. 별개 대회로 알기 쉽습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Paralympic_Games"
+    },
+    {
+      "id": "spo-359",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "국제올림픽위원회 본부가 있는 나라는 어디인가요?",
+      "choices": [
+        "스위스",
+        "그리스",
+        "프랑스",
+        "미국"
+      ],
+      "answer": "스위스",
+      "explanation": "본부는 스위스 로잔에 있습니다. 발상지인 그리스에 있을 것으로 짐작하기 쉽습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/International_Olympic_Committee"
+    },
+    {
+      "id": "spo-360",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "올림픽 기록과 세계 기록은 같은 것인가요?",
+      "choices": [
+        "올림픽에서 세운 것만 올림픽 기록이라 서로 다르다",
+        "언제나 같은 값이다",
+        "올림픽 기록이 언제나 더 빠르다",
+        "세계 기록은 올림픽에서만 인정된다"
+      ],
+      "answer": "올림픽에서 세운 것만 올림픽 기록이라 서로 다르다",
+      "explanation": "세계 기록은 다른 대회에서 나온 것도 포함하므로, 올림픽 기록보다 앞서는 경우가 흔합니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/List_of_Olympic_records_in_athletics"
+    },
+    {
+      "id": "spo-361",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "펜싱·수영·승마·사격·달리기를 겨루는 근대 5종은 어느 대회에서 열리나요?",
+      "choices": [
+        "하계 올림픽",
+        "동계 올림픽",
+        "하계와 동계 모두",
+        "패럴림픽"
+      ],
+      "answer": "하계 올림픽",
+      "explanation": "근대 5종은 하계 종목입니다. 이름의 5종 때문에 동계의 복합 종목과 헷갈리기 쉽습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Modern_pentathlon"
+    },
+    {
+      "id": "spo-362",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "근대 올림픽에서 여자 선수가 처음 참가한 대회는 몇 년 대회인가요?",
+      "choices": null,
+      "answer": "1900",
+      "explanation": "첫 대회에는 여자 선수가 없었고 두 번째 대회부터 참가했습니다. 처음부터 함께 참가했다고 생각하기 쉽습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Women_at_the_Olympics"
+    },
+    {
+      "id": "spo-363",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "e스포츠는 올림픽 정식 종목인가요?",
+      "choices": [
+        "정식 종목이 아니다",
+        "정식 종목이다",
+        "동계 정식 종목이다",
+        "패럴림픽 정식 종목이다"
+      ],
+      "answer": "정식 종목이 아니다",
+      "explanation": "국제올림픽위원회가 별도의 e스포츠 대회를 열기도 하지만, 올림픽 정식 종목으로 채택된 것은 아닙니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Esports_at_the_Olympic_Games"
+    },
+    {
+      "id": "spo-364",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 3,
+      "body": "올림픽 개최 도시는 누가 결정하나요?",
+      "choices": [
+        "국제올림픽위원회",
+        "국제연합",
+        "개최 희망국 정부",
+        "종목별 국제연맹"
+      ],
+      "answer": "국제올림픽위원회",
+      "explanation": "위원들의 표결로 정합니다. 유엔이나 정부가 정하는 것으로 오해하기 쉽습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5",
+      "seedRef": "https://en.wikipedia.org/wiki/Bids_for_Olympic_Games"
     },
     {
       "id": "spo-401",
@@ -3933,6 +4935,280 @@
       "topicIds": [
         "sports",
         "football"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-452",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "채화한 성화를 개최지까지 여러 사람이 이어 나르는 과정을 무엇이라 하나요?",
+      "choices": [
+        "성화 봉송",
+        "성화 채화",
+        "기수 행진",
+        "개막 퍼레이드"
+      ],
+      "answer": "성화 봉송",
+      "explanation": "주자들이 횃불을 이어받아 개최지까지 옮기고, 마지막 주자가 성화대에 불을 붙입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-453",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "수영 개인혼영은 몇 가지 영법을 한 사람이 이어서 하나요?",
+      "choices": null,
+      "answer": "4",
+      "explanation": "접영·배영·평영·자유형 순서로 이어서 헤엄칩니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-454",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "수영 개인혼영에서 맨 처음 하는 영법은 무엇인가요?",
+      "choices": [
+        "접영",
+        "배영",
+        "평영",
+        "자유형"
+      ],
+      "answer": "접영",
+      "explanation": "개인혼영은 접영으로 시작해 자유형으로 끝납니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-455",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "수영 혼계영에서 첫 번째 주자가 하는 영법은 무엇인가요?",
+      "choices": [
+        "배영",
+        "접영",
+        "평영",
+        "자유형"
+      ],
+      "answer": "배영",
+      "explanation": "혼계영은 물속에서 출발하는 배영이 먼저입니다. 개인혼영과 순서가 달라 헷갈리기 쉽습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-456",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "조정 경기에서 노를 젓지 않고 방향과 박자를 지시하는 사람을 무엇이라 하나요?",
+      "choices": [
+        "콕스",
+        "스트로크",
+        "보우",
+        "스컬러"
+      ],
+      "answer": "콕스",
+      "explanation": "콕스(콕스웨인)는 배 끝에 앉아 방향을 잡고 구령을 넣습니다. 콕스가 없는 종목도 있습니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-457",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "사이클 트랙 종목 중 오토바이가 앞에서 이끌다 빠지면 그때부터 전력으로 달리는 종목은 무엇인가요?",
+      "choices": [
+        "케이린",
+        "스프린트",
+        "개인추발",
+        "옴니엄"
+      ],
+      "answer": "케이린",
+      "explanation": "일본에서 시작된 종목으로, 유도 오토바이가 속도를 끌어올린 뒤 빠지면 순위 다툼이 시작됩니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-458",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "올림픽 양궁 개인전에서 한 세트에 쏘는 화살은 몇 발인가요?",
+      "choices": null,
+      "answer": "3",
+      "explanation": "세트마다 세 발씩 쏘고 점수가 높은 쪽이 세트 포인트를 가져갑니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-459",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "역도에서 인상과 함께 겨루는 나머지 한 종목은 무엇인가요?",
+      "choices": [
+        "용상",
+        "데드리프트",
+        "스쿼트",
+        "벤치프레스"
+      ],
+      "answer": "용상",
+      "explanation": "한 번에 들어 올리는 인상과, 어깨에 걸쳤다가 다시 올리는 용상 두 종목의 합계로 순위를 정합니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-460",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "펜싱 세 종목 중 찌르기만 인정하며 온몸이 유효 부위인 것은 무엇인가요?",
+      "choices": [
+        "에페",
+        "플뢰레",
+        "사브르",
+        "레이피어"
+      ],
+      "answer": "에페",
+      "explanation": "에페는 온몸이 유효 부위이고, 플뢰레는 몸통만, 사브르는 허리 위이며 베기도 인정됩니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-461",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "근대 5종을 이루는 종목 묶음으로 옳은 것은 무엇인가요?",
+      "choices": [
+        "펜싱·수영·승마·사격·달리기",
+        "펜싱·수영·역도·사격·달리기",
+        "양궁·수영·승마·사격·달리기",
+        "펜싱·조정·승마·사격·달리기"
+      ],
+      "answer": "펜싱·수영·승마·사격·달리기",
+      "explanation": "전령 병사가 임무를 수행하며 겪을 법한 다섯 가지를 본떠 만들어진 종목입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-462",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "육상 남자 110m 허들 경기에서 선수가 넘어야 하는 허들은 몇 개인가요?",
+      "choices": null,
+      "answer": "10",
+      "explanation": "일정한 간격으로 놓인 허들 열 개를 넘습니다. 여자 100m 허들도 같은 개수입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-463",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "체조 도마 종목에서 선수가 손으로 짚고 뛰어넘는 기구를 무엇이라 하나요?",
+      "choices": [
+        "도마대",
+        "평균대",
+        "링",
+        "철봉"
+      ],
+      "answer": "도마대",
+      "explanation": "도움닫기 뒤 구름판을 밟고 도마대를 짚어 공중 동작을 펼칩니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-464",
+      "type": "MULTIPLE_CHOICE",
+      "difficulty": 4,
+      "body": "스켈레톤과 루지는 타는 자세가 어떻게 다른가요?",
+      "choices": [
+        "스켈레톤은 엎드리고 루지는 누워서 탄다",
+        "스켈레톤은 누워서 타고 루지는 엎드린다",
+        "둘 다 앉아서 탄다",
+        "자세는 같고 썰매 크기만 다르다"
+      ],
+      "answer": "스켈레톤은 엎드리고 루지는 누워서 탄다",
+      "explanation": "스켈레톤은 머리부터 엎드려 내려가고, 루지는 발부터 누워서 내려갑니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
+      ],
+      "status": "approved",
+      "source": "ai_generated",
+      "generatedBy": "claude-opus-5"
+    },
+    {
+      "id": "spo-465",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "컬링에서 한 팀이 한 엔드에 던지는 스톤은 몇 개인가요?",
+      "choices": null,
+      "answer": "8",
+      "explanation": "네 명이 두 개씩 던져 한 팀이 여덟 개를 씁니다. 양 팀 합쳐 열여섯 개가 한 엔드에 쓰입니다.",
+      "topicIds": [
+        "sports",
+        "olympics"
       ],
       "status": "approved",
       "source": "ai_generated",

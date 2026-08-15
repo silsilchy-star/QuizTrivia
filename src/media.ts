@@ -107,12 +107,6 @@ export function videoFromStored(kind: string | null, id: string | null): Questio
   return { kind: 'youtube', id, embedUrl: youTubeEmbedUrl(id) };
 }
 
-/** 우리 워커가 직접 서빙하는 업로드 이미지인가 (`/images/<sha256>.<확장자>`).
- *  형태를 정확히 맞춰야 한다 — `/images/../..` 같은 걸 통과시키면 안 된다. */
-export function isUploadedImagePath(url: string): boolean {
-  return /^\/images\/[0-9a-f]{64}\.(jpg|png|gif|webp)$/.test(url);
-}
-
 /** 이미지 URL이 왜 거부됐는지 — 호출부가 사람이 읽을 문구로 바꾼다. */
 export type ImageUrlProblem = 'too-long' | 'is-video' | 'not-https';
 
@@ -125,7 +119,6 @@ export type ImageUrlProblem = 'too-long' | 'is-video' | 'not-https';
 export function checkImageUrl(raw: string): ImageUrlProblem | null {
   const url = raw.trim();
   if (url.length > MEDIA_URL_MAX) return 'too-long';
-  if (isUploadedImagePath(url)) return null;
   // 유튜브 링크를 이미지 칸에 넣은 경우 — 예전엔 그냥 저장돼서 화면에 깨진
   // 이미지로 떴다. 막는 김에 어디에 넣어야 하는지 알려준다.
   if (parseYouTubeId(url)) return 'is-video';

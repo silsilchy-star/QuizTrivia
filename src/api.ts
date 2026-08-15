@@ -87,22 +87,6 @@ export function deleteCommunityTopic(topicId: string): Promise<{ deleted: true }
   });
 }
 
-/** 기기에서 고른 이미지를 올리고, 문항에 넣을 경로를 돌려받는다.
- *  파일을 그대로 본문에 실어 보낸다 — multipart를 쓸 이유가 없다. */
-export async function uploadQuestionImage(file: File): Promise<{ url: string }> {
-  const res = await fetch('/api/community/images', {
-    method: 'POST',
-    credentials: 'include',
-    headers: { 'Content-Type': file.type || 'application/octet-stream' },
-    body: file,
-  });
-  if (!res.ok) {
-    const detail = await res.json().catch(() => null);
-    throw new Error((detail as { error?: string } | null)?.error ?? `업로드 실패 (${res.status})`);
-  }
-  return res.json() as Promise<{ url: string }>;
-}
-
 export function addCommunityQuestion(
   topicId: string,
   question: NewCommunityQuestionInput,

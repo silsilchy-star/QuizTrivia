@@ -8,7 +8,6 @@ import { describe, expect, it } from 'vitest';
 import {
   MEDIA_URL_MAX,
   checkImageUrl,
-  isUploadedImagePath,
   parseVideoUrl,
   parseYouTubeId,
   videoFromStored,
@@ -126,30 +125,7 @@ describe('DB에 저장된 값을 되살릴 때도 다시 검증한다', () => {
   });
 });
 
-describe('업로드 이미지 경로', () => {
-  const hash = 'a'.repeat(64);
-
-  it('우리가 만든 형태만 통과한다', () => {
-    expect(isUploadedImagePath(`/images/${hash}.jpg`)).toBe(true);
-    expect(isUploadedImagePath(`/images/${hash}.webp`)).toBe(true);
-  });
-
-  it.each([
-    ['경로 탈출', '/images/../../etc/passwd'],
-    ['해시 길이가 다름', '/images/abc.jpg'],
-    ['해시에 대문자', `/images/${'A'.repeat(64)}.jpg`],
-    ['모르는 확장자', `/images/${hash}.svg`],
-    ['앞에 뭔가 붙음', `/x/images/${hash}.jpg`],
-  ])('%s는 막는다', (_label, path) => {
-    expect(isUploadedImagePath(path)).toBe(false);
-  });
-});
-
 describe('이미지 링크 검사', () => {
-  it('업로드한 이미지는 통과', () => {
-    expect(checkImageUrl(`/images/${'b'.repeat(64)}.png`)).toBeNull();
-  });
-
   it('외부 https 링크는 호스트를 가리지 않고 통과 — 개방성이 이 기능의 목적', () => {
     expect(checkImageUrl('https://commons.wikimedia.org/wiki/Special:FilePath/x.jpg')).toBeNull();
     expect(checkImageUrl('https://example.test/사진.png')).toBeNull();
@@ -162,6 +138,7 @@ describe('이미지 링크 검사', () => {
     ['data 스킴', 'data:image/svg+xml,<svg onload=alert(1)>'],
     ['URL이 아님', 'not a url'],
     ['상대 경로', '/somewhere/a.jpg'],
+    ['옛 업로드 경로 — 이제 서빙하지 않는다', `/images/${'b'.repeat(64)}.png`],
     ['자격증명이 박힌 URL', 'https://real.test@evil.test/a.jpg'],
   ])('%s는 not-https로 막는다', (_label, url) => {
     expect(checkImageUrl(url)).toBe('not-https');

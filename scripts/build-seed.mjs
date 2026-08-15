@@ -92,7 +92,7 @@ lines.push(topicRows.join(',\n') + ';', '');
 if (approved.length) {
   const questionHeader =
     'INSERT OR REPLACE INTO questions\n' +
-    '  (id, type, difficulty, body, choices_json, answer, explanation, status, source, generated_by, created_at, image_url)\n' +
+    '  (id, type, difficulty, body, choices_json, answer, answer_aliases_json, explanation, status, source, generated_by, created_at, image_url)\n' +
     'VALUES';
   lines.push(
     ...chunkedInsert(
@@ -101,6 +101,7 @@ if (approved.length) {
         (q) =>
           `  (${sql(q.id)}, ${sql(q.type)}, ${q.difficulty}, ${sql(q.body)},\n` +
           `   ${q.choices ? sql(JSON.stringify(q.choices)) : 'NULL'}, ${sql(q.answer)},\n` +
+          `   ${q.answerAliases?.length ? sql(JSON.stringify(q.answerAliases)) : 'NULL'},\n` +
           `   ${sql(q.explanation)}, 'approved', ${sql(q.source ?? 'manual')}, ${sql(q.generatedBy ?? null)}, ${sql(NOW)}, ${sql(q.imageUrl ?? null)})`,
       ),
     ),

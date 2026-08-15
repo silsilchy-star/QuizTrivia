@@ -43,3 +43,31 @@ export function choiceAnswerLeaked(question) {
   const others = question.choices.map((c) => String(c).trim()).filter((c) => c !== answer);
   return !others.some((c) => c.length > 0 && question.body.includes(c));
 }
+
+/** 단답형 문항에서 정답(또는 인정 별칭)이 본문에 그대로 있는가.
+ *
+ *  단답형은 객관식보다 이 검사가 더 필요하다. 객관식은 "다른 선택지도 본문에
+ *  나오면 정상적인 비교 문항"이라는 오탐 방지 장치를 쓸 수 있지만, 단답형은
+ *  선택지가 없어서 그 장치가 없다. 그리고 **본문이 플레이어가 보는 전부**라,
+ *  거기 답이 적혀 있으면 그냥 베껴 쓰면 된다.
+ *
+ *  그래서 판정은 단순하다 — 두 글자 이상인 정답이 본문에 있으면 의심한다.
+ *  "육지와 바다 중 넓은 쪽은?" 같은 비교 문항은 이 규칙에 걸리는데, 그건
+ *  오탐이 아니라 **애초에 단답형으로 낼 문항이 아니라는 신호**다. 선택지를
+ *  없애는 순간 본문이 보기를 대신 나열하고 있는 꼴이기 때문이다.
+ *
+ *  별칭까지 보는 이유: 정답이 "에베레스트"라 본문에 없더라도, 별칭
+ *  "에베레스트산"이 본문에 있으면 똑같이 베껴 쓸 수 있다. */
+export function textAnswerLeaked(question) {
+  if (question.type !== 'TEXT_INPUT') return false;
+  if (typeof question.answer !== 'string' || typeof question.body !== 'string') return false;
+
+  const candidates = [question.answer, ...(Array.isArray(question.answerAliases) ? question.answerAliases : [])];
+  return candidates.some((raw) => {
+    if (typeof raw !== 'string') return false;
+    const value = raw.trim();
+    // 한 글자는 우연히 겹치기 쉽다 (답 "물"이 "물체"에 걸린다) — 객관식과 같은 기준.
+    if (value.length < 2) return false;
+    return question.body.includes(value);
+  });
+}

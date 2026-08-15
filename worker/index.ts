@@ -11,6 +11,7 @@ import type {
 } from '../src/types';
 import { TOTAL_STAGES } from '../src/types';
 import { videoFromStored } from '../src/media';
+import { answerMatches, parseAnswerAliases } from '../src/answer';
 import { handleAuthGoogleCallback, handleAuthGoogleStart, handleSetNickname } from './auth';
 import { handleGlobalRanking, handleTopicRanking, refreshGlobalCaches, upsertWeeklyBest } from './ranking';
 import {
@@ -212,12 +213,16 @@ async function handleStartRun(request: Request, env: Env, uid: string): Promise<
   return json(payload);
 }
 
-/** 공백만 정리하는 정규화 — 대소문자·앞뒤/중복 공백 차이로 학명 단답이 틀리지 않게 한다. */
-export function normalizeText(s: string): string {
-  return s.trim().replace(/\s+/g, ' ').toLowerCase();
-}
-
-export function isCorrect(type: QuestionType, answer: string, given: string): boolean {
+/** 단답형에서 정답으로 인정할 표기들 — 정답 하나 + 별칭들.
+ *
+ *  ⚠ 별칭 목록은 절대 클라이언트로 내려보내지 않는다. 출제 응답
+ *    (ServedQuestion)에 들어가는 순간 정답표를 같이 주는 셈이다. */
+export function isCorrect(
+  type: QuestionType,
+  answer: string,
+  given: string,
+  aliases: readonly string[] = [],
+): boolean {
   const a = answer.trim();
   const g = given.trim();
   // 빈 답은 어떤 유형에서도 정답이 아니다. 특히 NUMERIC_INPUT에서 이 가드가
@@ -229,9 +234,9 @@ export function isCorrect(type: QuestionType, answer: string, given: string): bo
     if (Number.isNaN(an) || Number.isNaN(gn)) return false;
     return an === gn;
   }
-  if (type === 'TEXT_INPUT') {
-    return normalizeText(a) === normalizeText(g);
-  }
+  // 별칭은 단답형에만 쓴다. 객관식은 선택지를 고르는 것이고 숫자입력은 숫자로
+  // 비교하므로, 표기가 흔들린다는 문제 자체가 없다.
+  if (type === 'TEXT_INPUT') return answerMatches(a, g, aliases);
   return a === g;
 }
 
@@ -344,7 +349,7 @@ async function handleSubmitStage(
 
   const placeholders = servedIds.map(() => '?').join(',');
   const { results } = await env.DB.prepare(
-    `SELECT id, type, difficulty, body, answer, explanation, image_url, video_kind, video_id
+    `SELECT id, type, difficulty, body, answer, answer_aliases_json, explanation, image_url, video_kind, video_id
        FROM questions WHERE id IN (${placeholders})`,
   )
     .bind(...servedIds)
@@ -354,6 +359,7 @@ async function handleSubmitStage(
       difficulty: Difficulty;
       body: string;
       answer: string;
+      answer_aliases_json: string | null;
       explanation: string;
       image_url: string | null;
       video_kind: string | null;
@@ -371,7 +377,7 @@ async function handleSubmitStage(
     const q = byId.get(qid);
     if (!q) continue;
     const given = givenById.get(qid) ?? '';
-    const correct = given !== '' && isCorrect(q.type, q.answer, given);
+    const correct = given !== '' && isCorrect(q.type, q.answer, given, parseAnswerAliases(q.answer_aliases_json));
     if (correct) {
       correctCount += 1;
       stageScore += q.difficulty * 10; // PLAN 5.1절

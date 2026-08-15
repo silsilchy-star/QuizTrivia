@@ -1,7 +1,8 @@
 // 채점 규칙과 스테이지→난이도 매핑. 게임의 모든 점수가 여기서 나오므로
 // 여기가 틀리면 랭킹 전체가 틀린다.
 import { describe, expect, it } from 'vitest';
-import { difficultyForStage, isCorrect, normalizeText } from '../worker/index';
+import { difficultyForStage, isCorrect } from '../worker/index';
+import { normalizeAnswer } from '../src/answer';
 import { validateQuestion } from '../worker/community';
 import { isoWeekId } from '../worker/ranking';
 
@@ -94,9 +95,9 @@ describe('isCorrect — 단답형', () => {
   });
 });
 
-describe('normalizeText', () => {
+describe('normalizeAnswer', () => {
   it('앞뒤 공백 제거, 중복 공백 축약, 소문자화만 한다', () => {
-    expect(normalizeText('  Hello   World  ')).toBe('hello world');
+    expect(normalizeAnswer('  Hello   World  ')).toBe('hello world');
   });
 });
 

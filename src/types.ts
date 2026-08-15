@@ -130,6 +130,9 @@ export interface NewCommunityQuestionInput {
   body: string;
   choices: string[] | null;
   answer: string;
+  /** 단답형에서 정답으로 함께 인정할 표기들 (예: "에베레스트"에 "에베레스트산").
+   *  단답형이 아니면 null — 채점에 쓰이지 않으므로 서버가 거부한다. */
+  answerAliases: string[] | null;
   explanation: string;
   imageUrl: string | null;
   videoUrl: string | null;

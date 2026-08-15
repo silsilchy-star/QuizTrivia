@@ -9,6 +9,7 @@
 //     사람이 실제로 채울 수 있는 양이어야 하기 때문.
 import type { CommunityQuestion, Difficulty, QuestionType } from '../src/types';
 import { MEDIA_URL_MAX, checkImageUrl, parseVideoUrl, videoFromStored } from '../src/media';
+import { ANSWER_ALIASES_MAX, cleanAnswerAliases } from '../src/answer';
 import { ADD_QUESTION, CREATE_TOPIC, checkRateLimit, tooManyRequests } from './ratelimit';
 
 export interface CommunityEnv {
@@ -148,10 +149,13 @@ export interface NewQuestionBody {
   body?: string;
   choices?: string[] | null;
   answer?: string;
+  /** 단답형에서 정답으로 함께 인정할 표기들 (예: 정답 "에베레스트"에 "에베레스트산"). */
+  answerAliases?: string[] | null;
   explanation?: string;
   imageUrl?: string | null;
   videoUrl?: string | null;
 }
+
 
 const QUESTION_TYPES: QuestionType[] = ['MULTIPLE_CHOICE', 'NUMERIC_INPUT', 'TEXT_INPUT'];
 
@@ -176,6 +180,16 @@ export function validateQuestion(q: NewQuestionBody): string | null {
     if (Number.isNaN(Number(q.answer))) return '정답이 숫자로 파싱되지 않는다';
   } else {
     if (q.choices != null) return 'TEXT_INPUT은 선택지가 없어야 한다';
+  }
+
+  // 별칭은 단답형 전용이다. 다른 유형에 붙여 봐야 채점에 쓰이지 않으므로,
+  // 조용히 무시되느니 여기서 알려 주는 편이 낫다.
+  if (q.answerAliases != null) {
+    if (!Array.isArray(q.answerAliases)) return '또 맞는 답 목록의 형식이 잘못됐다';
+    if (q.type !== 'TEXT_INPUT') return '또 맞는 답은 단답형에서만 쓸 수 있다';
+    if (cleanAnswerAliases(q.answer, q.answerAliases).length > ANSWER_ALIASES_MAX) {
+      return `또 맞는 답은 ${ANSWER_ALIASES_MAX}개까지만 넣을 수 있다`;
+    }
   }
 
   // 미디어는 문항당 하나만 — 이미지와 영상을 동시에 붙일 수 있게 하면
@@ -251,12 +265,15 @@ export async function handleAddCommunityQuestion(
   const id = crypto.randomUUID();
   const now = new Date().toISOString();
   const choicesJson = q.type === 'MULTIPLE_CHOICE' ? JSON.stringify(q.choices) : null;
+  // 별칭은 단답형에서만 저장한다. 다른 유형에 실려 와도 채점에 쓰이지 않으므로
+  // 애초에 남기지 않는다 (위 validateQuestion이 이미 막지만, 저장 쪽도 조인다).
+  const aliases = q.type === 'TEXT_INPUT' ? cleanAnswerAliases(q.answer!, q.answerAliases) : [];
 
   await env.DB.batch([
     env.DB.prepare(
       `INSERT INTO questions
-         (id, type, difficulty, body, choices_json, answer, explanation, status, source, generated_by, author_uid, created_at, image_url, video_kind, video_id)
-       VALUES (?, ?, ?, ?, ?, ?, ?, 'approved', 'manual', NULL, ?, ?, ?, ?, ?)`,
+         (id, type, difficulty, body, choices_json, answer, answer_aliases_json, explanation, status, source, generated_by, author_uid, created_at, image_url, video_kind, video_id)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'approved', 'manual', NULL, ?, ?, ?, ?, ?)`,
     ).bind(
       id,
       q.type,
@@ -264,6 +281,7 @@ export async function handleAddCommunityQuestion(
       q.body!.trim(),
       choicesJson,
       q.answer,
+      aliases.length ? JSON.stringify(aliases) : null,
       q.explanation!.trim(),
       uid,
       now,

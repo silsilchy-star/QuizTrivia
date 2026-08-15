@@ -25,15 +25,10 @@
     },
     {
       "id": "sci-102",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "물의 화학식은 무엇인가요?",
-      "choices": [
-        "CO₂",
-        "H₂O",
-        "O₂",
-        "H₂O₂"
-      ],
+      "choices": null,
       "answer": "H₂O",
       "explanation": "물은 수소 원자 2개와 산소 원자 1개로 이루어져 H₂O로 씁니다. H₂O₂는 과산화수소입니다.",
       "topicIds": [
@@ -43,7 +38,10 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
-      "rejectReason": null
+      "rejectReason": null,
+      "answerAliases": [
+        "H2O"
+      ]
     },
     {
       "id": "sci-103",
@@ -208,15 +206,10 @@
     },
     {
       "id": "sci-111",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "피를 온몸으로 내보내는 기관은 무엇인가요?",
-      "choices": [
-        "폐",
-        "심장",
-        "간",
-        "위"
-      ],
+      "choices": null,
       "answer": "심장",
       "explanation": "심장은 근육으로 이루어진 펌프로, 수축과 이완을 반복하며 혈액을 순환시킵니다.",
       "topicIds": [
@@ -379,15 +372,10 @@
     },
     {
       "id": "sci-119",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "물이 수증기로 변하는 현상을 무엇이라 하나요?",
-      "choices": [
-        "증발",
-        "응결",
-        "융해",
-        "승화"
-      ],
+      "choices": null,
       "answer": "증발",
       "explanation": "액체가 기체로 변하는 것이 증발입니다. 반대로 기체가 액체가 되는 것은 응결입니다.",
       "topicIds": [
@@ -397,7 +385,10 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
-      "rejectReason": null
+      "rejectReason": null,
+      "answerAliases": [
+        "기화"
+      ]
     },
     {
       "id": "sci-120",
@@ -445,15 +436,10 @@
     },
     {
       "id": "sci-202",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "태양계 행성 중 지름이 가장 큰 행성은 무엇인가요?",
-      "choices": [
-        "토성",
-        "목성",
-        "해왕성",
-        "지구"
-      ],
+      "choices": null,
       "answer": "목성",
       "explanation": "목성의 지름은 약 14만 km로 태양계 행성 중 가장 큽니다. 두 번째는 토성입니다.",
       "topicIds": [
@@ -463,19 +449,18 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
-      "rejectReason": null
+      "rejectReason": null,
+      "answerAliases": [
+        "주피터",
+        "Jupiter"
+      ]
     },
     {
       "id": "sci-203",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "식물이 빛을 이용해 양분을 만드는 과정을 무엇이라 하나요?",
-      "choices": [
-        "호흡",
-        "발효",
-        "광합성",
-        "증산"
-      ],
+      "choices": null,
       "answer": "광합성",
       "explanation": "광합성은 빛 에너지로 이산화탄소와 물을 포도당과 산소로 바꾸는 과정입니다.",
       "topicIds": [
@@ -485,7 +470,10 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
-      "rejectReason": null
+      "rejectReason": null,
+      "answerAliases": [
+        "광합성작용"
+      ]
     },
     {
       "id": "sci-204",
@@ -728,15 +716,10 @@
     },
     {
       "id": "sci-216",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "원소기호 Na는 무엇을 뜻하나요?",
-      "choices": [
-        "질소",
-        "나트륨",
-        "니켈",
-        "네온"
-      ],
+      "choices": null,
       "answer": "나트륨",
       "explanation": "Na는 나트륨으로 라틴어 natrium에서 왔습니다. 질소는 N, 니켈은 Ni, 네온은 Ne입니다.",
       "topicIds": [
@@ -746,7 +729,11 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
-      "rejectReason": null
+      "rejectReason": null,
+      "answerAliases": [
+        "소듐",
+        "sodium"
+      ]
     },
     {
       "id": "sci-217",
@@ -838,15 +825,10 @@
     },
     {
       "id": "sci-301",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 3,
       "body": "고래는 어떤 동물 분류에 속하나요?",
-      "choices": [
-        "어류",
-        "포유류",
-        "양서류",
-        "파충류"
-      ],
+      "choices": null,
       "answer": "포유류",
       "explanation": "고래는 폐로 숨을 쉬고 새끼를 낳아 젖을 먹이는 포유류입니다. 물에 살고 생김새가 물고기를 닮아 어류로 착각하기 쉽습니다.",
       "topicIds": [
@@ -857,19 +839,18 @@
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
       "seedRef": "https://en.wikipedia.org/wiki/List_of_common_misconceptions_about_science,_technology,_and_mathematics",
-      "rejectReason": null
+      "rejectReason": null,
+      "answerAliases": [
+        "포유동물",
+        "젖먹이동물"
+      ]
     },
     {
       "id": "sci-302",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 3,
       "body": "사람 몸에서 면적과 무게로 가장 큰 장기는 무엇인가요?",
-      "choices": [
-        "간",
-        "피부",
-        "폐",
-        "위"
-      ],
+      "choices": null,
       "answer": "피부",
       "explanation": "피부는 성인 기준 약 2제곱미터, 무게 4kg 안팎으로 몸에서 가장 큰 장기입니다. 장기를 내장으로만 떠올리면 간을 고르기 쉽습니다.",
       "topicIds": [
@@ -884,15 +865,10 @@
     },
     {
       "id": "sci-303",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 3,
       "body": "다이아몬드를 이루는 원소는 무엇인가요?",
-      "choices": [
-        "규소",
-        "탄소",
-        "알루미늄",
-        "티타늄"
-      ],
+      "choices": null,
       "answer": "탄소",
       "explanation": "다이아몬드는 탄소 원자가 규칙적으로 결합한 결정입니다. 연필심의 흑연도 같은 탄소인데 결합 구조만 다릅니다.",
       "topicIds": [
@@ -903,7 +879,10 @@
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
       "seedRef": "https://en.wikipedia.org/wiki/Diamond",
-      "rejectReason": null
+      "rejectReason": null,
+      "answerAliases": [
+        "carbon"
+      ]
     },
     {
       "id": "sci-304",
@@ -1539,15 +1518,10 @@
     },
     {
       "id": "sci-414",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "원소를 성질에 따라 배열한 주기율표를 처음 만든 사람은 누구인가요?",
-      "choices": [
-        "멘델레예프",
-        "라부아지에",
-        "돌턴",
-        "보어"
-      ],
+      "choices": null,
       "answer": "멘델레예프",
       "explanation": "러시아의 멘델레예프가 1869년 주기율표를 발표하고 빈칸에 들어갈 미발견 원소의 성질까지 예측했습니다.",
       "topicIds": [
@@ -1557,7 +1531,12 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
-      "rejectReason": null
+      "rejectReason": null,
+      "answerAliases": [
+        "멘델레에프",
+        "드미트리 멘델레예프",
+        "Mendeleev"
+      ]
     },
     {
       "id": "sci-415",
@@ -1627,15 +1606,10 @@
     },
     {
       "id": "sci-418",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "혈당을 낮추는 인슐린을 분비하는 기관은 무엇인가요?",
-      "choices": [
-        "이자",
-        "간",
-        "신장",
-        "비장"
-      ],
+      "choices": null,
       "answer": "이자",
       "explanation": "이자(췌장)의 랑게르한스섬에서 인슐린이 분비되어 혈액 속 포도당 농도를 낮춥니다.",
       "topicIds": [
@@ -1645,7 +1619,10 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
-      "rejectReason": null
+      "rejectReason": null,
+      "answerAliases": [
+        "췌장"
+      ]
     },
     {
       "id": "sci-419",
@@ -1671,15 +1648,10 @@
     },
     {
       "id": "sci-420",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "식물 세포에는 있지만 동물 세포에는 없는 구조는 무엇인가요?",
-      "choices": [
-        "세포벽",
-        "세포막",
-        "핵",
-        "미토콘드리아"
-      ],
+      "choices": null,
       "answer": "세포벽",
       "explanation": "식물 세포는 셀룰로스로 된 세포벽과 엽록체를 가집니다. 세포막·핵·미토콘드리아는 둘 다 가지고 있습니다.",
       "topicIds": [

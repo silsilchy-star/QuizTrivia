@@ -11,6 +11,21 @@ export const NUMERIC_RATIO = { min: 0.2, max: 0.25 };
 /** PLAN 6.4절 ⑤ — 두 주제의 문항 집합이 이만큼 겹치면 사실상 같은 주제다. */
 export const OVERLAP_WARN = 0.9;
 
+/** 단답형 별칭(answerAliases)의 최대 개수. 표기 흔들림을 적는 자리이지,
+ *  "아무 말이나 쓰면 맞는 문제"를 만드는 자리가 아니다. */
+export const ANSWER_ALIASES_MAX = 6;
+
+/** 단답형 답 비교용 정규화 — 앞뒤/중복 공백과 대소문자 차이를 없앤다.
+ *
+ *  ⚠ 이 규칙은 워커의 `normalizeText`(worker/index.ts)와 **같아야 한다.**
+ *    여기는 평범한 .mjs라 TypeScript를 import할 수 없어 한 벌 더 쓴 것이다.
+ *    두 구현이 어긋나면 validate가 통과시킨 별칭이 실제 채점에서는 정답으로
+ *    안 쳐지는 일이 생긴다. `test/answer-aliases.test.ts`가 두 구현을 같은
+ *    입력표로 대조해 어긋남을 막는다. */
+export function normalizeAnswer(s) {
+  return String(s).trim().replace(/\s+/g, ' ').toLowerCase();
+}
+
 export function loadTopics() {
   const raw = JSON.parse(readFileSync(join(DATA_DIR, 'topics.json'), 'utf8'));
   return raw.topics;

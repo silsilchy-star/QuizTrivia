@@ -711,3 +711,101 @@ describe('주제 삭제', () => {
     expect(res.status).toBe(404);
   });
 });
+
+describe('단답형 "또 맞는 답" (별칭)', () => {
+  async function author(nickname: string) {
+    const client = await newSession();
+    await logIn(client, nickname);
+    const topic = await client.json<{ id: string }>('/api/community/topics', {
+      method: 'POST',
+      body: JSON.stringify({ name: `${nickname}주제` }),
+    });
+    return { client, topicId: topic.id };
+  }
+
+  function textQuestion(extra: Record<string, unknown>) {
+    return JSON.stringify({
+      type: 'TEXT_INPUT',
+      difficulty: 1,
+      body: '히말라야산맥의 최고봉 이름은?',
+      answer: '에베레스트',
+      explanation: '해설',
+      ...extra,
+    });
+  }
+
+  it('별칭을 붙여 문항을 만들면 그대로 저장된다', async () => {
+    const { client, topicId } = await author('별칭저장');
+    const res = await client.fetch(`/api/community/topics/${topicId}/questions`, {
+      method: 'POST',
+      body: textQuestion({ answerAliases: ['에베레스트산', 'Everest'] }),
+    });
+    expect(res.status).toBe(200);
+
+    const row = await env.DB.prepare(
+      'SELECT answer_aliases_json FROM questions WHERE author_uid = ? AND answer = ?',
+    )
+      .bind(client.uid, '에베레스트')
+      .first<{ answer_aliases_json: string | null }>();
+    expect(JSON.parse(row!.answer_aliases_json!)).toEqual(['에베레스트산', 'Everest']);
+  });
+
+  // 정답과 (공백·대소문자만 다른) 같은 별칭은 채점에서 아무 일도 하지 않는다.
+  it('정답과 같은 별칭과 빈 값은 저장 전에 걸러진다', async () => {
+    const { client, topicId } = await author('별칭정리');
+    const res = await client.fetch(`/api/community/topics/${topicId}/questions`, {
+      method: 'POST',
+      body: textQuestion({ answerAliases: ['  에베레스트 ', '', '에베레스트산', '에베레스트산'] }),
+    });
+    expect(res.status).toBe(200);
+
+    const row = await env.DB.prepare(
+      'SELECT answer_aliases_json FROM questions WHERE author_uid = ? AND answer = ?',
+    )
+      .bind(client.uid, '에베레스트')
+      .first<{ answer_aliases_json: string | null }>();
+    expect(JSON.parse(row!.answer_aliases_json!)).toEqual(['에베레스트산']);
+  });
+
+  it('별칭이 없으면 컬럼은 비어 있다', async () => {
+    const { client, topicId } = await author('별칭없음');
+    await client.fetch(`/api/community/topics/${topicId}/questions`, {
+      method: 'POST',
+      body: textQuestion({}),
+    });
+    const row = await env.DB.prepare(
+      'SELECT answer_aliases_json FROM questions WHERE author_uid = ? AND answer = ?',
+    )
+      .bind(client.uid, '에베레스트')
+      .first<{ answer_aliases_json: string | null }>();
+    expect(row!.answer_aliases_json).toBeNull();
+  });
+
+  // 객관식·숫자입력에서는 채점에 쓰이지 않는다. 조용히 무시되면 만든 사람은
+  // 인정될 거라고 믿게 되므로, 저장 자체를 거부한다.
+  it('객관식에 별칭을 붙이면 거부한다', async () => {
+    const { client, topicId } = await author('객관식별칭');
+    const res = await client.fetch(`/api/community/topics/${topicId}/questions`, {
+      method: 'POST',
+      body: JSON.stringify({
+        type: 'MULTIPLE_CHOICE',
+        difficulty: 1,
+        body: '가장 높은 산은?',
+        choices: ['에베레스트', 'K2', '칸첸중가', '로체'],
+        answer: '에베레스트',
+        answerAliases: ['에베레스트산'],
+        explanation: '해설',
+      }),
+    });
+    expect(res.status).toBe(400);
+  });
+
+  it('별칭이 너무 많으면 거부한다', async () => {
+    const { client, topicId } = await author('별칭과다');
+    const res = await client.fetch(`/api/community/topics/${topicId}/questions`, {
+      method: 'POST',
+      body: textQuestion({ answerAliases: ['가', '나', '다', '라', '마', '바', '사'] }),
+    });
+    expect(res.status).toBe(400);
+  });
+});

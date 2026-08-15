@@ -272,15 +272,10 @@
     },
     {
       "id": "spo-115",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "야구에서 투수가 던진 공을 배트로 쳐서 담장을 넘기는 것을 무엇이라 하나요?",
-      "choices": [
-        "홈런",
-        "안타",
-        "번트",
-        "도루"
-      ],
+      "choices": null,
       "answer": "홈런",
       "explanation": "타구가 페어 지역의 담장을 넘기면 홈런이 됩니다.",
       "topicIds": [
@@ -335,15 +330,10 @@
     },
     {
       "id": "spo-118",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "축구 경기 시작을 알리며 공을 중앙에 놓고 차는 것을 무엇이라 부르나요?",
-      "choices": [
-        "킥오프",
-        "코너킥",
-        "골킥",
-        "스로인"
-      ],
+      "choices": null,
       "answer": "킥오프",
       "explanation": "킥오프는 전·후반 시작과 골이 터진 뒤 중앙선에서 다시 경기를 시작하는 킥입니다.",
       "topicIds": [
@@ -352,7 +342,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "킥 오프"
+      ]
     },
     {
       "id": "spo-119",
@@ -398,15 +391,10 @@
     },
     {
       "id": "spo-121",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "농구에서 공을 바닥에 튀기며 이동하는 동작을 무엇이라 하나요?",
-      "choices": [
-        "드리블",
-        "패스",
-        "리바운드",
-        "블로킹"
-      ],
+      "choices": null,
       "answer": "드리블",
       "explanation": "공을 손으로 바닥에 튀기며 이동하는 것을 드리블이라 합니다. 튀기지 않고 들고 걸으면 트래블링 반칙입니다.",
       "topicIds": [
@@ -440,15 +428,10 @@
     },
     {
       "id": "spo-123",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "배드민턴에서 라켓으로 치는, 깃털이 달린 공을 무엇이라 부르나요?",
-      "choices": [
-        "셔틀콕",
-        "탁구공",
-        "테니스공",
-        "핸드볼공"
-      ],
+      "choices": null,
       "answer": "셔틀콕",
       "explanation": "배드민턴은 공이 아니라 깃털이 달린 셔틀콕을 씁니다. 공기 저항이 커서 멀리 날아가지 않습니다.",
       "topicIds": [
@@ -457,7 +440,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "셔틀"
+      ]
     },
     {
       "id": "spo-124",
@@ -619,15 +605,10 @@
     },
     {
       "id": "spo-132",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "배구에서 상대의 공격을 네트 앞에서 손을 들어 막아 내는 동작은 무엇인가요?",
-      "choices": [
-        "블로킹",
-        "토스",
-        "서브",
-        "디그"
-      ],
+      "choices": null,
       "answer": "블로킹",
       "explanation": "네트 위로 손을 뻗어 상대 공격을 막는 것이 블로킹입니다. 바닥 가까이 받아 올리는 수비는 디그입니다.",
       "topicIds": [
@@ -636,7 +617,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "블록"
+      ]
     },
     {
       "id": "spo-133",
@@ -740,15 +724,10 @@
     },
     {
       "id": "spo-138",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "축구에서 수비 팀이 자기 진영의 큰 사각형 구역 안에서 반칙을 하면 상대에게 무엇이 주어지나요?",
-      "choices": [
-        "페널티킥",
-        "프리킥",
-        "코너킥",
-        "스로인"
-      ],
+      "choices": null,
       "answer": "페널티킥",
       "explanation": "페널티 지역 안에서의 반칙은 페널티킥으로 이어집니다. 골키퍼와 일대일로 차게 됩니다.",
       "topicIds": [
@@ -757,7 +736,12 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "페널티 킥",
+        "PK",
+        "패널티킥"
+      ]
     },
     {
       "id": "spo-139",
@@ -777,15 +761,10 @@
     },
     {
       "id": "spo-140",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "축구에서 수비 팀 선수가 찬 공이 자기 진영 골라인 밖으로 나갔을 때 공격 팀에 주어지는 것은 무엇인가요?",
-      "choices": [
-        "코너킥",
-        "골킥",
-        "스로인",
-        "프리킥"
-      ],
+      "choices": null,
       "answer": "코너킥",
       "explanation": "수비 팀이 마지막으로 건드렸으면 코너킥, 공격 팀이 마지막으로 건드렸으면 골킥입니다.",
       "topicIds": [
@@ -794,7 +773,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "코너 킥"
+      ]
     },
     {
       "id": "spo-141",
@@ -977,15 +959,10 @@
     },
     {
       "id": "spo-150",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "올림픽을 상징하는, 고리 다섯 개가 이어진 깃발을 무엇이라 부르나요?",
-      "choices": [
-        "오륜기",
-        "유엔기",
-        "월드컵기",
-        "만국기"
-      ],
+      "choices": null,
       "answer": "오륜기",
       "explanation": "다섯 고리가 서로 얽힌 모양이라 오륜기라 부르며, 다섯 대륙의 만남을 뜻합니다.",
       "topicIds": [
@@ -994,7 +971,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "올림픽기"
+      ]
     },
     {
       "id": "spo-151",
@@ -1098,15 +1078,10 @@
     },
     {
       "id": "spo-156",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "장애인 선수들이 참가하는 국제 종합 스포츠 대회를 무엇이라 하나요?",
-      "choices": [
-        "패럴림픽",
-        "유니버시아드",
-        "아시안게임",
-        "유스올림픽"
-      ],
+      "choices": null,
       "answer": "패럴림픽",
       "explanation": "올림픽이 끝난 뒤 같은 도시에서 이어서 열립니다.",
       "topicIds": [
@@ -1115,7 +1090,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "장애인 올림픽"
+      ]
     },
     {
       "id": "spo-157",
@@ -1277,15 +1255,10 @@
     },
     {
       "id": "spo-165",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "얼음판 위에서 음악에 맞춰 연기하며 점수를 겨루는 동계 종목은 무엇인가요?",
-      "choices": [
-        "피겨스케이팅",
-        "쇼트트랙",
-        "컬링",
-        "스피드스케이팅"
-      ],
+      "choices": null,
       "answer": "피겨스케이팅",
       "explanation": "기술 점수와 예술 점수를 합쳐 순위를 정합니다. 속도를 겨루는 것은 스피드스케이팅입니다.",
       "topicIds": [
@@ -1294,7 +1267,11 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "피겨",
+        "피겨 스케이팅"
+      ]
     },
     {
       "id": "spo-166",
@@ -1319,15 +1296,10 @@
     },
     {
       "id": "spo-167",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "야구에서 투수가 던진 공을 뒤에서 받는 선수를 무엇이라 부르나요?",
-      "choices": [
-        "포수",
-        "유격수",
-        "외야수",
-        "지명타자"
-      ],
+      "choices": null,
       "answer": "포수",
       "explanation": "포수는 홈플레이트 뒤에 앉아 공을 받고 투수에게 구종을 알려 주는 역할을 합니다.",
       "topicIds": [
@@ -1336,7 +1308,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "캐처"
+      ]
     },
     {
       "id": "spo-168",
@@ -1540,15 +1515,10 @@
     },
     {
       "id": "spo-178",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "야구에서 주자가 투수가 던지는 사이 다음 베이스로 뛰어 훔치는 것을 무엇이라 하나요?",
-      "choices": [
-        "도루",
-        "번트",
-        "희생플라이",
-        "견제"
-      ],
+      "choices": null,
       "answer": "도루",
       "explanation": "포수가 던진 공보다 먼저 베이스에 닿으면 도루 성공입니다.",
       "topicIds": [
@@ -1557,7 +1527,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "스틸"
+      ]
     },
     {
       "id": "spo-179",
@@ -1682,15 +1655,10 @@
     },
     {
       "id": "spo-185",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "육상에서 무거운 쇠공을 밀어 던져 거리를 겨루는 종목은 무엇인가요?",
-      "choices": [
-        "포환던지기",
-        "원반던지기",
-        "창던지기",
-        "해머던지기"
-      ],
+      "choices": null,
       "answer": "포환던지기",
       "explanation": "던지지 않고 어깨에서 밀어내듯 뻗는 것이 규칙입니다.",
       "topicIds": [
@@ -1699,7 +1667,11 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "포환 던지기",
+        "투포환"
+      ]
     },
     {
       "id": "spo-186",
@@ -1740,15 +1712,10 @@
     },
     {
       "id": "spo-188",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "수영에서 하늘을 보고 누워서 헤엄치는 영법은 무엇인가요?",
-      "choices": [
-        "배영",
-        "평영",
-        "접영",
-        "자유형"
-      ],
+      "choices": null,
       "answer": "배영",
       "explanation": "유일하게 물속에서 벽을 잡고 출발하는 영법입니다.",
       "topicIds": [
@@ -1819,15 +1786,10 @@
     },
     {
       "id": "spo-192",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "육상에서 여러 명이 배턴을 주고받으며 이어 달리는 경기를 무엇이라 하나요?",
-      "choices": [
-        "계주",
-        "허들",
-        "경보",
-        "마라톤"
-      ],
+      "choices": null,
       "answer": "계주",
       "explanation": "릴레이라고도 하며, 배턴을 정해진 구역 안에서 넘겨야 합니다.",
       "topicIds": [
@@ -1836,7 +1798,11 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "릴레이",
+        "이어달리기"
+      ]
     },
     {
       "id": "spo-193",
@@ -2067,15 +2033,10 @@
     },
     {
       "id": "spo-205",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "축구에서 상대 진영 깊숙이 있는 공격수보다 자기 편 공이 적을 때 반칙이 되는 규칙은 무엇인가요?",
-      "choices": [
-        "오프사이드",
-        "코너킥",
-        "스로인",
-        "패스인터페어"
-      ],
+      "choices": null,
       "answer": "오프사이드",
       "explanation": "공격수가 마지막 수비수보다 골라인에 가까이 있는 상태로 패스를 받으면 오프사이드 반칙입니다.",
       "topicIds": [
@@ -2084,7 +2045,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "오프 사이드"
+      ]
     },
     {
       "id": "spo-206",
@@ -2172,15 +2136,10 @@
     },
     {
       "id": "spo-210",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "축구에서 같은 선수가 한 경기에 골을 3개 넣는 것을 무엇이라 부르나요?",
-      "choices": [
-        "해트트릭",
-        "더블",
-        "그랜드슬램",
-        "퍼펙트게임"
-      ],
+      "choices": null,
       "answer": "해트트릭",
       "explanation": "한 경기에서 한 선수가 3골을 넣는 것을 해트트릭이라 합니다.",
       "topicIds": [
@@ -2189,7 +2148,11 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "해트 트릭",
+        "햇트릭"
+      ]
     },
     {
       "id": "spo-211",
@@ -2398,15 +2361,10 @@
     },
     {
       "id": "spo-221",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "농구 경기를 시작할 때 두 선수가 공중에 띄운 공을 다투는 것을 무엇이라 하나요?",
-      "choices": [
-        "점프볼",
-        "스로인",
-        "프리스로",
-        "티오프"
-      ],
+      "choices": null,
       "answer": "점프볼",
       "explanation": "심판이 공을 위로 던지고 양 팀 한 명씩 뛰어올라 공을 쳐 내는 것이 점프볼입니다.",
       "topicIds": [
@@ -2415,7 +2373,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "점프 볼"
+      ]
     },
     {
       "id": "spo-222",
@@ -2440,15 +2401,10 @@
     },
     {
       "id": "spo-223",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "테니스에서 양쪽이 40대 40으로 같아졌을 때 부르는 말은 무엇인가요?",
-      "choices": [
-        "듀스",
-        "러브",
-        "에이스",
-        "매치포인트"
-      ],
+      "choices": null,
       "answer": "듀스",
       "explanation": "듀스가 되면 두 점을 연속으로 따야 그 게임을 이깁니다.",
       "topicIds": [
@@ -2503,15 +2459,10 @@
     },
     {
       "id": "spo-226",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "배구에서 수비만 전담하며 다른 색 유니폼을 입는 선수를 무엇이라 부르나요?",
-      "choices": [
-        "리베로",
-        "세터",
-        "센터",
-        "윙스파이커"
-      ],
+      "choices": null,
       "answer": "리베로",
       "explanation": "리베로는 후위에서 리시브와 디그를 맡는 수비 전문 선수라 구분을 위해 다른 색 유니폼을 입습니다.",
       "topicIds": [
@@ -2861,15 +2812,10 @@
     },
     {
       "id": "spo-244",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "유럽 각국 리그의 상위 클럽들이 모여 겨루는 유럽축구연맹 최상위 클럽 대회는 무엇인가요?",
-      "choices": [
-        "챔피언스리그",
-        "월드컵",
-        "코파아메리카",
-        "네이션스리그"
-      ],
+      "choices": null,
       "answer": "챔피언스리그",
       "explanation": "챔피언스리그는 클럽 대회이고, 월드컵과 네이션스리그는 국가대표팀 대회입니다.",
       "topicIds": [
@@ -2878,7 +2824,11 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "챔피언스 리그",
+        "UCL"
+      ]
     },
     {
       "id": "spo-245",
@@ -3014,15 +2964,10 @@
     },
     {
       "id": "spo-252",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "근대 올림픽이 처음 열린 도시는 어디인가요?",
-      "choices": [
-        "아테네",
-        "파리",
-        "런던",
-        "로마"
-      ],
+      "choices": null,
       "answer": "아테네",
       "explanation": "고대 올림픽의 발상지인 그리스에서 첫 대회를 열었습니다.",
       "topicIds": [
@@ -3031,19 +2976,17 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "Athens"
+      ]
     },
     {
       "id": "spo-253",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "올림픽을 주관하는 국제 기구를 무엇이라 부르나요?",
-      "choices": [
-        "국제올림픽위원회",
-        "국제축구연맹",
-        "세계육상연맹",
-        "세계반도핑기구"
-      ],
+      "choices": null,
       "answer": "국제올림픽위원회",
       "explanation": "약칭 IOC이며, 대회 개최지 선정과 종목 채택을 결정합니다.",
       "topicIds": [
@@ -3052,7 +2995,11 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "IOC",
+        "국제 올림픽 위원회"
+      ]
     },
     {
       "id": "spo-254",
@@ -3156,15 +3103,10 @@
     },
     {
       "id": "spo-259",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "육상에서 열 가지 종목을 이틀에 걸쳐 겨루는 경기를 무엇이라 하나요?",
-      "choices": [
-        "데카슬론",
-        "헵타슬론",
-        "트라이애슬론",
-        "바이애슬론"
-      ],
+      "choices": null,
       "answer": "데카슬론",
       "explanation": "남자 10종 경기가 데카슬론, 여자 7종 경기가 헵타슬론입니다.",
       "topicIds": [
@@ -3173,7 +3115,11 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "십종경기",
+        "십종 경기"
+      ]
     },
     {
       "id": "spo-260",
@@ -3330,15 +3276,10 @@
     },
     {
       "id": "spo-268",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "야구에서 수비 위치 중 2루와 3루 사이를 맡는 선수를 무엇이라 부르나요?",
-      "choices": [
-        "유격수",
-        "포수",
-        "중견수",
-        "지명타자"
-      ],
+      "choices": null,
       "answer": "유격수",
       "explanation": "내야에서 가장 넓은 범위를 맡아 수비 부담이 큰 자리입니다.",
       "topicIds": [
@@ -3347,7 +3288,11 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "쇼트스톱",
+        "숏스톱"
+      ]
     },
     {
       "id": "spo-269",
@@ -3372,15 +3317,10 @@
     },
     {
       "id": "spo-270",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "야구에서 한 번의 수비로 주자와 타자를 한꺼번에 아웃시키는 것을 무엇이라 하나요?",
-      "choices": [
-        "병살",
-        "삼진",
-        "견제사",
-        "태그업"
-      ],
+      "choices": null,
       "answer": "병살",
       "explanation": "더블 플레이라고도 하며, 대개 유격수와 2루수가 이어 던져 만듭니다.",
       "topicIds": [
@@ -3389,7 +3329,11 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "더블플레이",
+        "더블 플레이"
+      ]
     },
     {
       "id": "spo-271",
@@ -3619,15 +3563,10 @@
     },
     {
       "id": "spo-282",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "야구에서 뜬 공이 잡힌 뒤 주자가 베이스를 다시 밟고 출발하는 것을 무엇이라 하나요?",
-      "choices": [
-        "태그업",
-        "도루",
-        "슬라이딩",
-        "리드"
-      ],
+      "choices": null,
       "answer": "태그업",
       "explanation": "공이 잡히기 전에 미리 떠나면 아웃되므로, 잡히는 순간 베이스에 붙어 있다가 출발해야 합니다.",
       "topicIds": [
@@ -3636,7 +3575,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "태그 업"
+      ]
     },
     {
       "id": "spo-283",
@@ -3719,15 +3661,10 @@
     },
     {
       "id": "spo-287",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "수영에서 두 팔을 동시에 앞으로 뻗었다 당기고 다리를 개구리처럼 차는 영법은 무엇인가요?",
-      "choices": [
-        "평영",
-        "접영",
-        "배영",
-        "자유형"
-      ],
+      "choices": null,
       "answer": "평영",
       "explanation": "네 영법 가운데 속도가 가장 느리지만 물 위로 머리를 들기 쉬운 영법입니다.",
       "topicIds": [
@@ -3861,15 +3798,10 @@
     },
     {
       "id": "spo-294",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "마라톤에서 목표 기록에 맞춰 앞에서 속도를 이끌어 주는 선수를 무엇이라 하나요?",
-      "choices": [
-        "페이스메이커",
-        "코치",
-        "리드러너",
-        "패서"
-      ],
+      "choices": null,
       "answer": "페이스메이커",
       "explanation": "일정 구간까지만 함께 달리고 빠지는 것이 보통입니다.",
       "topicIds": [
@@ -3878,7 +3810,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "페이스 메이커"
+      ]
     },
     {
       "id": "spo-295",
@@ -3961,15 +3896,10 @@
     },
     {
       "id": "spo-299",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "레슬링에서 상체만 공격할 수 있고 다리를 잡을 수 없는 종목은 무엇인가요?",
-      "choices": [
-        "그레코로만형",
-        "자유형",
-        "삼보",
-        "주짓수"
-      ],
+      "choices": null,
       "answer": "그레코로만형",
       "explanation": "자유형은 다리를 잡을 수 있지만 그레코로만형은 허리 위만 공격할 수 있습니다.",
       "topicIds": [
@@ -3978,7 +3908,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "그레코로만"
+      ]
     },
     {
       "id": "spo-300",
@@ -4313,15 +4246,10 @@
     },
     {
       "id": "spo-316",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 3,
       "body": "복싱에서 상대를 다운시키지 않고도 판정으로 이기는 승리를 무엇이라 하나요?",
-      "choices": [
-        "KO승",
-        "판정승",
-        "TKO승",
-        "부전승"
-      ],
+      "choices": null,
       "answer": "판정승",
       "explanation": "정해진 라운드를 다 채우고 심판 채점으로 이기면 판정승입니다. KO·TKO는 경기 도중 상대가 못 일어나거나 심판이 중단시켰을 때입니다.",
       "topicIds": [
@@ -4379,15 +4307,10 @@
     },
     {
       "id": "spo-319",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 3,
       "body": "축구 국가대표팀 순위를 매기는 국제축구연맹의 공식 랭킹은 어떤 이름으로 불리나요?",
-      "choices": [
-        "FIFA 랭킹",
-        "발롱도르 순위",
-        "UEFA 지수",
-        "월드컵 시드 순위"
-      ],
+      "choices": null,
       "answer": "FIFA 랭킹",
       "explanation": "FIFA 랭킹은 국가대표팀 순위이고, 발롱도르는 개인 선수에게 주는 상입니다. 둘을 헷갈려 순위 얘기에 발롱도르를 언급하는 경우가 있습니다.",
       "topicIds": [
@@ -4397,7 +4320,11 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
-      "seedRef": "https://en.wikipedia.org/wiki/FIFA_World_Rankings"
+      "seedRef": "https://en.wikipedia.org/wiki/FIFA_World_Rankings",
+      "answerAliases": [
+        "피파 랭킹",
+        "FIFA랭킹"
+      ]
     },
     {
       "id": "spo-320",
@@ -4745,15 +4672,10 @@
     },
     {
       "id": "spo-337",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 3,
       "body": "축구에서 주심의 판정을 영상으로 다시 확인해 돕는 제도를 무엇이라 부르나요?",
-      "choices": [
-        "VAR",
-        "챌린지",
-        "리플레이 콜",
-        "인스턴트 판독"
-      ],
+      "choices": null,
       "answer": "VAR",
       "explanation": "비디오 판독 심판(Video Assistant Referee)의 약자로, 2018년 월드컵에서 처음 전면 도입됐습니다.",
       "topicIds": [
@@ -4763,7 +4685,11 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
-      "seedRef": "https://en.wikipedia.org/wiki/Video_assistant_referee"
+      "seedRef": "https://en.wikipedia.org/wiki/Video_assistant_referee",
+      "answerAliases": [
+        "비디오 판독",
+        "브이에이알"
+      ]
     },
     {
       "id": "spo-338",
@@ -4789,15 +4715,10 @@
     },
     {
       "id": "spo-339",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 3,
       "body": "축구에서 공이 골라인을 완전히 넘었는지 기계로 즉시 판정하는 기술을 무엇이라 하나요?",
-      "choices": [
-        "골라인 테크놀로지",
-        "VAR",
-        "호크아이 챌린지",
-        "오프사이드 트래킹"
-      ],
+      "choices": null,
       "answer": "골라인 테크놀로지",
       "explanation": "골 판정만 전담하는 별도 기술로, 심판 시계에 즉시 신호를 보냅니다. 판정 전반을 다루는 VAR과는 다릅니다.",
       "topicIds": [
@@ -4807,7 +4728,11 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
-      "seedRef": "https://en.wikipedia.org/wiki/Goal-line_technology"
+      "seedRef": "https://en.wikipedia.org/wiki/Goal-line_technology",
+      "answerAliases": [
+        "골라인테크놀로지",
+        "골라인 판독"
+      ]
     },
     {
       "id": "spo-340",
@@ -5214,15 +5139,10 @@
     },
     {
       "id": "spo-359",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 3,
       "body": "국제올림픽위원회 본부가 있는 나라는 어디인가요?",
-      "choices": [
-        "스위스",
-        "그리스",
-        "프랑스",
-        "미국"
-      ],
+      "choices": null,
       "answer": "스위스",
       "explanation": "본부는 스위스 로잔에 있습니다. 발상지인 그리스에 있을 것으로 짐작하기 쉽습니다.",
       "topicIds": [
@@ -5232,7 +5152,10 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
-      "seedRef": "https://en.wikipedia.org/wiki/International_Olympic_Committee"
+      "seedRef": "https://en.wikipedia.org/wiki/International_Olympic_Committee",
+      "answerAliases": [
+        "Switzerland"
+      ]
     },
     {
       "id": "spo-360",
@@ -5258,15 +5181,10 @@
     },
     {
       "id": "spo-361",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 3,
       "body": "펜싱·수영·승마·사격·달리기를 겨루는 근대 5종은 어느 대회에서 열리나요?",
-      "choices": [
-        "하계 올림픽",
-        "동계 올림픽",
-        "하계와 동계 모두",
-        "패럴림픽"
-      ],
+      "choices": null,
       "answer": "하계 올림픽",
       "explanation": "근대 5종은 하계 종목입니다. 이름의 5종 때문에 동계의 복합 종목과 헷갈리기 쉽습니다.",
       "topicIds": [
@@ -5276,7 +5194,11 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
-      "seedRef": "https://en.wikipedia.org/wiki/Modern_pentathlon"
+      "seedRef": "https://en.wikipedia.org/wiki/Modern_pentathlon",
+      "answerAliases": [
+        "하계올림픽",
+        "여름 올림픽"
+      ]
     },
     {
       "id": "spo-362",
@@ -5385,15 +5307,10 @@
     },
     {
       "id": "spo-367",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 3,
       "body": "야구에서 무사나 1사에 주자가 1·2루에 있고 내야에 뜬 공이 떴을 때 적용되는 규칙은 무엇인가요?",
-      "choices": [
-        "인필드 플라이",
-        "낫아웃",
-        "보크",
-        "인정 2루타"
-      ],
+      "choices": null,
       "answer": "인필드 플라이",
       "explanation": "수비가 일부러 공을 떨어뜨려 병살을 만드는 것을 막는 규칙입니다. 선언되면 잡히지 않아도 타자는 아웃입니다.",
       "topicIds": [
@@ -5403,7 +5320,10 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
-      "seedRef": "https://en.wikipedia.org/wiki/Infield_fly_rule"
+      "seedRef": "https://en.wikipedia.org/wiki/Infield_fly_rule",
+      "answerAliases": [
+        "인필드플라이"
+      ]
     },
     {
       "id": "spo-368",
@@ -6089,15 +6009,10 @@
     },
     {
       "id": "spo-399",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 3,
       "body": "육상 트랙 경기에서 결승선 통과는 신체의 어느 부위를 기준으로 판정하나요?",
-      "choices": [
-        "몸통",
-        "머리",
-        "발",
-        "손"
-      ],
+      "choices": null,
       "answer": "몸통",
       "explanation": "머리나 팔다리가 아니라 몸통이 결승선 수직면에 닿는 순간을 기준으로 합니다. 그래서 마지막에 상체를 내미는 동작이 나옵니다.",
       "topicIds": [
@@ -6228,15 +6143,10 @@
     },
     {
       "id": "spo-406",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "펜싱 세 종목 중 몸통만 유효 타깃으로 인정하는 종목은 무엇인가요?",
-      "choices": [
-        "플뢰레",
-        "에페",
-        "사브르",
-        "셋 다 전신"
-      ],
+      "choices": null,
       "answer": "플뢰레",
       "explanation": "플뢰레는 몸통만, 에페는 전신, 사브르는 상체(허리 위)가 유효 타깃입니다.",
       "topicIds": [
@@ -6245,7 +6155,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "플러레"
+      ]
     },
     {
       "id": "spo-407",
@@ -6560,15 +6473,10 @@
     },
     {
       "id": "spo-423",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "테니스에서 상대의 서브 게임을 따내는 것을 무엇이라 하나요?",
-      "choices": [
-        "브레이크",
-        "홀드",
-        "에이스",
-        "렛"
-      ],
+      "choices": null,
       "answer": "브레이크",
       "explanation": "서브를 넣는 쪽이 유리하므로 그 게임을 지키면 홀드, 받는 쪽이 따내면 브레이크라 합니다.",
       "topicIds": [
@@ -6581,15 +6489,10 @@
     },
     {
       "id": "spo-424",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "골프에서 그 홀의 기준 타수보다 세 타 적게 넣은 것을 무엇이라 하나요?",
-      "choices": [
-        "알바트로스",
-        "이글",
-        "버디",
-        "콘도르"
-      ],
+      "choices": null,
       "answer": "알바트로스",
       "explanation": "하나 적으면 버디, 둘 적으면 이글, 셋 적으면 알바트로스입니다. 넷 적은 콘도르는 거의 나오지 않습니다.",
       "topicIds": [
@@ -6598,7 +6501,11 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "앨버트로스",
+        "더블 이글"
+      ]
     },
     {
       "id": "spo-425",
@@ -6681,15 +6588,10 @@
     },
     {
       "id": "spo-429",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "아이스하키에서 상대 선수가 퇴장당해 한동안 수적 우위를 얻는 상황을 무엇이라 하나요?",
-      "choices": [
-        "파워플레이",
-        "페널티킬",
-        "아이싱",
-        "오프사이드"
-      ],
+      "choices": null,
       "answer": "파워플레이",
       "explanation": "수적 우위를 얻은 쪽이 파워플레이, 한 명이 모자란 쪽이 페널티킬입니다.",
       "topicIds": [
@@ -6698,7 +6600,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "파워 플레이"
+      ]
     },
     {
       "id": "spo-430",
@@ -7039,15 +6944,10 @@
     },
     {
       "id": "spo-447",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "축구 리그에서 두 팀의 승점이 같을 때 순위를 가르는 기준으로 흔히 먼저 보는 것은 무엇인가요?",
-      "choices": [
-        "골 득실차",
-        "경고 누적 수",
-        "홈 관중 수",
-        "팀 이름 순서"
-      ],
+      "choices": null,
       "answer": "골 득실차",
       "explanation": "넣은 골에서 먹은 골을 뺀 값을 먼저 봅니다. 그다음으로 다득점, 승자승 등을 따집니다.",
       "topicIds": [
@@ -7056,7 +6956,11 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "골득실차",
+        "골득실"
+      ]
     },
     {
       "id": "spo-448",
@@ -7081,15 +6985,10 @@
     },
     {
       "id": "spo-449",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "축구에서 경기가 멈췄다가 어느 팀에도 귀책이 없을 때 심판이 공을 떨어뜨려 재개하는 방식을 무엇이라 하나요?",
-      "choices": [
-        "드롭볼",
-        "킥오프",
-        "프리킥",
-        "스로인"
-      ],
+      "choices": null,
       "answer": "드롭볼",
       "explanation": "관중 난입이나 심판에게 공이 맞는 등 어느 쪽 반칙도 아닐 때 씁니다.",
       "topicIds": [
@@ -7098,19 +6997,17 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "드롭 볼"
+      ]
     },
     {
       "id": "spo-450",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "축구에서 한 선수가 한 경기에 골과 도움을 각각 여러 개 기록했을 때, 도움을 가리키는 말은 무엇인가요?",
-      "choices": [
-        "어시스트",
-        "패스 성공",
-        "크로스",
-        "키패스"
-      ],
+      "choices": null,
       "answer": "어시스트",
       "explanation": "득점으로 이어진 마지막 패스를 어시스트로 기록합니다.",
       "topicIds": [
@@ -7123,15 +7020,10 @@
     },
     {
       "id": "spo-451",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "축구에서 공격수가 수비 뒷공간으로 침투하도록 수비 라인 사이로 찔러 주는 패스를 무엇이라 하나요?",
-      "choices": [
-        "스루패스",
-        "백패스",
-        "클리어링",
-        "센터링"
-      ],
+      "choices": null,
       "answer": "스루패스",
       "explanation": "수비 라인을 통과시키는 패스라 스루패스라 부릅니다. 오프사이드 타이밍이 중요합니다.",
       "topicIds": [
@@ -7140,7 +7032,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "스루 패스"
+      ]
     },
     {
       "id": "spo-452",
@@ -7181,15 +7076,10 @@
     },
     {
       "id": "spo-454",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "수영 개인혼영에서 맨 처음 하는 영법은 무엇인가요?",
-      "choices": [
-        "접영",
-        "배영",
-        "평영",
-        "자유형"
-      ],
+      "choices": null,
       "answer": "접영",
       "explanation": "개인혼영은 접영으로 시작해 자유형으로 끝납니다.",
       "topicIds": [
@@ -7198,7 +7088,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "버터플라이"
+      ]
     },
     {
       "id": "spo-455",
@@ -7302,15 +7195,10 @@
     },
     {
       "id": "spo-460",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "펜싱 세 종목 중 찌르기만 인정하며 온몸이 유효 부위인 것은 무엇인가요?",
-      "choices": [
-        "에페",
-        "플뢰레",
-        "사브르",
-        "레이피어"
-      ],
+      "choices": null,
       "answer": "에페",
       "explanation": "에페는 온몸이 유효 부위이고, 플뢰레는 몸통만, 사브르는 허리 위이며 베기도 인정됩니다.",
       "topicIds": [
@@ -7497,15 +7385,10 @@
     },
     {
       "id": "spo-470",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "야구에서 출루율과 장타율을 더한 지표를 무엇이라 부르나요?",
-      "choices": [
-        "OPS",
-        "ERA",
-        "WHIP",
-        "RBI"
-      ],
+      "choices": null,
       "answer": "OPS",
       "explanation": "타자의 생산력을 한 숫자로 보려는 지표입니다. WHIP는 투수가 이닝당 내보낸 주자 수입니다.",
       "topicIds": [
@@ -7514,19 +7397,17 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "오피에스"
+      ]
     },
     {
       "id": "spo-471",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "야구에서 투수가 한 이닝당 내보낸 주자 수를 나타내는 지표는 무엇인가요?",
-      "choices": [
-        "WHIP",
-        "OPS",
-        "타율",
-        "장타율"
-      ],
+      "choices": null,
       "answer": "WHIP",
       "explanation": "볼넷과 피안타를 더해 이닝으로 나눈 값으로, 낮을수록 주자를 적게 내보낸 투수입니다.",
       "topicIds": [
@@ -7535,7 +7416,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "윕"
+      ]
     },
     {
       "id": "spo-472",
@@ -7555,15 +7439,10 @@
     },
     {
       "id": "spo-473",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "야구에서 타자를 상대로 던진 공 가운데 회전을 줄여 흔들리며 느리게 오는 구종을 무엇이라 하나요?",
-      "choices": [
-        "너클볼",
-        "슬라이더",
-        "커브",
-        "체인지업"
-      ],
+      "choices": null,
       "answer": "너클볼",
       "explanation": "손톱으로 공을 밀어 회전을 거의 없앤 공으로, 공기 흐름에 따라 예측하기 어렵게 흔들립니다.",
       "topicIds": [
@@ -7572,19 +7451,17 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "너클 볼"
+      ]
     },
     {
       "id": "spo-474",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "야구에서 직구와 같은 팔 동작으로 던지되 속도만 크게 떨어뜨리는 구종은 무엇인가요?",
-      "choices": [
-        "체인지업",
-        "슬라이더",
-        "포크볼",
-        "싱커"
-      ],
+      "choices": null,
       "answer": "체인지업",
       "explanation": "타자의 타이밍을 빼앗는 것이 목적이라 팔 스윙을 직구와 똑같이 가져가는 것이 중요합니다.",
       "topicIds": [
@@ -7593,19 +7470,17 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "체인지 업"
+      ]
     },
     {
       "id": "spo-475",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "야구에서 주자가 있을 때 투수가 크게 다리를 들지 않고 간결하게 던지는 자세를 무엇이라 하나요?",
-      "choices": [
-        "세트 포지션",
-        "와인드업",
-        "스트라이드",
-        "팔로스루"
-      ],
+      "choices": null,
       "answer": "세트 포지션",
       "explanation": "도루를 막으려고 동작을 줄인 자세입니다. 주자가 없을 때 크게 감아 던지는 것은 와인드업입니다.",
       "topicIds": [
@@ -7614,7 +7489,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "세트포지션"
+      ]
     },
     {
       "id": "spo-476",
@@ -7660,15 +7538,10 @@
     },
     {
       "id": "spo-478",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "야구에서 베이스 사이에 갇힌 주자를 수비수들이 공을 주고받으며 몰아 잡는 상황을 무엇이라 하나요?",
-      "choices": [
-        "런다운",
-        "태그업",
-        "시프트",
-        "픽오프"
-      ],
+      "choices": null,
       "answer": "런다운",
       "explanation": "협살이라고도 합니다. 주자를 앞뒤로 몰며 태그해 아웃시킵니다.",
       "topicIds": [
@@ -7677,7 +7550,11 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "런 다운",
+        "협살"
+      ]
     },
     {
       "id": "spo-479",
@@ -7718,15 +7595,10 @@
     },
     {
       "id": "spo-481",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "야구에서 경기 중 투수가 몸을 풀며 대기하는 공간을 무엇이라 부르나요?",
-      "choices": [
-        "불펜",
-        "더그아웃",
-        "온덱 서클",
-        "백스톱"
-      ],
+      "choices": null,
       "answer": "불펜",
       "explanation": "구원 투수들이 대기하며 몸을 푸는 곳입니다. 그래서 구원진 자체를 불펜이라 부르기도 합니다.",
       "topicIds": [
@@ -7735,7 +7607,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "bullpen"
+      ]
     },
     {
       "id": "spo-482",
@@ -7755,15 +7630,10 @@
     },
     {
       "id": "spo-483",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "야구에서 다음 타석에 들어설 타자가 준비하며 기다리는 원 모양 구역을 무엇이라 하나요?",
-      "choices": [
-        "온덱 서클",
-        "불펜",
-        "코치 박스",
-        "배터 박스"
-      ],
+      "choices": null,
       "answer": "온덱 서클",
       "explanation": "타석 옆에 그려진 원으로, 다음 타자가 스윙 연습을 하며 대기합니다.",
       "topicIds": [
@@ -7772,7 +7642,11 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "온 덱 서클",
+        "온덱서클"
+      ]
     },
     {
       "id": "spo-484",

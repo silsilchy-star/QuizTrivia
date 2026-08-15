@@ -378,6 +378,9 @@ function NewQuestionForm({
   const [body, setBody] = useState('');
   const [choices, setChoices] = useState(['', '', '', '']);
   const [answer, setAnswer] = useState('');
+  // 단답형에서 정답으로 함께 인정할 표기들. 쉼표로 구분해 한 줄로 받는다 —
+  // 칸을 여러 개 두면 대부분 비워 두게 되고, 폼만 길어진다.
+  const [aliasText, setAliasText] = useState('');
   const [explanation, setExplanation] = useState('');
   // 이미지든 영상이든 이 한 칸으로 받는다. 어느 쪽인지는 붙여넣은 링크를
   // 보고 판정한다 — 유저가 "이건 이미지" "이건 영상"을 직접 고르게 하는 건
@@ -404,6 +407,9 @@ function NewQuestionForm({
         body: body.trim(),
         choices: type === 'MULTIPLE_CHOICE' ? choices.map((c) => c.trim()) : null,
         answer: answer.trim(),
+        // 정리(공백·중복 제거)는 서버가 같은 규칙으로 다시 한다 — 여기서는
+        // 쉼표로 끊어 보내기만 한다.
+        answerAliases: type === 'TEXT_INPUT' ? aliasText.split(',').map((s) => s.trim()).filter(Boolean) : null,
         explanation: explanation.trim(),
         // 유튜브 링크면 영상 칸으로, 아니면 이미지 칸으로 보낸다. 둘 다 채워
         // 보내는 일은 없다 — 서버도 그걸 거부한다.
@@ -415,6 +421,7 @@ function NewQuestionForm({
       setBody('');
       setChoices(['', '', '', '']);
       setAnswer('');
+      setAliasText('');
       setExplanation('');
       setMediaUrl('');
       setAddedCount((n) => n + 1);
@@ -503,6 +510,22 @@ function NewQuestionForm({
               : '정답 (텍스트, 대소문자·공백 차이는 무시됨)'
         }
       />
+
+      {/* 단답형은 표기가 흔들린다 — "에베레스트"와 "에베레스트산"을 둘 다
+          맞다고 해 주지 않으면 아는 사람이 틀린 처리를 받는다. */}
+      {type === 'TEXT_INPUT' && (
+        <div className="field">
+          <input
+            value={aliasText}
+            onChange={(e) => setAliasText(e.target.value)}
+            placeholder="또 맞는 답 (선택, 쉼표로 구분)"
+          />
+          <span className="hint">
+            같은 답의 다른 표기를 적어 두면 함께 정답 처리된다. 예: 정답이 “에베레스트”일 때 “에베레스트산, Everest”
+          </span>
+        </div>
+      )}
+
       <textarea value={explanation} onChange={(e) => setExplanation(e.target.value)} placeholder="해설" />
 
       {error && <p className="error">{error}</p>}

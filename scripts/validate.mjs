@@ -7,14 +7,16 @@
 // 사용: node scripts/validate.mjs [--json]
 
 import {
+  ANSWER_ALIASES_MAX,
   GATE_PER_DIFFICULTY,
   NUMERIC_RATIO,
   OVERLAP_WARN,
   loadAllQuestions,
   loadTopics,
   normalize,
+  normalizeAnswer,
 } from './lib.mjs';
-import { choiceAnswerLeaked, numericAnswerLeaked } from './fairness.mjs';
+import { choiceAnswerLeaked, numericAnswerLeaked, textAnswerLeaked } from './fairness.mjs';
 
 const TYPES = ['MULTIPLE_CHOICE', 'NUMERIC_INPUT', 'TEXT_INPUT'];
 const STATUSES = ['pending', 'approved', 'rejected'];
@@ -76,6 +78,40 @@ for (const q of questions) {
     if (q.choices != null) err(id, 'TEXT_INPUT은 choices가 null이어야 한다');
   }
 
+  // ── 단답형 별칭 (answerAliases) ──
+  //
+  // 표기가 흔들리는 답을 인정하기 위한 목록이다. 정답이 "에베레스트"일 때
+  // "에베레스트산"을 적은 사람은 알고 있는 것이므로 맞다고 쳐야 한다.
+  //
+  // 다른 유형에서 막는 이유: 객관식은 선택지를 고르는 것이고 숫자입력은 숫자로
+  // 비교하므로 별칭이 채점에 아무 영향을 주지 않는다. 조용히 무시되느니
+  // 여기서 걸리는 편이 낫다 (영상 문항을 ERROR로 막는 것과 같은 이유).
+  if (q.answerAliases != null) {
+    if (q.type !== 'TEXT_INPUT') {
+      err(id, `answerAliases는 TEXT_INPUT에서만 쓴다 (지금 ${q.type}) — 다른 유형에서는 채점에 반영되지 않는다`);
+    } else if (!Array.isArray(q.answerAliases)) {
+      err(id, 'answerAliases는 배열이어야 한다');
+    } else {
+      if (q.answerAliases.length > ANSWER_ALIASES_MAX) {
+        err(id, `answerAliases가 너무 많다 (${q.answerAliases.length}개, 최대 ${ANSWER_ALIASES_MAX}개)`);
+      }
+      const seen = new Set([normalizeAnswer(q.answer)]);
+      for (const alias of q.answerAliases) {
+        if (typeof alias !== 'string' || !alias.trim()) {
+          err(id, '비어 있는 별칭이 있다');
+          continue;
+        }
+        const key = normalizeAnswer(alias);
+        // 정규화하면 정답과 같아지는 별칭은 채점에서 아무 일도 하지 않는다.
+        // 있으나 마나 한 항목이 쌓이면 "이 문항은 별칭을 챙겼다"는 착시가 생긴다.
+        if (seen.has(key)) {
+          err(id, `별칭 "${alias}"이 정답 또는 다른 별칭과 (대소문자·공백 무시하면) 같다`);
+        }
+        seen.add(key);
+      }
+    }
+  }
+
   // 이미지 첨부 (EP-1 확장 — 이미지+단답형)
   if (q.imageUrl != null && !/^https:\/\/.+/.test(q.imageUrl)) {
     err(id, `imageUrl은 https://로 시작해야 한다: ${q.imageUrl}`);
@@ -100,6 +136,11 @@ for (const q of questions) {
   }
   if (choiceAnswerLeaked(q)) {
     warn(id, `정답 "${q.answer}"만 문제 본문에 나온다 — 내용을 몰라도 고를 수 있는지 확인`);
+  }
+  // 단답형은 선택지가 없어 본문이 플레이어가 보는 전부다. 거기 답이 있으면
+  // 베껴 쓰면 되므로 객관식(WARN)보다 무겁게 ERROR로 막는다.
+  if (textAnswerLeaked(q)) {
+    err(id, `정답 "${q.answer}"이 문제 본문에 그대로 있다 — 단답형은 본문이 전부라 베껴 쓸 수 있다`);
   }
 
   // 태그 (PLAN 6.6절 [2] — 허용 목록 밖 태그는 주제를 파편화시킨다)

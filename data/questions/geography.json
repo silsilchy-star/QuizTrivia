@@ -45,15 +45,10 @@
     },
     {
       "id": "geo-103",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "프랑스의 수도는 어디인가요?",
-      "choices": [
-        "리옹",
-        "마르세유",
-        "파리",
-        "니스"
-      ],
+      "choices": null,
       "answer": "파리",
       "explanation": "파리는 센강을 끼고 있는 프랑스의 수도이자 최대 도시입니다.",
       "topicIds": [
@@ -62,7 +57,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "Paris"
+      ]
     },
     {
       "id": "geo-104",
@@ -108,15 +106,10 @@
     },
     {
       "id": "geo-106",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "대한민국이 속한 대륙은 어디인가요?",
-      "choices": [
-        "아시아",
-        "유럽",
-        "아프리카",
-        "오세아니아"
-      ],
+      "choices": null,
       "answer": "아시아",
       "explanation": "한반도는 유라시아 대륙 동쪽 끝에 있으며 아시아에 속합니다.",
       "topicIds": [
@@ -125,7 +118,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "Asia"
+      ]
     },
     {
       "id": "geo-107",
@@ -277,15 +273,10 @@
     },
     {
       "id": "geo-115",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 1,
       "body": "아프리카 북부에 펼쳐진 세계적으로 유명한 사막의 이름은 무엇인가요?",
-      "choices": [
-        "고비 사막",
-        "사하라 사막",
-        "아타카마 사막",
-        "칼라하리 사막"
-      ],
+      "choices": null,
       "answer": "사하라 사막",
       "explanation": "사하라 사막은 아프리카 북부를 동서로 가로지르는 거대한 모래사막입니다.",
       "topicIds": [
@@ -294,7 +285,11 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "사하라",
+        "사하라사막"
+      ]
     },
     {
       "id": "geo-116",
@@ -477,15 +472,10 @@
     },
     {
       "id": "geo-205",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "히말라야산맥에 있는 세계 최고봉의 이름은 무엇인가요?",
-      "choices": [
-        "К2",
-        "에베레스트산",
-        "안나푸르나",
-        "칸첸중가"
-      ],
+      "choices": null,
       "answer": "에베레스트산",
       "explanation": "해발 약 8,848m로 네팔과 중국 국경에 걸쳐 있습니다.",
       "topicIds": [
@@ -494,7 +484,13 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "에베레스트",
+        "에베레스트 산",
+        "초모랑마",
+        "Everest"
+      ]
     },
     {
       "id": "geo-206",
@@ -514,15 +510,10 @@
     },
     {
       "id": "geo-207",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "경도 0도가 지나는 기준선을 무엇이라 하나요?",
-      "choices": [
-        "적도",
-        "본초자오선",
-        "날짜변경선",
-        "회귀선"
-      ],
+      "choices": null,
       "answer": "본초자오선",
       "explanation": "영국 그리니치를 지나는 경도 0도 선이며 세계 시간의 기준이 됩니다.",
       "topicIds": [
@@ -531,7 +522,11 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "본초 자오선",
+        "그리니치 자오선"
+      ]
     },
     {
       "id": "geo-208",
@@ -609,15 +604,10 @@
     },
     {
       "id": "geo-212",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 2,
       "body": "캐나다 국기 한가운데 그려진 잎은 무슨 나무의 잎인가요?",
-      "choices": [
-        "단풍나무",
-        "참나무",
-        "소나무",
-        "자작나무"
-      ],
+      "choices": null,
       "answer": "단풍나무",
       "explanation": "캐나다 국기의 붉은 단풍잎은 이 나라를 상징하는 표식입니다.",
       "topicIds": [
@@ -626,7 +616,11 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "단풍",
+        "메이플"
+      ]
     },
     {
       "id": "geo-213",
@@ -805,15 +799,10 @@
     },
     {
       "id": "geo-302",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 3,
       "body": "오스트레일리아의 수도는 어디인가요?",
-      "choices": [
-        "시드니",
-        "멜버른",
-        "캔버라",
-        "브리즈번"
-      ],
+      "choices": null,
       "answer": "캔버라",
       "explanation": "시드니와 멜버른이 서로 수도가 되겠다고 다투자 두 도시 사이에 새 수도 캔버라를 세웠습니다.",
       "topicIds": [
@@ -823,7 +812,10 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
-      "seedRef": "https://en.wikipedia.org/wiki/Canberra"
+      "seedRef": "https://en.wikipedia.org/wiki/Canberra",
+      "answerAliases": [
+        "Canberra"
+      ]
     },
     {
       "id": "geo-303",
@@ -937,15 +929,10 @@
     },
     {
       "id": "geo-308",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 3,
       "body": "미국의 수도는 어디인가요?",
-      "choices": [
-        "뉴욕",
-        "워싱턴 D.C.",
-        "로스앤젤레스",
-        "시카고"
-      ],
+      "choices": null,
       "answer": "워싱턴 D.C.",
       "explanation": "뉴욕이 최대 도시라 수도로 착각하기 쉽지만, 수도는 어느 주에도 속하지 않는 워싱턴 D.C.입니다.",
       "topicIds": [
@@ -955,7 +942,13 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
-      "seedRef": "https://en.wikipedia.org/wiki/Washington,_D.C."
+      "seedRef": "https://en.wikipedia.org/wiki/Washington,_D.C.",
+      "answerAliases": [
+        "워싱턴",
+        "워싱턴 DC",
+        "워싱턴디시",
+        "Washington DC"
+      ]
     },
     {
       "id": "geo-309",
@@ -1069,15 +1062,10 @@
     },
     {
       "id": "geo-314",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 3,
       "body": "그린란드는 어느 나라의 자치령인가요?",
-      "choices": [
-        "덴마크",
-        "노르웨이",
-        "캐나다",
-        "아이슬란드"
-      ],
+      "choices": null,
       "answer": "덴마크",
       "explanation": "그린란드는 덴마크 왕국에 속한 자치령입니다. 북아메리카에 붙어 있어 캐나다령으로 착각하기 쉽습니다.",
       "topicIds": [
@@ -1087,7 +1075,10 @@
       "status": "approved",
       "source": "ai_generated",
       "generatedBy": "claude-opus-5",
-      "seedRef": "https://en.wikipedia.org/wiki/Greenland"
+      "seedRef": "https://en.wikipedia.org/wiki/Greenland",
+      "answerAliases": [
+        "Denmark"
+      ]
     },
     {
       "id": "geo-315",
@@ -1218,15 +1209,10 @@
     },
     {
       "id": "geo-401",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "면적이 가장 작은 독립 국가는 어디인가요?",
-      "choices": [
-        "모나코",
-        "바티칸",
-        "나우루",
-        "산마리노"
-      ],
+      "choices": null,
       "answer": "바티칸",
       "explanation": "바티칸 시국의 면적은 약 0.44제곱킬로미터로 세계에서 가장 작은 독립국입니다.",
       "topicIds": [
@@ -1235,7 +1221,12 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "바티칸 시국",
+        "바티칸시국",
+        "Vatican"
+      ]
     },
     {
       "id": "geo-402",
@@ -1281,15 +1272,10 @@
     },
     {
       "id": "geo-404",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "국기가 유일하게 정사각형이 아닌 오각형 모양인 나라는 어디인가요?",
-      "choices": [
-        "네팔",
-        "부탄",
-        "스리랑카",
-        "몰디브"
-      ],
+      "choices": null,
       "answer": "네팔",
       "explanation": "네팔 국기는 삼각기 두 개를 겹친 모양으로, 사각형이 아닌 유일한 국기입니다.",
       "topicIds": [
@@ -1298,7 +1284,10 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "Nepal"
+      ]
     },
     {
       "id": "geo-405",
@@ -1339,15 +1328,10 @@
     },
     {
       "id": "geo-407",
-      "type": "MULTIPLE_CHOICE",
+      "type": "TEXT_INPUT",
       "difficulty": 4,
       "body": "지중해와 홍해를 잇는 운하의 이름은 무엇인가요?",
-      "choices": [
-        "수에즈 운하",
-        "파나마 운하",
-        "킬 운하",
-        "코린토스 운하"
-      ],
+      "choices": null,
       "answer": "수에즈 운하",
       "explanation": "이집트의 수에즈 운하는 지중해와 홍해를 이어 아시아와 유럽의 항로를 크게 단축했습니다.",
       "topicIds": [
@@ -1356,7 +1340,12 @@
       ],
       "status": "approved",
       "source": "ai_generated",
-      "generatedBy": "claude-opus-5"
+      "generatedBy": "claude-opus-5",
+      "answerAliases": [
+        "수에즈",
+        "수에즈운하",
+        "Suez"
+      ]
     },
     {
       "id": "geo-408",

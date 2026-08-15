@@ -152,7 +152,7 @@ describe('테스트 환경 자체', () => {
   // 무관한 테스트가 깨진다. setup.ts가 seed를 적재하지 않는지 확인한다.
   it('공식 콘텐츠(data/*.json)를 적재하지 않는다', async () => {
     const seeded = await env.DB.prepare(
-      "SELECT COUNT(*) AS n FROM topics WHERE id IN ('science','geography','sports','birds')",
+      "SELECT COUNT(*) AS n FROM topics WHERE id IN ('science','geography','sports')",
     ).first<{ n: number }>();
     expect(seeded?.n).toBe(0);
   });

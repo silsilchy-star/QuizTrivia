@@ -313,60 +313,6 @@
       "kind": "narrow",
       "tagline": "거리·시간·점수의 숫자",
       "parent": "sports"
-    },
-    {
-      "id": "birds",
-      "no": 4,
-      "name": "새 맞추기",
-      "kind": "broad",
-      "tagline": "새 사진을 보고 학명을 맞혀보세요",
-      "scope": [
-        "한국에서 흔히 볼 수 있는 텃새·철새의 학명(라틴 이명법)",
-        "사진으로 외형을 보고 종을 식별하는 것"
-      ],
-      "outOfScope": [
-        "아종 수준의 세부 분류",
-        "지역 개체군 간 미세한 형태 차이",
-        "매우 희귀한 미기록종",
-        "사진 없이 울음소리·생태만으로 구별하는 문제"
-      ],
-      "allowedTags": [
-        "birds"
-      ],
-      "difficultySpec": {
-        "1": {
-          "rule": "도시에서 매일 보는 아주 흔한 새 — 사진을 보면 거의 누구나 아는가?",
-          "examples": [
-            "참새 사진 → Passer montanus",
-            "까치 사진 → Pica serica",
-            "집비둘기 사진 → Columba livia"
-          ]
-        },
-        "2": {
-          "rule": "공원·하천에서 흔히 보이는 새 — 본 적은 있지만 이름은 가물가물한가?",
-          "examples": [
-            "청둥오리 사진 → Anas platyrhynchos",
-            "왜가리 사진 → Ardea cinerea",
-            "오색딱따구리 사진 → Dendrocopos major"
-          ]
-        },
-        "3": {
-          "rule": "이름은 들어봤지만 흔치 않은 새 — 자연에 관심이 있어야 아는가?",
-          "examples": [
-            "원앙 사진 → Aix galericulata",
-            "후투티 사진 → Upupa epops",
-            "황조롱이 사진 → Falco tinnunculus"
-          ]
-        },
-        "4": {
-          "rule": "탐조 지식이 필요한 새 — 전문적인 관심이 있어야 아는가?",
-          "examples": [
-            "호사비오리 사진 → Mergus squamatus",
-            "두루미 사진 → Grus japonensis",
-            "저어새 사진 → Platalea minor"
-          ]
-        }
-      }
     }
   ]
 }

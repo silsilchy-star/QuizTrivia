@@ -963,10 +963,10 @@
       "id": "spo-149",
       "type": "NUMERIC_INPUT",
       "difficulty": 1,
-      "body": "축구 월드컵은 몇 년마다 열리나요?",
+      "body": "축구 경기에서 두 팀을 합쳐 경기장 안에 서 있는 선수는 모두 몇 명인가요?",
       "choices": null,
-      "answer": "4",
-      "explanation": "월드컵은 4년에 한 번 열립니다. 올림픽과 같은 주기이지만 열리는 해는 서로 엇갈립니다.",
+      "answer": "22",
+      "explanation": "한 팀 11명씩 두 팀이니 22명입니다. 골키퍼도 포함한 숫자입니다.",
       "topicIds": [
         "sports",
         "football"
@@ -1121,15 +1121,15 @@
       "id": "spo-157",
       "type": "MULTIPLE_CHOICE",
       "difficulty": 1,
-      "body": "다음 중 물에서 하는 올림픽 종목이 아닌 것은 무엇인가요?",
+      "body": "올림픽에서 매트 위에서 맞붙어 상대를 넘어뜨리는 종목은 무엇인가요?",
       "choices": [
-        "역도",
-        "수영",
-        "다이빙",
-        "조정"
+        "레슬링",
+        "펜싱",
+        "양궁",
+        "사격"
       ],
-      "answer": "역도",
-      "explanation": "역도는 바벨을 들어 올리는 실내 종목입니다. 나머지는 모두 물에서 치릅니다.",
+      "answer": "레슬링",
+      "explanation": "두 어깨를 매트에 붙이면 그 자리에서 이깁니다. 칼로 겨루는 것은 펜싱입니다.",
       "topicIds": [
         "sports",
         "olympics"
@@ -1984,10 +1984,10 @@
       "id": "spo-200",
       "type": "NUMERIC_INPUT",
       "difficulty": 1,
-      "body": "마라톤 정식 거리는 소수점을 버리면 몇 km인가요?",
+      "body": "육상 계주 가운데 짧은 거리 종목에서 한 선수가 달리는 구간은 몇 m인가요?",
       "choices": null,
-      "answer": "42",
-      "explanation": "정확히는 42.195km입니다. 소수점을 버리면 42km입니다.",
+      "answer": "100",
+      "explanation": "네 명이 100m씩 이어 달려 400m를 채웁니다. 긴 계주는 한 명이 400m씩 달립니다.",
       "topicIds": [
         "sports",
         "record"
@@ -6683,15 +6683,15 @@
       "id": "spo-429",
       "type": "MULTIPLE_CHOICE",
       "difficulty": 4,
-      "body": "아이스하키에서 한 선수가 한 경기에 골 세 개를 넣는 것을 무엇이라 부르나요?",
+      "body": "아이스하키에서 상대 선수가 퇴장당해 한동안 수적 우위를 얻는 상황을 무엇이라 하나요?",
       "choices": [
-        "해트트릭",
         "파워플레이",
-        "샷아웃",
-        "페널티샷"
+        "페널티킬",
+        "아이싱",
+        "오프사이드"
       ],
-      "answer": "해트트릭",
-      "explanation": "축구와 마찬가지로 해트트릭이라 부르며, 관중이 빙판에 모자를 던지는 관습이 있습니다.",
+      "answer": "파워플레이",
+      "explanation": "수적 우위를 얻은 쪽이 파워플레이, 한 명이 모자란 쪽이 페널티킬입니다.",
       "topicIds": [
         "sports",
         "ballgame"

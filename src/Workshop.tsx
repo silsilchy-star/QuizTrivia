@@ -5,11 +5,22 @@ import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
 import {
   addCommunityQuestion,
   createCommunityTopic,
+  deleteCommunityQuestion,
   deleteCommunityTopic,
+  getCommunityQuestions,
   getCommunityTopics,
   uploadQuestionImage,
 } from './api';
-import type { CommunityTopic, Difficulty, NewCommunityQuestionInput, QuestionType, SessionResponse } from './types';
+import { parseVideoUrl } from './media';
+import type {
+  CommunityQuestion,
+  CommunityTopic,
+  Difficulty,
+  NewCommunityQuestionInput,
+  QuestionType,
+  SessionResponse,
+} from './types';
+import { VideoFrame } from './VideoFrame';
 
 /** worker/community.ts의 COMMUNITY_GATE_PER_DIFFICULTY와 같은 값 — 표시용. */
 const GATE_PER_DIFFICULTY = 5;
@@ -245,6 +256,8 @@ function TopicDetail({
           </button>
         ))}
 
+      {topic.isMine && <MyQuestions topic={topic} onChanged={onQuestionAdded} />}
+
       {topic.isMine && (
         <div className="danger-zone">
           {confirmingDelete ? (
@@ -274,6 +287,84 @@ function TopicDetail({
   );
 }
 
+/** 내가 만든 문항 목록 + 개별 삭제.
+ *
+ *  이게 없던 동안은 오타 하나, 죽은 영상 링크 하나 때문에 주제를 통째로
+ *  지우는 것 말고는 방법이 없었다. 붙인 이미지·영상을 함께 보여주는 게
+ *  중요하다 — 잘못 붙인 링크는 목록에서 눈으로 봐야 찾을 수 있다.
+ *
+ *  "고치기"는 따로 두지 않았다. 지우고 다시 넣으면 되고, 수정은 재검증·중복
+ *  재확인·게이트 재계산·통계 처리를 전부 다시 밟아야 해서 훨씬 큰 작업이다. */
+function MyQuestions({ topic, onChanged }: { topic: CommunityTopic; onChanged: (t: CommunityTopic) => void }) {
+  const [questions, setQuestions] = useState<CommunityQuestion[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [confirmingId, setConfirmingId] = useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+
+  const total = Object.values(topic.questionCount).reduce((a, b) => a + b, 0);
+
+  // 문항 수가 바뀌면(추가·삭제) 목록을 다시 읽는다.
+  useEffect(() => {
+    let alive = true;
+    getCommunityQuestions(topic.id)
+      .then((qs) => alive && setQuestions(qs))
+      .catch((err) => alive && setError((err as Error).message));
+    return () => {
+      alive = false;
+    };
+  }, [topic.id, total]);
+
+  async function remove(questionId: string) {
+    setDeletingId(questionId);
+    setError(null);
+    try {
+      // 응답은 게이트가 다시 계산된 주제 — 하한 아래로 내려가면 draft로 돌아온다.
+      onChanged(await deleteCommunityQuestion(topic.id, questionId));
+      setConfirmingId(null);
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setDeletingId(null);
+    }
+  }
+
+  if (error) return <p className="error">{error}</p>;
+  if (!questions) return <p className="hint">문항을 불러오는 중…</p>;
+  if (!questions.length) return null;
+
+  return (
+    <div className="my-questions">
+      <h3>내 문항 {questions.length}개</h3>
+      <ol className="question-list">
+        {questions.map((q) => (
+          <li key={q.id}>
+            <p className="meta">난이도 {q.difficulty}</p>
+            <p className="body">{q.body}</p>
+            {q.imageUrl && <img className="question-image review-image" src={q.imageUrl} alt="" />}
+            {q.video && <VideoFrame video={q.video} className="review-image" />}
+            <p className="meta">정답 {q.answer}</p>
+
+            {confirmingId === q.id ? (
+              <div className="question-form-actions">
+                <button className="danger" onClick={() => remove(q.id)} disabled={deletingId === q.id}>
+                  삭제 확인
+                </button>
+                <button className="link" onClick={() => setConfirmingId(null)} disabled={deletingId === q.id}>
+                  취소
+                </button>
+              </div>
+            ) : (
+              <button className="link danger-text" onClick={() => setConfirmingId(q.id)}>
+                이 문항 삭제
+              </button>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
 function NewQuestionForm({
   topicId,
   onDone,
@@ -289,12 +380,20 @@ function NewQuestionForm({
   const [choices, setChoices] = useState(['', '', '', '']);
   const [answer, setAnswer] = useState('');
   const [explanation, setExplanation] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  // 이미지든 영상이든 이 한 칸으로 받는다. 어느 쪽인지는 붙여넣은 링크를
+  // 보고 판정한다 — 유저가 "이건 이미지" "이건 영상"을 직접 고르게 하는 건
+  // 불필요한 질문이다. 판정은 서버와 같은 파서(src/media.ts)로 하고,
+  // 최종 판단은 어차피 서버가 다시 한다.
+  const [mediaUrl, setMediaUrl] = useState('');
   const [uploading, setUploading] = useState(false);
-  const [imageError, setImageError] = useState<string | null>(null);
+  const [mediaError, setMediaError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [addedCount, setAddedCount] = useState(0);
+
+  // 붙여넣은 링크가 유튜브면 영상, 아니면 이미지. 미리보기와 전송 양쪽이
+  // 이 하나의 판정을 쓴다.
+  const previewVideo = parseVideoUrl(mediaUrl);
 
   async function pickImage(e: ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -303,12 +402,12 @@ function NewQuestionForm({
     if (!file) return;
 
     setUploading(true);
-    setImageError(null);
+    setMediaError(null);
     try {
       const { url } = await uploadQuestionImage(file);
-      setImageUrl(url);
+      setMediaUrl(url);
     } catch (err) {
-      setImageError((err as Error).message);
+      setMediaError((err as Error).message);
     } finally {
       setUploading(false);
     }
@@ -319,6 +418,7 @@ function NewQuestionForm({
     setSaving(true);
     setError(null);
     try {
+      const media = mediaUrl.trim();
       const input: NewCommunityQuestionInput = {
         type,
         difficulty,
@@ -326,7 +426,10 @@ function NewQuestionForm({
         choices: type === 'MULTIPLE_CHOICE' ? choices.map((c) => c.trim()) : null,
         answer: answer.trim(),
         explanation: explanation.trim(),
-        imageUrl: imageUrl.trim() || null,
+        // 유튜브 링크면 영상 칸으로, 아니면 이미지 칸으로 보낸다. 둘 다 채워
+        // 보내는 일은 없다 — 서버도 그걸 거부한다.
+        imageUrl: media && !previewVideo ? media : null,
+        videoUrl: media && previewVideo ? media : null,
       };
       const topic = await addCommunityQuestion(topicId, input);
       onDone(topic);
@@ -334,8 +437,8 @@ function NewQuestionForm({
       setChoices(['', '', '', '']);
       setAnswer('');
       setExplanation('');
-      setImageUrl('');
-      setImageError(null);
+      setMediaUrl('');
+      setMediaError(null);
       setAddedCount((n) => n + 1);
     } catch (err) {
       setError((err as Error).message);
@@ -401,21 +504,28 @@ function NewQuestionForm({
           <span className="hint">JPG · PNG · GIF · WebP, 5MB 이하 (선택)</span>
         </div>
 
-        {imageUrl && (
+        {mediaUrl && (
           <div className="image-preview">
-            <img src={imageUrl} alt="첨부한 이미지 미리보기" />
-            <button type="button" className="link" onClick={() => setImageUrl('')}>
-              사진 빼기
+            {previewVideo ? (
+              <VideoFrame video={previewVideo} />
+            ) : (
+              <img src={mediaUrl} alt="첨부한 이미지 미리보기" />
+            )}
+            <button type="button" className="link" onClick={() => setMediaUrl('')}>
+              {previewVideo ? '영상 빼기' : '사진 빼기'}
             </button>
           </div>
         )}
 
         <input
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-          placeholder="또는 이미지 주소 붙여넣기 (https://…)"
+          value={mediaUrl}
+          onChange={(e) => setMediaUrl(e.target.value)}
+          placeholder="또는 이미지 주소 · 유튜브 링크 붙여넣기"
         />
-        {imageError && <p className="error">{imageError}</p>}
+        <span className="hint">
+          유튜브 주소를 넣으면 영상 문제가 된다 (youtube.com/watch · youtu.be · /shorts)
+        </span>
+        {mediaError && <p className="error">{mediaError}</p>}
       </div>
 
       <input

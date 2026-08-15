@@ -10,12 +10,15 @@ import type {
   Topic,
 } from '../src/types';
 import { TOTAL_STAGES } from '../src/types';
+import { videoFromStored } from '../src/media';
 import { handleAuthGoogleCallback, handleAuthGoogleStart, handleSetNickname } from './auth';
 import { handleGlobalRanking, handleTopicRanking, refreshGlobalCaches, upsertWeeklyBest } from './ranking';
 import {
   handleAddCommunityQuestion,
   handleCreateCommunityTopic,
+  handleDeleteCommunityQuestion,
   handleDeleteCommunityTopic,
+  handleListCommunityQuestions,
   handleListCommunityTopics,
   isRankedTopic,
 } from './community';
@@ -152,7 +155,7 @@ async function drawStageQuestions(
 ): Promise<ServedQuestion[]> {
   const exclude = excludeIds.length ? `AND q.id NOT IN (${excludeIds.map(() => '?').join(',')})` : '';
   const { results } = await env.DB.prepare(
-    `SELECT q.id, q.type, q.difficulty, q.body, q.choices_json, q.image_url
+    `SELECT q.id, q.type, q.difficulty, q.body, q.choices_json, q.image_url, q.video_kind, q.video_id
        FROM questions q
        JOIN question_topics qt ON qt.question_id = q.id
       WHERE qt.topic_id = ? AND q.status = 'approved' AND q.difficulty = ? ${exclude}
@@ -166,6 +169,8 @@ async function drawStageQuestions(
       body: string;
       choices_json: string | null;
       image_url: string | null;
+      video_kind: string | null;
+      video_id: string | null;
     }>();
 
   return (results ?? []).map((r) => ({
@@ -175,6 +180,7 @@ async function drawStageQuestions(
     body: r.body,
     choices: r.choices_json ? (JSON.parse(r.choices_json) as string[]) : null,
     imageUrl: r.image_url,
+    video: videoFromStored(r.video_kind, r.video_id),
   }));
 }
 
@@ -341,7 +347,7 @@ async function handleSubmitStage(
 
   const placeholders = servedIds.map(() => '?').join(',');
   const { results } = await env.DB.prepare(
-    `SELECT id, type, difficulty, body, answer, explanation, image_url
+    `SELECT id, type, difficulty, body, answer, explanation, image_url, video_kind, video_id
        FROM questions WHERE id IN (${placeholders})`,
   )
     .bind(...servedIds)
@@ -353,6 +359,8 @@ async function handleSubmitStage(
       answer: string;
       explanation: string;
       image_url: string | null;
+      video_kind: string | null;
+      video_id: string | null;
     }>();
 
   const byId = new Map((results ?? []).map((r) => [r.id, r]));
@@ -380,6 +388,7 @@ async function handleSubmitStage(
       difficulty: q.difficulty,
       explanation: q.explanation,
       imageUrl: q.image_url,
+      video: videoFromStored(q.video_kind, q.video_id),
     });
   }
 
@@ -555,6 +564,24 @@ async function route(request: Request, env: Env): Promise<Response> {
       const uid = await resolveUid(request, env);
       if (!uid) return json({ error: 'no session' }, { status: 401 });
       return handleAddCommunityQuestion(request, env, uid, decodeURIComponent(communityQuestionMatch[1]));
+    }
+    // ⚠ 이 목록에는 정답·해설이 들어있다. 핸들러가 주제 소유자인지 확인한다.
+    if (communityQuestionMatch && request.method === 'GET') {
+      const uid = await resolveUid(request, env);
+      if (!uid) return json({ error: 'no session' }, { status: 401 });
+      return handleListCommunityQuestions(env, uid, decodeURIComponent(communityQuestionMatch[1]));
+    }
+
+    const communityQuestionItemMatch = path.match(/^\/api\/community\/topics\/([^/]+)\/questions\/([^/]+)$/);
+    if (communityQuestionItemMatch && request.method === 'DELETE') {
+      const uid = await resolveUid(request, env);
+      if (!uid) return json({ error: 'no session' }, { status: 401 });
+      return handleDeleteCommunityQuestion(
+        env,
+        uid,
+        decodeURIComponent(communityQuestionItemMatch[1]),
+        decodeURIComponent(communityQuestionItemMatch[2]),
+      );
     }
 
     // 이미지 업로드는 문항 생성과 같은 문턱을 둔다 — 로그인 + 닉네임.

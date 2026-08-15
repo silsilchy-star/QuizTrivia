@@ -7,8 +7,13 @@
 //     이 기능의 가장 중요한 경계선이다.
 //   - 활성화 하한도 공식 주제(난이도당 20문항)보다 훨씬 낮다 — 혼자 만드는
 //     사람이 실제로 채울 수 있는 양이어야 하기 때문.
-import type { Difficulty, QuestionType } from '../src/types';
+import type { CommunityQuestion, Difficulty, QuestionType } from '../src/types';
+import { MEDIA_URL_MAX, checkImageUrl, parseVideoUrl, videoFromStored } from '../src/media';
 import { ADD_QUESTION, CREATE_TOPIC, checkRateLimit, tooManyRequests } from './ratelimit';
+
+// 이미지 경로 판정은 src/media.ts로 옮겼다(프론트도 같은 규칙을 써야 하므로).
+// 여기서 다시 내보내는 건 예전 import 경로를 살려두기 위한 것.
+export { isUploadedImagePath } from '../src/media';
 
 export interface CommunityEnv {
   DB: D1Database;
@@ -48,6 +53,9 @@ async function requireAuthor(
   }
   return { ok: true, nickname: user.nickname };
 }
+
+/** 작성자에게만 내려가는 문항 — 정답·해설이 들어있다 (src/types.ts와 같은 모양). */
+type CommunityQuestionPayload = CommunityQuestion;
 
 export interface CommunityTopicPayload {
   id: string;
@@ -146,15 +154,10 @@ export interface NewQuestionBody {
   answer?: string;
   explanation?: string;
   imageUrl?: string | null;
+  videoUrl?: string | null;
 }
 
 const QUESTION_TYPES: QuestionType[] = ['MULTIPLE_CHOICE', 'NUMERIC_INPUT', 'TEXT_INPUT'];
-
-/** 우리 워커가 서빙하는 업로드 이미지인가 (`/images/<sha256>.<확장자>`).
- *  형태를 정확히 맞춰야 한다 — `/images/../..` 같은 걸 통과시키면 안 된다. */
-export function isUploadedImagePath(url: string): boolean {
-  return /^\/images\/[0-9a-f]{64}\.(jpg|png|gif|webp)$/.test(url);
-}
 
 /** 사람 검수가 없으므로, 기계가 잡을 수 있는 형식 오류만은 반드시 막는다
  *  (scripts/validate.mjs의 ERROR 규칙과 같은 것들 — PLAN 6.6절 [3]). */
@@ -179,13 +182,27 @@ export function validateQuestion(q: NewQuestionBody): string | null {
     if (q.choices != null) return 'TEXT_INPUT은 선택지가 없어야 한다';
   }
 
-  if (q.imageUrl != null) {
-    const url = q.imageUrl.trim();
-    if (url.length > 500) return '이미지 URL이 너무 길다';
-    // 두 가지만 허용한다: 우리가 직접 올려 서빙하는 이미지(worker/images.ts),
-    // 또는 외부 https 링크. 그 밖의 스킴(javascript:, data: 등)은 막는다.
-    if (!isUploadedImagePath(url) && !/^https:\/\/.+/.test(url)) {
-      return '이미지는 직접 올리거나 https:// 링크여야 한다';
+  // 미디어는 문항당 하나만 — 이미지와 영상을 동시에 붙일 수 있게 하면
+  // 화면에서 뭘 먼저 보여줄지가 애매해지고, 문제를 읽기도 어려워진다.
+  const imageUrl = q.imageUrl?.trim() || null;
+  const videoUrl = q.videoUrl?.trim() || null;
+  if (imageUrl && videoUrl) return '이미지와 영상은 함께 붙일 수 없다 — 하나만 고른다';
+
+  if (imageUrl) {
+    switch (checkImageUrl(imageUrl)) {
+      case 'too-long':
+        return `이미지 URL이 너무 길다 (${MEDIA_URL_MAX}자 이내)`;
+      case 'is-video':
+        return '유튜브 링크는 이미지가 아니라 영상 칸에 넣는다';
+      case 'not-https':
+        return '이미지는 직접 올리거나 https:// 링크여야 한다';
+    }
+  }
+
+  if (videoUrl) {
+    if (videoUrl.length > MEDIA_URL_MAX) return `영상 URL이 너무 길다 (${MEDIA_URL_MAX}자 이내)`;
+    if (!parseVideoUrl(videoUrl)) {
+      return '영상은 유튜브 링크여야 한다 (youtube.com/watch, youtu.be, /shorts)';
     }
   }
   return null;
@@ -216,33 +233,66 @@ export async function handleAddCommunityQuestion(
   const reason = validateQuestion(q);
   if (reason) return json({ error: reason }, { status: 400 });
 
+  const imageUrl = q.imageUrl?.trim() || null;
+  // 유저가 준 URL은 여기서 버리고 id만 남긴다 — 저장되는 건 파싱 결과뿐이다.
+  const video = q.videoUrl?.trim() ? parseVideoUrl(q.videoUrl.trim()) : null;
+
   const existing = await env.DB.prepare(
-    `SELECT q.body, q.image_url FROM questions q JOIN question_topics qt ON qt.question_id = q.id WHERE qt.topic_id = ?`,
+    `SELECT q.body, q.image_url, q.video_id FROM questions q JOIN question_topics qt ON qt.question_id = q.id WHERE qt.topic_id = ?`,
   )
     .bind(topicId)
-    .all<{ body: string; image_url: string | null }>();
-  // 이미지 문제는 문구가 같아도 사진이 다르면 다른 문항이다 — 사진까지 같아야 진짜 중복.
-  const newImageUrl = q.imageUrl?.trim() || null;
+    .all<{ body: string; image_url: string | null; video_id: string | null }>();
+  // 미디어 문제는 문구가 같아도 사진·영상이 다르면 다른 문항이다
+  // ("이 새의 학명은?" + 사진). 붙은 미디어까지 같아야 진짜 중복.
   const dupe = (existing.results ?? []).some(
-    (r) => normalize(r.body) === normalize(q.body!.trim()) && (r.image_url ?? null) === newImageUrl,
+    (r) =>
+      normalize(r.body) === normalize(q.body!.trim()) &&
+      (r.image_url ?? null) === imageUrl &&
+      (r.video_id ?? null) === (video?.id ?? null),
   );
   if (dupe) return json({ error: '이미 같은 문항이 있다' }, { status: 409 });
 
   const id = crypto.randomUUID();
   const now = new Date().toISOString();
   const choicesJson = q.type === 'MULTIPLE_CHOICE' ? JSON.stringify(q.choices) : null;
-  const imageUrl = q.imageUrl?.trim() || null;
 
   await env.DB.batch([
     env.DB.prepare(
       `INSERT INTO questions
-         (id, type, difficulty, body, choices_json, answer, explanation, status, source, generated_by, author_uid, created_at, image_url)
-       VALUES (?, ?, ?, ?, ?, ?, ?, 'approved', 'manual', NULL, ?, ?, ?)`,
-    ).bind(id, q.type, q.difficulty, q.body!.trim(), choicesJson, q.answer, q.explanation!.trim(), uid, now, imageUrl),
+         (id, type, difficulty, body, choices_json, answer, explanation, status, source, generated_by, author_uid, created_at, image_url, video_kind, video_id)
+       VALUES (?, ?, ?, ?, ?, ?, ?, 'approved', 'manual', NULL, ?, ?, ?, ?, ?)`,
+    ).bind(
+      id,
+      q.type,
+      q.difficulty,
+      q.body!.trim(),
+      choicesJson,
+      q.answer,
+      q.explanation!.trim(),
+      uid,
+      now,
+      imageUrl,
+      video?.kind ?? null,
+      video?.id ?? null,
+    ),
     env.DB.prepare('INSERT INTO question_topics (question_id, topic_id) VALUES (?, ?)').bind(id, topicId),
   ]);
 
-  // 하한 게이트 재계산 — build-seed.mjs와 같은 규칙, 다만 공식 주제보다 훨씬 낮은 기준으로.
+  return json(await recountTopic(env, topicId, now, author.nickname));
+}
+
+/** 문항이 늘거나 줄 때마다 주제의 문항 수와 하한 게이트를 다시 계산한다.
+ *
+ *  추가와 삭제가 **반드시 같은 규칙**을 써야 한다. 한쪽만 고치면 문항을
+ *  지웠는데 active로 남아 있는(=플레이하면 문항이 모자라는) 주제가 생긴다.
+ *  그래서 양쪽이 이 함수 하나를 부른다. */
+async function recountTopic(
+  env: CommunityEnv,
+  topicId: string,
+  now: string,
+  authorNickname: string,
+): Promise<CommunityTopicPayload> {
+  // build-seed.mjs와 같은 규칙, 다만 공식 주제보다 훨씬 낮은 기준으로.
   const counts = await env.DB.prepare(
     `SELECT q.difficulty AS d, COUNT(*) AS n
        FROM questions q JOIN question_topics qt ON qt.question_id = q.id
@@ -255,6 +305,7 @@ export async function handleAddCommunityQuestion(
   for (const r of counts.results ?? []) byDiff[r.d] = r.n;
   const active = ([1, 2, 3, 4] as const).every((d) => byDiff[d] >= COMMUNITY_GATE_PER_DIFFICULTY);
 
+  // 하한 아래로 내려가면 active였던 주제도 draft로 되돌린다.
   const status = active ? 'active' : 'draft';
   await env.DB.prepare(
     `UPDATE topics SET q_count_1 = ?, q_count_2 = ?, q_count_3 = ?, q_count_4 = ?, status = ?, updated_at = ?
@@ -267,17 +318,128 @@ export async function handleAddCommunityQuestion(
     .bind(topicId)
     .first<{ name: string; tagline: string | null; created_at: string }>();
 
-  const payload: CommunityTopicPayload = {
+  return {
     id: topicId,
     name: topicRow?.name ?? '',
     tagline: topicRow?.tagline ?? null,
     status,
     questionCount: { '1': byDiff[1], '2': byDiff[2], '3': byDiff[3], '4': byDiff[4] },
-    authorNickname: author.nickname,
+    authorNickname,
     isMine: true,
     createdAt: topicRow?.created_at ?? now,
   };
-  return json(payload);
+}
+
+/** 주제가 존재하고 그 주인이 나인지 확인한다. 문항 목록·삭제가 공유한다. */
+async function requireTopicOwner(
+  env: CommunityEnv,
+  uid: string,
+  topicId: string,
+  what: string,
+): Promise<{ ok: true; authorUid: string } | { ok: false; res: Response }> {
+  const topic = await env.DB.prepare(
+    "SELECT author_uid FROM topics WHERE id = ? AND source = 'community'",
+  )
+    .bind(topicId)
+    .first<{ author_uid: string }>();
+  if (!topic) return { ok: false, res: json({ error: 'community topic not found' }, { status: 404 }) };
+  if (topic.author_uid !== uid) {
+    return { ok: false, res: json({ error: `only the topic author can ${what}` }, { status: 403 }) };
+  }
+  return { ok: true, authorUid: topic.author_uid };
+}
+
+/** ⚠ **작성자 본인에게만** 준다. 응답에 정답과 해설이 실려 나가기 때문이다 —
+ *  남이 이걸 볼 수 있으면 그 주제는 정답표를 펴놓고 푸는 것과 같아진다.
+ *  (서버 채점을 두고 출제 시점에 정답을 안 내려보내는 것과 같은 경계선이다.)
+ *
+ *  자기 문항을 볼 수 있어야 하는 이유: 오타나 죽은 영상 링크를 발견해도
+ *  예전엔 주제를 통째로 지우는 것 말고는 손쓸 방법이 없었다. */
+export async function handleListCommunityQuestions(
+  env: CommunityEnv,
+  uid: string,
+  topicId: string,
+): Promise<Response> {
+  const owner = await requireTopicOwner(env, uid, topicId, 'list questions');
+  if (!owner.ok) return owner.res;
+
+  const { results } = await env.DB.prepare(
+    `SELECT q.id, q.type, q.difficulty, q.body, q.choices_json, q.answer, q.explanation,
+            q.image_url, q.video_kind, q.video_id, q.created_at
+       FROM questions q JOIN question_topics qt ON qt.question_id = q.id
+      WHERE qt.topic_id = ?
+      ORDER BY q.difficulty, q.created_at`,
+  )
+    .bind(topicId)
+    .all<{
+      id: string;
+      type: QuestionType;
+      difficulty: Difficulty;
+      body: string;
+      choices_json: string | null;
+      answer: string;
+      explanation: string;
+      image_url: string | null;
+      video_kind: string | null;
+      video_id: string | null;
+      created_at: string;
+    }>();
+
+  const questions: CommunityQuestionPayload[] = (results ?? []).map((r) => ({
+    id: r.id,
+    type: r.type,
+    difficulty: r.difficulty,
+    body: r.body,
+    choices: r.choices_json ? (JSON.parse(r.choices_json) as string[]) : null,
+    answer: r.answer,
+    explanation: r.explanation,
+    imageUrl: r.image_url,
+    video: videoFromStored(r.video_kind, r.video_id),
+    createdAt: r.created_at,
+  }));
+  return json(questions);
+}
+
+/** 문항 하나만 지운다. 주제 전체를 날리지 않고 실수를 고칠 수 있는 유일한 길
+ *  (고치기 = 지우고 다시 넣기). 지운 뒤 게이트를 다시 계산하므로, 하한 아래로
+ *  내려가면 active였던 주제가 draft로 되돌아간다. */
+export async function handleDeleteCommunityQuestion(
+  env: CommunityEnv,
+  uid: string,
+  topicId: string,
+  questionId: string,
+): Promise<Response> {
+  const owner = await requireTopicOwner(env, uid, topicId, 'delete questions');
+  if (!owner.ok) return owner.res;
+
+  // 이 문항이 정말 이 주제에 속하는지 확인한다 — 없으면 남의 문항 id를 넣어
+  // 지우는 경로가 된다. 주제 소유 확인만으로는 부족하다.
+  const linked = await env.DB.prepare(
+    'SELECT 1 AS x FROM question_topics WHERE topic_id = ? AND question_id = ?',
+  )
+    .bind(topicId, questionId)
+    .first<{ x: number }>();
+  if (!linked) return json({ error: 'question not found in this topic' }, { status: 404 });
+
+  const author = await requireAuthor(env, uid);
+  if (!author.ok) return author.res;
+
+  await env.DB.batch([
+    // question_stats에는 questions(id) FK가 없다 — 그냥 두면 참조 대상이
+    // 사라진 행이 남으므로 먼저 지운다.
+    env.DB.prepare('DELETE FROM question_stats WHERE question_id = ?').bind(questionId),
+    env.DB.prepare('DELETE FROM question_topics WHERE topic_id = ? AND question_id = ?').bind(topicId, questionId),
+    // author_uid 조건은 공식 문항 보호용. NOT EXISTS는 혹시 이 문항이 다른
+    // 주제에도 걸려 있다면 남겨두기 위한 것 — 지금 커뮤니티 문항은 주제
+    // 하나에만 붙지만, 조건이 안전하게 쓰여 있어야 나중에 다치지 않는다.
+    env.DB.prepare(
+      `DELETE FROM questions
+        WHERE id = ? AND author_uid = ?
+          AND NOT EXISTS (SELECT 1 FROM question_topics WHERE question_id = ?)`,
+    ).bind(questionId, uid, questionId),
+  ]);
+
+  return json(await recountTopic(env, topicId, new Date().toISOString(), author.nickname));
 }
 
 /** 작성자 본인만, 언제든(초안이든 활성이든) 자기 주제를 지울 수 있다.

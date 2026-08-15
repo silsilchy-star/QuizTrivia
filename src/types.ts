@@ -4,6 +4,20 @@
 export type QuestionType = 'MULTIPLE_CHOICE' | 'NUMERIC_INPUT' | 'TEXT_INPUT';
 export type Difficulty = 1 | 2 | 3 | 4;
 
+/** 지금은 유튜브만. 컬럼(video_kind)을 따로 둔 건 나중에 늘릴 여지를 남긴 것. */
+export type VideoKind = 'youtube';
+
+/** 문항에 붙은 영상.
+ *
+ *  유저가 붙여넣은 URL은 저장하지도, 내려보내지도 않는다 — 제공자(kind)와
+ *  영상 id만 남기고 실제 임베드 주소는 서버가 조립해 `embedUrl`로 준다.
+ *  화면은 이 값을 iframe src에 그대로 쓰기만 하면 된다 (src/media.ts). */
+export interface QuestionVideo {
+  kind: VideoKind;
+  id: string;
+  embedUrl: string;
+}
+
 export interface Topic {
   id: string;
   name: string;
@@ -20,6 +34,7 @@ export interface ServedQuestion {
   body: string;
   choices: string[] | null;
   imageUrl: string | null;
+  video: QuestionVideo | null;
 }
 
 /** PLAN 4.2절 — 12스테이지 전체 */
@@ -48,6 +63,7 @@ export interface GradedAnswer {
   difficulty: Difficulty;
   explanation: string;
   imageUrl: string | null;
+  video: QuestionVideo | null;
 }
 
 /** 판이 끝났을 때만 내려가는 최종 요약.
@@ -86,6 +102,28 @@ export interface CommunityTopic {
   createdAt: string;
 }
 
+/** 창작마당 주제에 들어있는 문항 — **작성자 본인에게만** 내려간다.
+ *
+ *  ⚠ `answer`와 `explanation`이 들어있다. 이걸 남이 볼 수 있으면 그 주제는
+ *  정답표를 펴놓고 푸는 것과 같아지므로, 서버가 주제 소유자인지 확인한 뒤에만
+ *  내려보낸다 (worker/community.ts의 handleListCommunityQuestions).
+ *  플레이 중 내려가는 ServedQuestion에 정답이 없는 것과 같은 경계선이다. */
+export interface CommunityQuestion {
+  id: string;
+  type: QuestionType;
+  difficulty: Difficulty;
+  body: string;
+  choices: string[] | null;
+  answer: string;
+  explanation: string;
+  imageUrl: string | null;
+  video: QuestionVideo | null;
+  createdAt: string;
+}
+
+/** 입력은 유저가 붙여넣은 **날 URL** 그대로 받는다. 파싱·검증은 서버가 한다
+ *  — 클라이언트가 미리 걸러주더라도 그건 편의일 뿐 신뢰 대상이 아니기 때문.
+ *  imageUrl과 videoUrl은 동시에 채울 수 없다(한 문항에 하나만). */
 export interface NewCommunityQuestionInput {
   type: QuestionType;
   difficulty: Difficulty;
@@ -94,6 +132,7 @@ export interface NewCommunityQuestionInput {
   answer: string;
   explanation: string;
   imageUrl: string | null;
+  videoUrl: string | null;
 }
 
 /** uid는 일부러 내려주지 않는다 — 화면이 쓰지 않을뿐더러, 클라이언트가 uid를

@@ -60,6 +60,10 @@ export async function createQuestion(opts: {
   choices?: string[] | null;
   answer?: string;
   authorUid?: string | null;
+  imageUrl?: string | null;
+  /** 영상은 URL이 아니라 (제공자, 영상 id)로 저장된다 — migrations/0001 참고. */
+  videoKind?: string | null;
+  videoId?: string | null;
 }): Promise<string> {
   const id = opts.id ?? uniqueId('q');
   const type = opts.type ?? 'MULTIPLE_CHOICE';
@@ -67,8 +71,8 @@ export async function createQuestion(opts: {
   const answer = opts.answer ?? (type === 'MULTIPLE_CHOICE' ? '가' : '42');
   await env.DB.prepare(
     `INSERT INTO questions (id, type, difficulty, body, choices_json, answer, explanation, status, source,
-                            generated_by, author_uid, created_at, image_url)
-     VALUES (?, ?, ?, ?, ?, ?, '해설', 'approved', 'manual', NULL, ?, ?, NULL)`,
+                            generated_by, author_uid, created_at, image_url, video_kind, video_id)
+     VALUES (?, ?, ?, ?, ?, ?, '해설', 'approved', 'manual', NULL, ?, ?, ?, ?, ?)`,
   )
     .bind(
       id,
@@ -79,6 +83,9 @@ export async function createQuestion(opts: {
       answer,
       opts.authorUid ?? null,
       NOW,
+      opts.imageUrl ?? null,
+      opts.videoKind ?? null,
+      opts.videoId ?? null,
     )
     .run();
   await env.DB.prepare('INSERT INTO question_topics (question_id, topic_id) VALUES (?, ?)')

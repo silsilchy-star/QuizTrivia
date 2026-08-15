@@ -72,6 +72,9 @@ describe('컬럼 — 코드가 실제로 읽고 쓰는 것들', () => {
       'source',
       'author_uid', // 공식/커뮤니티를 가르는 컬럼 (build-seed.mjs가 의존)
       'image_url',
+      // 영상은 URL이 아니라 제공자 + 영상 id로 쪼개 저장한다 (migrations/0001).
+      'video_kind',
+      'video_id',
       'created_at',
     ]) {
       expect(cols, `questions.${c}가 없다`).toContain(c);
@@ -149,7 +152,7 @@ describe('테스트 환경 자체', () => {
   // 무관한 테스트가 깨진다. setup.ts가 seed를 적재하지 않는지 확인한다.
   it('공식 콘텐츠(data/*.json)를 적재하지 않는다', async () => {
     const seeded = await env.DB.prepare(
-      "SELECT COUNT(*) AS n FROM topics WHERE id IN ('science','geography','sports','birds')",
+      "SELECT COUNT(*) AS n FROM topics WHERE id IN ('science','geography','sports')",
     ).first<{ n: number }>();
     expect(seeded?.n).toBe(0);
   });

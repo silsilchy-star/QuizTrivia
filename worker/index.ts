@@ -16,7 +16,9 @@ import { handleGlobalRanking, handleTopicRanking, refreshGlobalCaches, upsertWee
 import {
   handleAddCommunityQuestion,
   handleCreateCommunityTopic,
+  handleDeleteCommunityQuestion,
   handleDeleteCommunityTopic,
+  handleListCommunityQuestions,
   handleListCommunityTopics,
   isRankedTopic,
 } from './community';
@@ -562,6 +564,24 @@ async function route(request: Request, env: Env): Promise<Response> {
       const uid = await resolveUid(request, env);
       if (!uid) return json({ error: 'no session' }, { status: 401 });
       return handleAddCommunityQuestion(request, env, uid, decodeURIComponent(communityQuestionMatch[1]));
+    }
+    // ⚠ 이 목록에는 정답·해설이 들어있다. 핸들러가 주제 소유자인지 확인한다.
+    if (communityQuestionMatch && request.method === 'GET') {
+      const uid = await resolveUid(request, env);
+      if (!uid) return json({ error: 'no session' }, { status: 401 });
+      return handleListCommunityQuestions(env, uid, decodeURIComponent(communityQuestionMatch[1]));
+    }
+
+    const communityQuestionItemMatch = path.match(/^\/api\/community\/topics\/([^/]+)\/questions\/([^/]+)$/);
+    if (communityQuestionItemMatch && request.method === 'DELETE') {
+      const uid = await resolveUid(request, env);
+      if (!uid) return json({ error: 'no session' }, { status: 401 });
+      return handleDeleteCommunityQuestion(
+        env,
+        uid,
+        decodeURIComponent(communityQuestionItemMatch[1]),
+        decodeURIComponent(communityQuestionItemMatch[2]),
+      );
     }
 
     // 이미지 업로드는 문항 생성과 같은 문턱을 둔다 — 로그인 + 닉네임.

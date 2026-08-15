@@ -102,6 +102,25 @@ export interface CommunityTopic {
   createdAt: string;
 }
 
+/** 창작마당 주제에 들어있는 문항 — **작성자 본인에게만** 내려간다.
+ *
+ *  ⚠ `answer`와 `explanation`이 들어있다. 이걸 남이 볼 수 있으면 그 주제는
+ *  정답표를 펴놓고 푸는 것과 같아지므로, 서버가 주제 소유자인지 확인한 뒤에만
+ *  내려보낸다 (worker/community.ts의 handleListCommunityQuestions).
+ *  플레이 중 내려가는 ServedQuestion에 정답이 없는 것과 같은 경계선이다. */
+export interface CommunityQuestion {
+  id: string;
+  type: QuestionType;
+  difficulty: Difficulty;
+  body: string;
+  choices: string[] | null;
+  answer: string;
+  explanation: string;
+  imageUrl: string | null;
+  video: QuestionVideo | null;
+  createdAt: string;
+}
+
 /** 입력은 유저가 붙여넣은 **날 URL** 그대로 받는다. 파싱·검증은 서버가 한다
  *  — 클라이언트가 미리 걸러주더라도 그건 편의일 뿐 신뢰 대상이 아니기 때문.
  *  imageUrl과 videoUrl은 동시에 채울 수 없다(한 문항에 하나만). */

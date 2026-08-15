@@ -2,6 +2,7 @@
 // 백엔드를 바꿀 때 이 파일 하나만 고치면 화면은 손대지 않는다 (PLAN 7.3절).
 
 import type {
+  CommunityQuestion,
   CommunityTopic,
   GlobalBoardId,
   NewCommunityQuestionInput,
@@ -110,4 +111,18 @@ export function addCommunityQuestion(
     method: 'POST',
     body: JSON.stringify(question),
   });
+}
+
+/** 내 주제의 문항 목록. 정답·해설이 들어있어 서버가 작성자에게만 내려준다 —
+ *  남의 주제로 부르면 403이다. */
+export function getCommunityQuestions(topicId: string): Promise<CommunityQuestion[]> {
+  return call<CommunityQuestion[]>(`/api/community/topics/${encodeURIComponent(topicId)}/questions`);
+}
+
+/** 문항 하나만 삭제. 응답은 게이트가 다시 계산된 주제다(하한 아래면 draft로 강등). */
+export function deleteCommunityQuestion(topicId: string, questionId: string): Promise<CommunityTopic> {
+  return call<CommunityTopic>(
+    `/api/community/topics/${encodeURIComponent(topicId)}/questions/${encodeURIComponent(questionId)}`,
+    { method: 'DELETE' },
+  );
 }

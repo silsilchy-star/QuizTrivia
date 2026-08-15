@@ -8,6 +8,9 @@
 import { env } from 'cloudflare:test';
 import { describe, expect, it } from 'vitest';
 import type {
+  CommunityQuestion,
+  CommunityTopic,
+  Difficulty,
   RankingBoardResponse,
   RunFinalSummary,
   StartRunResponse,
@@ -351,6 +354,201 @@ describe('문항에 붙는 미디어 — 이미지 링크와 유튜브 영상', 
       body: question({ videoUrl: 'https://youtu.be/abcdefghijk' }),
     });
     expect(other.status).toBe(200);
+  });
+});
+
+describe('내 문항 목록과 개별 삭제', () => {
+  /** 로그인된 창작자 + 주제 + 문항 n개(난이도 d). */
+  async function withQuestions(nickname: string, d: Difficulty, n: number) {
+    const client = await newSession();
+    await logIn(client, nickname);
+    const topic = await client.json<{ id: string }>('/api/community/topics', {
+      method: 'POST',
+      body: JSON.stringify({ name: `${nickname}주제` }),
+    });
+    for (let i = 0; i < n; i += 1) {
+      await client.fetch(`/api/community/topics/${topic.id}/questions`, {
+        method: 'POST',
+        body: JSON.stringify({
+          type: 'TEXT_INPUT',
+          difficulty: d,
+          body: `${nickname} 문항 ${i}`,
+          answer: `정답${i}`,
+          explanation: '해설',
+        }),
+      });
+    }
+    return { client, topicId: topic.id };
+  }
+
+  it('작성자는 자기 문항을 정답까지 볼 수 있다', async () => {
+    const { client, topicId } = await withQuestions('목록주인', 2, 3);
+    const questions = await client.json<CommunityQuestion[]>(`/api/community/topics/${topicId}/questions`);
+
+    expect(questions).toHaveLength(3);
+    expect(questions[0].answer).toBe('정답0');
+    expect(questions[0].difficulty).toBe(2);
+    expect(questions.every((q) => q.explanation === '해설')).toBe(true);
+  });
+
+  // ⚠ 이 경계가 무너지면 남의 창작 주제를 정답표 펴놓고 푸는 것과 같아진다.
+  it('남은 그 목록을 볼 수 없다 — 정답이 실려 있기 때문', async () => {
+    const { topicId } = await withQuestions('목록주인2', 1, 2);
+
+    const stranger = await newSession();
+    await logIn(stranger, '남의목록');
+    const res = await stranger.fetch(`/api/community/topics/${topicId}/questions`);
+    expect(res.status).toBe(403);
+    expect(JSON.stringify(await res.json())).not.toContain('정답');
+  });
+
+  it('로그인하지 않으면 목록을 볼 수 없다', async () => {
+    const { topicId } = await withQuestions('목록주인3', 1, 1);
+    const anon = await newSession();
+    const res = await anon.fetch(`/api/community/topics/${topicId}/questions`);
+    expect(res.status).toBe(403);
+  });
+
+  it('문항 하나만 지워지고 나머지는 남는다', async () => {
+    const { client, topicId } = await withQuestions('삭제주인', 3, 3);
+    const before = await client.json<CommunityQuestion[]>(`/api/community/topics/${topicId}/questions`);
+
+    const topic = await client.json<CommunityTopic>(
+      `/api/community/topics/${topicId}/questions/${before[1].id}`,
+      { method: 'DELETE' },
+    );
+    expect(topic.questionCount['3']).toBe(2);
+
+    const after = await client.json<CommunityQuestion[]>(`/api/community/topics/${topicId}/questions`);
+    expect(after.map((q) => q.id)).toEqual([before[0].id, before[2].id]);
+
+    // 문항 행 자체가 사라져야 한다 — 연결만 끊고 남으면 고아가 된다.
+    const row = await env.DB.prepare('SELECT COUNT(*) AS n FROM questions WHERE id = ?')
+      .bind(before[1].id)
+      .first<{ n: number }>();
+    expect(row!.n).toBe(0);
+  });
+
+  it('남의 문항은 지울 수 없다', async () => {
+    const { client, topicId } = await withQuestions('삭제주인2', 1, 2);
+    const mine = await client.json<CommunityQuestion[]>(`/api/community/topics/${topicId}/questions`);
+
+    const stranger = await newSession();
+    await logIn(stranger, '남의삭제');
+    const res = await stranger.fetch(`/api/community/topics/${topicId}/questions/${mine[0].id}`, {
+      method: 'DELETE',
+    });
+    expect(res.status).toBe(403);
+
+    const still = await env.DB.prepare('SELECT COUNT(*) AS n FROM questions WHERE id = ?')
+      .bind(mine[0].id)
+      .first<{ n: number }>();
+    expect(still!.n).toBe(1);
+  });
+
+  // 내 주제를 소유하고 있어도, 그 주제에 없는 문항 id를 넣어 남의 것을
+  // 지울 수 있으면 안 된다.
+  it('내 주제에 속하지 않은 문항 id로는 지울 수 없다', async () => {
+    const victim = await withQuestions('피해자', 1, 1);
+    const victimQs = await victim.client.json<CommunityQuestion[]>(
+      `/api/community/topics/${victim.topicId}/questions`,
+    );
+
+    const attacker = await withQuestions('공격자', 1, 1);
+    const res = await attacker.client.fetch(
+      `/api/community/topics/${attacker.topicId}/questions/${victimQs[0].id}`,
+      { method: 'DELETE' },
+    );
+    expect(res.status).toBe(404);
+
+    const still = await env.DB.prepare('SELECT COUNT(*) AS n FROM questions WHERE id = ?')
+      .bind(victimQs[0].id)
+      .first<{ n: number }>();
+    expect(still!.n, '남의 문항이 지워졌다').toBe(1);
+  });
+
+  it('하한 아래로 내려가면 active였던 주제가 draft로 되돌아간다', async () => {
+    const client = await newSession();
+    await logIn(client, '강등테스트');
+    const topic = await client.json<{ id: string }>('/api/community/topics', {
+      method: 'POST',
+      body: JSON.stringify({ name: '강등주제' }),
+    });
+
+    let last: CommunityTopic | null = null;
+    for (const d of [1, 2, 3, 4] as const) {
+      for (let i = 0; i < 5; i += 1) {
+        last = await client.json<CommunityTopic>(`/api/community/topics/${topic.id}/questions`, {
+          method: 'POST',
+          body: JSON.stringify({
+            type: 'TEXT_INPUT',
+            difficulty: d,
+            body: `강등 난이도${d} 문항${i}`,
+            answer: '답',
+            explanation: '해설',
+          }),
+        });
+      }
+    }
+    expect(last!.status).toBe('active');
+
+    const questions = await client.json<CommunityQuestion[]>(`/api/community/topics/${topic.id}/questions`);
+    const victim = questions.find((q) => q.difficulty === 1)!;
+    const after = await client.json<CommunityTopic>(
+      `/api/community/topics/${topic.id}/questions/${victim.id}`,
+      { method: 'DELETE' },
+    );
+
+    expect(after.status).toBe('draft');
+    expect(after.questionCount['1']).toBe(4);
+  });
+
+  it('이미 출제된 적 있는 문항도 지울 수 있다 — question_stats가 걸리지 않는다', async () => {
+    const { client, topicId } = await withQuestions('통계있는주인', 1, 1);
+    const [q] = await client.json<CommunityQuestion[]>(`/api/community/topics/${topicId}/questions`);
+
+    // 출제되면 생기는 통계 행을 직접 만든다 (worker/index.ts의 statsUpdates와 같은 모양).
+    await env.DB.prepare(
+      'INSERT INTO question_stats (question_id, served_count, correct_count, updated_at) VALUES (?, 3, 1, ?)',
+    )
+      .bind(q.id, new Date().toISOString())
+      .run();
+
+    const res = await client.fetch(`/api/community/topics/${topicId}/questions/${q.id}`, { method: 'DELETE' });
+    expect(res.status).toBe(200);
+
+    const stats = await env.DB.prepare('SELECT COUNT(*) AS n FROM question_stats WHERE question_id = ?')
+      .bind(q.id)
+      .first<{ n: number }>();
+    expect(stats!.n, '통계 행이 고아로 남았다').toBe(0);
+  });
+
+  it('영상 문항도 목록에 임베드 주소와 함께 나온다', async () => {
+    const client = await newSession();
+    await logIn(client, '영상목록');
+    const topic = await client.json<{ id: string }>('/api/community/topics', {
+      method: 'POST',
+      body: JSON.stringify({ name: '영상목록주제' }),
+    });
+    await client.fetch(`/api/community/topics/${topic.id}/questions`, {
+      method: 'POST',
+      body: JSON.stringify({
+        type: 'TEXT_INPUT',
+        difficulty: 1,
+        body: '이 영상은?',
+        answer: '답',
+        explanation: '해설',
+        videoUrl: 'https://youtu.be/dQw4w9WgXcQ',
+      }),
+    });
+
+    const [q] = await client.json<CommunityQuestion[]>(`/api/community/topics/${topic.id}/questions`);
+    // 잘못 붙인 링크를 목록에서 눈으로 찾을 수 있어야 한다.
+    expect(q.video).toEqual({
+      kind: 'youtube',
+      id: 'dQw4w9WgXcQ',
+      embedUrl: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?rel=0&playsinline=1',
+    });
   });
 });
 

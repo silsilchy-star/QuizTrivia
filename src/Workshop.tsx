@@ -5,12 +5,21 @@ import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
 import {
   addCommunityQuestion,
   createCommunityTopic,
+  deleteCommunityQuestion,
   deleteCommunityTopic,
+  getCommunityQuestions,
   getCommunityTopics,
   uploadQuestionImage,
 } from './api';
 import { parseVideoUrl } from './media';
-import type { CommunityTopic, Difficulty, NewCommunityQuestionInput, QuestionType, SessionResponse } from './types';
+import type {
+  CommunityQuestion,
+  CommunityTopic,
+  Difficulty,
+  NewCommunityQuestionInput,
+  QuestionType,
+  SessionResponse,
+} from './types';
 import { VideoFrame } from './VideoFrame';
 
 /** worker/community.ts의 COMMUNITY_GATE_PER_DIFFICULTY와 같은 값 — 표시용. */
@@ -247,6 +256,8 @@ function TopicDetail({
           </button>
         ))}
 
+      {topic.isMine && <MyQuestions topic={topic} onChanged={onQuestionAdded} />}
+
       {topic.isMine && (
         <div className="danger-zone">
           {confirmingDelete ? (
@@ -273,6 +284,84 @@ function TopicDetail({
         </div>
       )}
     </section>
+  );
+}
+
+/** 내가 만든 문항 목록 + 개별 삭제.
+ *
+ *  이게 없던 동안은 오타 하나, 죽은 영상 링크 하나 때문에 주제를 통째로
+ *  지우는 것 말고는 방법이 없었다. 붙인 이미지·영상을 함께 보여주는 게
+ *  중요하다 — 잘못 붙인 링크는 목록에서 눈으로 봐야 찾을 수 있다.
+ *
+ *  "고치기"는 따로 두지 않았다. 지우고 다시 넣으면 되고, 수정은 재검증·중복
+ *  재확인·게이트 재계산·통계 처리를 전부 다시 밟아야 해서 훨씬 큰 작업이다. */
+function MyQuestions({ topic, onChanged }: { topic: CommunityTopic; onChanged: (t: CommunityTopic) => void }) {
+  const [questions, setQuestions] = useState<CommunityQuestion[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [confirmingId, setConfirmingId] = useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+
+  const total = Object.values(topic.questionCount).reduce((a, b) => a + b, 0);
+
+  // 문항 수가 바뀌면(추가·삭제) 목록을 다시 읽는다.
+  useEffect(() => {
+    let alive = true;
+    getCommunityQuestions(topic.id)
+      .then((qs) => alive && setQuestions(qs))
+      .catch((err) => alive && setError((err as Error).message));
+    return () => {
+      alive = false;
+    };
+  }, [topic.id, total]);
+
+  async function remove(questionId: string) {
+    setDeletingId(questionId);
+    setError(null);
+    try {
+      // 응답은 게이트가 다시 계산된 주제 — 하한 아래로 내려가면 draft로 돌아온다.
+      onChanged(await deleteCommunityQuestion(topic.id, questionId));
+      setConfirmingId(null);
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setDeletingId(null);
+    }
+  }
+
+  if (error) return <p className="error">{error}</p>;
+  if (!questions) return <p className="hint">문항을 불러오는 중…</p>;
+  if (!questions.length) return null;
+
+  return (
+    <div className="my-questions">
+      <h3>내 문항 {questions.length}개</h3>
+      <ol className="question-list">
+        {questions.map((q) => (
+          <li key={q.id}>
+            <p className="meta">난이도 {q.difficulty}</p>
+            <p className="body">{q.body}</p>
+            {q.imageUrl && <img className="question-image review-image" src={q.imageUrl} alt="" />}
+            {q.video && <VideoFrame video={q.video} className="review-image" />}
+            <p className="meta">정답 {q.answer}</p>
+
+            {confirmingId === q.id ? (
+              <div className="question-form-actions">
+                <button className="danger" onClick={() => remove(q.id)} disabled={deletingId === q.id}>
+                  삭제 확인
+                </button>
+                <button className="link" onClick={() => setConfirmingId(null)} disabled={deletingId === q.id}>
+                  취소
+                </button>
+              </div>
+            ) : (
+              <button className="link danger-text" onClick={() => setConfirmingId(q.id)}>
+                이 문항 삭제
+              </button>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
   );
 }
 

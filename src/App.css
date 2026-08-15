@@ -262,6 +262,28 @@ button.link {
   max-height: none;
 }
 
+/* 창작마당 — 내가 만든 문항 목록 */
+.my-questions {
+  margin-top: 1.5rem;
+}
+
+.my-questions h3 {
+  font-size: 0.9375rem;
+  margin: 0 0 0.75rem;
+}
+
+.question-list li {
+  border: 1px solid var(--line);
+  border-radius: 0.625rem;
+  padding: 0.75rem;
+  margin: 0 0 0.625rem;
+}
+
+.question-list .body {
+  font-size: 1rem;
+  margin: 0.25rem 0 0.5rem;
+}
+
 ul,
 ol {
   list-style: none;

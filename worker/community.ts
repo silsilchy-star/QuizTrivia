@@ -8,7 +8,12 @@
 //   - 활성화 하한도 공식 주제(난이도당 20문항)보다 훨씬 낮다 — 혼자 만드는
 //     사람이 실제로 채울 수 있는 양이어야 하기 때문.
 import type { Difficulty, QuestionType } from '../src/types';
+import { MEDIA_URL_MAX, checkImageUrl, parseVideoUrl } from '../src/media';
 import { ADD_QUESTION, CREATE_TOPIC, checkRateLimit, tooManyRequests } from './ratelimit';
+
+// 이미지 경로 판정은 src/media.ts로 옮겼다(프론트도 같은 규칙을 써야 하므로).
+// 여기서 다시 내보내는 건 예전 import 경로를 살려두기 위한 것.
+export { isUploadedImagePath } from '../src/media';
 
 export interface CommunityEnv {
   DB: D1Database;
@@ -146,15 +151,10 @@ export interface NewQuestionBody {
   answer?: string;
   explanation?: string;
   imageUrl?: string | null;
+  videoUrl?: string | null;
 }
 
 const QUESTION_TYPES: QuestionType[] = ['MULTIPLE_CHOICE', 'NUMERIC_INPUT', 'TEXT_INPUT'];
-
-/** 우리 워커가 서빙하는 업로드 이미지인가 (`/images/<sha256>.<확장자>`).
- *  형태를 정확히 맞춰야 한다 — `/images/../..` 같은 걸 통과시키면 안 된다. */
-export function isUploadedImagePath(url: string): boolean {
-  return /^\/images\/[0-9a-f]{64}\.(jpg|png|gif|webp)$/.test(url);
-}
 
 /** 사람 검수가 없으므로, 기계가 잡을 수 있는 형식 오류만은 반드시 막는다
  *  (scripts/validate.mjs의 ERROR 규칙과 같은 것들 — PLAN 6.6절 [3]). */
@@ -179,13 +179,27 @@ export function validateQuestion(q: NewQuestionBody): string | null {
     if (q.choices != null) return 'TEXT_INPUT은 선택지가 없어야 한다';
   }
 
-  if (q.imageUrl != null) {
-    const url = q.imageUrl.trim();
-    if (url.length > 500) return '이미지 URL이 너무 길다';
-    // 두 가지만 허용한다: 우리가 직접 올려 서빙하는 이미지(worker/images.ts),
-    // 또는 외부 https 링크. 그 밖의 스킴(javascript:, data: 등)은 막는다.
-    if (!isUploadedImagePath(url) && !/^https:\/\/.+/.test(url)) {
-      return '이미지는 직접 올리거나 https:// 링크여야 한다';
+  // 미디어는 문항당 하나만 — 이미지와 영상을 동시에 붙일 수 있게 하면
+  // 화면에서 뭘 먼저 보여줄지가 애매해지고, 문제를 읽기도 어려워진다.
+  const imageUrl = q.imageUrl?.trim() || null;
+  const videoUrl = q.videoUrl?.trim() || null;
+  if (imageUrl && videoUrl) return '이미지와 영상은 함께 붙일 수 없다 — 하나만 고른다';
+
+  if (imageUrl) {
+    switch (checkImageUrl(imageUrl)) {
+      case 'too-long':
+        return `이미지 URL이 너무 길다 (${MEDIA_URL_MAX}자 이내)`;
+      case 'is-video':
+        return '유튜브 링크는 이미지가 아니라 영상 칸에 넣는다';
+      case 'not-https':
+        return '이미지는 직접 올리거나 https:// 링크여야 한다';
+    }
+  }
+
+  if (videoUrl) {
+    if (videoUrl.length > MEDIA_URL_MAX) return `영상 URL이 너무 길다 (${MEDIA_URL_MAX}자 이내)`;
+    if (!parseVideoUrl(videoUrl)) {
+      return '영상은 유튜브 링크여야 한다 (youtube.com/watch, youtu.be, /shorts)';
     }
   }
   return null;
@@ -216,29 +230,48 @@ export async function handleAddCommunityQuestion(
   const reason = validateQuestion(q);
   if (reason) return json({ error: reason }, { status: 400 });
 
+  const imageUrl = q.imageUrl?.trim() || null;
+  // 유저가 준 URL은 여기서 버리고 id만 남긴다 — 저장되는 건 파싱 결과뿐이다.
+  const video = q.videoUrl?.trim() ? parseVideoUrl(q.videoUrl.trim()) : null;
+
   const existing = await env.DB.prepare(
-    `SELECT q.body, q.image_url FROM questions q JOIN question_topics qt ON qt.question_id = q.id WHERE qt.topic_id = ?`,
+    `SELECT q.body, q.image_url, q.video_id FROM questions q JOIN question_topics qt ON qt.question_id = q.id WHERE qt.topic_id = ?`,
   )
     .bind(topicId)
-    .all<{ body: string; image_url: string | null }>();
-  // 이미지 문제는 문구가 같아도 사진이 다르면 다른 문항이다 — 사진까지 같아야 진짜 중복.
-  const newImageUrl = q.imageUrl?.trim() || null;
+    .all<{ body: string; image_url: string | null; video_id: string | null }>();
+  // 미디어 문제는 문구가 같아도 사진·영상이 다르면 다른 문항이다
+  // ("이 새의 학명은?" + 사진). 붙은 미디어까지 같아야 진짜 중복.
   const dupe = (existing.results ?? []).some(
-    (r) => normalize(r.body) === normalize(q.body!.trim()) && (r.image_url ?? null) === newImageUrl,
+    (r) =>
+      normalize(r.body) === normalize(q.body!.trim()) &&
+      (r.image_url ?? null) === imageUrl &&
+      (r.video_id ?? null) === (video?.id ?? null),
   );
   if (dupe) return json({ error: '이미 같은 문항이 있다' }, { status: 409 });
 
   const id = crypto.randomUUID();
   const now = new Date().toISOString();
   const choicesJson = q.type === 'MULTIPLE_CHOICE' ? JSON.stringify(q.choices) : null;
-  const imageUrl = q.imageUrl?.trim() || null;
 
   await env.DB.batch([
     env.DB.prepare(
       `INSERT INTO questions
-         (id, type, difficulty, body, choices_json, answer, explanation, status, source, generated_by, author_uid, created_at, image_url)
-       VALUES (?, ?, ?, ?, ?, ?, ?, 'approved', 'manual', NULL, ?, ?, ?)`,
-    ).bind(id, q.type, q.difficulty, q.body!.trim(), choicesJson, q.answer, q.explanation!.trim(), uid, now, imageUrl),
+         (id, type, difficulty, body, choices_json, answer, explanation, status, source, generated_by, author_uid, created_at, image_url, video_kind, video_id)
+       VALUES (?, ?, ?, ?, ?, ?, ?, 'approved', 'manual', NULL, ?, ?, ?, ?, ?)`,
+    ).bind(
+      id,
+      q.type,
+      q.difficulty,
+      q.body!.trim(),
+      choicesJson,
+      q.answer,
+      q.explanation!.trim(),
+      uid,
+      now,
+      imageUrl,
+      video?.kind ?? null,
+      video?.id ?? null,
+    ),
     env.DB.prepare('INSERT INTO question_topics (question_id, topic_id) VALUES (?, ?)').bind(id, topicId),
   ]);
 

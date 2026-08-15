@@ -10,6 +10,7 @@ import type {
   Topic,
 } from '../src/types';
 import { TOTAL_STAGES } from '../src/types';
+import { videoFromStored } from '../src/media';
 import { handleAuthGoogleCallback, handleAuthGoogleStart, handleSetNickname } from './auth';
 import { handleGlobalRanking, handleTopicRanking, refreshGlobalCaches, upsertWeeklyBest } from './ranking';
 import {
@@ -152,7 +153,7 @@ async function drawStageQuestions(
 ): Promise<ServedQuestion[]> {
   const exclude = excludeIds.length ? `AND q.id NOT IN (${excludeIds.map(() => '?').join(',')})` : '';
   const { results } = await env.DB.prepare(
-    `SELECT q.id, q.type, q.difficulty, q.body, q.choices_json, q.image_url
+    `SELECT q.id, q.type, q.difficulty, q.body, q.choices_json, q.image_url, q.video_kind, q.video_id
        FROM questions q
        JOIN question_topics qt ON qt.question_id = q.id
       WHERE qt.topic_id = ? AND q.status = 'approved' AND q.difficulty = ? ${exclude}
@@ -166,6 +167,8 @@ async function drawStageQuestions(
       body: string;
       choices_json: string | null;
       image_url: string | null;
+      video_kind: string | null;
+      video_id: string | null;
     }>();
 
   return (results ?? []).map((r) => ({
@@ -175,6 +178,7 @@ async function drawStageQuestions(
     body: r.body,
     choices: r.choices_json ? (JSON.parse(r.choices_json) as string[]) : null,
     imageUrl: r.image_url,
+    video: videoFromStored(r.video_kind, r.video_id),
   }));
 }
 
@@ -341,7 +345,7 @@ async function handleSubmitStage(
 
   const placeholders = servedIds.map(() => '?').join(',');
   const { results } = await env.DB.prepare(
-    `SELECT id, type, difficulty, body, answer, explanation, image_url
+    `SELECT id, type, difficulty, body, answer, explanation, image_url, video_kind, video_id
        FROM questions WHERE id IN (${placeholders})`,
   )
     .bind(...servedIds)
@@ -353,6 +357,8 @@ async function handleSubmitStage(
       answer: string;
       explanation: string;
       image_url: string | null;
+      video_kind: string | null;
+      video_id: string | null;
     }>();
 
   const byId = new Map((results ?? []).map((r) => [r.id, r]));
@@ -380,6 +386,7 @@ async function handleSubmitStage(
       difficulty: q.difficulty,
       explanation: q.explanation,
       imageUrl: q.image_url,
+      video: videoFromStored(q.video_kind, q.video_id),
     });
   }
 

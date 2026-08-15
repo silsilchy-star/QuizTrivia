@@ -9,7 +9,9 @@ import {
   getCommunityTopics,
   uploadQuestionImage,
 } from './api';
+import { parseVideoUrl } from './media';
 import type { CommunityTopic, Difficulty, NewCommunityQuestionInput, QuestionType, SessionResponse } from './types';
+import { VideoFrame } from './VideoFrame';
 
 /** worker/community.ts의 COMMUNITY_GATE_PER_DIFFICULTY와 같은 값 — 표시용. */
 const GATE_PER_DIFFICULTY = 5;
@@ -289,12 +291,20 @@ function NewQuestionForm({
   const [choices, setChoices] = useState(['', '', '', '']);
   const [answer, setAnswer] = useState('');
   const [explanation, setExplanation] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  // 이미지든 영상이든 이 한 칸으로 받는다. 어느 쪽인지는 붙여넣은 링크를
+  // 보고 판정한다 — 유저가 "이건 이미지" "이건 영상"을 직접 고르게 하는 건
+  // 불필요한 질문이다. 판정은 서버와 같은 파서(src/media.ts)로 하고,
+  // 최종 판단은 어차피 서버가 다시 한다.
+  const [mediaUrl, setMediaUrl] = useState('');
   const [uploading, setUploading] = useState(false);
-  const [imageError, setImageError] = useState<string | null>(null);
+  const [mediaError, setMediaError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [addedCount, setAddedCount] = useState(0);
+
+  // 붙여넣은 링크가 유튜브면 영상, 아니면 이미지. 미리보기와 전송 양쪽이
+  // 이 하나의 판정을 쓴다.
+  const previewVideo = parseVideoUrl(mediaUrl);
 
   async function pickImage(e: ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -303,12 +313,12 @@ function NewQuestionForm({
     if (!file) return;
 
     setUploading(true);
-    setImageError(null);
+    setMediaError(null);
     try {
       const { url } = await uploadQuestionImage(file);
-      setImageUrl(url);
+      setMediaUrl(url);
     } catch (err) {
-      setImageError((err as Error).message);
+      setMediaError((err as Error).message);
     } finally {
       setUploading(false);
     }
@@ -319,6 +329,7 @@ function NewQuestionForm({
     setSaving(true);
     setError(null);
     try {
+      const media = mediaUrl.trim();
       const input: NewCommunityQuestionInput = {
         type,
         difficulty,
@@ -326,7 +337,10 @@ function NewQuestionForm({
         choices: type === 'MULTIPLE_CHOICE' ? choices.map((c) => c.trim()) : null,
         answer: answer.trim(),
         explanation: explanation.trim(),
-        imageUrl: imageUrl.trim() || null,
+        // 유튜브 링크면 영상 칸으로, 아니면 이미지 칸으로 보낸다. 둘 다 채워
+        // 보내는 일은 없다 — 서버도 그걸 거부한다.
+        imageUrl: media && !previewVideo ? media : null,
+        videoUrl: media && previewVideo ? media : null,
       };
       const topic = await addCommunityQuestion(topicId, input);
       onDone(topic);
@@ -334,8 +348,8 @@ function NewQuestionForm({
       setChoices(['', '', '', '']);
       setAnswer('');
       setExplanation('');
-      setImageUrl('');
-      setImageError(null);
+      setMediaUrl('');
+      setMediaError(null);
       setAddedCount((n) => n + 1);
     } catch (err) {
       setError((err as Error).message);
@@ -401,21 +415,28 @@ function NewQuestionForm({
           <span className="hint">JPG · PNG · GIF · WebP, 5MB 이하 (선택)</span>
         </div>
 
-        {imageUrl && (
+        {mediaUrl && (
           <div className="image-preview">
-            <img src={imageUrl} alt="첨부한 이미지 미리보기" />
-            <button type="button" className="link" onClick={() => setImageUrl('')}>
-              사진 빼기
+            {previewVideo ? (
+              <VideoFrame video={previewVideo} />
+            ) : (
+              <img src={mediaUrl} alt="첨부한 이미지 미리보기" />
+            )}
+            <button type="button" className="link" onClick={() => setMediaUrl('')}>
+              {previewVideo ? '영상 빼기' : '사진 빼기'}
             </button>
           </div>
         )}
 
         <input
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-          placeholder="또는 이미지 주소 붙여넣기 (https://…)"
+          value={mediaUrl}
+          onChange={(e) => setMediaUrl(e.target.value)}
+          placeholder="또는 이미지 주소 · 유튜브 링크 붙여넣기"
         />
-        {imageError && <p className="error">{imageError}</p>}
+        <span className="hint">
+          유튜브 주소를 넣으면 영상 문제가 된다 (youtube.com/watch · youtu.be · /shorts)
+        </span>
+        {mediaError && <p className="error">{mediaError}</p>}
       </div>
 
       <input

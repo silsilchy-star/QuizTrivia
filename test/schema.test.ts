@@ -72,6 +72,9 @@ describe('컬럼 — 코드가 실제로 읽고 쓰는 것들', () => {
       'source',
       'author_uid', // 공식/커뮤니티를 가르는 컬럼 (build-seed.mjs가 의존)
       'image_url',
+      // 영상은 URL이 아니라 제공자 + 영상 id로 쪼개 저장한다 (migrations/0001).
+      'video_kind',
+      'video_id',
       'created_at',
     ]) {
       expect(cols, `questions.${c}가 없다`).toContain(c);

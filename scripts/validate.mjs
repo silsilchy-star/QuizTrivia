@@ -81,6 +81,18 @@ for (const q of questions) {
     err(id, `imageUrl은 https://로 시작해야 한다: ${q.imageUrl}`);
   }
 
+  // 영상 문항은 창작마당(유저 콘텐츠) 전용이다.
+  //
+  // 링크에서 영상 id를 뽑는 파서는 src/media.ts 하나뿐이고, 프론트와 워커가
+  // 그걸 같이 쓴다. 이 스크립트는 평범한 .mjs라 TypeScript를 import할 수
+  // 없어서, 공식 파이프라인까지 지원하려면 같은 파서를 JS로 한 벌 더 써야
+  // 한다 — "파서는 하나"라는 전제가 깨지는 순간 느슨한 쪽이 뚫린다.
+  // 그래서 지원하지 않고, 조용히 무시되는 대신 여기서 걸리게 한다
+  // (build-seed.mjs는 video 컬럼을 아예 쓰지 않는다).
+  if (q.videoUrl != null) {
+    err(id, '영상 문항은 공식 콘텐츠에서 지원하지 않는다 — 창작마당에서만 만들 수 있다');
+  }
+
   // ── 정답 노출 (scripts/fairness.mjs) ──
   // 형식이 멀쩡해도 문제에 답이 적혀 있으면 그 문항은 아무것도 묻지 않는다.
   if (numericAnswerLeaked(q)) {

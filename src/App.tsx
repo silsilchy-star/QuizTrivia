@@ -19,6 +19,7 @@ import type {
   Topic,
   TopicRankingResponse,
 } from './types';
+import { VideoFrame } from './VideoFrame';
 import { Workshop } from './Workshop';
 import './App.css';
 
@@ -305,6 +306,8 @@ function Quiz({
         <img className="question-image" src={q.imageUrl} alt="" />
       )}
 
+      {q.video && <VideoFrame video={q.video} />}
+
       {q.type === 'MULTIPLE_CHOICE' && q.choices && (
         <ul className="choices">
           {q.choices.map((c) => (
@@ -375,6 +378,7 @@ function StageResult({
         {result.results.map((r) => (
           <li key={r.questionId} className={r.correct ? 'ok' : 'ng'}>
             {r.imageUrl && <img className="question-image review-image" src={r.imageUrl} alt="" />}
+            {r.video && <VideoFrame video={r.video} className="review-image" />}
             <p className="body">{r.body}</p>
             <p>
               내 답 <strong>{r.given || '무응답'}</strong>

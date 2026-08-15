@@ -13,7 +13,7 @@ import type {
   StartRunResponse,
   SubmitStageResponse,
 } from '../src/types';
-import { Client, createPlayableTopic, createTopic, logIn, newSession } from './helpers';
+import { Client, createPlayableTopic, createQuestion, createTopic, logIn, newSession } from './helpers';
 
 /** RunFinalSummary는 ranked로 갈라지는 판별 유니온이다 — 랭킹 필드를 보려면
  *  먼저 ranked=true임을 확인해야 한다. 타입 자체가 경계선을 강제한다. */
@@ -191,6 +191,166 @@ describe('창작마당 하한 게이트', () => {
       body: JSON.stringify({ ...question, body: '똑 같은 문제?' }),
     });
     expect(second.status).toBe(409);
+  });
+});
+
+describe('문항에 붙는 미디어 — 이미지 링크와 유튜브 영상', () => {
+  const ID = 'dQw4w9WgXcQ';
+
+  /** 로그인된 창작자 + 빈 주제 하나. */
+  async function author(nickname: string) {
+    const client = await newSession();
+    await logIn(client, nickname);
+    const topic = await client.json<{ id: string }>('/api/community/topics', {
+      method: 'POST',
+      body: JSON.stringify({ name: `${nickname}주제` }),
+    });
+    return { client, topicId: topic.id };
+  }
+
+  function question(extra: Record<string, unknown>) {
+    return JSON.stringify({
+      type: 'TEXT_INPUT',
+      difficulty: 1,
+      body: '이 영상 속 곡의 제목은?',
+      answer: '정답',
+      explanation: '해설',
+      ...extra,
+    });
+  }
+
+  it.each([
+    ['watch 링크', `https://www.youtube.com/watch?v=${ID}`],
+    ['단축 링크', `https://youtu.be/${ID}`],
+    ['쇼츠', `https://www.youtube.com/shorts/${ID}`],
+  ])('%s로 영상 문항을 만들 수 있다', async (label, videoUrl) => {
+    const { client, topicId } = await author(`영상${label}`);
+    const res = await client.fetch(`/api/community/topics/${topicId}/questions`, {
+      method: 'POST',
+      body: question({ videoUrl }),
+    });
+    expect(res.status).toBe(200);
+
+    const row = await env.DB.prepare(
+      `SELECT q.video_kind, q.video_id, q.image_url FROM questions q
+         JOIN question_topics qt ON qt.question_id = q.id WHERE qt.topic_id = ?`,
+    )
+      .bind(topicId)
+      .first<{ video_kind: string | null; video_id: string | null; image_url: string | null }>();
+
+    // 저장되는 건 파싱 결과뿐 — 유저가 준 URL은 어디에도 남지 않는다.
+    expect(row).toEqual({ video_kind: 'youtube', video_id: ID, image_url: null });
+  });
+
+  it('출제·채점 응답에는 서버가 조립한 임베드 주소가 내려간다', async () => {
+    const topicId = await createTopic({ name: '영상주제' });
+    for (let i = 0; i < 5; i += 1) {
+      await createQuestion({ topicId, difficulty: 1, videoKind: 'youtube', videoId: ID });
+    }
+
+    const client = await newSession();
+    const start = await client.json<StartRunResponse>('/api/runs', {
+      method: 'POST',
+      body: JSON.stringify({ topicId }),
+    });
+
+    for (const q of start.questions) {
+      expect(q.video).toEqual({
+        kind: 'youtube',
+        id: ID,
+        embedUrl: `https://www.youtube-nocookie.com/embed/${ID}?rel=0&playsinline=1`,
+      });
+    }
+
+    // 채점 결과(리뷰 화면)에도 같은 영상이 실려야 다시 볼 수 있다.
+    const ids = start.questions.map((q) => q.id);
+    const graded = await client.json<SubmitStageResponse>(`/api/runs/${start.runId}/submit`, {
+      method: 'POST',
+      body: JSON.stringify({ answers: ids.map((id) => ({ questionId: id, given: '가' })) }),
+    });
+    for (const r of graded.results) {
+      expect(r.video?.id).toBe(ID);
+    }
+  });
+
+  it('영상이 없는 문항은 video가 null로 내려간다', async () => {
+    const topicId = await createTopic({ name: '영상없는주제' });
+    for (let i = 0; i < 5; i += 1) await createQuestion({ topicId, difficulty: 1 });
+
+    const client = await newSession();
+    const start = await client.json<StartRunResponse>('/api/runs', {
+      method: 'POST',
+      body: JSON.stringify({ topicId }),
+    });
+    for (const q of start.questions) expect(q.video).toBeNull();
+  });
+
+  it('이미지와 영상을 함께 붙일 수는 없다', async () => {
+    const { client, topicId } = await author('둘다');
+    const res = await client.fetch(`/api/community/topics/${topicId}/questions`, {
+      method: 'POST',
+      body: question({
+        imageUrl: 'https://example.test/a.jpg',
+        videoUrl: `https://youtu.be/${ID}`,
+      }),
+    });
+    expect(res.status).toBe(400);
+    expect((await res.json<{ error: string }>()).error).toContain('함께');
+  });
+
+  it('유튜브 링크를 이미지 칸에 넣으면 어디에 넣어야 하는지 알려준다', async () => {
+    const { client, topicId } = await author('이미지칸유튜브');
+    const res = await client.fetch(`/api/community/topics/${topicId}/questions`, {
+      method: 'POST',
+      body: question({ imageUrl: `https://www.youtube.com/watch?v=${ID}` }),
+    });
+    // 예전엔 https로 시작하기만 하면 통과해서 화면에 깨진 이미지가 떴다.
+    expect(res.status).toBe(400);
+    expect((await res.json<{ error: string }>()).error).toContain('영상 칸');
+  });
+
+  it.each([
+    ['유튜브가 아닌 영상 사이트', 'https://vimeo.com/123456789'],
+    ['유튜브를 흉내낸 호스트', `https://youtube.com.evil.test/watch?v=${ID}`],
+    ['javascript 스킴', 'javascript:alert(1)'],
+    ['영상 id가 깨진 링크', 'https://www.youtube.com/watch?v=tooshort'],
+  ])('%s는 영상으로 받지 않는다', async (label, videoUrl) => {
+    const { client, topicId } = await author(`거부${label.slice(0, 6)}`);
+    const res = await client.fetch(`/api/community/topics/${topicId}/questions`, {
+      method: 'POST',
+      body: question({ videoUrl }),
+    });
+    expect(res.status).toBe(400);
+
+    const row = await env.DB.prepare(
+      'SELECT COUNT(*) AS n FROM question_topics WHERE topic_id = ?',
+    )
+      .bind(topicId)
+      .first<{ n: number }>();
+    expect(row!.n, '거부된 문항이 저장되면 안 된다').toBe(0);
+  });
+
+  it('문구가 같아도 영상이 다르면 다른 문항이다', async () => {
+    const { client, topicId } = await author('영상중복');
+    const first = await client.fetch(`/api/community/topics/${topicId}/questions`, {
+      method: 'POST',
+      body: question({ videoUrl: `https://youtu.be/${ID}` }),
+    });
+    expect(first.status).toBe(200);
+
+    // 같은 영상 + 같은 문구면 중복.
+    const same = await client.fetch(`/api/community/topics/${topicId}/questions`, {
+      method: 'POST',
+      body: question({ videoUrl: `https://www.youtube.com/watch?v=${ID}` }),
+    });
+    expect(same.status).toBe(409);
+
+    // 영상이 다르면 별개의 문항으로 받아준다.
+    const other = await client.fetch(`/api/community/topics/${topicId}/questions`, {
+      method: 'POST',
+      body: question({ videoUrl: 'https://youtu.be/abcdefghijk' }),
+    });
+    expect(other.status).toBe(200);
   });
 });
 

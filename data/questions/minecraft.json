@@ -1,0 +1,1485 @@
+{
+  "$comment": "마인크래프트 주제. 한글 이름은 misode/mcmeta의 공식 ko_kr 번역, 최대 스택 수는 item_components 데이터에서 그대로 가져왔다. 이미지는 자바 에디션 기본 텍스처. ⚠ 버전 번호는 일부러 쓰지 않았다 — 확인하지 못한 수치를 적으면 사실 검수 부채가 된다. 재생성: scripts/gamedata/gen_minecraft.py",
+  "questions": [
+    {
+      "id": "mcr-101",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "사과",
+      "answerAliases": [
+        "apple"
+      ],
+      "explanation": "사과(`apple`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/apple.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-102",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "빵",
+      "answerAliases": [
+        "bread"
+      ],
+      "explanation": "빵(`bread`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/bread.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-103",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "석탄",
+      "answerAliases": [
+        "coal"
+      ],
+      "explanation": "석탄(`coal`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/coal.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-104",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "막대기",
+      "answerAliases": [
+        "stick"
+      ],
+      "explanation": "막대기(`stick`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/stick.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-105",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "철 주괴",
+      "answerAliases": [
+        "iron ingot"
+      ],
+      "explanation": "철 주괴(`iron_ingot`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/iron_ingot.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-106",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "양동이",
+      "answerAliases": [
+        "bucket"
+      ],
+      "explanation": "양동이(`bucket`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/bucket.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-107",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "활",
+      "answerAliases": [
+        "bow"
+      ],
+      "explanation": "활(`bow`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/bow.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-108",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "화살",
+      "answerAliases": [
+        "arrow"
+      ],
+      "explanation": "화살(`arrow`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/arrow.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-109",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "밀",
+      "answerAliases": [
+        "wheat"
+      ],
+      "explanation": "밀(`wheat`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/wheat.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-110",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "횃불",
+      "answerAliases": [
+        "torch"
+      ],
+      "explanation": "횃불(`torch`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/torch.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-111",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "흙",
+      "answerAliases": [
+        "dirt"
+      ],
+      "explanation": "흙(`dirt`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/dirt.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-112",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "조약돌",
+      "answerAliases": [
+        "cobblestone"
+      ],
+      "explanation": "조약돌(`cobblestone`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/cobblestone.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-113",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "모래",
+      "answerAliases": [
+        "sand"
+      ],
+      "explanation": "모래(`sand`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/sand.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-114",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "자갈",
+      "answerAliases": [
+        "gravel"
+      ],
+      "explanation": "자갈(`gravel`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/gravel.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-115",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "참나무 판자",
+      "answerAliases": [
+        "oak planks"
+      ],
+      "explanation": "참나무 판자(`oak_planks`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/oak_planks.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-116",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "16",
+      "explanation": "달걀은(는) 한 칸에 16개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/egg.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-117",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "16",
+      "explanation": "눈덩이은(는) 한 칸에 16개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/snowball.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-118",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "64",
+      "explanation": "발광석은(는) 한 칸에 64개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/glowstone.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-119",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "64",
+      "explanation": "설탕은(는) 한 칸에 64개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/sugar.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-120",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "64",
+      "explanation": "점토 덩이은(는) 한 칸에 64개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/clay_ball.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-201",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "다이아몬드",
+      "answerAliases": [
+        "diamond"
+      ],
+      "explanation": "다이아몬드(`diamond`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/diamond.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-202",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "금 주괴",
+      "answerAliases": [
+        "gold ingot"
+      ],
+      "explanation": "금 주괴(`gold_ingot`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/gold_ingot.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-203",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "레드스톤 가루",
+      "answerAliases": [
+        "redstone"
+      ],
+      "explanation": "레드스톤 가루(`redstone`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/redstone.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-204",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "에메랄드",
+      "answerAliases": [
+        "emerald"
+      ],
+      "explanation": "에메랄드(`emerald`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/emerald.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-205",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "흑요석",
+      "answerAliases": [
+        "obsidian"
+      ],
+      "explanation": "흑요석(`obsidian`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/obsidian.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-206",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "블레이즈 막대기",
+      "answerAliases": [
+        "blaze rod"
+      ],
+      "explanation": "블레이즈 막대기(`blaze_rod`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/blaze_rod.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-207",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "슬라임볼",
+      "answerAliases": [
+        "slime ball"
+      ],
+      "explanation": "슬라임볼(`slime_ball`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/slime_ball.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-208",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "화약",
+      "answerAliases": [
+        "gunpowder"
+      ],
+      "explanation": "화약(`gunpowder`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/gunpowder.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-209",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "실",
+      "answerAliases": [
+        "string"
+      ],
+      "explanation": "실(`string`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/string.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-210",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "깃털",
+      "answerAliases": [
+        "feather"
+      ],
+      "explanation": "깃털(`feather`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/feather.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-211",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "가죽",
+      "answerAliases": [
+        "leather"
+      ],
+      "explanation": "가죽(`leather`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/leather.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-212",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "부싯돌",
+      "answerAliases": [
+        "flint"
+      ],
+      "explanation": "부싯돌(`flint`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/flint.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-213",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "뼈다귀",
+      "answerAliases": [
+        "bone"
+      ],
+      "explanation": "뼈다귀(`bone`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/bone.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-214",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "책장",
+      "answerAliases": [
+        "bookshelf"
+      ],
+      "explanation": "책장(`bookshelf`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/bookshelf.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-215",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "네더랙",
+      "answerAliases": [
+        "netherrack"
+      ],
+      "explanation": "네더랙(`netherrack`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/netherrack.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-216",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "16",
+      "explanation": "엔더 진주은(는) 한 칸에 16개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/ender_pearl.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-217",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "16",
+      "explanation": "꿀이 든 병은(는) 한 칸에 16개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/honey_bottle.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-218",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "64",
+      "explanation": "마그마 크림은(는) 한 칸에 64개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/magma_cream.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-219",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "64",
+      "explanation": "블레이즈 가루은(는) 한 칸에 64개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/blaze_powder.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-220",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "64",
+      "explanation": "금 조각은(는) 한 칸에 64개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/gold_nugget.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-301",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "철 원석",
+      "answerAliases": [
+        "raw iron"
+      ],
+      "explanation": "가공하지 않은 금·구리와 덩어리 모양이 거의 같아 색으로만 구분됩니다. 철 원석(`raw_iron`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/raw_iron.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-302",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "금 원석",
+      "answerAliases": [
+        "raw gold"
+      ],
+      "explanation": "가공하지 않은 철·구리와 덩어리 모양이 거의 같아 색으로만 구분됩니다. 금 원석(`raw_gold`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/raw_gold.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-303",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "구리 원석",
+      "answerAliases": [
+        "raw copper"
+      ],
+      "explanation": "가공하지 않은 철·금과 덩어리 모양이 거의 같아 색으로만 구분됩니다. 구리 원석(`raw_copper`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/raw_copper.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-304",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "구리 주괴",
+      "answerAliases": [
+        "copper ingot"
+      ],
+      "explanation": "철 주괴·금 주괴와 모양이 같아 색으로만 구분됩니다. 구리 주괴(`copper_ingot`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/copper_ingot.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-305",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "자수정 조각",
+      "answerAliases": [
+        "amethyst shard"
+      ],
+      "explanation": "조각 모양 아이템이 여럿이라 다른 파편류와 헷갈리기 쉽습니다. 자수정 조각(`amethyst_shard`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/amethyst_shard.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-306",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "메아리 조각",
+      "answerAliases": [
+        "echo shard"
+      ],
+      "explanation": "자수정 조각과 생김새가 비슷해 자주 혼동됩니다. 메아리 조각(`echo_shard`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/echo_shard.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-307",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "네더라이트 파편",
+      "answerAliases": [
+        "netherite scrap"
+      ],
+      "explanation": "네더라이트 주괴와 이름이 비슷하지만 다른 아이템입니다. 네더라이트 파편(`netherite_scrap`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/netherite_scrap.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-308",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "심층암",
+      "answerAliases": [
+        "deepslate"
+      ],
+      "explanation": "석재·응회암·방해석과 모두 회색 계열이라 구분이 어렵습니다. 심층암(`deepslate`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/deepslate.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-309",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "응회암",
+      "answerAliases": [
+        "tuff"
+      ],
+      "explanation": "심층암·방해석과 색이 비슷해 헷갈립니다. 응회암(`tuff`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/tuff.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-310",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "방해석",
+      "answerAliases": [
+        "calcite"
+      ],
+      "explanation": "응회암·심층암과 함께 정동 주변에서 나와 서로 헷갈립니다. 방해석(`calcite`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/calcite.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-311",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "점적석 블록",
+      "answerAliases": [
+        "dripstone block"
+      ],
+      "explanation": "거친 돌 계열과 표면이 비슷해 보입니다. 점적석 블록(`dripstone_block`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/dripstone_block.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-312",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "이끼 블록",
+      "answerAliases": [
+        "moss block"
+      ],
+      "explanation": "잔디 블록과 초록색이라 멀리서 보면 구분이 어렵습니다. 이끼 블록(`moss_block`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/moss_block.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-313",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "진흙",
+      "answerAliases": [
+        "mud"
+      ],
+      "explanation": "흙·점토와 색이 비슷해 헷갈립니다. 진흙(`mud`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/mud.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-314",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "발광 먹물 주머니",
+      "answerAliases": [
+        "glow ink sac"
+      ],
+      "explanation": "먹물 주머니와 모양이 같고 색만 다릅니다. 발광 먹물 주머니(`glow_ink_sac`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/glow_ink_sac.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-315",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "먹물 주머니",
+      "answerAliases": [
+        "ink sac"
+      ],
+      "explanation": "발광 먹물 주머니와 모양이 같고 색만 다릅니다. 먹물 주머니(`ink_sac`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/ink_sac.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-316",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "64",
+      "explanation": "네더라이트 조각과 이름이 비슷하지만 다른 아이템입니다. 네더라이트 주괴은(는) 한 칸에 64개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/netherite_ingot.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-317",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "64",
+      "explanation": "거미 눈과 색만 다르고 모양이 같습니다. 발효된 거미 눈은(는) 한 칸에 64개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/fermented_spider_eye.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-318",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "64",
+      "explanation": "자수정 블록과 겉모습이 거의 같습니다. 싹 틔우는 자수정은(는) 한 칸에 64개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/budding_amethyst.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-319",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "64",
+      "explanation": "스컬크 계열 블록이 여럿이라 서로 헷갈립니다. 스컬크은(는) 한 칸에 64개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/sculk.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-320",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "64",
+      "explanation": "조각·비늘류 아이템이 여럿이라 이름을 헷갈리기 쉽습니다. 거북 인갑은(는) 한 칸에 64개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/turtle_scute.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/lang/ko_kr.json"
+    },
+    {
+      "id": "mcr-401",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "프리즈머린 조각",
+      "answerAliases": [
+        "prismarine shard"
+      ],
+      "explanation": "프리즈머린 조각(`prismarine_shard`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/prismarine_shard.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-402",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "프리즈머린 수정",
+      "answerAliases": [
+        "prismarine crystals"
+      ],
+      "explanation": "프리즈머린 수정(`prismarine_crystals`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/prismarine_crystals.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-403",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "앵무조개 껍데기",
+      "answerAliases": [
+        "nautilus shell"
+      ],
+      "explanation": "앵무조개 껍데기(`nautilus_shell`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/nautilus_shell.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-404",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "바다의 심장",
+      "answerAliases": [
+        "heart of the sea"
+      ],
+      "explanation": "바다의 심장(`heart_of_the_sea`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/heart_of_the_sea.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-405",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "팬텀 막",
+      "answerAliases": [
+        "phantom membrane"
+      ],
+      "explanation": "팬텀 막(`phantom_membrane`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/phantom_membrane.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-406",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "셜커 껍데기",
+      "answerAliases": [
+        "shulker shell"
+      ],
+      "explanation": "셜커 껍데기(`shulker_shell`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/shulker_shell.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-407",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "가스트 눈물",
+      "answerAliases": [
+        "ghast tear"
+      ],
+      "explanation": "가스트 눈물(`ghast_tear`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/ghast_tear.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-408",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "드래곤의 숨결",
+      "answerAliases": [
+        "dragon breath"
+      ],
+      "explanation": "드래곤의 숨결(`dragon_breath`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/dragon_breath.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-409",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "브리즈 막대기",
+      "answerAliases": [
+        "breeze rod"
+      ],
+      "explanation": "브리즈 막대기(`breeze_rod`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/breeze_rod.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-410",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "무거운 코어",
+      "answerAliases": [
+        "heavy core"
+      ],
+      "explanation": "무거운 코어(`heavy_core`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/heavy_core.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-411",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "시련 열쇠",
+      "answerAliases": [
+        "trial key"
+      ],
+      "explanation": "시련 열쇠(`trial_key`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/trial_key.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-412",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "불길한 병",
+      "answerAliases": [
+        "ominous bottle"
+      ],
+      "explanation": "불길한 병(`ominous_bottle`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/ominous_bottle.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-413",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "바다 랜턴",
+      "answerAliases": [
+        "sea lantern"
+      ],
+      "explanation": "바다 랜턴(`sea_lantern`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/sea_lantern.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-414",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "퍼퍼 블록",
+      "answerAliases": [
+        "purpur block"
+      ],
+      "explanation": "퍼퍼 블록(`purpur_block`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/purpur_block.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-415",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 마인크래프트 블록 또는 아이템의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "엔드 돌",
+      "answerAliases": [
+        "end stone"
+      ],
+      "explanation": "엔드 돌(`end_stone`)입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/end_stone.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-416",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "1",
+      "explanation": "겉날개은(는) 한 칸에 1개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/elytra.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-417",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "1",
+      "explanation": "삼지창은(는) 한 칸에 1개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/trident.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-418",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "1",
+      "explanation": "불사의 토템은(는) 한 칸에 1개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/totem_of_undying.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-419",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "1",
+      "explanation": "철퇴은(는) 한 칸에 1개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/item/mace.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "mcr-420",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 아이템은 한 칸에 몇 개까지 겹쳐 놓을 수 있나요?",
+      "choices": null,
+      "answer": "64",
+      "explanation": "우는 흑요석은(는) 한 칸에 64개까지 겹쳐 놓입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/misode/mcmeta/assets/assets/minecraft/textures/block/crying_obsidian.png",
+      "topicIds": [
+        "game",
+        "minecraft"
+      ],
+      "status": "approved",
+      "source": "manual"
+    }
+  ]
+}

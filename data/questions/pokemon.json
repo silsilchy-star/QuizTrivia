@@ -1,0 +1,1485 @@
+{
+  "$comment": "포켓몬스터 주제. 한글 이름·도감 분류·도감 설명은 PokeAPI 공식 데이터(ko)에서 그대로 가져왔다 — 기억으로 쓰지 않는다. 이미지는 PokeAPI sprites의 공식 아트워크. 재생성: scripts/gamedata/gen_pokemon.py",
+  "questions": [
+    {
+      "id": "pkm-101",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "피카츄",
+      "answerAliases": [
+        "Pikachu"
+      ],
+      "explanation": "피카츄(Pikachu)는 1세대 쥐포켓몬으로 전국도감 25번입니다. 도감 설명: 꼬리를 세우고 주변의 상황을 살피다 보면 가끔 꼬리에 번개가 친다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-102",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "파이리",
+      "answerAliases": [
+        "Charmander"
+      ],
+      "explanation": "파이리(Charmander)는 1세대 도롱뇽포켓몬으로 전국도감 4번입니다. 도감 설명: 꼬리의 불꽃은 파이리의 생명력의 상징이다. 건강할 때 왕성하게 불타오른다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-103",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "꼬부기",
+      "answerAliases": [
+        "Squirtle"
+      ],
+      "explanation": "꼬부기(Squirtle)는 1세대 꼬마거북포켓몬으로 전국도감 7번입니다. 도감 설명: 등껍질에 숨어 몸을 보호한다. 상대의 빈틈을 놓치지 않고 물을 뿜어내어 반격한다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-104",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "리자몽",
+      "answerAliases": [
+        "Charizard"
+      ],
+      "explanation": "리자몽(Charizard)는 1세대 화염포켓몬으로 전국도감 6번입니다. 도감 설명: 입에서 작렬하는 불꽃을 토해낼 때 꼬리의 끝이 더욱 붉고 격렬하게 타오른다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-105",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "잠만보",
+      "answerAliases": [
+        "Snorlax"
+      ],
+      "explanation": "잠만보(Snorlax)는 1세대 졸음포켓몬으로 전국도감 143번입니다. 도감 설명: 하루에 먹을 것을 400kg 먹지 않으면 성에 차지 않는다. 다 먹으면 잠이 들어 버린다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-106",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "이브이",
+      "answerAliases": [
+        "Eevee"
+      ],
+      "explanation": "이브이(Eevee)는 1세대 진화포켓몬으로 전국도감 133번입니다. 도감 설명: 진화할 때 모습과 능력이 바뀜으로써 혹독한 환경에 적응하는 희귀한 포켓몬이다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-107",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "잉어킹",
+      "answerAliases": [
+        "Magikarp"
+      ],
+      "explanation": "잉어킹(Magikarp)는 1세대 물고기포켓몬으로 전국도감 129번입니다. 도감 설명: 힘도 스피드도 거의 없다. 세상에서 가장 약하고 한심한 포켓몬이다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/129.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-108",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "갸라도스",
+      "answerAliases": [
+        "Gyarados"
+      ],
+      "explanation": "갸라도스(Gyarados)는 1세대 흉악포켓몬으로 전국도감 130번입니다. 도감 설명: 분쟁이 일어난 마을을 다 태워버렸다는 기록이 고문서에 남아 있다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/130.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-109",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "푸린",
+      "answerAliases": [
+        "Jigglypuff"
+      ],
+      "explanation": "푸린(Jigglypuff)는 1세대 풍선포켓몬으로 전국도감 39번입니다. 도감 설명: 동그랗고 커다란 눈동자로 유인하고 기분 좋은 노래를 불러 상대방을 잠들게 한다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/39.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-110",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "나옹",
+      "answerAliases": [
+        "Meowth"
+      ],
+      "explanation": "나옹(Meowth)는 1세대 요괴고양이포켓몬으로 전국도감 52번입니다. 도감 설명: 한밤중에 움직이는 습성이 있다. 반짝반짝 빛나는 것을 발견하면 그에 못지않게 눈동자가 반짝인다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/52.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-111",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "고라파덕",
+      "answerAliases": [
+        "Psyduck"
+      ],
+      "explanation": "고라파덕(Psyduck)는 1세대 오리포켓몬으로 전국도감 54번입니다. 도감 설명: 항상 두통에 시달리고 있다. 이 두통이 심해지면 이상한 힘을 쓰기 시작한다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/54.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-112",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "라프라스",
+      "answerAliases": [
+        "Lapras"
+      ],
+      "explanation": "라프라스(Lapras)는 1세대 탈것포켓몬으로 전국도감 131번입니다. 도감 설명: 부드러운 마음의 소유자다. 좀처럼 다투지 않아 많이 잡혔기 때문에 수가 줄었다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/131.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-113",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "버터플",
+      "answerAliases": [
+        "Butterfree"
+      ],
+      "explanation": "버터플(Butterfree)는 1세대 나비포켓몬으로 전국도감 12번입니다. 도감 설명: 꽃의 꿀을 매우 좋아한다. 약간의 꽃가루만으로 꽃밭이 있는 장소를 찾아낼 수 있다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/12.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-114",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "삐삐",
+      "answerAliases": [
+        "Clefairy"
+      ],
+      "explanation": "삐삐(Clefairy)는 1세대 요정포켓몬으로 전국도감 35번입니다. 도감 설명: 보름달 밤에 삐삐가 모여 춤을 추는 모습을 보면 행복해진다고 전해진다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/35.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-115",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "가디",
+      "answerAliases": [
+        "Growlithe"
+      ],
+      "explanation": "가디(Growlithe)는 1세대 강아지포켓몬으로 전국도감 58번입니다. 도감 설명: 사람을 잘 따르는 충실한 성격이다. 적에게는 짖거나 물며 쫓아내려고 한다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/58.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-116",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "1",
+      "explanation": "이상해씨(Bulbasaur)는 1세대 씨앗포켓몬으로 전국도감 1번입니다. 도감 설명: 태어났을 때부터 등에 이상한 씨앗이 심어져 있으며 몸과 함께 자란다고 한다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-117",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "150",
+      "explanation": "뮤츠(Mewtwo)는 1세대 유전포켓몬으로 전국도감 150번입니다. 전설의 포켓몬입니다. 도감 설명: 한 과학자가 몇 년에 걸쳐 무서운 유전자의 연구를 계속한 결과 탄생했다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-118",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "151",
+      "explanation": "뮤(Mew)는 1세대 신종포켓몬으로 전국도감 151번입니다. 환상의 포켓몬입니다. 도감 설명: 모든 기술을 사용하기 때문에 포켓몬의 조상이라고 생각하는 학자가 많다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/151.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-119",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "9",
+      "explanation": "거북왕(Blastoise)는 1세대 껍질포켓몬으로 전국도감 9번입니다. 도감 설명: 무거운 몸으로 상대를 덮쳐서 기절시킨다. 위기에 처하면 등껍질에 숨는다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-120",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "3",
+      "explanation": "이상해꽃(Venusaur)는 1세대 씨앗포켓몬으로 전국도감 3번입니다. 도감 설명: 큰 꽃잎을 펼쳐 햇빛을 받고 있으면 몸에 힘이 넘쳐흐른다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-201",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "라이츄",
+      "answerAliases": [
+        "Raichu"
+      ],
+      "explanation": "라이츄(Raichu)는 1세대 쥐포켓몬으로 전국도감 26번입니다. 도감 설명: 전기가 모이면 근육이 자극되어 여느 때보다 공격적이 된다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/26.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-202",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "후딘",
+      "answerAliases": [
+        "Alakazam"
+      ],
+      "explanation": "후딘(Alakazam)는 1세대 초능력포켓몬으로 전국도감 65번입니다. 도감 설명: 뇌세포는 항상 분열해서 죽을 때까지 늘어나기 때문에 모든 것을 기억해 놓을 수 있다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/65.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-203",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "괴력몬",
+      "answerAliases": [
+        "Machamp"
+      ],
+      "explanation": "괴력몬(Machamp)는 1세대 괴력포켓몬으로 전국도감 68번입니다. 도감 설명: 발달한 4개의 팔은 2초 동안 1000번의 펀치를 날릴 수 있다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/68.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-204",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "팬텀",
+      "answerAliases": [
+        "Gengar"
+      ],
+      "explanation": "팬텀(Gengar)는 1세대 그림자포켓몬으로 전국도감 94번입니다. 도감 설명: 그림자에 모습을 숨긴다. 팬텀이 숨어 있는 방은 온도가 5도 내려간다고 전해진다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-205",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "롱스톤",
+      "answerAliases": [
+        "Onix"
+      ],
+      "explanation": "롱스톤(Onix)는 1세대 돌뱀포켓몬으로 전국도감 95번입니다. 도감 설명: 땅속을 엄청난 기세로 뚫고 나아가며 먹이를 찾는다. 지나간 곳은 디그다의 보금자리가 된다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/95.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-206",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "프테라",
+      "answerAliases": [
+        "Aerodactyl"
+      ],
+      "explanation": "프테라(Aerodactyl)는 1세대 화석포켓몬으로 전국도감 142번입니다. 도감 설명: 호박에 남아 있던 공룡의 유전자에서 부활시켰다. 높은 소리로 울며 난다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/142.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-207",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "망나뇽",
+      "answerAliases": [
+        "Dragonite"
+      ],
+      "explanation": "망나뇽(Dragonite)는 1세대 드래곤포켓몬으로 전국도감 149번입니다. 도감 설명: 커다란 몸집으로 하늘을 난다. 지구를 약 16시간 만에 일주한다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-208",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "프리져",
+      "answerAliases": [
+        "Articuno"
+      ],
+      "explanation": "프리져(Articuno)는 1세대 냉동포켓몬으로 전국도감 144번입니다. 전설의 포켓몬입니다. 도감 설명: 전설의 새포켓몬이다. 공기 중의 수분을 얼려 눈보라를 만들어 낼 수 있다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/144.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-209",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "썬더",
+      "answerAliases": [
+        "Zapdos"
+      ],
+      "explanation": "썬더(Zapdos)는 1세대 전기포켓몬으로 전국도감 145번입니다. 전설의 포켓몬입니다. 도감 설명: 구름 위에서 거대한 번개를 내리치며 나타난다. 전설의 새포켓몬이다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/145.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-210",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "파이어",
+      "answerAliases": [
+        "Moltres"
+      ],
+      "explanation": "파이어(Moltres)는 1세대 화염포켓몬으로 전국도감 146번입니다. 전설의 포켓몬입니다. 도감 설명: 오래전부터 불새의 전설로 알려져 있다. 날갯짓할 때마다 날개가 눈부시게 불타올라서 아름답다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/146.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-211",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "메타몽",
+      "answerAliases": [
+        "Ditto"
+      ],
+      "explanation": "메타몽(Ditto)는 1세대 변신포켓몬으로 전국도감 132번입니다. 도감 설명: 전신의 세포를 재구성해서 본 것의 모양과 똑 닮게 변신하는 능력을 가지고 있다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-212",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "폴리곤",
+      "answerAliases": [
+        "Porygon"
+      ],
+      "explanation": "폴리곤(Porygon)는 1세대 가상포켓몬으로 전국도감 137번입니다. 도감 설명: 연구 끝에 태어난 인공 포켓몬이다. 기본적인 동작만 프로그램되어 있다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/137.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-213",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "럭키",
+      "answerAliases": [
+        "Chansey"
+      ],
+      "explanation": "럭키(Chansey)는 1세대 알포켓몬으로 전국도감 113번입니다. 도감 설명: 행복을 가져다준다고 전해진다. 상처 입은 사람에게 알을 나눠주는 상냥한 포켓몬이다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/113.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-214",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "캥카",
+      "answerAliases": [
+        "Kangaskhan"
+      ],
+      "explanation": "캥카(Kangaskhan)는 1세대 가족포켓몬으로 전국도감 115번입니다. 도감 설명: 배의 주머니에서 새끼를 키운다. 안전할 때만 새끼를 주머니에서 꺼내어 놀게 한다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/115.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-215",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "스라크",
+      "answerAliases": [
+        "Scyther"
+      ],
+      "explanation": "스라크(Scyther)는 1세대 버마재비포켓몬으로 전국도감 123번입니다. 도감 설명: 날카로운 낫으로 먹이를 베고 숨통을 끊는다. 매우 드물게 날개를 사용해서 난다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/123.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-216",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "79",
+      "explanation": "야돈(Slowpoke)는 1세대 얼간이포켓몬으로 전국도감 79번입니다. 도감 설명: 항상 멍하니 있으므로 무슨 생각을 하고 있는지 알 수 없다. 꼬리로 먹이를 낚는 것이 특기다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/79.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-217",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "81",
+      "explanation": "코일(Magnemite)는 1세대 자석포켓몬으로 전국도감 81번입니다. 도감 설명: 좌우의 유닛에서 중력을 차단하는 힘을 발휘하기에 공중에 뜰 수 있다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/81.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-218",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "63",
+      "explanation": "캐이시(Abra)는 1세대 초능력포켓몬으로 전국도감 63번입니다. 도감 설명: 하루에 18시간은 자고 있다. 자는 동안에도 다양한 초능력을 사용한다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/63.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-219",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "112",
+      "explanation": "코뿌리(Rhydon)는 1세대 드릴포켓몬으로 전국도감 112번입니다. 도감 설명: 전신을 갑옷 같은 피부로 보호하고 있다. 2000도의 마그마 속에서도 살 수 있다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/112.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-220",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "76",
+      "explanation": "딱구리(Golem)는 1세대 메가톤포켓몬으로 전국도감 76번입니다. 도감 설명: 산 정상에서 산기슭까지 이어지는 움푹 패인 홈은 딱구리가 굴러 다니는 길이므로 주의가 필요하다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/76.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-301",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "텅구리",
+      "answerAliases": [
+        "Marowak"
+      ],
+      "explanation": "탕구리가 진화한 모습입니다. 둘 다 뼈를 들고 있어 서로 헷갈리기 쉽습니다. 텅구리(Marowak)는 1세대 뼈다귀포켓몬으로 전국도감 105번입니다. 도감 설명: 몸집도 작으며 원래는 약했다. 뼈를 쓰기 시작하면서 성격이 흉포해졌다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/105.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/105/index.json"
+    },
+    {
+      "id": "pkm-302",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "루주라",
+      "answerAliases": [
+        "Jynx"
+      ],
+      "explanation": "마임맨과 함께 사람 모습을 한 1세대 포켓몬이라 자주 혼동됩니다. 루주라(Jynx)는 1세대 인간형태포켓몬으로 전국도감 124번입니다. 도감 설명: 허리를 흔드는 듯이 걷고 있다. 방심하면 엉겁결에 따라서 춤춰버린다고 한다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/124.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/124/index.json"
+    },
+    {
+      "id": "pkm-303",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "마그마",
+      "answerAliases": [
+        "Magmar"
+      ],
+      "explanation": "에레브와 짝을 이루는 포켓몬이라 이름이 자주 바뀌어 불립니다. 마그마(Magmar)는 1세대 불뿜기포켓몬으로 전국도감 126번입니다. 도감 설명: 화산의 분화구 근처에서 발견되었다. 입에서 불꽃을 뿜어낸다. 체온은 1200도나 된다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/126.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/126/index.json"
+    },
+    {
+      "id": "pkm-304",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "쥬피썬더",
+      "answerAliases": [
+        "Jolteon"
+      ],
+      "explanation": "샤미드·부스터와 같은 이브이 진화형이라 셋을 헷갈리기 쉽습니다. 쥬피썬더(Jolteon)는 1세대 번개포켓몬으로 전국도감 135번입니다. 도감 설명: 체내에 전기가 모이면 전신의 털이 모두 날카롭게 곤두서기 시작한다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/135.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/135/index.json"
+    },
+    {
+      "id": "pkm-305",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "부스터",
+      "answerAliases": [
+        "Flareon"
+      ],
+      "explanation": "샤미드·쥬피썬더와 같은 이브이 진화형이라 셋을 헷갈리기 쉽습니다. 부스터(Flareon)는 1세대 불꽃포켓몬으로 전국도감 136번입니다. 도감 설명: 체내에 불꽃 주머니를 가지고 있다. 싸움이 시작되기 직전에는 체온이 900도까지 올라간다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/136.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/136/index.json"
+    },
+    {
+      "id": "pkm-306",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "블래키",
+      "answerAliases": [
+        "Umbreon"
+      ],
+      "explanation": "에브이와 짝을 이루는 이브이 진화형입니다. 밤/낮 진화 조건 때문에 서로 바꿔 부르기 쉽습니다. 블래키(Umbreon)는 2세대 달빛포켓몬으로 전국도감 197번입니다. 도감 설명: 달빛이 이브이의 유전자를 변화시켰다. 어둠에 숨어 먹이를 기다린다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/197.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/197/index.json"
+    },
+    {
+      "id": "pkm-307",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "라티오스",
+      "answerAliases": [
+        "Latios"
+      ],
+      "explanation": "라티아스와 색만 다른 짝 포켓몬이라 가장 자주 혼동됩니다. 라티오스(Latios)는 3세대 무한포켓몬으로 전국도감 381번입니다. 전설의 포켓몬입니다. 도감 설명: 높은 지능을 가진 포켓몬이다. 팔을 접어 날면 제트기를 추월할 만큼 빠르다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/381.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/381/index.json"
+    },
+    {
+      "id": "pkm-308",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "펄기아",
+      "answerAliases": [
+        "Palkia"
+      ],
+      "explanation": "디아루가와 짝을 이루는 전설의 포켓몬이라 서로 바꿔 부르기 쉽습니다. 펄기아(Palkia)는 4세대 공간포켓몬으로 전국도감 484번입니다. 전설의 포켓몬입니다. 도감 설명: 평행으로 늘어선 공간의 틈새에 산다고 전해진다. 신화에 등장하는 포켓몬이다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/484.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/484/index.json"
+    },
+    {
+      "id": "pkm-309",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "제크로무",
+      "answerAliases": [
+        "Zekrom"
+      ],
+      "explanation": "레시라무와 짝을 이루는 전설의 포켓몬입니다. 흑백이 반대인 쪽과 헷갈리기 쉽습니다. 제크로무(Zekrom)는 5세대 흑음포켓몬으로 전국도감 644번입니다. 전설의 포켓몬입니다. 도감 설명: 번개로 세상을 태워버릴 수 있는 전설의 포켓몬. 이상의 세계를 구축하는 사람을 보좌한다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/644.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/644/index.json"
+    },
+    {
+      "id": "pkm-310",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "자마젠타",
+      "answerAliases": [
+        "Zamazenta"
+      ],
+      "explanation": "자시안과 짝을 이루는 전설의 포켓몬이라 이름이 자주 바뀌어 불립니다. 자마젠타(Zamazenta)는 8세대 강자포켓몬으로 전국도감 889번입니다. 전설의 포켓몬입니다. 도감 설명: 인간의 왕과 힘을 합쳐 가라르를 구한 포켓몬. 금속을 흡수해서 싸운다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/889.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/889/index.json"
+    },
+    {
+      "id": "pkm-311",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "고오스",
+      "answerAliases": [
+        "Gastly"
+      ],
+      "explanation": "팬텀으로 진화하기 전 단계라, 유령 포켓몬을 통틀어 팬텀으로 부르는 경우가 많습니다. 고오스(Gastly)는 1세대 가스포켓몬으로 전국도감 92번입니다. 도감 설명: 가스로 만들어진 몸은 어떠한 크기의 상대라도 둘러싸서 숨을 못 쉬게 한다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/92.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/92/index.json"
+    },
+    {
+      "id": "pkm-312",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "질퍽이",
+      "answerAliases": [
+        "Grimer"
+      ],
+      "explanation": "질뻐기로 진화하기 전 단계입니다. 질퍽이(Grimer)는 1세대 진흙포켓몬으로 전국도감 88번입니다. 도감 설명: 달로부터의 X선을 쬔 오물이 질퍽이로 변화했다. 더러운 것을 좋아한다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/88.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/88/index.json"
+    },
+    {
+      "id": "pkm-313",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "스이쿤",
+      "answerAliases": [
+        "Suicune"
+      ],
+      "explanation": "라이코·앤테이와 함께 다니는 전설의 세 마리라 서로 헷갈리기 쉽습니다. 스이쿤(Suicune)는 2세대 오로라포켓몬으로 전국도감 245번입니다. 전설의 포켓몬입니다. 도감 설명: 세계 곳곳을 뛰어다니며 오염된 물을 정화시킨다. 북풍과 함께 달려나간다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/245.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/245/index.json"
+    },
+    {
+      "id": "pkm-314",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "앤테이",
+      "answerAliases": [
+        "Entei"
+      ],
+      "explanation": "라이코·스이쿤과 함께 다니는 전설의 세 마리라 서로 헷갈리기 쉽습니다. 앤테이(Entei)는 2세대 화산포켓몬으로 전국도감 244번입니다. 전설의 포켓몬입니다. 도감 설명: 새로운 화산이 생길 때마다 태어난다고 전해지는 대지를 달리는 포켓몬이다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/244.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/244/index.json"
+    },
+    {
+      "id": "pkm-315",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "핫삼",
+      "answerAliases": [
+        "Scizor"
+      ],
+      "explanation": "스라크가 진화한 모습이라 스라크로 착각하기 쉽습니다. 핫삼(Scizor)는 2세대 집게포켓몬으로 전국도감 212번입니다. 도감 설명: 강철이 함유된 집게로 잡은 것은 아무리 딱딱해도 산산조각이 난다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/212.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/212/index.json"
+    },
+    {
+      "id": "pkm-316",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "104",
+      "explanation": "텅구리로 진화하기 전 단계라, 둘 다 뼈를 들고 있어 헷갈립니다. 탕구리(Cubone)는 1세대 고독포켓몬으로 전국도감 104번입니다. 도감 설명: 죽은 어미의 해골을 머리에 쓰고 있다. 외로울 때는 큰 소리로 운다고 한다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/104.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/104/index.json"
+    },
+    {
+      "id": "pkm-317",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "380",
+      "explanation": "라티오스와 색만 다른 짝 포켓몬이라 가장 자주 혼동됩니다. 라티아스(Latias)는 3세대 무한포켓몬으로 전국도감 380번입니다. 전설의 포켓몬입니다. 도감 설명: 텔레파시로 마음이 통한다. 빛을 굴절시키는 깃털로 몸을 둘러싸 모습을 지운다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/380.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/380/index.json"
+    },
+    {
+      "id": "pkm-318",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "483",
+      "explanation": "펄기아와 짝을 이루는 전설의 포켓몬이라 서로 바꿔 부르기 쉽습니다. 디아루가(Dialga)는 4세대 시간포켓몬으로 전국도감 483번입니다. 전설의 포켓몬입니다. 도감 설명: 디아루가가 태어남으로써 시간이 움직이기 시작했다는 전설이 내려오는 포켓몬이다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/483.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/483/index.json"
+    },
+    {
+      "id": "pkm-319",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "888",
+      "explanation": "자마젠타와 짝을 이루는 전설의 포켓몬이라 이름이 자주 바뀌어 불립니다. 자시안(Zacian)는 8세대 강자포켓몬으로 전국도감 888번입니다. 전설의 포켓몬입니다. 도감 설명: 전설의 영웅이라고 불리는 포켓몬. 금속을 흡수한 뒤 무기로 변화시켜서 싸운다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/888.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/888/index.json"
+    },
+    {
+      "id": "pkm-320",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "461",
+      "explanation": "포푸니가 진화한 모습입니다. 포푸니라(Weavile)는 4세대 갈고리손톱포켓몬으로 전국도감 461번입니다. 도감 설명: 눈이 많은 지방에 서식한다. 수목에 발톱으로 사인을 그려 동료에게 신호를 보낸다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/461.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-species/461/index.json"
+    },
+    {
+      "id": "pkm-401",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "드래펄트",
+      "answerAliases": [
+        "Dragapult"
+      ],
+      "explanation": "드래펄트(Dragapult)는 8세대 스텔스포켓몬으로 전국도감 887번입니다. 도감 설명: 뿔에 있는 구멍에 드라꼰을 넣고 지낸다. 싸움이 시작되면 마하의 스피드로 드라꼰을 날린다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/887.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-402",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "무한다이노",
+      "answerAliases": [
+        "Eternatus"
+      ],
+      "explanation": "무한다이노(Eternatus)는 8세대 거대포켓몬으로 전국도감 890번입니다. 전설의 포켓몬입니다. 도감 설명: 가슴의 코어가 가라르지방의 대지에서 솟아나는 에너지를 흡수해서 활동한다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/890.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-403",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "드닐레이브",
+      "answerAliases": [
+        "Baxcalibur"
+      ],
+      "explanation": "드닐레이브(Baxcalibur)는 9세대 빙룡포켓몬으로 전국도감 998번입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/998.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-404",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "복숭악동",
+      "answerAliases": [
+        "Pecharunt"
+      ],
+      "explanation": "복숭악동(Pecharunt)는 9세대 지배포켓몬으로 전국도감 1025번입니다. 환상의 포켓몬입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1025.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-405",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "오거폰",
+      "answerAliases": [
+        "Ogerpon"
+      ],
+      "explanation": "오거폰(Ogerpon)는 9세대 가면포켓몬으로 전국도감 1017번입니다. 전설의 포켓몬입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1017.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-406",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "테라파고스",
+      "answerAliases": [
+        "Terapagos"
+      ],
+      "explanation": "테라파고스(Terapagos)는 9세대 테라스탈포켓몬으로 전국도감 1024번입니다. 전설의 포켓몬입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1024.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-407",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "마샤도",
+      "answerAliases": [
+        "Marshadow"
+      ],
+      "explanation": "마샤도(Marshadow)는 7세대 그림자살이포켓몬으로 전국도감 802번입니다. 환상의 포켓몬입니다. 도감 설명: 그림자 안에 숨어 들을 수 있어 사람들 앞에 모습을 보이지 않아 그 존재는 환상이었다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/802.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-408",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "네크로즈마",
+      "answerAliases": [
+        "Necrozma"
+      ],
+      "explanation": "네크로즈마(Necrozma)는 7세대 프리즘포켓몬으로 전국도감 800번입니다. 전설의 포켓몬입니다. 도감 설명: 지하에서 잠들어 있던 것 같다. 태고의 다른 세계에서 왔다고 추측되는 UB같은 생물이다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/800.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-409",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "후파",
+      "answerAliases": [
+        "Hoopa"
+      ],
+      "explanation": "후파(Hoopa)는 6세대 장난포켓몬으로 전국도감 720번입니다. 환상의 포켓몬입니다. 도감 설명: 공간을 뒤트는 링으로 모든 것을 멀리 떨어진 곳으로 날려버리고 마는 트러블메이커다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/720.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-410",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "디안시",
+      "answerAliases": [
+        "Diancie"
+      ],
+      "explanation": "디안시(Diancie)는 6세대 보석포켓몬으로 전국도감 719번입니다. 환상의 포켓몬입니다. 도감 설명: 멜리시의 돌연변이다. 분홍빛으로 빛나는 몸은 세계에서 가장 아름답다고 일컬어진다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/719.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-411",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "미끄래곤",
+      "answerAliases": [
+        "Goodra"
+      ],
+      "explanation": "미끄래곤(Goodra)는 6세대 드래곤포켓몬으로 전국도감 706번입니다. 도감 설명: 사람을 잘 따르는 드래곤포켓몬이다. 좋아하는 트레이너에게 달려들어 미끈미끈한 점액투성이로 만들어 버린다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/706.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-412",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "마휘핑",
+      "answerAliases": [
+        "Alcremie"
+      ],
+      "explanation": "마휘핑(Alcremie)는 8세대 크림포켓몬으로 전국도감 869번입니다. 도감 설명: 믿을 수 있는 트레이너에게는 크림으로 데코레이션한 나무열매를 대접한다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/869.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-413",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "스트린더",
+      "answerAliases": [
+        "Toxtricity"
+      ],
+      "explanation": "스트린더(Toxtricity)는 8세대 펑크포켓몬으로 전국도감 849번입니다. 도감 설명: 가슴에 난 돌기를 긁으면 전기가 일어나며 주위에 기타와 비슷한 소리가 울려퍼진다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/849.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-414",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "윽우지",
+      "answerAliases": [
+        "Cramorant"
+      ],
+      "explanation": "윽우지(Cramorant)는 8세대 그대로삼키기포켓몬으로 전국도감 845번입니다. 도감 설명: 상대를 일격에 쓰러뜨릴 정도로 파워풀하지만 건망증이 심해서 싸우고 있는 상대를 잊어버린다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/845.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-415",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "아머까오",
+      "answerAliases": [
+        "Corviknight"
+      ],
+      "explanation": "아머까오(Corviknight)는 8세대 까마귀포켓몬으로 전국도감 823번입니다. 도감 설명: 가라르지방의 하늘에는 적수가 없다. 검고 윤이 나는 강철의 자태는 상대에게 위압감을 주어 겁먹게 만든다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/823.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-416",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "493",
+      "explanation": "아르세우스(Arceus)는 4세대 창조포켓몬으로 전국도감 493번입니다. 환상의 포켓몬입니다. 도감 설명: 알에서 모습을 나타내 모든 세계를 창조했다고 신오신화에서 묘사된다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/493.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-417",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "646",
+      "explanation": "큐레무(Kyurem)는 5세대 경계포켓몬으로 전국도감 646번입니다. 전설의 포켓몬입니다. 도감 설명: 잃어버린 몸을 진실과 이상으로 채워줄 영웅을 기다리는 얼음의 전설 포켓몬.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/646.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-418",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "718",
+      "explanation": "지가르데(Zygarde)는 6세대 질서포켓몬으로 전국도감 718번입니다. 전설의 포켓몬입니다. 도감 설명: 칼로스지방의 생태계가 무너지면 모습을 나타내어 숨겨진 힘을 발휘한다고 한다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/718.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-419",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "1000",
+      "explanation": "타부자고(Gholdengo)는 9세대 보물생명체포켓몬으로 전국도감 1000번입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1000.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "pkm-420",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 포켓몬의 전국도감 번호는 몇 번인가요?",
+      "choices": null,
+      "answer": "935",
+      "explanation": "카르본(Charcadet)는 9세대 불의아이포켓몬으로 전국도감 935번입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/935.png",
+      "topicIds": [
+        "game",
+        "pokemon"
+      ],
+      "status": "approved",
+      "source": "manual"
+    }
+  ]
+}

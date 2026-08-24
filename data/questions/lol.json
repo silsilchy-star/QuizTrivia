@@ -1,0 +1,1505 @@
+{
+  "$comment": "리그오브레전드 주제. 한글 챔피언명과 별명은 Data Dragon의 공식 ko_KR 데이터에서 그대로 가져왔다. 이미지는 공식 챔피언 초상. ⚠ 수치 문항은 패치와 무관한 고정 구조만 쓴다 — 능력치·쿨다운·아이템 가격을 넣으면 패치마다 틀린 문항이 된다. 재생성: scripts/gamedata/gen_lol.py",
+  "questions": [
+    {
+      "id": "lol-101",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "아리",
+      "answerAliases": [
+        "Ahri"
+      ],
+      "explanation": "아리, '구미호'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Ahri.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-102",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "가렌",
+      "answerAliases": [
+        "Garen"
+      ],
+      "explanation": "가렌, '데마시아의 힘'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Garen.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-103",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "애쉬",
+      "answerAliases": [
+        "Ashe"
+      ],
+      "explanation": "애쉬, '서리 궁수'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Ashe.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-104",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "티모",
+      "answerAliases": [
+        "Teemo"
+      ],
+      "explanation": "티모, '날쌘 정찰병'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Teemo.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-105",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "야스오",
+      "answerAliases": [
+        "Yasuo"
+      ],
+      "explanation": "야스오, '용서받지 못한 자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Yasuo.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-106",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "럭스",
+      "answerAliases": [
+        "Lux"
+      ],
+      "explanation": "럭스, '광명의 소녀'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Lux.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-107",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "징크스",
+      "answerAliases": [
+        "Jinx"
+      ],
+      "explanation": "징크스, '난폭한 말괄량이'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Jinx.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-108",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "이즈리얼",
+      "answerAliases": [
+        "Ezreal"
+      ],
+      "explanation": "이즈리얼, '무모한 탐험가'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Ezreal.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-109",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "다리우스",
+      "answerAliases": [
+        "Darius"
+      ],
+      "explanation": "다리우스, '녹서스의 실력자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Darius.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-110",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "리 신",
+      "answerAliases": [
+        "LeeSin"
+      ],
+      "explanation": "리 신, '눈먼 수도승'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/LeeSin.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-111",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "제드",
+      "answerAliases": [
+        "Zed"
+      ],
+      "explanation": "제드, '그림자의 주인'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Zed.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-112",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "요네",
+      "answerAliases": [
+        "Yone"
+      ],
+      "explanation": "요네, '잊히지 못한 자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Yone.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-113",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "카타리나",
+      "answerAliases": [
+        "Katarina"
+      ],
+      "explanation": "카타리나, '사악한 칼날'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Katarina.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-114",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "마스터 이",
+      "answerAliases": [
+        "MasterYi"
+      ],
+      "explanation": "마스터 이, '우주 검사'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/MasterYi.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-115",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "애니",
+      "answerAliases": [
+        "Annie"
+      ],
+      "explanation": "애니, '어둠의 아이'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Annie.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-116",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "말파이트",
+      "answerAliases": [
+        "Malphite"
+      ],
+      "explanation": "말파이트, '거석의 파편'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Malphite.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-117",
+      "type": "TEXT_INPUT",
+      "difficulty": 1,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "블리츠크랭크",
+      "answerAliases": [
+        "Blitzcrank"
+      ],
+      "explanation": "블리츠크랭크, '거대 증기 골렘'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Blitzcrank.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-118",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "소환사의 협곡에서 한 팀은 몇 명으로 이루어지나요?",
+      "choices": null,
+      "answer": "5",
+      "explanation": "소환사의 협곡은 5대5로 진행됩니다.",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-119",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "소환사의 협곡 한 경기에 들어가는 챔피언은 모두 몇 명인가요?",
+      "choices": null,
+      "answer": "10",
+      "explanation": "양 팀 5명씩 모두 10명입니다.",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-120",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 1,
+      "body": "챔피언이 올릴 수 있는 레벨의 상한은 몇인가요?",
+      "choices": null,
+      "answer": "18",
+      "explanation": "한 경기 안에서 챔피언은 18레벨까지 성장합니다.",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-201",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "베인",
+      "answerAliases": [
+        "Vayne"
+      ],
+      "explanation": "베인, '어둠 사냥꾼'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Vayne.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-202",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "쓰레쉬",
+      "answerAliases": [
+        "Thresh"
+      ],
+      "explanation": "쓰레쉬, '지옥의 간수'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Thresh.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-203",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "리븐",
+      "answerAliases": [
+        "Riven"
+      ],
+      "explanation": "리븐, '추방자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Riven.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-204",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "아칼리",
+      "answerAliases": [
+        "Akali"
+      ],
+      "explanation": "아칼리, '섬기는 이 없는 암살자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Akali.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-205",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "진",
+      "answerAliases": [
+        "Jhin"
+      ],
+      "explanation": "진, '잔혹극의 거장'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Jhin.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-206",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "케이틀린",
+      "answerAliases": [
+        "Caitlyn"
+      ],
+      "explanation": "케이틀린, '필트오버의 보안관'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Caitlyn.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-207",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "모르가나",
+      "answerAliases": [
+        "Morgana"
+      ],
+      "explanation": "모르가나, '타락한 자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Morgana.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-208",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "레오나",
+      "answerAliases": [
+        "Leona"
+      ],
+      "explanation": "레오나, '여명의 빛'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Leona.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-209",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "노틸러스",
+      "answerAliases": [
+        "Nautilus"
+      ],
+      "explanation": "노틸러스, '심해의 타이탄'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Nautilus.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-210",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "세트",
+      "answerAliases": [
+        "Sett"
+      ],
+      "explanation": "세트, '우두머리'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Sett.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-211",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "비에고",
+      "answerAliases": [
+        "Viego"
+      ],
+      "explanation": "비에고, '몰락한 왕'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Viego.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-212",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "룰루",
+      "answerAliases": [
+        "Lulu"
+      ],
+      "explanation": "룰루, '요정 마법사'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Lulu.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-213",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "브라움",
+      "answerAliases": [
+        "Braum"
+      ],
+      "explanation": "브라움, '프렐요드의 심장'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Braum.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-214",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "나미",
+      "answerAliases": [
+        "Nami"
+      ],
+      "explanation": "나미, '파도 소환사'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Nami.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-215",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "바이",
+      "answerAliases": [
+        "Vi"
+      ],
+      "explanation": "바이, '필트오버의 집행자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Vi.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-216",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "에코",
+      "answerAliases": [
+        "Ekko"
+      ],
+      "explanation": "에코, '시간을 달리는 소년'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Ekko.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-217",
+      "type": "TEXT_INPUT",
+      "difficulty": 2,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "드레이븐",
+      "answerAliases": [
+        "Draven"
+      ],
+      "explanation": "드레이븐, '화려한 처형자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Draven.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-218",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "소환사의 협곡에는 라인이 몇 개 있나요?",
+      "choices": null,
+      "answer": "3",
+      "explanation": "탑·미드·바텀 세 개의 라인이 있습니다.",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-219",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "챔피언이 궁극기를 처음 배울 수 있는 것은 몇 레벨인가요?",
+      "choices": null,
+      "answer": "6",
+      "explanation": "궁극기(R)는 6레벨부터 배울 수 있습니다.",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-220",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 2,
+      "body": "한 챔피언이 경기에 들고 갈 수 있는 소환사 주문은 몇 개인가요?",
+      "choices": null,
+      "answer": "2",
+      "explanation": "점멸·점화 같은 소환사 주문을 두 개 고릅니다.",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-301",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "자야",
+      "answerAliases": [
+        "Xayah"
+      ],
+      "explanation": "라칸과 짝을 이루는 챔피언이라 서로 바꿔 부르기 쉽습니다. 자야, '저항하는 자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Xayah.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-302",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "라칸",
+      "answerAliases": [
+        "Rakan"
+      ],
+      "explanation": "자야와 짝을 이루는 챔피언이라 서로 바꿔 부르기 쉽습니다. 라칸, '매혹하는 자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Rakan.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-303",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "케인",
+      "answerAliases": [
+        "Kayn"
+      ],
+      "explanation": "케일과 이름이 비슷해 헷갈립니다. 케인, '그림자 사신'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Kayn.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-304",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "케일",
+      "answerAliases": [
+        "Kayle"
+      ],
+      "explanation": "모르가나와 자매이고, 케인과 이름이 비슷해 두 번 헷갈립니다. 케일, '정의로운 자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Kayle.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-305",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "스웨인",
+      "answerAliases": [
+        "Swain"
+      ],
+      "explanation": "사일러스와 이름이 비슷해 자주 혼동됩니다. 스웨인, '녹서스 대장군'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Swain.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-306",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "사일러스",
+      "answerAliases": [
+        "Sylas"
+      ],
+      "explanation": "스웨인과 이름이 비슷해 자주 혼동됩니다. 사일러스, '해방된 자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Sylas.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-307",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "카사딘",
+      "answerAliases": [
+        "Kassadin"
+      ],
+      "explanation": "카시오페아·카사딘처럼 이름이 비슷한 챔피언이 많습니다. 카사딘, '공허의 방랑자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Kassadin.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-308",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "초가스",
+      "answerAliases": [
+        "Chogath"
+      ],
+      "explanation": "공허 출신 챔피언끼리 생김새가 비슷해 헷갈립니다. 초가스, '공허의 공포'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Chogath.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-309",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "카직스",
+      "answerAliases": [
+        "Khazix"
+      ],
+      "explanation": "렉사이와 같은 공허 곤충형이라 자주 혼동됩니다. 카직스, '공허의 약탈자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Khazix.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-310",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "렉사이",
+      "answerAliases": [
+        "RekSai"
+      ],
+      "explanation": "카직스와 같은 공허 곤충형이라 자주 혼동됩니다. 렉사이, '공허의 복병'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/RekSai.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-311",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "말자하",
+      "answerAliases": [
+        "Malzahar"
+      ],
+      "explanation": "말파이트와 이름 앞부분이 같아 헷갈립니다. 말자하, '공허의 예언자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Malzahar.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-312",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "벨코즈",
+      "answerAliases": [
+        "Velkoz"
+      ],
+      "explanation": "공허 눈알 형태라 초가스·렉사이와 함께 묶여 기억됩니다. 벨코즈, '공허의 눈'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Velkoz.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-313",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "코그모",
+      "answerAliases": [
+        "KogMaw"
+      ],
+      "explanation": "공허 출신이라 다른 공허 챔피언과 헷갈립니다. 코그모, '심연의 아귀'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/KogMaw.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-314",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "나서스",
+      "answerAliases": [
+        "Nasus"
+      ],
+      "explanation": "레넥톤과 같은 슈리마 수인형이라 서로 바꿔 부르기 쉽습니다. 나서스, '사막의 관리자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Nasus.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-315",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "레넥톤",
+      "answerAliases": [
+        "Renekton"
+      ],
+      "explanation": "나서스와 같은 슈리마 수인형이라 서로 바꿔 부르기 쉽습니다. 레넥톤, '사막의 도살자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Renekton.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-316",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "직스",
+      "answerAliases": [
+        "Ziggs"
+      ],
+      "explanation": "하이머딩거와 같은 요들 발명가라 헷갈립니다. 직스, '마법공학 폭파병'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Ziggs.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-317",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "하이머딩거",
+      "answerAliases": [
+        "Heimerdinger"
+      ],
+      "explanation": "직스와 같은 요들 발명가라 헷갈립니다. 하이머딩거, '위대한 발명가'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Heimerdinger.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-318",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "스카너",
+      "answerAliases": [
+        "Skarner"
+      ],
+      "explanation": "전갈 형태라 다른 공허·사막 챔피언과 혼동됩니다. 스카너, '태고의 군주'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Skarner.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-319",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "질리언",
+      "answerAliases": [
+        "Zilean"
+      ],
+      "explanation": "질리언과 이름이 비슷한 챔피언이 여럿입니다. 질리언, '시간의 수호자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Zilean.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-320",
+      "type": "TEXT_INPUT",
+      "difficulty": 3,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "카르마",
+      "answerAliases": [
+        "Karma"
+      ],
+      "explanation": "카르마와 카사딘처럼 이름 앞부분이 같은 챔피언이 많습니다. 카르마, '깨우친 자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Karma.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual",
+      "seedRef": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/data/ko_KR/champion.json"
+    },
+    {
+      "id": "lol-401",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "아우렐리온 솔",
+      "answerAliases": [
+        "AurelionSol"
+      ],
+      "explanation": "아우렐리온 솔, '별의 창조자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/AurelionSol.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-402",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "벨베스",
+      "answerAliases": [
+        "Belveth"
+      ],
+      "explanation": "벨베스, '공허의 여제'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Belveth.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-403",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "렐",
+      "answerAliases": [
+        "Rell"
+      ],
+      "explanation": "렐, '철의 여인'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Rell.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-404",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "아이번",
+      "answerAliases": [
+        "Ivern"
+      ],
+      "explanation": "아이번, '자연의 아버지'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Ivern.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-405",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "탈리야",
+      "answerAliases": [
+        "Taliyah"
+      ],
+      "explanation": "탈리야, '바위술사'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Taliyah.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-406",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "키아나",
+      "answerAliases": [
+        "Qiyana"
+      ],
+      "explanation": "키아나, '원소의 여왕'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Qiyana.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-407",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "유미",
+      "answerAliases": [
+        "Yuumi"
+      ],
+      "explanation": "유미, '마법 고양이'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Yuumi.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-408",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "나르",
+      "answerAliases": [
+        "Gnar"
+      ],
+      "explanation": "나르, '잃어버린 고리'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Gnar.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-409",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "바드",
+      "answerAliases": [
+        "Bard"
+      ],
+      "explanation": "바드, '영겁의 수호자'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Bard.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-410",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "자크",
+      "answerAliases": [
+        "Zac"
+      ],
+      "explanation": "자크, '비밀 병기'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Zac.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-411",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "일라오이",
+      "answerAliases": [
+        "Illaoi"
+      ],
+      "explanation": "일라오이, '크라켄의 여사제'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Illaoi.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-412",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "오로라",
+      "answerAliases": [
+        "Aurora"
+      ],
+      "explanation": "오로라, '세계의 경계에 선 마녀'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Aurora.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-413",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "스몰더",
+      "answerAliases": [
+        "Smolder"
+      ],
+      "explanation": "스몰더, '꼬마 불꽃용'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Smolder.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-414",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "흐웨이",
+      "answerAliases": [
+        "Hwei"
+      ],
+      "explanation": "흐웨이, '몽상가'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Hwei.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-415",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "나피리",
+      "answerAliases": [
+        "Naafiri"
+      ],
+      "explanation": "나피리, '백 번 무는 사냥개'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Naafiri.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-416",
+      "type": "TEXT_INPUT",
+      "difficulty": 4,
+      "body": "그림 속 리그오브레전드 챔피언의 이름은 무엇인가요?",
+      "choices": null,
+      "answer": "브라이어",
+      "answerAliases": [
+        "Briar"
+      ],
+      "explanation": "브라이어, '억눌린 허기'입니다.",
+      "imageUrl": "https://raw.githubusercontent.com/InFinity54/LoL_DDragon/master/latest/img/champion/Briar.png",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-417",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "한 팀이 지켜야 하는 억제기는 몇 개인가요?",
+      "choices": null,
+      "answer": "3",
+      "explanation": "라인마다 하나씩, 팀당 세 개입니다.",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-418",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "장신구를 뺀 아이템 칸은 몇 칸인가요?",
+      "choices": null,
+      "answer": "6",
+      "explanation": "장신구 칸은 따로 있고, 일반 아이템은 여섯 칸입니다.",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-419",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "넥서스를 지키는 포탑은 팀당 몇 개인가요?",
+      "choices": null,
+      "answer": "2",
+      "explanation": "넥서스 앞에 두 개가 붙어 있습니다.",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    },
+    {
+      "id": "lol-420",
+      "type": "NUMERIC_INPUT",
+      "difficulty": 4,
+      "body": "넥서스 포탑을 빼고, 한 라인에 세워진 포탑은 몇 개인가요?",
+      "choices": null,
+      "answer": "3",
+      "explanation": "외곽·안쪽·억제기 포탑 세 개입니다.",
+      "topicIds": [
+        "game",
+        "lol"
+      ],
+      "status": "approved",
+      "source": "manual"
+    }
+  ]
+}

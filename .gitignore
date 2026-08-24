@@ -7,3 +7,10 @@ dist/
 db/seed.generated.sql
 .dev.vars
 public/image-check.html
+
+# 게임 주제 원본 데이터 덤프 (scripts/gamedata/fetch.sh로 다시 받는다)
+scripts/gamedata/sp_*.json
+scripts/gamedata/lol_champion_ko.json
+scripts/gamedata/mc_ko.json
+scripts/gamedata/mc_components.json
+scripts/gamedata/pokemon_ko.json

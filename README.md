@@ -37,6 +37,8 @@ npm run typecheck    # 프론트 + 워커 + 테스트 전체 타입체크
 npm run validate     # data/*.json 자동 검증 (에러면 배포도 막힌다)
 npm run build:seed   # data/*.json → db/seed.generated.sql (gitignore됨)
 npm run review       # 로컬 문항 검수 웹페이지
+npm run generate:ollama -- --topic=science --difficulty=2 --count=10
+                     # 로컬 Ollama로 문항 초안 생성 → pending으로 추가
 ```
 
 ## 배포

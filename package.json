@@ -17,7 +17,8 @@
     "review": "node scripts/review.mjs",
     "db:local": "npm run build:seed && wrangler d1 execute quiztrivia --local --file=db/schema.sql && wrangler d1 migrations apply quiztrivia --local && wrangler d1 execute quiztrivia --local --file=db/seed.generated.sql",
     "build:image-check": "node scripts/build-image-check.mjs",
-    "difficulty:review": "node scripts/difficulty-review.mjs"
+    "difficulty:review": "node scripts/difficulty-review.mjs",
+    "generate:ollama": "node scripts/generate-ollama.mjs"
   },
   "dependencies": {
     "arctic": "^3.7.0",

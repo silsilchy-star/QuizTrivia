@@ -80,6 +80,21 @@ PLAN 6.6절 [2]. `{주제}`·`{난이도}`·`{개수}`만 바꿔 끼운다.
 
 ---
 
+## 로컬 Ollama로 자동 생성
+
+이 템플릿을 손으로 붙여 넣는 대신 로컬 Ollama에 바로 보낼 수 있다.
+스크립트가 위 템플릿 코드블록을 그대로 읽어 채우므로 템플릿을 고치면 같이 반영된다.
+
+```bash
+ollama pull llama3.1   # 처음 한 번
+npm run generate:ollama -- --topic=science --difficulty=2 --count=10 [--model=qwen2.5] [--dry-run]
+```
+
+- 결과는 `data/questions/{주제}.json` 뒤에 `status: "pending"`으로 붙는다. 승인은 검수에서.
+- `id`·`status`·`source`·`generatedBy`(`ollama:{모델}`)는 스크립트가 덮어쓴다.
+- 기존 문항과 본문이 겹치면 버린다. 난이도 3은 거부한다.
+- `OLLAMA_HOST`·`OLLAMA_MODEL` 환경변수로 기본값을 바꿀 수 있다.
+
 ## 생성 후
 
 ```bash

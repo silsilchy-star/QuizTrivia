@@ -69,3 +69,17 @@ hermes
   Hermes의 명령 승인 프롬프트를 끄지 말고, `git push`·`wrangler` 명령은 직접 보고 승인할 것.
 - 문항 생성 스크립트(`generate:ollama`)는 Hermes와 별개로 Ollama 네이티브 API(`/api/chat`)를 쓴다.
   같은 모델을 쓰려면 `--model=` 또는 `OLLAMA_MODEL`을 맞춘다.
+
+## 문제 해결
+
+**`Model 'tencent/hy3:free' was not found in this provider's model listing`**
+(데스크톱 앱: "Connected, but Hermes still cannot resolve a usable provider")
+
+Ollama가 아니라 **Nous Portal**(`provider: nous`)에 연결된 상태이고, 기본 모델로 잡힌 무료 변형
+`tencent/hy3:free`가 Portal 목록에서 빠져서 나는 오류다. Ollama와는 무관하다.
+
+- Ollama로 바꾸기: 오류 창의 **Pick a different provider** → **self-hosted**(Local / custom endpoint)
+  → URL `http://localhost:11434/v1`, 키는 비움, 모델은 `ollama list`에 나오는 이름.
+  설정 화면에서는 **Settings → Providers → Custom Endpoints**.
+- 터미널: `hermes model`로 고르거나 `~/.hermes/config.yaml`의 `model:` 블록을 위 2절처럼 바꾼다.
+- Nous Portal을 계속 쓰려면 모델만 목록에 있는 것(`tencent/hy3` 등)으로 바꾼다 — 유료일 수 있다.

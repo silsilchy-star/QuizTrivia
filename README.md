@@ -41,6 +41,8 @@ npm run generate:ollama -- --topic=science --difficulty=2 --count=10
                      # 로컬 Ollama로 문항 초안 생성 → pending으로 추가
 ```
 
+Hermes Agent를 로컬 Ollama로 돌려 이 저장소에서 작업하려면 `docs/2026-10-06-hermes-ollama.md`. 프로젝트 지침은 `.hermes.md`.
+
 ## 배포
 
 `main`에 push하면 `.github/workflows/deploy.yml`이 프로덕션에 배포한다. 순서는 **검증이 전부 먼저, DB 변경은 그 다음**이다:
